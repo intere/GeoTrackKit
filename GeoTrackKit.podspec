@@ -14,7 +14,7 @@ Pod::Spec.new do |s|
     # :tag => '0.0.1'
   }
   s.license = {
-    :type = 'MIT',
+    :type => 'MIT',
     :text => <<-LICENSE
     The MIT License (MIT)
 Copyright (c) 2016 Eric Internicola
