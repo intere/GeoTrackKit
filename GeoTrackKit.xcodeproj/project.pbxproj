@@ -10,6 +10,8 @@
 		36C45E281DCE2BD000E87710 /* GeoTrackKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36C45E1E1DCE2BD000E87710 /* GeoTrackKit.framework */; };
 		36C45E2D1DCE2BD000E87710 /* GeoTrackKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36C45E2C1DCE2BD000E87710 /* GeoTrackKitTests.swift */; };
 		36C45E651DCE326F00E87710 /* GeoTrackManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36C45E641DCE326F00E87710 /* GeoTrackManager.swift */; };
+		36C45E671DCE3AC500E87710 /* GeoTrackEventLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36C45E661DCE3AC500E87710 /* GeoTrackEventLog.swift */; };
+		36C45E691DCE3AEF00E87710 /* GeoTrackEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36C45E681DCE3AEF00E87710 /* GeoTrackEvent.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,6 +31,8 @@
 		36C45E2C1DCE2BD000E87710 /* GeoTrackKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeoTrackKitTests.swift; sourceTree = "<group>"; };
 		36C45E2E1DCE2BD000E87710 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		36C45E641DCE326F00E87710 /* GeoTrackManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeoTrackManager.swift; sourceTree = "<group>"; };
+		36C45E661DCE3AC500E87710 /* GeoTrackEventLog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeoTrackEventLog.swift; sourceTree = "<group>"; };
+		36C45E681DCE3AEF00E87710 /* GeoTrackEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeoTrackEvent.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +77,8 @@
 			children = (
 				36C45E221DCE2BD000E87710 /* Info.plist */,
 				36C45E641DCE326F00E87710 /* GeoTrackManager.swift */,
+				36C45E661DCE3AC500E87710 /* GeoTrackEventLog.swift */,
+				36C45E681DCE3AEF00E87710 /* GeoTrackEvent.swift */,
 			);
 			path = GeoTrackKit;
 			sourceTree = "<group>";
@@ -197,6 +203,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				36C45E651DCE326F00E87710 /* GeoTrackManager.swift in Sources */,
+				36C45E671DCE3AC500E87710 /* GeoTrackEventLog.swift in Sources */,
+				36C45E691DCE3AEF00E87710 /* GeoTrackEvent.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

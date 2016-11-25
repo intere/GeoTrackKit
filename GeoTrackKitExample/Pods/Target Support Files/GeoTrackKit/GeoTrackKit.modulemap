@@ -1,0 +1,6 @@
+framework module GeoTrackKit {
+  umbrella header "GeoTrackKit-umbrella.h"
+
+  export *
+  module * { export * }
+}
