@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -28,15 +29,45 @@
                                     <action selector="clickedTrackButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="YjZ-Ek-ECX"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Altitude: 10,123 ft / 3231 m" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rZ7-JS-I5I">
+                                <rect key="frame" x="16" y="71" width="343" height="21"/>
+                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lat/Lon:: 12.32, 124.75" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8tl-pZ-V1I">
+                                <rect key="frame" x="16" y="100" width="343" height="21"/>
+                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="hAcc/vAcc: 10.05, 17.52" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wtR-9c-Ec2">
+                                <rect key="frame" x="16" y="129" width="343" height="21"/>
+                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="rZ7-JS-I5I" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="CAV-CP-K1I"/>
                             <constraint firstItem="LOs-mN-l14" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="EbN-Fj-IO4"/>
+                            <constraint firstItem="8tl-pZ-V1I" firstAttribute="top" secondItem="rZ7-JS-I5I" secondAttribute="bottom" constant="8" id="Nqe-kR-r1o"/>
+                            <constraint firstItem="wtR-9c-Ec2" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="Sv1-UV-syp"/>
+                            <constraint firstItem="8tl-pZ-V1I" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="ZBo-y6-vDX"/>
+                            <constraint firstItem="8tl-pZ-V1I" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="aYP-B5-cBE"/>
+                            <constraint firstItem="wtR-9c-Ec2" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="bOb-WK-DFe"/>
                             <constraint firstItem="LOs-mN-l14" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="ifC-WH-13F"/>
+                            <constraint firstItem="wtR-9c-Ec2" firstAttribute="top" secondItem="8tl-pZ-V1I" secondAttribute="bottom" constant="8" id="oTK-bp-eEF"/>
+                            <constraint firstItem="rZ7-JS-I5I" firstAttribute="top" secondItem="LOs-mN-l14" secondAttribute="bottom" constant="13" id="uVt-r3-50u"/>
+                            <constraint firstItem="rZ7-JS-I5I" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="vFV-0a-CYU"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="accuracyLabel" destination="wtR-9c-Ec2" id="IPd-v2-iSX"/>
+                        <outlet property="altitudeLabel" destination="rZ7-JS-I5I" id="jb0-ji-g16"/>
                         <outlet property="button" destination="LOs-mN-l14" id="piC-G3-eAt"/>
+                        <outlet property="locationLabel" destination="8tl-pZ-V1I" id="aok-C4-aMH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

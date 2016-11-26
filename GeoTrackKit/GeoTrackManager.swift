@@ -18,6 +18,8 @@ public class GeoTrackManager: NSObject {
 
     // Other stuff
     internal var locationManager: CLLocationManager?
+    internal var _lastPoint: CLLocation?
+    internal var _authorized: Bool = false
 }
 
 // MARK: - API
@@ -33,8 +35,16 @@ extension GeoTrackManager: GeoTrackService {
         }
     }
 
+    public var lastPoint: CLLocation? {
+        return _lastPoint
+    }
+
     public var isTracking: Bool {
         return trackingState == .tracking
+    }
+
+    public var isAwaitingFix: Bool {
+        return trackingState == .awaitingFix
     }
 
     public func startTracking() {
@@ -65,19 +75,23 @@ extension GeoTrackManager: CLLocationManagerDelegate {
         case .authorizedAlways:
             GTDebug(message: "Authorization has been updated, starting location updates")
             locationManager?.startUpdatingLocation()
+            _authorized = true
 
         case .denied:
             GTError(message: "User denied location updates")
+            _authorized = false
 
         case .notDetermined:
             GTDebug(message: "Could not determine access to location updates")
+            _authorized = false
 
         case .restricted:
             GTError(message: "Restricted from access to location updates")
+            _authorized = false
 
         default:
             GTError(message: "Other access to location updates (unacceptable)")
-
+            _authorized = false
         }
     }
 
@@ -85,10 +99,11 @@ extension GeoTrackManager: CLLocationManagerDelegate {
         if trackingState == .awaitingFix {
             trackingState = .tracking
         }
-        guard let location = locations.first else {
+        guard let location = locations.last else {
             return
         }
         GTDebug(message: "New Location: \(location)")
+        _lastPoint = location
     }
 
     public func locationManagerDidPauseLocationUpdates(_ manager: CLLocationManager) {
@@ -142,7 +157,11 @@ fileprivate extension GeoTrackManager {
             return
         }
 
-        locationManager.requestAlwaysAuthorization()
+        if !_authorized {
+            locationManager.requestAlwaysAuthorization()
+        } else {
+            locationManager.startUpdatingLocation()
+        }
     }
 
     func endLocationUpdates() {
