@@ -10,6 +10,8 @@
 		0AF58E9E3032009B9EF5F19D0AEB5A7D /* GeoTrackEventLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 147F0217138B1A08EE56DC92ED46639A /* GeoTrackEventLog.swift */; };
 		36238C981DE8652900B2B79D /* GeoTrackService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36238C971DE8652900B2B79D /* GeoTrackService.swift */; };
 		36238C9A1DE8679500B2B79D /* GeoTrackState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36238C991DE8679500B2B79D /* GeoTrackState.swift */; };
+		36E1E3401DEB29E000CFC7BC /* GeoTrack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36E1E33F1DEB29E000CFC7BC /* GeoTrack.swift */; };
+		36E1E3441DEB2B9F00CFC7BC /* GeoTrackLocationEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36E1E3431DEB2B9F00CFC7BC /* GeoTrackLocationEvent.swift */; };
 		43C17AC2D66520A4FD606431589198FD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */; };
 		5489E7BEB129D278C6FA204B41C18C8C /* GeoTrackKit-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 276A617946374B8AF258F95EECF252D4 /* GeoTrackKit-dummy.m */; };
 		5A3DFE45B78D553F2A7AAB4FB3958187 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */; };
@@ -50,6 +52,8 @@
 		301FC2339BD69A30F4E34A8224F47E23 /* Pods-GeoTrackKitExample-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-GeoTrackKitExample-dummy.m"; sourceTree = "<group>"; };
 		36238C971DE8652900B2B79D /* GeoTrackService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeoTrackService.swift; sourceTree = "<group>"; };
 		36238C991DE8679500B2B79D /* GeoTrackState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeoTrackState.swift; sourceTree = "<group>"; };
+		36E1E33F1DEB29E000CFC7BC /* GeoTrack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeoTrack.swift; sourceTree = "<group>"; };
+		36E1E3431DEB2B9F00CFC7BC /* GeoTrackLocationEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeoTrackLocationEvent.swift; sourceTree = "<group>"; };
 		456456B95B371AC83893065CE6CA7CCC /* Pods-GeoTrackKitExample-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-GeoTrackKitExample-resources.sh"; sourceTree = "<group>"; };
 		491599B698C1885B2B745B4F7F180233 /* Pods-GeoTrackKitExampleTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-GeoTrackKitExampleTests-dummy.m"; sourceTree = "<group>"; };
 		4C2B4F5C632F148055D066BA4283E729 /* Pods-GeoTrackKitExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-GeoTrackKitExample.release.xcconfig"; sourceTree = "<group>"; };
@@ -126,9 +130,19 @@
 			path = GeoTrackKit;
 			sourceTree = "<group>";
 		};
+		36E1E33E1DEB29D500CFC7BC /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				36E1E33F1DEB29E000CFC7BC /* GeoTrack.swift */,
+				36E1E3431DEB2B9F00CFC7BC /* GeoTrackLocationEvent.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		3D13286B706F7C9CFD8F40A8FD6A3968 /* GeoTrackKit */ = {
 			isa = PBXGroup;
 			children = (
+				36E1E33E1DEB29D500CFC7BC /* Models */,
 				2E60BB2C076632EBC6056AF22B0B7733 /* GeoTrackKit */,
 				192EDFB607EA01AA32EB8836F207C4AF /* Support Files */,
 			);
@@ -358,9 +372,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				DFEB9F60C96F84BCFD00C55D85AC27F1 /* GeoTrackEvent.swift in Sources */,
+				36E1E3441DEB2B9F00CFC7BC /* GeoTrackLocationEvent.swift in Sources */,
 				0AF58E9E3032009B9EF5F19D0AEB5A7D /* GeoTrackEventLog.swift in Sources */,
 				36238C981DE8652900B2B79D /* GeoTrackService.swift in Sources */,
 				5489E7BEB129D278C6FA204B41C18C8C /* GeoTrackKit-dummy.m in Sources */,
+				36E1E3401DEB29E000CFC7BC /* GeoTrack.swift in Sources */,
 				CDB6C1DE01E30A9AC986B6DC4546EEEF /* GeoTrackManager.swift in Sources */,
 				36238C9A1DE8679500B2B79D /* GeoTrackState.swift in Sources */,
 			);
