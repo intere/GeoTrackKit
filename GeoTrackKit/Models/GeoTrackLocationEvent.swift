@@ -19,6 +19,23 @@ public class GeoTrackLocationEvent {
         case error = 4
         case custom = 5
         case other = 6
+
+        var string: String {
+            switch self {
+            case .startedTrack:
+                return "Started Track"
+            case .pausedTrack:
+                return "Paused Track"
+            case .stoppedTrack:
+                return "Stopped Track"
+            case .error:
+                return "Error"
+            case .custom:
+                return "Custom"
+            case .other:
+                return "Other"
+            }
+        }
     }
 
     var _type: EventType = .other
@@ -54,6 +71,17 @@ public extension GeoTrackLocationEvent {
 
     var index: Int? {
         return _index
+    }
+
+    var string: String {
+        var result = "[\(timestamp)] [\(type.string.uppercased())]"
+        if let index = index {
+            result += "[index=\(index)]"
+        }
+        if let message = message {
+            result += " " + message
+        }
+        return result
     }
 
 }
@@ -132,7 +160,7 @@ public extension GeoTrackLocationEvent {
     ///   - index: The index that you want to associate this custom Event with.
     ///   - date: The date that you want to set for this custom message (nil = current date and time)
     /// - Returns: The GeoTrackLocationEvent
-    static func custom(message: String, at index: Int? = nil, timestamp date: Date?) -> GeoTrackLocationEvent {
+    static func custom(message: String, at index: Int? = nil, timestamp date: Date? = nil) -> GeoTrackLocationEvent {
         let event = GeoTrackLocationEvent(type: .custom, timestamp: date, message: message, index: index)
         return event
     }

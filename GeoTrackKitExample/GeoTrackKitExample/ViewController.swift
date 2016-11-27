@@ -16,11 +16,16 @@ class ViewController: UIViewController {
     @IBOutlet var altitudeLabel: UILabel!
     @IBOutlet var locationLabel: UILabel!
     @IBOutlet var accuracyLabel: UILabel!
+    @IBOutlet weak var pointsLabel: UILabel!
+    @IBOutlet weak var eventLog: UITextView!
+    @IBOutlet weak var speedLabel: UILabel!
+
     var timer: Timer?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         updateLabels()
+        eventLog.text = ""
     }
 
     override func didReceiveMemoryWarning() {
@@ -54,6 +59,10 @@ fileprivate extension ViewController {
 
     @objc func updateLabels() {
         updateButtonText()
+        let track = GeoTrackManager.shared.track
+        updatePointCount(track: track)
+        updateEventLog(track: track)
+
         if GeoTrackManager.shared.isAwaitingFix {
             awaitingFix()
             return
@@ -69,18 +78,46 @@ fileprivate extension ViewController {
         updateAltitude(location: currentPoint)
         updateLocation(location: currentPoint)
         updateAccuracy(location: currentPoint)
+        updateSpeed(location: currentPoint)
     }
 
     func awaitingFix() {
         altitudeLabel.text = "Awaiting fix"
         locationLabel.text = nil
         accuracyLabel.text = nil
+        speedLabel.text = nil
+        pointsLabel.text = nil
     }
 
     func notTracking() {
         altitudeLabel.text = "Not Tracking"
         locationLabel.text = nil
         accuracyLabel.text = nil
+        speedLabel.text = nil
+        pointsLabel.text = nil
+    }
+
+    func updateEventLog(track: GeoTrack?) {
+        guard let track = track else {
+            eventLog.text = ""
+            return
+        }
+        eventLog.text = track.log(withPoints: true).reversed().joined(separator: "\n")
+        eventLog.scrollRectToVisible(CGRect(x: 0, y: 0, width: 10, height: 10), animated: true)
+    }
+
+    func updatePointCount(track: GeoTrack?) {
+        guard let track = track else {
+            pointsLabel.text = "no track found"
+            return
+        }
+        pointsLabel.text = "Points: \(track.points.count)"
+    }
+
+    func updateSpeed(location: CLLocation) {
+        let mph = String(format: "%.1f", location.speed.metersPerSecondToMilesPerHour)
+        let kmph = String(format: "%.1f", location.speed.metersPerSecondToKilometersPerHour)
+        speedLabel.text = "Speed: \(mph) mph / \(kmph) kmph"
     }
 
     func updateAccuracy(location: CLLocation) {
@@ -105,11 +142,21 @@ fileprivate extension ViewController {
 
 // MARK: - Unit Conversions
 
+extension CLLocationSpeed {
+
+    var metersPerSecondToMilesPerHour: Double {
+        return self * 2.23694
+    }
+
+    var metersPerSecondToKilometersPerHour: Double {
+        return self * 3.6
+    }
+}
+
 extension CLLocationDistance {
 
     var metersToFeet: Double {
         return self * 3.28084
     }
-
 
 }

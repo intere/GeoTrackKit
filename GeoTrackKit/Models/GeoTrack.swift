@@ -39,6 +39,15 @@ public extension GeoTrack {
         _points.append(contentsOf: locations)
     }
 
+
+    /// Gets you the event log, and will include the points if you want them.
+    ///
+    /// - Parameter showPoints: Whether or not to include the points in the event log.
+    /// - Returns: A list of strings that is the event log.
+    func log(withPoints showPoints: Bool) -> [String] {
+        return buildEventLog(showPoints: showPoints)
+    }
+
 }
 
 // MARK: - API(Events)
@@ -58,6 +67,7 @@ public extension GeoTrack {
     /// - Parameter message: Optional message that can be included with the event.
     func pauseTracking(message: String? = nil) {
         let event = GeoTrackLocationEvent.pausedTracking(message: message)
+        _events.append(event)
     }
 
     /// Adds a Stop Tracking event to the track's event log.
@@ -65,8 +75,24 @@ public extension GeoTrack {
     /// - Parameter message: Optional message that can be included with the event.
     func stopTracking(message: String? = nil) {
         let event = GeoTrackLocationEvent.stoppedTracking(message: message)
+        _events.append(event)
     }
 
+    /// Adds a custom error message to the track's event log.
+    ///
+    /// - Parameter message: The error message you want to display
+    func error(message: String) {
+        let event = GeoTrackLocationEvent.custom(message: message)
+        _events.append(event)
+    }
+
+    /// Adds an error to the track's event log
+    ///
+    /// - Parameter error: The swift Error type to log the message for.
+    func error(error: Error) {
+        let event = GeoTrackLocationEvent.error(error: error)
+        _events.append(event)
+    }
 
 }
 
@@ -74,4 +100,44 @@ public extension GeoTrack {
 
 public extension GeoTrack {
 
+}
+
+// MARK: - Helpers
+
+fileprivate extension GeoTrack {
+    struct Log {
+        let date: Date
+        let message: String
+
+        init(location: CLLocation) {
+            date = location.timestamp
+            message = location.string
+        }
+
+        init(event: GeoTrackLocationEvent) {
+            date = event.timestamp
+            message = event.string
+        }
+    }
+
+    func buildEventLog(showPoints: Bool) -> [String] {
+        var events = _events.map { Log(event:$0) }
+
+        if showPoints {
+            events.append(contentsOf: _points.map({ Log(location: $0) }))
+        }
+
+        let sorted = events.sorted { $0.date<$1.date }
+
+        return sorted.map { $0.message }
+    }
+}
+
+// MARK: - CLLocation Helpers
+
+fileprivate extension CLLocation {
+    var string: String {
+        let result = "[\(timestamp)][POINT]: \(self)"
+        return result
+    }
 }
