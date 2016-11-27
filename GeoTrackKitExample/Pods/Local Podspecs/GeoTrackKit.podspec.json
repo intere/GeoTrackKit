@@ -16,6 +16,7 @@
   },
   "source_files": [
     "GeoTrackKit/*.swift",
+    "GeoTrackKit/Models/*.swift",
     "GeoTrackKit/*.h"
   ],
   "platforms": {

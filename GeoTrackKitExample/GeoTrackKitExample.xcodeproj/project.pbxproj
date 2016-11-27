@@ -15,6 +15,7 @@
 		36C45E4C1DCE2D3500E87710 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 36C45E4B1DCE2D3500E87710 /* Assets.xcassets */; };
 		36C45E4F1DCE2D3500E87710 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 36C45E4D1DCE2D3500E87710 /* LaunchScreen.storyboard */; };
 		36C45E5A1DCE2D3500E87710 /* GeoTrackKitExampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36C45E591DCE2D3500E87710 /* GeoTrackKitExampleTests.swift */; };
+		36E1E3461DEB3D0D00CFC7BC /* GeoTrackLocationEventTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36E1E3451DEB3D0D00CFC7BC /* GeoTrackLocationEventTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +39,7 @@
 		36C45E551DCE2D3500E87710 /* GeoTrackKitExampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GeoTrackKitExampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		36C45E591DCE2D3500E87710 /* GeoTrackKitExampleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeoTrackKitExampleTests.swift; sourceTree = "<group>"; };
 		36C45E5B1DCE2D3500E87710 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		36E1E3451DEB3D0D00CFC7BC /* GeoTrackLocationEventTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeoTrackLocationEventTests.swift; sourceTree = "<group>"; };
 		51B54550121FF2A0DC20134F /* Pods-GeoTrackKitExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GeoTrackKitExample.release.xcconfig"; path = "Pods/Target Support Files/Pods-GeoTrackKitExample/Pods-GeoTrackKitExample.release.xcconfig"; sourceTree = "<group>"; };
 		8992FE79B7159E02B95D4ABA /* Pods-GeoTrackKitExampleTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GeoTrackKitExampleTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GeoTrackKitExampleTests/Pods-GeoTrackKitExampleTests.debug.xcconfig"; sourceTree = "<group>"; };
 		8A51639AB7B6B4BAEF27C313 /* Pods_GeoTrackKitExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GeoTrackKitExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -112,6 +114,7 @@
 			isa = PBXGroup;
 			children = (
 				36C45E591DCE2D3500E87710 /* GeoTrackKitExampleTests.swift */,
+				36E1E3451DEB3D0D00CFC7BC /* GeoTrackLocationEventTests.swift */,
 				36C45E5B1DCE2D3500E87710 /* Info.plist */,
 			);
 			path = GeoTrackKitExampleTests;
@@ -344,6 +347,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				36E1E3461DEB3D0D00CFC7BC /* GeoTrackLocationEventTests.swift in Sources */,
 				36C45E5A1DCE2D3500E87710 /* GeoTrackKitExampleTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

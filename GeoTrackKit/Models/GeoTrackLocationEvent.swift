@@ -36,6 +36,28 @@ public class GeoTrackLocationEvent {
     }
 }
 
+// MARK: - API
+
+public extension GeoTrackLocationEvent {
+
+    var type: EventType {
+        return _type
+    }
+
+    var timestamp: Date {
+        return _timestamp
+    }
+
+    var message: String? {
+        return _message
+    }
+
+    var index: Int? {
+        return _index
+    }
+
+}
+
 // MARK: - API (Factory Creation)
 
 public extension GeoTrackLocationEvent {
