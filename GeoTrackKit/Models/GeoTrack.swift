@@ -82,7 +82,7 @@ public extension GeoTrack {
     ///
     /// - Parameter message: The error message you want to display
     func error(message: String) {
-        let event = GeoTrackLocationEvent.custom(message: message)
+        let event = GeoTrackLocationEvent.error(message: message)
         _events.append(event)
     }
 
