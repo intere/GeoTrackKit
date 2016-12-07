@@ -1,0 +1,8 @@
+language: objective-c
+osx_image: xcode8.1
+
+script:
+  - bundle exec fastlane test
+
+notifications:
+  email: true
