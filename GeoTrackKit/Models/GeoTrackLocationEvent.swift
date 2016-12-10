@@ -178,25 +178,30 @@ public extension GeoTrackLocationEvent {
         static let index = "index"
     }
 
-    static func from(dictionary: [String: Any]) -> GeoTrackLocationEvent? {
-        guard let rawType = dictionary[Constants.type] as? Int,
+
+    /// Deserializes the provided map into a GeoTrackLocationEvent.
+    ///
+    /// - Parameter map: the map to be deserialized.
+    /// - Returns: A GeoTrackLocationEvent if it could be deserialized or nil.
+    static func from(map: [String: Any]) -> GeoTrackLocationEvent? {
+        guard let rawType = map[Constants.type] as? Int,
             let type = EventType(rawValue: rawType),
-            let timestamp = dictionary[Constants.timestamp] as? Date else
+            let timestamp = map[Constants.timestamp] as? Date else
         {
             return nil
         }
-        let message = dictionary[Constants.message] as? String
-        let index = dictionary[Constants.index] as? Int
+        let message = map[Constants.message] as? String
+        let index = map[Constants.index] as? Int
 
         let event = GeoTrackLocationEvent(type: type, timestamp: timestamp, message: message, index: index)
         return event
     }
 
 
-    /// Serializes this GeoTrackLocationEvent into a Dictionary for serialization purposes.
+    /// Serializes this GeoTrackLocationEvent into a map for serialization purposes.
     ///
-    /// - Returns: A hash of [String: Any]
-    var dictionary: [String: Any] {
+    /// - Returns: A map of [String: Any]
+    var map: [String: Any] {
         var dict: [String: Any] = [
             Constants.type: _type.rawValue,
             Constants.timestamp: _timestamp

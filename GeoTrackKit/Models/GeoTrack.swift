@@ -9,11 +9,19 @@
 import CoreLocation
 
 
+/// Data structure to keep track of points for a track
 public class GeoTrack {
     internal var _points = [CLLocation]()
     internal var _events = [GeoTrackLocationEvent]()
-    var name = ""
-    var description = ""
+    public var name = ""
+    public var description = ""
+
+    public init() { }
+
+    public init(name: String? = nil, description: String? = nil) {
+        self.name = name ?? ""
+        self.description = description ?? ""
+    }
 }
 
 // MARK: - API(Points)
@@ -54,44 +62,52 @@ public extension GeoTrack {
 
 public extension GeoTrack {
 
+
+    /// Lets you add a custom event.
+    ///
+    /// - Parameter event: The event to add to the event log.
+    public func add(event: GeoTrackLocationEvent) {
+        _events.append(event)
+    }
+
     /// Adds a Start Tracking event to the track's event log.
     ///
     /// - Parameter message: Optional message that can be included with the event.
-    func startTracking(message: String? = nil) {
+    public func startTracking(message: String? = nil) {
         let event = GeoTrackLocationEvent.startedTracking(message: message)
-        _events.append(event)
+        add(event: event)
     }
 
     /// Adds a Pause Tracking event to the track's event log.
     ///
     /// - Parameter message: Optional message that can be included with the event.
-    func pauseTracking(message: String? = nil) {
+    public func pauseTracking(message: String? = nil) {
         let event = GeoTrackLocationEvent.pausedTracking(message: message)
-        _events.append(event)
+        add(event: event)
     }
 
     /// Adds a Stop Tracking event to the track's event log.
     ///
     /// - Parameter message: Optional message that can be included with the event.
-    func stopTracking(message: String? = nil) {
+    public func stopTracking(message: String? = nil) {
         let event = GeoTrackLocationEvent.stoppedTracking(message: message)
-        _events.append(event)
+        add(event: event)
     }
 
     /// Adds a custom error message to the track's event log.
     ///
     /// - Parameter message: The error message you want to display
-    func error(message: String) {
+    public func error(message: String) {
         let event = GeoTrackLocationEvent.error(message: message)
-        _events.append(event)
+        add(event: event)
     }
 
     /// Adds an error to the track's event log
     ///
     /// - Parameter error: The swift Error type to log the message for.
-    func error(error: Error) {
+    public func error(error: Error) {
         let event = GeoTrackLocationEvent.error(error: error)
-        _events.append(event)
+        add(event: event)
     }
 
 }
@@ -100,6 +116,49 @@ public extension GeoTrack {
 
 public extension GeoTrack {
 
+    var map: [String: Any] {
+        return [
+            "name": name,
+            "description": description,
+            "points": points.map { $0.map },
+            "events": _events.map { $0.map }
+        ]
+    }
+
+    /// Deserializes this track from a Map, or if there's a problem, it will return you nil.
+    ///
+    /// - Parameter map: The map that you want to deserialize into a GeoTrack.
+    /// - Returns: A GeoTrack if it could be deserialized.
+    static func fromMap(map: [String: Any]) -> GeoTrack? {
+        let name = map["name"] as? String ?? ""
+        let description = map["description"] as? String ?? ""
+        guard let pointMaps = map["points"] as? [[String:Any]] else {
+            elog("No points in the track")
+            return nil
+        }
+        guard let eventMaps = map["events"] as? [[String:Any]] else {
+            elog("No events in the track")
+            return nil
+        }
+
+        let track = GeoTrack()
+        track.name = name
+        track.description = description
+        for map in pointMaps {
+            guard let location = CLLocation.from(map: map) else {
+                continue
+            }
+            track._points.append(location)
+        }
+        for map in eventMaps {
+            guard let event = GeoTrackLocationEvent.from(map: map) else {
+                continue
+            }
+            track._events.append(event)
+        }
+
+        return track
+    }
 }
 
 // MARK: - Helpers
@@ -133,11 +192,6 @@ fileprivate extension GeoTrack {
     }
 }
 
-// MARK: - CLLocation Helpers
-
-fileprivate extension CLLocation {
-    var string: String {
-        let result = "[\(timestamp)][POINT]: \(self)"
-        return result
-    }
+func elog(_ message: String) {
+    print("[\(Date())]: \(message)")
 }

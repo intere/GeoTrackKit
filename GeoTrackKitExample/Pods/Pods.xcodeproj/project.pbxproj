@@ -32,6 +32,8 @@
 		2BAB37345467BADEF843C91E295866FA /* ExampleHooks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD0D67F0098C6695A93CAE9B27528F4 /* ExampleHooks.swift */; };
 		2DA130F8DC6C26771CE1B739E0AD337D /* Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36F9E76E718B474FBEB8C1824AA1413A /* Filter.swift */; };
 		2F1C62665300611384B2CA9B3A5A0C3A /* Example.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF7C0E600D08C899D8FE3A3AC0758905 /* Example.swift */; };
+		366CE43F1DFCB4950090BD42 /* CLLocationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 366CE43E1DFCB4950090BD42 /* CLLocationExtension.swift */; };
+		366CE4411DFCB4B70090BD42 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 366CE4401DFCB4B70090BD42 /* DateExtension.swift */; };
 		3915DBB4731CB17B255A7FE86E240B6E /* CwlCatchBadInstruction.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CEE6D090220683EB93ACD11A04038DD /* CwlCatchBadInstruction.m */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		469E9C3ED9FD6009F7C9AAF9E537E212 /* Nimble.h in Headers */ = {isa = PBXBuildFile; fileRef = CE7DD158EC41F47A2796AB19C2CD1AD8 /* Nimble.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		489895FCE7DDB65BFB6BE425E9D8BBF1 /* NSString+QCKSelectorName.h in Headers */ = {isa = PBXBuildFile; fileRef = D9571DDE390A0012143BA7AAAE1D39DC /* NSString+QCKSelectorName.h */; settings = {ATTRIBUTES = (Project, ); }; };
@@ -190,6 +192,8 @@
 		32343C8281B13DD7FE4F6D40BDF37C6A /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		32DF21EF8268E32D359CD23F2CF3EFE3 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		33C4401213EBEC6BC1797D974E52767D /* AssertionRecorder.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AssertionRecorder.swift; path = Sources/Nimble/Adapters/AssertionRecorder.swift; sourceTree = "<group>"; };
+		366CE43E1DFCB4950090BD42 /* CLLocationExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLLocationExtension.swift; sourceTree = "<group>"; };
+		366CE4401DFCB4B70090BD42 /* DateExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		36F9E76E718B474FBEB8C1824AA1413A /* Filter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Filter.swift; path = Sources/Quick/Filter.swift; sourceTree = "<group>"; };
 		403E83EF821F0C689D975B7CB7FCF5AD /* GeoTrack.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = GeoTrack.swift; sourceTree = "<group>"; };
 		40541624975F40D6E8868FF00129ADE4 /* GeoTrackEventLog.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = GeoTrackEventLog.swift; sourceTree = "<group>"; };
@@ -410,6 +414,15 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		366CE43D1DFCB45F0090BD42 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				366CE43E1DFCB4950090BD42 /* CLLocationExtension.swift */,
+				366CE4401DFCB4B70090BD42 /* DateExtension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 		433CD3331B6C3787F473C941B61FC68F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -611,6 +624,7 @@
 		ECD1E859EDB016ABDF5F6A69E15C1219 /* GeoTrackKit */ = {
 			isa = PBXGroup;
 			children = (
+				366CE43D1DFCB45F0090BD42 /* Extension */,
 				93090E1C1DF81D84004F56FB /* Logging */,
 				EF8AA6624EB0ED4C409E102ABC5EF502 /* GeoTrackManager.swift */,
 				CD2E246314B183E45EB2B2FF71C8B1DE /* GeoTrackService.swift */,
@@ -895,12 +909,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				4D5D3AA8B0B5ECAA51A8592BC4E6D72F /* GeoTrack.swift in Sources */,
+				366CE4411DFCB4B70090BD42 /* DateExtension.swift in Sources */,
 				82D8DAEB52C131EDC88C9E00C3F7FD10 /* GeoTrackEvent.swift in Sources */,
 				93090E1E1DF82068004F56FB /* GeoTrackConsoleAppender.swift in Sources */,
 				83DF34D3CA8EFB85DDB28FAEDC9691EF /* GeoTrackEventLog.swift in Sources */,
 				BE7644EF644591279C89342EDCD2A3B5 /* GeoTrackKit-dummy.m in Sources */,
 				55D3C3B9A4B1C0E5D556C9D25821E419 /* GeoTrackLocationEvent.swift in Sources */,
 				FFE3A4C6430CADE25AD8680B2536C3A0 /* GeoTrackManager.swift in Sources */,
+				366CE43F1DFCB4950090BD42 /* CLLocationExtension.swift in Sources */,
 				93090E1A1DF81970004F56FB /* LoggingFunctions.swift in Sources */,
 				6A03BD4EF448D8C42FAF6950079B2F84 /* GeoTrackService.swift in Sources */,
 				2B967B1CB367C4B8EEF63E9590CAC466 /* GeoTrackState.swift in Sources */,

@@ -26,9 +26,9 @@ class GeoTrackLocationEventTests: QuickSpec {
         }
 
         describe("Serialization") {
-            it("does serialize to a dictionary") {
+            it("does serialize to a map") {
                 let event = GeoTrackLocationEvent.startedTracking(message: "hello world")
-                let map = event.dictionary
+                let map = event.map
                 expect(map).toNot(beNil())
 
                 // required values
@@ -43,12 +43,12 @@ class GeoTrackLocationEventTests: QuickSpec {
         }
 
         describe("Deserialization") {
-            it("does not deserialize an empty dictionary") {
-                let event = GeoTrackLocationEvent.from(dictionary: [:])
+            it("does not deserialize an empty map") {
+                let event = GeoTrackLocationEvent.from(map: [:])
                 expect(event).to(beNil())
             }
 
-            it("does deserialize from a dictionary") {
+            it("does deserialize from a map") {
                 let date = Date()
                 let map: [String:Any] = [
                     "type": GeoTrackLocationEvent.EventType.custom.rawValue,
@@ -56,7 +56,7 @@ class GeoTrackLocationEventTests: QuickSpec {
                     "message": "hello world",
                     "index": 12
                 ]
-                let event = GeoTrackLocationEvent.from(dictionary: map)
+                let event = GeoTrackLocationEvent.from(map: map)
                 expect(event).toNot(beNil())
                 expect(event?.type).to(equal(GeoTrackLocationEvent.EventType.custom))
                 expect(event?.timestamp).to(equal(date))

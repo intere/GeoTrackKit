@@ -9,8 +9,12 @@
 import Foundation
 import CoreLocation
 
+
+/// This is a callback to let you know that the authorization state has been reached
 public typealias GeoTrackAuthCallback = () -> ()
 
+
+/// This is the protocol for the GeoTrackService.  It will handle starting and stopping tracking.
 public protocol GeoTrackService {
 
     /** Application Name.  */
