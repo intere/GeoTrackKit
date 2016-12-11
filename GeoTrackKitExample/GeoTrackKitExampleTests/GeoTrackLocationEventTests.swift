@@ -33,7 +33,7 @@ class GeoTrackLocationEventTests: QuickSpec {
 
                 // required values
                 expect(map["type"] as? Int).to(equal(event.type.rawValue))
-                expect(map["timestamp"] as? Date).to(equal(event.timestamp))
+                expect(map["timestamp"] as? TimeInterval).to(equal(event.timestamp.msse))
 
                 // optional values
                 expect(map["message"] as? String).to(equal(event.message))
@@ -52,14 +52,14 @@ class GeoTrackLocationEventTests: QuickSpec {
                 let date = Date()
                 let map: [String:Any] = [
                     "type": GeoTrackLocationEvent.EventType.custom.rawValue,
-                    "timestamp": date,
+                    "timestamp": date.msse,
                     "message": "hello world",
                     "index": 12
                 ]
                 let event = GeoTrackLocationEvent.from(map: map)
                 expect(event).toNot(beNil())
                 expect(event?.type).to(equal(GeoTrackLocationEvent.EventType.custom))
-                expect(event?.timestamp).to(equal(date))
+                expect(event?.timestamp.msse).to(equal(date.msse))
                 expect(event?.message).to(equal("hello world"))
                 expect(event?.index).to(equal(12))
             }

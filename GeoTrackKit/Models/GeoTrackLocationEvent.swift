@@ -186,12 +186,13 @@ public extension GeoTrackLocationEvent {
     static func from(map: [String: Any]) -> GeoTrackLocationEvent? {
         guard let rawType = map[Constants.type] as? Int,
             let type = EventType(rawValue: rawType),
-            let timestamp = map[Constants.timestamp] as? Date else
+            let msse = map[Constants.timestamp] as? TimeInterval else
         {
             return nil
         }
         let message = map[Constants.message] as? String
         let index = map[Constants.index] as? Int
+        let timestamp = Date.from(msse: msse)
 
         let event = GeoTrackLocationEvent(type: type, timestamp: timestamp, message: message, index: index)
         return event
@@ -204,7 +205,7 @@ public extension GeoTrackLocationEvent {
     var map: [String: Any] {
         var dict: [String: Any] = [
             Constants.type: _type.rawValue,
-            Constants.timestamp: _timestamp
+            Constants.timestamp: _timestamp.msse
         ]
         if let message = _message {
             dict[Constants.message] = message
