@@ -201,6 +201,7 @@
 				TargetAttributes = {
 					36C45E401DCE2D3500E87710 = {
 						CreatedOnToolsVersion = 8.1;
+						DevelopmentTeam = 268S5GJFWZ;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
@@ -496,6 +497,7 @@
 			baseConfigurationReference = 99464F9CAE97A457D9B3EBE4 /* Pods-GeoTrackKitExample.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 268S5GJFWZ;
 				INFOPLIST_FILE = GeoTrackKitExample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.icolasoft.GeoTrackKitExample;
@@ -509,6 +511,7 @@
 			baseConfigurationReference = 51B54550121FF2A0DC20134F /* Pods-GeoTrackKitExample.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 268S5GJFWZ;
 				INFOPLIST_FILE = GeoTrackKitExample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.icolasoft.GeoTrackKitExample;
