@@ -22,6 +22,10 @@ public class GeoTrack {
         self.name = name ?? ""
         self.description = description ?? ""
     }
+
+    public init(json: [String: Any]) {
+        parse(json)
+    }
 }
 
 // MARK: - API(Points)
@@ -61,7 +65,6 @@ public extension GeoTrack {
 // MARK: - API(Events)
 
 public extension GeoTrack {
-
 
     /// Lets you add a custom event.
     ///
@@ -164,6 +167,7 @@ public extension GeoTrack {
 // MARK: - Helpers
 
 fileprivate extension GeoTrack {
+
     struct Log {
         let date: Date
         let message: String
@@ -177,6 +181,32 @@ fileprivate extension GeoTrack {
             date = event.timestamp
             message = event.string
         }
+    }
+
+    /// Parses the provided map to build out this data structure.
+    ///
+    /// - Parameter json: the JSON map to parse.
+    func parse(_ json: [String: Any]) {
+        self.name = json["name"] as? String ?? ""
+        self.description = json["description"] as? String ?? ""
+
+        guard let points = json["points"] as? [[String: Any]] else {
+            return
+        }
+
+        for pointMap in points {
+            guard let location = CLLocation.from(map: pointMap) else {
+                // TODO(EGI): make note of this somewhere
+                continue
+            }
+            _points.append(location)
+        }
+
+        guard let events = json["events"] as? [[String: Any]] else {
+            return
+        }
+
+        // TODO(EGI): re-construct the events
     }
 
     func buildEventLog(showPoints: Bool) -> [String] {

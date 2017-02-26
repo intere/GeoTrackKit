@@ -83,6 +83,15 @@ class GeoTrackSerializationTests: QuickSpec {
                 expect(third["message"] as? String).to(equal("fake custom"))
             }
         }
+
+        describe("Track File Reading Tests") {
+
+            it("does read a track file") {
+                let track = TrackReader(filename: "reference-track-1")
+                expect(track).toNot(beNil())
+            }
+
+        }
     }
 
 }

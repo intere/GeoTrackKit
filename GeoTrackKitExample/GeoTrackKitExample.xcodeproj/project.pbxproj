@@ -10,6 +10,8 @@
 		0E1E09A3899897CDAE589A5B /* Pods_GeoTrackKitExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A51639AB7B6B4BAEF27C313 /* Pods_GeoTrackKitExample.framework */; };
 		1B2451A1B46FD1E813C13A25 /* Pods_GeoTrackKitExampleTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6E72B23B9554498B66030FE /* Pods_GeoTrackKitExampleTests.framework */; };
 		366CE43C1DFCAC360090BD42 /* GeoTrackSerializationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 366CE43B1DFCAC360090BD42 /* GeoTrackSerializationTests.swift */; };
+		368A87AE1E6332C1003D115A /* reference-track-1.json in Resources */ = {isa = PBXBuildFile; fileRef = 368A87AD1E6332C1003D115A /* reference-track-1.json */; };
+		368A87B11E63332E003D115A /* TrackReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 368A87B01E63332E003D115A /* TrackReader.swift */; };
 		36C45E451DCE2D3500E87710 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36C45E441DCE2D3500E87710 /* AppDelegate.swift */; };
 		36C45E471DCE2D3500E87710 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36C45E461DCE2D3500E87710 /* ViewController.swift */; };
 		36C45E4A1DCE2D3500E87710 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 36C45E481DCE2D3500E87710 /* Main.storyboard */; };
@@ -32,6 +34,8 @@
 
 /* Begin PBXFileReference section */
 		366CE43B1DFCAC360090BD42 /* GeoTrackSerializationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeoTrackSerializationTests.swift; sourceTree = "<group>"; };
+		368A87AD1E6332C1003D115A /* reference-track-1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "reference-track-1.json"; sourceTree = "<group>"; };
+		368A87B01E63332E003D115A /* TrackReader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackReader.swift; sourceTree = "<group>"; };
 		36C45E411DCE2D3500E87710 /* GeoTrackKitExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GeoTrackKitExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		36C45E441DCE2D3500E87710 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		36C45E461DCE2D3500E87710 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -81,6 +85,22 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		368A87AC1E6332B7003D115A /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				368A87AD1E6332C1003D115A /* reference-track-1.json */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		368A87AF1E6332D8003D115A /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				368A87B01E63332E003D115A /* TrackReader.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
 		36C45E381DCE2D3500E87710 = {
 			isa = PBXGroup;
 			children = (
@@ -117,6 +137,8 @@
 		36C45E581DCE2D3500E87710 /* GeoTrackKitExampleTests */ = {
 			isa = PBXGroup;
 			children = (
+				368A87AF1E6332D8003D115A /* Utilities */,
+				368A87AC1E6332B7003D115A /* Resources */,
 				93090E211DF8250E004F56FB /* Mocks */,
 				36E1E3451DEB3D0D00CFC7BC /* GeoTrackLocationEventTests.swift */,
 				36C45E5B1DCE2D3500E87710 /* Info.plist */,
@@ -250,6 +272,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				368A87AE1E6332C1003D115A /* reference-track-1.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -364,6 +387,7 @@
 			files = (
 				366CE43C1DFCAC360090BD42 /* GeoTrackSerializationTests.swift in Sources */,
 				36E1E3461DEB3D0D00CFC7BC /* GeoTrackLocationEventTests.swift in Sources */,
+				368A87B11E63332E003D115A /* TrackReader.swift in Sources */,
 				93090E231DF82520004F56FB /* MockAppender.swift in Sources */,
 				93090E201DF822D9004F56FB /* GeoTrackEventLogTests.swift in Sources */,
 			);
