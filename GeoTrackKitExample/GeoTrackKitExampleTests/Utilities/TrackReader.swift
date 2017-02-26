@@ -13,10 +13,12 @@ class TrackReader {
 
     let filename: String
     let type: String
+    let track: GeoTrack?
 
     init(filename: String, type: String = "json") {
         self.filename = filename
         self.type = type
+        self.track = TrackReader.loadFromBundle(filename: filename, type: type)
     }
 
 }
@@ -25,7 +27,7 @@ class TrackReader {
 
 fileprivate extension TrackReader {
 
-    func loadFromBundle() -> GeoTrack? {
+    static func loadFromBundle(filename: String, type: String) -> GeoTrack? {
         guard let path = Bundle(for: TrackReader.self).path(forResource: filename, ofType: type) else {
             assertionFailure("Couldn't load file: \(filename).\(type)")
             return nil

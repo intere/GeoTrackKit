@@ -87,8 +87,10 @@ class GeoTrackSerializationTests: QuickSpec {
         describe("Track File Reading Tests") {
 
             it("does read a track file") {
-                let track = TrackReader(filename: "reference-track-1")
-                expect(track).toNot(beNil())
+                let reader = TrackReader(filename: "reference-track-1")
+                expect(reader).toNot(beNil())
+                expect(reader.track).toNot(beNil())
+                expect(reader.track?.points.count).to(beGreaterThan(0))
             }
 
         }
