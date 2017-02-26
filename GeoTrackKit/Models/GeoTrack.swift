@@ -34,7 +34,7 @@ public extension GeoTrack {
 
     /// Get the points in the Track
     var points: [CLLocation] {
-        return _points
+        return _points.sorted { return $0.timestamp.timeIntervalSince1970 < $1.timestamp.timeIntervalSince1970 }
     }
 
     /// Adds a location to the track
