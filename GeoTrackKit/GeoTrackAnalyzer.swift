@@ -11,6 +11,10 @@ import CoreLocation
 public class GeoTrackAnalyzer {
 
     public let track: GeoTrack
+    fileprivate var _indices = [Relative]()
+    public var indices: [Relative] {
+        return _indices
+    }
 
     public init(track: GeoTrack) {
         self.track = track
@@ -33,7 +37,7 @@ public extension GeoTrackAnalyzer {
         var direction = Direction.unknown
         var lastPoint: CLLocation?
         var relativePoints = [Relative]()
-        var relative = Relative(index: 0, point: points[0], direction: .unknown)
+        var relative = Relative(index: 0, point: points[0], direction: .unknown, endIndex: -1)
 
         for i in 0..<points.count {
             defer {
@@ -44,20 +48,23 @@ public extension GeoTrackAnalyzer {
             }
 
             if relative.shouldRecord(direction: last.compare(to: points[i])) {
+                relative.endIndex = i-1
                 relativePoints.append(relative)
-                relative = Relative(index: i, point: points[i], direction: .unknown)
+                relative = Relative(index: i, point: points[i], direction: .unknown, endIndex: -1)
             }
         }
+        relative.endIndex = points.count - 1
         relativePoints.append(relative)
 
 //        relativePoints = collapse(relatives: removeBetweeners(relatives: relativePoints))
         relativePoints = collapse(relatives: removeBetweeners(relatives: collapse(relatives: relativePoints)))
 
-        print("Direction,Altitude")
+        print("Start,End,Direction,Altitude")
         for rPt in relativePoints {
-            print("\(rPt.index),\(rPt.direction),\(rPt.altitude)")
+            print("\(rPt.index),\(rPt.endIndex),\(rPt.direction),\(rPt.altitude)")
         }
 
+        _indices = relativePoints
     }
 
     public struct Stats {
@@ -74,6 +81,7 @@ public extension GeoTrackAnalyzer {
         let index: Int
         let point: CLLocation
         var direction: Direction = .unknown
+        var endIndex: Int
 
         /// The Altitude at the referred to point
         var altitude: CLLocationDistance {
@@ -128,7 +136,7 @@ public extension GeoTrackAnalyzer {
     /// - unknown: Unknown direction (e.g. the first point
     /// - up: The upward direction
     /// - down: The downward direction
-    public enum Direction {
+    public enum Direction: String {
         case unknown
         case up
         case down
@@ -153,6 +161,7 @@ fileprivate extension GeoTrackAnalyzer {
                 last = relativePoints[i]
                 continue
             }
+            last.endIndex = relativePoints[i].endIndex
         }
 
         return collapsed
@@ -172,9 +181,11 @@ fileprivate extension GeoTrackAnalyzer {
                 continue
             }
             guard !relativePoints[i].isBetween(left: last, right: relativePoints[i+1]) else {
+                last.endIndex = relativePoints[i].endIndex
                 continue
             }
             guard abs(relativePoints[i].altitude - last.altitude) > 10 else {
+                last.endIndex = relativePoints[i].endIndex
                 continue
             }
             collapsed.append(last)
