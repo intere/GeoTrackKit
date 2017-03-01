@@ -11,8 +11,11 @@ import CoreLocation
 public class GeoTrackAnalyzer {
 
     public let track: GeoTrack
-    fileprivate var _indices = [Relative]()
-    public var indices: [Relative] {
+    public static var altitudeSensitivity: CLLocationDistance = 25
+
+    fileprivate var _indices = [Leg]()
+
+    public var indices: [Leg] {
         return _indices
     }
 
@@ -36,120 +39,56 @@ public extension GeoTrackAnalyzer {
 
         var direction = Direction.unknown
         var lastPoint: CLLocation?
-        var relativePoints = [Relative]()
-        var relative = Relative(index: 0, point: points[0], direction: .unknown, endIndex: -1)
+        var legs = [Leg]()
+        var leg = Leg(index: 0, point: points[0])
 
         for i in 0..<points.count {
             defer {
+                leg.stat.track(point: points[i], distance: lastPoint?.distance(from: points[i]) ?? 0)
                 lastPoint = points[i]
             }
             guard let last = lastPoint else {
                 continue
             }
+            leg.endIndex = i-1
+            leg.endPoint = points[i-1]
 
-            if relative.shouldRecord(direction: last.compare(to: points[i])) {
-                relative.endIndex = i-1
-                relativePoints.append(relative)
-                relative = Relative(index: i, point: points[i], direction: .unknown, endIndex: -1)
+            if leg.trendChanged(direction: last.compare(to: points[i])) {
+                legs.append(leg)
+                leg = Leg(index: i, point: points[i])
             }
         }
-        relative.endIndex = points.count - 1
-        relativePoints.append(relative)
+        leg.endIndex = points.count - 1
+        leg.endPoint = points[points.count-1]
+        legs.append(leg)
 
-        relativePoints = collapse(relatives: removeBetweeners(relatives: relativePoints))
-//        relativePoints = collapse(relatives: removeBetweeners(relatives: collapse(relatives: relativePoints)))
+        legs = removeBetweeners(relatives: collapse(relatives: legs))
 
         print("Start,End,Direction,Altitude")
-        for rPt in relativePoints {
-            print("\(rPt.index),\(rPt.endIndex),\(rPt.direction),\(rPt.altitude)")
+        for rPt in legs {
+//            print("\(rPt.index),\(rPt.endIndex),\(rPt.direction),\(Int(rPt.altitude))-\(Int(rPt.endPoint!.altitude))")
+            print("\(rPt.index), \(rPt.endIndex), \(rPt.direction), \(rPt.stat.string)")
         }
 
-        _indices = relativePoints
+        _indices = legs
     }
 
-    public struct Stats {
-        /// Minimum altitude in meters
-        let minimumAltitude: CLLocationDistance
-        /// Maximum altitude in meters
-        let maximumAltitude: CLLocationDistance
-        /// The number of "ski runs" (aka the number of times descended)
-        let runs: Int
+}
+
+fileprivate extension Stat {
+    
+    var string: String {
+        return "\(Int(minimumAltitude))-\(Int(maximumAltitude)), \(Int(distance)), \(Int(verticalDelta))"
     }
-
-    /// A relative minima or maxima
-    public struct Relative {
-        public let index: Int
-        public let point: CLLocation
-        public var direction: Direction = .unknown
-        public var endIndex: Int
-
-        /// The Altitude at the referred to point
-        public var altitude: CLLocationDistance {
-            return point.altitude
-        }
-
-        /// Tells you if we should record this Relative reference based on the point to be analyzed
-        ///
-        /// - Parameter point: The point to inspect
-        /// - Returns: true if we should record this point
-        mutating func shouldRecord(direction: Direction) -> Bool {
-            guard self.direction != .unknown else {
-                self.direction = direction
-                return false
-            }
-
-            return direction != self.direction
-        }
-
-        /// Compares the current relative point to the provided point to tell you the direction.
-        ///
-        /// - Parameter point: The point to compare with this relative point.
-        /// - Returns: the direction
-        func compare(to anotherPoint: CLLocation) -> Direction {
-            guard abs(altitude - point.altitude) > 25 else {
-                return .unknown
-            }
-            return point.compare(to: anotherPoint)
-        }
-
-        /// Tells you if this relative should be combined with another relative
-        ///
-        /// - Parameter anotherRelative: the relative to compare with for combination.
-        /// - Returns: true if they should be combined, false if not.
-        func shouldCombine(with anotherRelative: Relative) -> Bool {
-            return direction == anotherRelative.direction
-        }
-
-        func isBetween(left: Relative, right: Relative) -> Bool {
-            if left.altitude <= altitude && altitude <= right.altitude {
-                return true
-            }
-            if left.altitude >= altitude && altitude >= right.altitude {
-                return true
-            }
-            return false
-        }
-    }
-
-    /// The direction that we're going
-    ///
-    /// - unknown: Unknown direction (e.g. the first point
-    /// - up: The upward direction
-    /// - down: The downward direction
-    public enum Direction: String {
-        case unknown
-        case up
-        case down
-    }
-
+    
 }
 
 // MARK: - Helpers
 
 fileprivate extension GeoTrackAnalyzer {
 
-    func collapse(relatives relativePoints: [Relative]) -> [Relative] {
-        var collapsed = [Relative]()
+    func collapse(relatives relativePoints: [Leg]) -> [Leg] {
+        var collapsed = [Leg]()
         guard relativePoints.count > 0 else {
             return collapsed
         }
@@ -161,14 +100,17 @@ fileprivate extension GeoTrackAnalyzer {
                 last = relativePoints[i]
                 continue
             }
-            last.endIndex = relativePoints[i].endIndex
+            last = last.combine(with: relativePoints[i], direction: last.direction)
+        }
+        if last != collapsed.last {
+            collapsed.append(last)
         }
 
         return collapsed
     }
 
-    func removeBetweeners(relatives relativePoints: [Relative]) -> [Relative] {
-        var collapsed = [Relative]()
+    func removeBetweeners(relatives relativePoints: [Leg]) -> [Leg] {
+        var collapsed = [Leg]()
         guard relativePoints.count > 0 else {
             return collapsed
         }
@@ -181,15 +123,18 @@ fileprivate extension GeoTrackAnalyzer {
                 continue
             }
             guard !relativePoints[i].isBetween(left: last, right: relativePoints[i+1]) else {
-                last.endIndex = relativePoints[i].endIndex
+                last = last.combine(with: relativePoints[i], direction: last.direction)
                 continue
             }
-            guard abs(relativePoints[i].altitude - last.altitude) > 10 else {
-                last.endIndex = relativePoints[i].endIndex
+            guard abs(relativePoints[i].altitude - last.altitude) > GeoTrackAnalyzer.altitudeSensitivity else {
+                last = last.combine(with: relativePoints[i], direction: last.direction)
                 continue
             }
             collapsed.append(last)
             last = relativePoints[i]
+        }
+        if last != collapsed.last {
+            collapsed.append(last)
         }
 
         return collapsed
@@ -197,9 +142,26 @@ fileprivate extension GeoTrackAnalyzer {
 
 }
 
-fileprivate extension CLLocation {
+extension Leg {
+    
+    func combine(with anotherLeg: Leg, direction: Direction) -> Leg {
+        let leg: Leg
+        if index < anotherLeg.index {
+            leg = Leg(index: index, point: point, direction: direction, endIndex: anotherLeg.endIndex, endPoint: anotherLeg.endPoint)
+            
+        } else {
+            leg = Leg(index: anotherLeg.index, point: anotherLeg.point, direction: direction, endIndex: endIndex, endPoint: endPoint)
+        }
+        leg.stat = stat
+        stat.combine(with: anotherLeg.stat)
+        
+        return leg
+    }
+    
+}
+extension CLLocation {
 
-    func compare(to point: CLLocation) -> GeoTrackAnalyzer.Direction {
+    func compare(to point: CLLocation) -> Direction {
         if altitude > point.altitude {
             return .down
         }

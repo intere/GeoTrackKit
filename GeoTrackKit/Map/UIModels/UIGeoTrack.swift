@@ -10,7 +10,7 @@ public class UIGeoTrack {
     
     public let track: GeoTrack
     public let analyzer: GeoTrackAnalyzer
-    fileprivate var visibleLegs: [GeoTrackAnalyzer.Relative] = []
+    fileprivate var visibleLegs: [Leg] = []
     
     /// Initializes the UI Model with the provided track.  It then creates the analyzer and calculates the stats for it.
     ///
@@ -27,6 +27,17 @@ public class UIGeoTrack {
 // MARK: - API
 
 public extension UIGeoTrack {
+
+    /// Toggles the visibility of all cells
+    ///
+    /// - Parameter visible: Whether they should all be visible or not.
+    func toggleAll(visibility visible: Bool) {
+        visibleLegs.removeAll()
+        if visible {
+            visibleLegs.append(contentsOf: allLegs)
+        }
+        NotificationCenter.default.post(name: Notification.Name.GeoMapping.legVisibilityChanged, object: self)
+    }
     
     /// Tells you if the leg at the specified index is visible or not
     ///
@@ -44,7 +55,7 @@ public extension UIGeoTrack {
     /// - Parameters:
     ///   - visible: The visibility to set for the
     ///   - leg: The leg to be toggled
-    func set(visibility visible: Bool, for leg: GeoTrackAnalyzer.Relative) {
+    func set(visibility visible: Bool, for leg: Leg) {
         if visible {
             guard !visibleLegs.contains(where: { $0 == leg }) else {
                 return
@@ -56,14 +67,14 @@ public extension UIGeoTrack {
             }
             visibleLegs.remove(at: index)
         }
-        NotificationCenter.default.post(name: Notification.Name.GeoMapping.legVisibilityChanged, object: nil)
+        NotificationCenter.default.post(name: Notification.Name.GeoMapping.legVisibilityChanged, object: self)
     }
     
-    var legs: [GeoTrackAnalyzer.Relative] {
+    var legs: [Leg] {
         return visibleLegs
     }
     
-    var allLegs: [GeoTrackAnalyzer.Relative] {
+    var allLegs: [Leg] {
         return analyzer.indices
     }
     
@@ -87,12 +98,3 @@ public extension Notification.Name {
     }
 }
 
-extension GeoTrackAnalyzer.Relative: Equatable {
-    
-    public static func ==(lhs: GeoTrackAnalyzer.Relative, rhs: GeoTrackAnalyzer.Relative) -> Bool {
-        guard lhs.index == rhs.index, Int(lhs.altitude) == Int(rhs.altitude), lhs.direction == rhs.direction, lhs.endIndex == rhs.endIndex else {
-            return false
-        }
-        return true
-    }
-}

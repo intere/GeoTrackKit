@@ -67,10 +67,14 @@ extension TrackOverviewTableViewController {
 
 // MARK: - GeoTrackAnalyzer Helpers
 
-extension GeoTrackAnalyzer.Relative {
+extension Leg {
     
     var string: String {
-        return String(index) + " - " + String(endIndex) + ", " + direction.rawValue + ", " + String(Int(altitude))
+        return String(index) + " - "
+            + String(endIndex) + ", "
+            + direction.rawValue + ", "
+            + String(Int(altitude)) + "-" + String(Int(endPoint!.altitude)) + ", "
+            + String(Int(altitudeChange)) + "m"
     }
     
 }

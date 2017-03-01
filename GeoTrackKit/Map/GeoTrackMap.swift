@@ -62,7 +62,7 @@ extension GeoTrackMap: MKMapViewDelegate {
         renderer.lineWidth = 3
         renderer.strokeColor = .yellow
 
-        guard let title = polyline.title, let direction = GeoTrackAnalyzer.Direction(rawValue: title) else {
+        guard let title = polyline.title, let direction = Direction(rawValue: title) else {
             return renderer
         }
 

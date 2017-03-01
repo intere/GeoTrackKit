@@ -80,6 +80,7 @@
 		892937D83D59321F22C2259E4CC5D344 /* Quick-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = DFABEEB10F2E9D33C12ECA566D5947A1 /* Quick-dummy.m */; };
 		8C30EAD5FFD28B387099B41C74657A67 /* NMBExpectation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215D2DBBD2F1901DAD0BA635F194457A /* NMBExpectation.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		917949F596E1188261FC59214782C3D9 /* NMBExceptionCapture.h in Headers */ = {isa = PBXBuildFile; fileRef = 72B50685A7115CB568F2F23A42E31BEA /* NMBExceptionCapture.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		93EEFC021E66FC1900090CE7 /* Leg.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93EEFC011E66FC1900090CE7 /* Leg.swift */; };
 		947162383483B6391F8CDF38249BFBD2 /* CwlCatchException.m in Sources */ = {isa = PBXBuildFile; fileRef = B4E171821B1D0ED4DB541E993A5B631F /* CwlCatchException.m */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		9544A4EEC2A8448743ECA9981F88B60F /* BeCloseTo.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF53CCA7C0DCBC78C82FED3FBDD6BF88 /* BeCloseTo.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		9AF235C16362BA00BFBF12147907E953 /* BeEmpty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C33CF42AD6E1A448E98D4CAFB155DAA /* BeEmpty.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
@@ -245,6 +246,7 @@
 		8C64DCE9D714CA88C06BDCC413FD3661 /* BeVoid.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BeVoid.swift; path = Sources/Nimble/Matchers/BeVoid.swift; sourceTree = "<group>"; };
 		91C1B940CAE99BBBBC563963CD22996B /* DSL.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DSL.m; path = Sources/NimbleObjectiveC/DSL.m; sourceTree = "<group>"; };
 		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		93EEFC011E66FC1900090CE7 /* Leg.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Leg.swift; sourceTree = "<group>"; };
 		94B9FC85D7FEB2B0433347BA137CC7E1 /* QuickSelectedTestSuiteBuilder.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = QuickSelectedTestSuiteBuilder.swift; path = Sources/Quick/QuickSelectedTestSuiteBuilder.swift; sourceTree = "<group>"; };
 		954B5272EA2120AA3260D71B6BEF8007 /* Nimble.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Nimble.xcconfig; sourceTree = "<group>"; };
 		98BEFCA54D25BED3A87F8A8BC72FDE02 /* ExampleMetadata.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExampleMetadata.swift; path = Sources/Quick/ExampleMetadata.swift; sourceTree = "<group>"; };
@@ -593,6 +595,14 @@
 			path = "GeoTrackKitExample/Pods/Target Support Files/GeoTrackKit";
 			sourceTree = "<group>";
 		};
+		93EEFC001E66FBF800090CE7 /* Analyze */ = {
+			isa = PBXGroup;
+			children = (
+				93EEFC011E66FC1900090CE7 /* Leg.swift */,
+			);
+			path = Analyze;
+			sourceTree = "<group>";
+		};
 		96962AD7B88E705590BE96BE65977FA8 /* Targets Support Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -605,6 +615,7 @@
 		97294A33D915B2816CBA9885866F3323 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				93EEFC001E66FBF800090CE7 /* Analyze */,
 				096589F9F9B975E0B25F40B444D15FCB /* GeoTrack.swift */,
 				3B2DB929972908E585B40C83A39AF518 /* GeoTrackLocationEvent.swift */,
 			);
@@ -873,6 +884,7 @@
 				368A87B31E635493003D115A /* GeoTrackAnalyzer.swift in Sources */,
 				E9ABC74FA2A10964098CA7E58F539722 /* GeoTrackManager.swift in Sources */,
 				DE47CFBF7E378A726D1A808BA7E9FDF7 /* GeoTrackService.swift in Sources */,
+				93EEFC021E66FC1900090CE7 /* Leg.swift in Sources */,
 				292B45C55461A778D8B29610539C9C7E /* GeoTrackState.swift in Sources */,
 				36E5258D1E66316C00691144 /* UIGeoTrack.swift in Sources */,
 				B633A1BA35FA79FCE6A7BD2892C39A0B /* LoggingFunctions.swift in Sources */,

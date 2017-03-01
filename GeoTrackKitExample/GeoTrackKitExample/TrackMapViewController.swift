@@ -16,6 +16,7 @@ class TrackMapViewController: UIViewController {
     
     var model: UIGeoTrack? {
         didSet {
+            model?.toggleAll(visibility: false)
             mapView.model = model
             tableVC?.model = model
         }

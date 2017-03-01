@@ -135,7 +135,6 @@
 			isa = PBXGroup;
 			children = (
 				36E5258E1E66451400691144 /* Views */,
-				36E525871E661B7600691144 /* UI Models */,
 				36E525861E661B6400691144 /* Controllers */,
 				369723101E64FC8500C1698E /* reference-track-1.json */,
 				36C45E441DCE2D3500E87710 /* AppDelegate.swift */,
@@ -170,13 +169,6 @@
 				36E525841E65C2DB00691144 /* TrackOverviewTableViewController.swift */,
 			);
 			name = Controllers;
-			sourceTree = "<group>";
-		};
-		36E525871E661B7600691144 /* UI Models */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = "UI Models";
 			sourceTree = "<group>";
 		};
 		36E5258E1E66451400691144 /* Views */ = {
