@@ -12,14 +12,27 @@ import UIKit
 class TrackMapViewController: UIViewController {
 
     @IBOutlet var mapView: GeoTrackMap!
-    var track: GeoTrack?
+    @IBOutlet var legContainerView: UIView!
+    
+    var model: UIGeoTrack? {
+        didSet {
+            mapView.model = model
+            tableVC?.model = model
+        }
+    }
+    
+    var tableVC: TrackOverviewTableViewController?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        track = TrackMapViewController.loadFromBundle(filename: "reference-track-1", type: "json")
-        assert(track != nil, "There is no track")
-        mapView.track = track
+        
+        guard let track = TrackMapViewController.loadFromBundle(filename: "reference-track-1", type: "json") else {
+            return assertionFailure("Couldn't load the test track")
+        }
+        model = UIGeoTrack(with: track)
+        assert(model != nil, "There is no track")
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(legVisiblityChanged(_:)), name: Notification.Name.GeoMapping.legVisibilityChanged, object: nil)
     }
 
     override func didReceiveMemoryWarning() {
@@ -46,4 +59,28 @@ class TrackMapViewController: UIViewController {
 
         return track
     }
+}
+
+// MARK: - Listeners
+
+extension TrackMapViewController {
+    
+    func legVisiblityChanged(_ notification: NSNotification) {
+        mapView.renderTrack()
+    }
+    
+}
+
+// MARK: - Navigation
+
+extension TrackMapViewController {
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let destinationVC = segue.destination as? TrackOverviewTableViewController else {
+            return
+        }
+        tableVC = destinationVC
+        tableVC?.model = model
+    }
+    
 }

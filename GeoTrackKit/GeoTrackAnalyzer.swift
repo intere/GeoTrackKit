@@ -56,8 +56,8 @@ public extension GeoTrackAnalyzer {
         relative.endIndex = points.count - 1
         relativePoints.append(relative)
 
-//        relativePoints = collapse(relatives: removeBetweeners(relatives: relativePoints))
-        relativePoints = collapse(relatives: removeBetweeners(relatives: collapse(relatives: relativePoints)))
+        relativePoints = collapse(relatives: removeBetweeners(relatives: relativePoints))
+//        relativePoints = collapse(relatives: removeBetweeners(relatives: collapse(relatives: relativePoints)))
 
         print("Start,End,Direction,Altitude")
         for rPt in relativePoints {
@@ -78,13 +78,13 @@ public extension GeoTrackAnalyzer {
 
     /// A relative minima or maxima
     public struct Relative {
-        let index: Int
-        let point: CLLocation
-        var direction: Direction = .unknown
-        var endIndex: Int
+        public let index: Int
+        public let point: CLLocation
+        public var direction: Direction = .unknown
+        public var endIndex: Int
 
         /// The Altitude at the referred to point
-        var altitude: CLLocationDistance {
+        public var altitude: CLLocationDistance {
             return point.altitude
         }
 

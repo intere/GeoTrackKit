@@ -21,6 +21,8 @@
 		36C45E4C1DCE2D3500E87710 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 36C45E4B1DCE2D3500E87710 /* Assets.xcassets */; };
 		36C45E4F1DCE2D3500E87710 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 36C45E4D1DCE2D3500E87710 /* LaunchScreen.storyboard */; };
 		36E1E3461DEB3D0D00CFC7BC /* GeoTrackLocationEventTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36E1E3451DEB3D0D00CFC7BC /* GeoTrackLocationEventTests.swift */; };
+		36E525851E65C2DB00691144 /* TrackOverviewTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36E525841E65C2DB00691144 /* TrackOverviewTableViewController.swift */; };
+		36E525901E66452100691144 /* LegSwitchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36E5258F1E66452100691144 /* LegSwitchCell.swift */; };
 		93090E201DF822D9004F56FB /* GeoTrackEventLogTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93090E1F1DF822D9004F56FB /* GeoTrackEventLogTests.swift */; };
 		93090E231DF82520004F56FB /* MockAppender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93090E221DF82520004F56FB /* MockAppender.swift */; };
 /* End PBXBuildFile section */
@@ -52,6 +54,8 @@
 		36C45E551DCE2D3500E87710 /* GeoTrackKitExampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GeoTrackKitExampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		36C45E5B1DCE2D3500E87710 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		36E1E3451DEB3D0D00CFC7BC /* GeoTrackLocationEventTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeoTrackLocationEventTests.swift; sourceTree = "<group>"; };
+		36E525841E65C2DB00691144 /* TrackOverviewTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackOverviewTableViewController.swift; sourceTree = "<group>"; };
+		36E5258F1E66452100691144 /* LegSwitchCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LegSwitchCell.swift; sourceTree = "<group>"; };
 		51B54550121FF2A0DC20134F /* Pods-GeoTrackKitExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GeoTrackKitExample.release.xcconfig"; path = "Pods/Target Support Files/Pods-GeoTrackKitExample/Pods-GeoTrackKitExample.release.xcconfig"; sourceTree = "<group>"; };
 		8992FE79B7159E02B95D4ABA /* Pods-GeoTrackKitExampleTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GeoTrackKitExampleTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GeoTrackKitExampleTests/Pods-GeoTrackKitExampleTests.debug.xcconfig"; sourceTree = "<group>"; };
 		8A51639AB7B6B4BAEF27C313 /* Pods_GeoTrackKitExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GeoTrackKitExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -130,14 +134,15 @@
 		36C45E431DCE2D3500E87710 /* GeoTrackKitExample */ = {
 			isa = PBXGroup;
 			children = (
+				36E5258E1E66451400691144 /* Views */,
+				36E525871E661B7600691144 /* UI Models */,
+				36E525861E661B6400691144 /* Controllers */,
 				369723101E64FC8500C1698E /* reference-track-1.json */,
 				36C45E441DCE2D3500E87710 /* AppDelegate.swift */,
-				36C45E461DCE2D3500E87710 /* ViewController.swift */,
 				36C45E481DCE2D3500E87710 /* Main.storyboard */,
 				36C45E4B1DCE2D3500E87710 /* Assets.xcassets */,
 				36C45E4D1DCE2D3500E87710 /* LaunchScreen.storyboard */,
 				36C45E501DCE2D3500E87710 /* Info.plist */,
-				369723121E64FCBF00C1698E /* TrackMapViewController.swift */,
 			);
 			path = GeoTrackKitExample;
 			sourceTree = "<group>";
@@ -155,6 +160,31 @@
 				368A87B61E636FCE003D115A /* GeoTrackAnalyzerTests.swift */,
 			);
 			path = GeoTrackKitExampleTests;
+			sourceTree = "<group>";
+		};
+		36E525861E661B6400691144 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				36C45E461DCE2D3500E87710 /* ViewController.swift */,
+				369723121E64FCBF00C1698E /* TrackMapViewController.swift */,
+				36E525841E65C2DB00691144 /* TrackOverviewTableViewController.swift */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		36E525871E661B7600691144 /* UI Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "UI Models";
+			sourceTree = "<group>";
+		};
+		36E5258E1E66451400691144 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				36E5258F1E66452100691144 /* LegSwitchCell.swift */,
+			);
+			name = Views;
 			sourceTree = "<group>";
 		};
 		3946A07E733955EE7C410B0B /* Pods */ = {
@@ -386,9 +416,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				36E525851E65C2DB00691144 /* TrackOverviewTableViewController.swift in Sources */,
 				36C45E471DCE2D3500E87710 /* ViewController.swift in Sources */,
 				36C45E451DCE2D3500E87710 /* AppDelegate.swift in Sources */,
 				369723131E64FCBF00C1698E /* TrackMapViewController.swift in Sources */,
+				36E525901E66452100691144 /* LegSwitchCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

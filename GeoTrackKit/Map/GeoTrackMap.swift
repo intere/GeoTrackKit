@@ -11,23 +11,7 @@ import CoreLocation
 
 public class GeoTrackMap: MKMapView {
 
-    /// Convenience setter for the
-    public var track: GeoTrack? {
-        set {
-            guard let newValue = newValue else {
-                self.analyzer = nil
-                return
-            }
-            let analyzer = GeoTrackAnalyzer(track: newValue)
-            analyzer.calculate()
-            self.analyzer = analyzer
-        }
-        get {
-            return analyzer?.track
-        }
-    }
-
-    public var analyzer: GeoTrackAnalyzer? {
+    public var model: UIGeoTrack? {
         didSet {
             renderTrack()
         }
@@ -49,11 +33,14 @@ public class GeoTrackMap: MKMapView {
 public extension GeoTrackMap {
 
     func renderTrack() {
-        guard let analyzer = analyzer else {
+        guard let analyzer = model?.analyzer else {
             return
         }
         removeOverlays(overlays)
-        let polylines = analyzer.polylines
+        guard let polylines = model?.polylines else {
+            return
+        }
+        
         for polyline in polylines {
             add(polyline)
         }
@@ -127,13 +114,13 @@ fileprivate extension GeoTrackMap {
 
 // MARK: - converters
 
-fileprivate extension GeoTrackAnalyzer {
+fileprivate extension UIGeoTrack {
 
     var polylines: [MKPolyline] {
         var polys = [MKPolyline]()
         let points = track.points
 
-        for index in indices {
+        for index in legs {
             var coordinates = [CLLocationCoordinate2D]()
             for i in index.index...index.endIndex {
                 coordinates.append(points[i].coordinate)

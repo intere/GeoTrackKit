@@ -36,6 +36,7 @@
 		2F1C62665300611384B2CA9B3A5A0C3A /* Example.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF7C0E600D08C899D8FE3A3AC0758905 /* Example.swift */; };
 		368A87B31E635493003D115A /* GeoTrackAnalyzer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 368A87B21E635493003D115A /* GeoTrackAnalyzer.swift */; };
 		3691C9B01E64ECC5007D4718 /* GeoTrackMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3691C9AF1E64ECC5007D4718 /* GeoTrackMap.swift */; };
+		36E5258D1E66316C00691144 /* UIGeoTrack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36E5258C1E66316C00691144 /* UIGeoTrack.swift */; };
 		37EB47657CEBE193C1F3103C2CDCB940 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6F3D6500D5CA13243D28AD4A58DD99 /* DateExtension.swift */; };
 		3915DBB4731CB17B255A7FE86E240B6E /* CwlCatchBadInstruction.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CEE6D090220683EB93ACD11A04038DD /* CwlCatchBadInstruction.m */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		42ACDA0A987DC93F485784C1928C0D9C /* GeoTrack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096589F9F9B975E0B25F40B444D15FCB /* GeoTrack.swift */; };
@@ -199,6 +200,7 @@
 		3616F0BB1EB9D1F282B7C02A90BEFC53 /* GeoTrackManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = GeoTrackManager.swift; sourceTree = "<group>"; };
 		368A87B21E635493003D115A /* GeoTrackAnalyzer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeoTrackAnalyzer.swift; sourceTree = "<group>"; };
 		3691C9AF1E64ECC5007D4718 /* GeoTrackMap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeoTrackMap.swift; sourceTree = "<group>"; };
+		36E5258C1E66316C00691144 /* UIGeoTrack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIGeoTrack.swift; sourceTree = "<group>"; };
 		36F9E76E718B474FBEB8C1824AA1413A /* Filter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Filter.swift; path = Sources/Quick/Filter.swift; sourceTree = "<group>"; };
 		3B2DB929972908E585B40C83A39AF518 /* GeoTrackLocationEvent.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = GeoTrackLocationEvent.swift; sourceTree = "<group>"; };
 		456456B95B371AC83893065CE6CA7CCC /* Pods-GeoTrackKitExample-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-GeoTrackKitExample-resources.sh"; sourceTree = "<group>"; };
@@ -408,7 +410,7 @@
 		35AD31AC343D8AA722F2641BFB99461F /* GeoTrackKit */ = {
 			isa = PBXGroup;
 			children = (
-				3691C9AE1E64ECB5007D4718 /* Map */,
+				368A87B21E635493003D115A /* GeoTrackAnalyzer.swift */,
 				844A683A8B38DB5F9E041F6EFC5926E2 /* GeoTrackConsoleAppender.swift */,
 				5273455AEE3591915843A77C1571B085 /* GeoTrackEvent.swift */,
 				6931E86F751CF506A18755808821AE23 /* GeoTrackEventLog.swift */,
@@ -417,8 +419,8 @@
 				C00F248F19544341BEBE3EF49CFE775C /* GeoTrackState.swift */,
 				1E980FC012F1BB227C1153D956418E30 /* LoggingFunctions.swift */,
 				D0DA96E2180B9514F77A407300BC3A38 /* Extension */,
+				3691C9AE1E64ECB5007D4718 /* Map */,
 				97294A33D915B2816CBA9885866F3323 /* Models */,
-				368A87B21E635493003D115A /* GeoTrackAnalyzer.swift */,
 			);
 			path = GeoTrackKit;
 			sourceTree = "<group>";
@@ -426,9 +428,18 @@
 		3691C9AE1E64ECB5007D4718 /* Map */ = {
 			isa = PBXGroup;
 			children = (
+				36E5258B1E66315E00691144 /* UIModels */,
 				3691C9AF1E64ECC5007D4718 /* GeoTrackMap.swift */,
 			);
 			path = Map;
+			sourceTree = "<group>";
+		};
+		36E5258B1E66315E00691144 /* UIModels */ = {
+			isa = PBXGroup;
+			children = (
+				36E5258C1E66316C00691144 /* UIGeoTrack.swift */,
+			);
+			path = UIModels;
 			sourceTree = "<group>";
 		};
 		433CD3331B6C3787F473C941B61FC68F /* Frameworks */ = {
@@ -863,6 +874,7 @@
 				E9ABC74FA2A10964098CA7E58F539722 /* GeoTrackManager.swift in Sources */,
 				DE47CFBF7E378A726D1A808BA7E9FDF7 /* GeoTrackService.swift in Sources */,
 				292B45C55461A778D8B29610539C9C7E /* GeoTrackState.swift in Sources */,
+				36E5258D1E66316C00691144 /* UIGeoTrack.swift in Sources */,
 				B633A1BA35FA79FCE6A7BD2892C39A0B /* LoggingFunctions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
