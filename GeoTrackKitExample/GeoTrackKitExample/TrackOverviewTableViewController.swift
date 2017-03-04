@@ -45,7 +45,7 @@ extension TrackOverviewTableViewController {
         guard let analyzer = analyzer else {
             return 0
         }
-        return analyzer.indices.count
+        return analyzer.legs.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -56,7 +56,7 @@ extension TrackOverviewTableViewController {
         }
         
         legCell.toggleSwitch.isOn = model.isVisible(at: indexPath.row)
-        legCell.label.text = analyzer?.indices[indexPath.row].string
+        legCell.label.text = analyzer?.legs[indexPath.row].string
         legCell.indexPath = indexPath
         legCell.model = model
 

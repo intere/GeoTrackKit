@@ -9,8 +9,14 @@
 import MapKit
 import CoreLocation
 
+/// This class provides you an easy way to visualize your track on a map.  You can configure the unknown, ascent and descent colors.  They have sensible defaults.  Using the UIGeoTrack model, you can set which legs of your track are visible and we'll render them accordingly.  Keep in mind, performance of this control may degrade if your tracks have too many points.
 public class GeoTrackMap: MKMapView {
+    
+    public var unknownColor: UIColor = .yellow
+    public var ascentColor: UIColor = .red
+    public var descentColor: UIColor = .blue
 
+    /// The UI Model for the track.  When you set it, we render it!
     public var model: UIGeoTrack? {
         didSet {
             renderTrack()
@@ -32,6 +38,7 @@ public class GeoTrackMap: MKMapView {
 
 public extension GeoTrackMap {
 
+    /// This will render your track on the map (based on what you've toggled as visible in the model)
     func renderTrack() {
         guard let analyzer = model?.analyzer else {
             return
@@ -45,6 +52,7 @@ public extension GeoTrackMap {
             add(polyline)
         }
 
+        // TODO(EGI) move this out into a protocol approach so that we can externalize what and when we should set the zoom region on the map
         setRegion(getZoomRegion(analyzer.track.points), animated: true)
     }
 }
@@ -60,7 +68,7 @@ extension GeoTrackMap: MKMapViewDelegate {
 
         let renderer = MKPolylineRenderer(overlay: polyline)
         renderer.lineWidth = 3
-        renderer.strokeColor = .yellow
+        renderer.strokeColor = unknownColor
 
         guard let title = polyline.title, let direction = Direction(rawValue: title) else {
             return renderer
@@ -68,9 +76,9 @@ extension GeoTrackMap: MKMapViewDelegate {
 
         switch direction {
         case .down:
-            renderer.strokeColor = .blue
+            renderer.strokeColor = descentColor
         case .up:
-            renderer.strokeColor = .red
+            renderer.strokeColor = ascentColor
         default:
             break
         }
@@ -83,6 +91,10 @@ extension GeoTrackMap: MKMapViewDelegate {
 
 fileprivate extension GeoTrackMap {
 
+    /// helper that will figure out what region on the map should be visible, based on your current points.
+    ///
+    /// - Parameter points: the points to analyze to determine the zoom window.
+    /// - Returns: A zoom region.
     func getZoomRegion(_ points: [CLLocation]) -> MKCoordinateRegion {
         var region = MKCoordinateRegion()
         var maxLat: CLLocationDegrees = -90
@@ -115,7 +127,8 @@ fileprivate extension GeoTrackMap {
 // MARK: - converters
 
 fileprivate extension UIGeoTrack {
-
+    
+    /// gets you an array of polylines to draw based on the array of legs
     var polylines: [MKPolyline] {
         var polys = [MKPolyline]()
         let points = track.points
@@ -132,6 +145,5 @@ fileprivate extension UIGeoTrack {
 
         return polys
     }
-
 
 }

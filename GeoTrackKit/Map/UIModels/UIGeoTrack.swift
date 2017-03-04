@@ -70,12 +70,14 @@ public extension UIGeoTrack {
         NotificationCenter.default.post(name: Notification.Name.GeoMapping.legVisibilityChanged, object: self)
     }
     
+    /// The current set of legs that are visible on the map
     var legs: [Leg] {
         return visibleLegs
     }
     
+    /// The entire set of legs (including those that are hidden)
     var allLegs: [Leg] {
-        return analyzer.indices
+        return analyzer.legs
     }
     
 }
@@ -84,7 +86,9 @@ public extension UIGeoTrack {
 
 fileprivate extension UIGeoTrack {    
     
+    /// Make all of the legs visible
     func enableAll() {
+        visibleLegs.removeAll()
         for leg in allLegs {
             visibleLegs.append(leg)
         }
@@ -93,6 +97,8 @@ fileprivate extension UIGeoTrack {
 }
 
 public extension Notification.Name {
+    
+    /// A notification that tells us that a visibility of one or more legs has been toggled on the map.
     public struct GeoMapping {
         public static let legVisibilityChanged = Notification.Name(rawValue: "geo.mapping.leg.visibility.changed")
     }

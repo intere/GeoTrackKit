@@ -9,6 +9,12 @@
 import Foundation
 import CoreLocation
 
+/// This class is responsible for managing (and brokering) everything related to tracking for you.
+/// ### Sample Usage:
+/// ```
+/// GeoTrackManager.shared.stopTracking()
+/// 
+/// ```
 public class GeoTrackManager: NSObject {
     public static let shared = GeoTrackManager()
 
@@ -28,6 +34,7 @@ public class GeoTrackManager: NSObject {
 
 extension GeoTrackManager: GeoTrackService {
 
+    /// The application name - do we really need this?
     public var applicationName: String {
         get {
             return appName
@@ -70,6 +77,7 @@ extension GeoTrackManager: GeoTrackService {
         trackingState = .awaitingFix
     }
 
+    /// Stops tracking
     public func stopTracking() {
         GTInfo(message: "User requested Stop Tracking")
 
@@ -78,8 +86,15 @@ extension GeoTrackManager: GeoTrackService {
     }
 }
 
+// MARK: - CLLocationManagerDelegate
+
 extension GeoTrackManager: CLLocationManagerDelegate {
 
+    /// Handler for location authorization changes.
+    ///
+    /// - Parameters:
+    ///   - manager: The source of the notification.
+    ///   - status: The status change.
     public func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
 
         switch status {
@@ -110,6 +125,11 @@ extension GeoTrackManager: CLLocationManagerDelegate {
         }
     }
 
+    /// Handles location updates.
+    ///
+    /// - Parameters:
+    ///   - manager: The source of the event.
+    ///   - locations: The location updates that happened.
     public func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if trackingState == .awaitingFix {
             trackingState = .tracking
@@ -126,34 +146,51 @@ extension GeoTrackManager: CLLocationManagerDelegate {
             return
         }
         track.add(locations: locations)
+        // TODO(EGI): send out a notification
     }
 
+    /// Handles location tracking pauses
+    ///
+    /// - Parameter manager: the source of the event.
     public func locationManagerDidPauseLocationUpdates(_ manager: CLLocationManager) {
-        // TODO: Implement me
         GTDebug(message: "Paused Location Updates")
         track?.pauseTracking(message: "locationManagerDidPauseLocationUpdates event")
+        // TODO(EGI): send out a notification
     }
 
+    /// Handles location tracking resuming.
+    ///
+    /// - Parameter manager: the source of the event.
     public func locationManagerDidResumeLocationUpdates(_ manager: CLLocationManager) {
-        // TODO: Implement me
         GTDebug(message: "Resumed Location Updates")
         track?.startTracking(message: "locationManagerDidResumeLocationUpdates event")
+        // TODO(EGI): send out a notification
     }
 
+    /// Handles location tracking errors
+    ///
+    /// - Parameters:
+    ///   - manager: the source of the event.
+    ///   - error: the error that occurred.
     public func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        // TODO: Impelement me
         GTError(message: "Failed to perform location tracking: \(error.localizedDescription), \(error)")
         _track?.error(error: error)
+        // TODO(EGI): send out a notification
     }
 
+    /// Handles deferred update errors.
+    ///
+    /// - Parameters:
+    ///   - manager: the source of the event.
+    ///   - error: the error that occurred.
     public func locationManager(_ manager: CLLocationManager, didFinishDeferredUpdatesWithError error: Error?) {
-        // TODO: Implement me
         GTError(message: "Failed Deffered Updates: \(error?.localizedDescription), \(error)")
         if let error = error {
             _track?.error(error: error)
         } else {
             _track?.error(message: "locationManager:didFinishDeferredUpdatesWithError: nil error")
         }
+        // TODO(EGI): send out a notification
     }
 
 }
@@ -162,6 +199,7 @@ extension GeoTrackManager: CLLocationManagerDelegate {
 
 fileprivate extension GeoTrackManager {
 
+    /// Initializes the location manager and sets the preferences
     func initializeLocationManager() {
         guard self.locationManager == nil else {
             return
@@ -170,16 +208,19 @@ fileprivate extension GeoTrackManager {
         let locationManager = CLLocationManager()
         locationManager.activityType = .fitness
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        
         // Until we come up with a heuristic to unpause it
         locationManager.pausesLocationUpdatesAutomatically = false
-        locationManager.allowsBackgroundLocationUpdates = true
-        // only give us updates when we have 10 meters of change
+        
+        // only give us updates when we have 10 meters of change (otherwise we get way too much data)
         locationManager.distanceFilter = 10
+        locationManager.allowsBackgroundLocationUpdates = true
         locationManager.delegate = self
 
         self.locationManager = locationManager
     }
-
+    
+    /// Handles requesting always authorization from location services
     func beginLocationUpdates() {
         guard let locationManager = locationManager else {
             return
@@ -198,6 +239,7 @@ fileprivate extension GeoTrackManager {
         }
     }
 
+    /// Handles stopping tracking
     func endLocationUpdates() {
         guard let locationManager = locationManager else {
             return

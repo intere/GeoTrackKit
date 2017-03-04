@@ -8,9 +8,11 @@
 
 import Foundation
 
+// TODO(EGI) provide a better logging implementation (NotificationCenter-based perhaps?)
 
 /// Protocol that is used to define an appender
 public protocol GeoTrackLogAppender {
+    
     /// The unique identifier for the instance
     var uniqueId: String { get }
 

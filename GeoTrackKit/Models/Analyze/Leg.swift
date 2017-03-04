@@ -4,24 +4,26 @@
 //
 //  Created by Internicola, Eric on 3/1/17.
 //
-//
+//  Models that are used for Analyzing Tracks
+//  TODO(EGI) Document Me!
 
 import CoreLocation
 
 public class Stat {
     /// Minimum altitude in meters
-    private(set) public var minimumAltitude: CLLocationDistance = 0
+    fileprivate(set) public var minimumAltitude: CLLocationDistance = 0
     /// Maximum altitude in meters
-    private(set) public var maximumAltitude: CLLocationDistance = 0
+    fileprivate(set) public var maximumAltitude: CLLocationDistance = 0
     /// The distance travelled
-    private(set) public var distance: CLLocationDistance = 0
+    fileprivate(set) public var distance: CLLocationDistance = 0
     /// The maximum recorded speed (in meters per second)
-    private(set) public var maximumSpeed: CLLocationSpeed = 0
+    fileprivate(set) public var maximumSpeed: CLLocationSpeed = 0
     /// What is the change in vertical?
     public var verticalDelta: CLLocationDistance {
         return maximumAltitude - minimumAltitude
     }
     fileprivate var initialized = false
+    var direction: Direction = .unknown
     
     /// Updates the stats using the provided point
     ///
@@ -41,7 +43,6 @@ public class Stat {
         maximumSpeed = max(maximumSpeed, point.speed)
     }
     
-    
     func combine(with stat: Stat) {
         distance += stat.distance
         maximumAltitude = max(maximumAltitude, stat.maximumAltitude)
@@ -53,7 +54,49 @@ public class Stat {
 
 public class TrackStat: Stat {
     /// The number of "ski runs" (aka the number of times descended)
-    let runs: Int = 0
+    public let runs: Int
+    public let verticalAscent: CLLocationDistance
+    public let verticalDescent: CLLocationDistance
+    public let ascentDistance: CLLocationDistance
+    public let descentDistance: CLLocationDistance
+    public let totalDistance: CLLocationDistance
+    
+    init(runs: Int, ascent: CLLocationDistance, descent: CLLocationDistance, ascentDistance: CLLocationDistance, descentDistance: CLLocationDistance, totalDistance: CLLocationDistance) {
+        self.runs = runs
+        verticalAscent = ascent
+        verticalDescent = descent
+        self.ascentDistance = ascentDistance
+        self.descentDistance = descentDistance
+        self.totalDistance = totalDistance
+    }
+    
+    public static func summarize(from legs: [Leg]) -> TrackStat {
+        let baseOverallStat = Stat()
+        var runs = 0
+        var vAscent: CLLocationDistance = 0
+        var vDescent: CLLocationDistance = 0
+        var aDistance: CLLocationDistance = 0
+        var dDistance: CLLocationDistance = 0
+        var tDistance: CLLocationDistance = 0
+        
+        for leg in legs {
+            let stat = leg.stat
+            baseOverallStat.combine(with: stat)
+            if leg.direction == .up {
+                vAscent += stat.verticalDelta
+                aDistance += stat.distance
+            } else if leg.direction == .down {
+                vDescent -= stat.verticalDelta
+                dDistance += stat.distance
+                runs += 1
+            }
+            tDistance += stat.distance
+        }
+        
+        var stat = TrackStat(runs: runs, ascent: vAscent, descent: vDescent, ascentDistance: aDistance, descentDistance: dDistance, totalDistance: tDistance)
+        stat.combine(with: baseOverallStat)
+        return stat
+    }
 }
 
 /// The direction that we're going
@@ -138,17 +181,14 @@ public class Leg {
     /// - Parameter point: The point to compare with this relative point.
     /// - Returns: the direction
     func compare(to anotherPoint: CLLocation) -> Direction {
-//        guard abs(altitude - point.altitude) > 25 else {
-//            return .unknown
-//        }
-        return point.compare(to: anotherPoint)
+            return point.compare(to: anotherPoint)
     }
 
-    /// Tells you if this relative should be combined with another relative
+    /// Tells you if this leg is moving in the same direction as another leg
     ///
-    /// - Parameter anotherLeg: the leg to compare with for combination.
-    /// - Returns: true if they should be combined, false if not.
-    func shouldCombine(with anotherLeg: Leg) -> Bool {
+    /// - Parameter anotherLeg: The leg to compare with.
+    /// - Returns: true if the directions are the same, false if not
+    func isSameDirection(as anotherLeg: Leg) -> Bool {
         return direction == anotherLeg.direction
     }
 

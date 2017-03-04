@@ -4,7 +4,7 @@
 //
 //  Created by Eric Internicola on 12/10/16.
 //
-//
+//  A set of convenience extensions to provide a friendly string value and then serialization functions
 
 import CoreLocation
 
@@ -15,7 +15,17 @@ public extension CLLocation {
         let result = "[\(timestamp)][POINT]: \(self)"
         return result
     }
+    
+}
 
+// MARK: - Serialization
+
+public extension CLLocation {
+
+    /// Attempts to re-constitute a CLLocation object from a map.  Deserialization.
+    ///
+    /// - Parameter map: the map to attempt to create the location from.
+    /// - Returns: A CLLocation object if it could be created, nil if not.
     static func from(map: [String: Any]) -> CLLocation? {
         guard let lat = map["lat"] as? CLLocationDegrees else {
             elog("We didn't get a valid latitude for a point")
@@ -54,6 +64,7 @@ public extension CLLocation {
         return location
     }
 
+    /// Converts this CLLocation object to a Map (for serialization).  Please note: we use MSSE (Milliseconds Since the Epoch) format for the date.
     var map: [String: Any] {
         return [
             "lat": coordinate.latitude,
