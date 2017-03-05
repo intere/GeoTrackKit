@@ -23,5 +23,5 @@ public extension Date {
     var msse: Double {
         return timeIntervalSince1970 * 1000
     }
-    
+
 }

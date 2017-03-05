@@ -11,8 +11,8 @@ import CoreLocation
 
 /// Data structure to keep track of points for a track
 public class GeoTrack {
-    internal var _points = [CLLocation]()
-    internal var _events = [GeoTrackLocationEvent]()
+    fileprivate var iPoints = [CLLocation]()
+    fileprivate(set) public var events = [GeoTrackLocationEvent]()
     public var name = ""
     public var description = ""
 
@@ -34,21 +34,21 @@ public extension GeoTrack {
 
     /// Get the points in the Track
     var points: [CLLocation] {
-        return _points.sorted { return $0.timestamp.timeIntervalSince1970 < $1.timestamp.timeIntervalSince1970 }
+        return iPoints.sorted { return $0.timestamp.timeIntervalSince1970 < $1.timestamp.timeIntervalSince1970 }
     }
 
     /// Adds a location to the track
     ///
     /// - Parameter location: The location point to add
     func add(location: CLLocation) {
-        _points.append(location)
+        iPoints.append(location)
     }
 
     /// Adds an array of locations to the track
     ///
     /// - Parameter locations: The array of location points to add
     func add(locations: [CLLocation]) {
-        _points.append(contentsOf: locations)
+        iPoints.append(contentsOf: locations)
     }
 
 
@@ -66,11 +66,18 @@ public extension GeoTrack {
 
 public extension GeoTrack {
 
+    /// Adds a new point to the list of points
+    ///
+    /// - Parameter point: <#point description#>
+    public func add(point: CLLocation) {
+        iPoints.append(point)
+    }
+
     /// Lets you add a custom event.
     ///
     /// - Parameter event: The event to add to the event log.
     public func add(event: GeoTrackLocationEvent) {
-        _events.append(event)
+        events.append(event)
     }
 
     /// Adds a Start Tracking event to the track's event log.
@@ -124,7 +131,7 @@ public extension GeoTrack {
             "name": name,
             "description": description,
             "points": points.map { $0.map },
-            "events": _events.map { $0.map }
+            "events": events.map { $0.map }
         ]
     }
 
@@ -151,13 +158,13 @@ public extension GeoTrack {
             guard let location = CLLocation.from(map: map) else {
                 continue
             }
-            track._points.append(location)
+            track.add(point: location)
         }
         for map in eventMaps {
             guard let event = GeoTrackLocationEvent.from(map: map) else {
                 continue
             }
-            track._events.append(event)
+            track.events.append(event)
         }
 
         return track
@@ -199,7 +206,7 @@ fileprivate extension GeoTrack {
                 // TODO(EGI): make note of this somewhere
                 continue
             }
-            _points.append(location)
+            iPoints.append(location)
         }
 
         guard let events = json["events"] as? [[String: Any]] else {
@@ -210,10 +217,10 @@ fileprivate extension GeoTrack {
     }
 
     func buildEventLog(showPoints: Bool) -> [String] {
-        var events = _events.map { Log(event:$0) }
+        var events = self.events.map { Log(event:$0) }
 
         if showPoints {
-            events.append(contentsOf: _points.map({ Log(location: $0) }))
+            events.append(contentsOf: points.map({ Log(location: $0) }))
         }
 
         let sorted = events.sorted { $0.date<$1.date }

@@ -24,10 +24,9 @@ public class GeoTrackManager: NSObject {
 
     // Other stuff
     internal var locationManager: CLLocationManager?
-    internal var _lastPoint: CLLocation?
-    internal var _authorized: Bool = false
-
-    internal var _track: GeoTrack?
+    fileprivate(set) public var lastPoint: CLLocation?
+    fileprivate(set) public var authorized: Bool = false
+    fileprivate(set) public var track: GeoTrack?
 }
 
 // MARK: - API
@@ -42,16 +41,6 @@ extension GeoTrackManager: GeoTrackService {
         set {
             appName = newValue
         }
-    }
-
-    /// Gives you the current track
-    public var track: GeoTrack? {
-        return _track
-    }
-
-    /// Gives you the last received location point
-    public var lastPoint: CLLocation? {
-        return _lastPoint
     }
 
     /// Are we currently tracking?
@@ -101,27 +90,27 @@ extension GeoTrackManager: CLLocationManagerDelegate {
         case .authorizedAlways:
             GTDebug(message: "Authorization has been updated, starting location updates")
             locationManager?.startUpdatingLocation()
-            _authorized = true
+            authorized = true
 
         case .denied:
             GTError(message: "User denied location updates")
-            _track?.error(message: "Location access denied")
-            _authorized = false
+            track?.error(message: "Location access denied")
+            authorized = false
 
         case .notDetermined:
             GTDebug(message: "Could not determine access to location updates")
-            _track?.error(message: "Location access not determined")
-            _authorized = false
+            track?.error(message: "Location access not determined")
+            authorized = false
 
         case .restricted:
             GTError(message: "Restricted from access to location updates")
-            _track?.error(message: "Location access restricted")
-            _authorized = false
+            track?.error(message: "Location access restricted")
+            authorized = false
 
         default:
             GTError(message: "Other access to location updates (unacceptable)")
-            _track?.error(message: "Location access not acceptable")
-            _authorized = false
+            track?.error(message: "Location access not acceptable")
+            authorized = false
         }
     }
 
@@ -136,12 +125,12 @@ extension GeoTrackManager: CLLocationManagerDelegate {
         }
         GTDebug(message: "New Locations: \(locations)")
         guard let location = locations.last else {
-            _lastPoint = nil
+            lastPoint = nil
             return
         }
-        _lastPoint = location
+        lastPoint = location
 
-        guard let track = _track else {
+        guard let track = track else {
             GTError(message: "No current track to store points within")
             return
         }
@@ -174,7 +163,7 @@ extension GeoTrackManager: CLLocationManagerDelegate {
     ///   - error: the error that occurred.
     public func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         GTError(message: "Failed to perform location tracking: \(error.localizedDescription), \(error)")
-        _track?.error(error: error)
+        track?.error(error: error)
         // TODO(EGI): send out a notification
     }
 
@@ -186,9 +175,9 @@ extension GeoTrackManager: CLLocationManagerDelegate {
     public func locationManager(_ manager: CLLocationManager, didFinishDeferredUpdatesWithError error: Error?) {
         GTError(message: "Failed Deffered Updates: \(error?.localizedDescription), \(error)")
         if let error = error {
-            _track?.error(error: error)
+            track?.error(error: error)
         } else {
-            _track?.error(message: "locationManager:didFinishDeferredUpdatesWithError: nil error")
+            track?.error(message: "locationManager:didFinishDeferredUpdatesWithError: nil error")
         }
         // TODO(EGI): send out a notification
     }
@@ -208,10 +197,10 @@ fileprivate extension GeoTrackManager {
         let locationManager = CLLocationManager()
         locationManager.activityType = .fitness
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        
+
         // Until we come up with a heuristic to unpause it
         locationManager.pausesLocationUpdatesAutomatically = false
-        
+
         // only give us updates when we have 10 meters of change (otherwise we get way too much data)
         locationManager.distanceFilter = 10
         locationManager.allowsBackgroundLocationUpdates = true
@@ -219,20 +208,20 @@ fileprivate extension GeoTrackManager {
 
         self.locationManager = locationManager
     }
-    
+
     /// Handles requesting always authorization from location services
     func beginLocationUpdates() {
         guard let locationManager = locationManager else {
             return
         }
 
-        if _track == nil {
+        if track == nil {
             GTDebug(message: "Created new GeoTrack object")
-            _track = GeoTrack()
+            track = GeoTrack()
         }
-        _track?.startTracking()
+        track?.startTracking()
 
-        if !_authorized {
+        if !authorized {
             locationManager.requestAlwaysAuthorization()
         } else {
             locationManager.startUpdatingLocation()
@@ -244,7 +233,7 @@ fileprivate extension GeoTrackManager {
         guard let locationManager = locationManager else {
             return
         }
-        _track?.stopTracking()
+        track?.stopTracking()
         locationManager.stopUpdatingLocation()
     }
     

@@ -10,13 +10,13 @@ import GeoTrackKit
 import UIKit
 
 class TrackOverviewTableViewController: UITableViewController {
-    
+
     var model: UIGeoTrack? {
         didSet {
             tableView.reloadData()
         }
     }
-    
+
     var analyzer: GeoTrackAnalyzer? {
         return model?.analyzer
     }

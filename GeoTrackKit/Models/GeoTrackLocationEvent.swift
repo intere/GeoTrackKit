@@ -38,18 +38,18 @@ public class GeoTrackLocationEvent {
         }
     }
 
-    var _type: EventType = .other
-    var _timestamp: Date = Date()
-    var _message: String? = nil
-    var _index: Int? = nil
+    private(set) public var type: EventType = .other
+    private(set) public var timestamp: Date = Date()
+    private(set) public var message: String? = nil
+    private(set) public var index: Int? = nil
 
     internal init(type: EventType, timestamp: Date? = nil, message: String? = nil, index: Int? = nil) {
-        _type = type
+        self.type = type
         if let timestamp = timestamp {
-            _timestamp = timestamp
+            self.timestamp = timestamp
         }
-        _message = message
-        _index = index
+        self.message = message
+        self.index = index
     }
 }
 
@@ -57,21 +57,21 @@ public class GeoTrackLocationEvent {
 
 public extension GeoTrackLocationEvent {
 
-    var type: EventType {
-        return _type
-    }
-
-    var timestamp: Date {
-        return _timestamp
-    }
-
-    var message: String? {
-        return _message
-    }
-
-    var index: Int? {
-        return _index
-    }
+//    var type: EventType {
+//        return iType
+//    }
+//
+//    var timestamp: Date {
+//        return iTimestamp
+//    }
+//
+//    var message: String? {
+//        return iMessage
+//    }
+//
+//    var index: Int? {
+//        return iIndex
+//    }
 
     var string: String {
         var result = "[\(timestamp)] [\(type.string.uppercased())]"
@@ -204,13 +204,13 @@ public extension GeoTrackLocationEvent {
     /// - Returns: A map of [String: Any]
     var map: [String: Any] {
         var dict: [String: Any] = [
-            Constants.type: _type.rawValue,
-            Constants.timestamp: _timestamp.msse
+            Constants.type: type.rawValue,
+            Constants.timestamp: timestamp.msse
         ]
-        if let message = _message {
+        if let message = message {
             dict[Constants.message] = message
         }
-        if let index = _index {
+        if let index = index {
             dict[Constants.index] = index
         }
 

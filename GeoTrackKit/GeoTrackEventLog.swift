@@ -31,8 +31,8 @@ public class GeoTrackEventLog {
     public static let shared = GeoTrackEventLog()
 
     // TODO: Rip this out and create an appender that collects events.
-    internal var _eventLog = [GeoTrackEvent]()
-    internal var _appenders = [GeoTrackLogAppender]()
+    fileprivate(set) public var eventLog = [GeoTrackEvent]()
+    fileprivate(set) public var appenders = [GeoTrackLogAppender]()
 
     private init() {
         add(appender: GeoTrackConsoleAppender.shared)
@@ -43,22 +43,22 @@ public class GeoTrackEventLog {
 
 public extension GeoTrackEventLog {
 
-    /// Gets you the event log
-    var eventLog: [GeoTrackEvent] {
-        return _eventLog
-    }
-
-    /// Gets you the list of appenders
-    var appenders: [GeoTrackLogAppender] {
-        return _appenders
-    }
+//    /// Gets you the event log
+//    var eventLog: [GeoTrackEvent] {
+//        return iEventLog
+//    }
+//
+//    /// Gets you the list of appenders
+//    var appenders: [GeoTrackLogAppender] {
+//        return iAppenders
+//    }
 
     /// Gets you the most recent event in the event log
     var mostRecentEvent: GeoTrackEvent? {
-        guard _eventLog.count > 0 else {
+        guard eventLog.count > 0 else {
             return nil
         }
-        return _eventLog[_eventLog.count-1]
+        return eventLog[eventLog.count-1]
     }
 
     /// Logs an event
@@ -72,16 +72,16 @@ public extension GeoTrackEventLog {
     ///
     /// - Parameter appender: The appender to be added.
     func add(appender: GeoTrackLogAppender) {
-        _appenders.append(appender)
+        appenders.append(appender)
     }
 
     /// Removes an appender from the appender list.
     ///
     /// - Parameter appender: The appender to be removed.
     func remove(appender: GeoTrackLogAppender) {
-        for index in 0..<_appenders.count {
-            if _appenders[index].uniqueId == appender.uniqueId {
-                _appenders.remove(at: index)
+        for index in 0..<appenders.count {
+            if appenders[index].uniqueId == appender.uniqueId {
+                appenders.remove(at: index)
                 return
             }
         }
@@ -89,7 +89,7 @@ public extension GeoTrackEventLog {
 
     /// Removes all of the appenders that we have loaded
     func removeAllAppenders() {
-        _appenders.removeAll()
+        appenders.removeAll()
     }
 }
 
@@ -101,8 +101,8 @@ internal extension GeoTrackEventLog {
     ///
     /// - Parameter event: The event that occurred
     func add(event: GeoTrackEvent) {
-        _eventLog.append(event)
-        for appender in _appenders {
+        eventLog.append(event)
+        for appender in appenders {
             appender.logged(event: event)
         }
     }

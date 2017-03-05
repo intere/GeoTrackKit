@@ -13,16 +13,16 @@ public class GeoTrackAnalyzer {
 
     /// The sensitivity of the "track" detection (in meters).  If you set this too high, it won't detect "runs" properly, if you set it too low, it will detect more "runs" than you actually have done
     public static var altitudeSensitivity: CLLocationDistance = 25
-    
+
     /// The track that we're calculating the statistics from
     public let track: GeoTrack
-    
+
     /// The statistics for the track
     public var stats: TrackStat?
-    
+
     /// The [mutable] legs of the track (ascents and descents)
     fileprivate var _legs = [Leg]()
-    
+
     /// The legs
     public var legs: [Leg] {
         return _legs

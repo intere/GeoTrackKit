@@ -8,14 +8,13 @@
 
 import CoreLocation
 
-
 public extension CLLocation {
 
     var string: String {
         let result = "[\(timestamp)][POINT]: \(self)"
         return result
     }
-    
+
 }
 
 // MARK: - Serialization
@@ -77,5 +76,5 @@ public extension CLLocation {
             "timestamp": timestamp.msse
         ]
     }
-    
+
 }

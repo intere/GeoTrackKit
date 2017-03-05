@@ -13,7 +13,7 @@ public class GeoTrackConsoleAppender {
 
     public static let shared = GeoTrackConsoleAppender()
 
-    var _logLevel: GeoTrackEvent.Level = .debug
+    public var logLevel: GeoTrackEvent.Level = .debug
 
     private init() {}
 }
@@ -24,14 +24,14 @@ extension GeoTrackConsoleAppender: GeoTrackLogAppender {
         return "GeoTrackConsoleAppender"
     }
 
-    public var logLevel: GeoTrackEvent.Level {
-        get {
-            return _logLevel
-        }
-        set {
-            _logLevel = newValue
-        }
-    }
+//    public var logLevel: GeoTrackEvent.Level {
+//        get {
+//            return iLogLevel
+//        }
+//        set {
+//            iLogLevel = newValue
+//        }
+//    }
 
     public func logged(event someEvent: GeoTrackEvent) {
         print(someEvent.string)
