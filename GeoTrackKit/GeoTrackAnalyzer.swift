@@ -21,13 +21,8 @@ public class GeoTrackAnalyzer {
     public var stats: TrackStat?
 
     /// The [mutable] legs of the track (ascents and descents)
-    fileprivate var _legs = [Leg]()
+    fileprivate(set) public var legs = [Leg]()
 
-    /// The legs
-    public var legs: [Leg] {
-        return _legs
-    }
-    
     /// Initializes this Track Analyzer with a track.  You must still call `calculate()` to generate the statistics.  This isn't done on construction for performance reasons.
     ///
     /// - Parameter track: The track to initialize with
@@ -81,7 +76,7 @@ public extension GeoTrackAnalyzer {
             print("\(rPt.index), \(rPt.endIndex), \(rPt.direction), \(rPt.stat.string)")
         }
 
-        _legs = legs
+        self.legs = legs
         self.stats = TrackStat.summarize(from: legs)
     }
 
@@ -90,12 +85,12 @@ public extension GeoTrackAnalyzer {
 // MARK: - Stat extensions
 
 fileprivate extension Stat {
-    
+
     /// String implementation for Stat (for debugging)
     var string: String {
         return "\(Int(minimumAltitude))-\(Int(maximumAltitude)), \(Int(distance)), \(Int(verticalDelta))"
     }
-    
+
 }
 
 // MARK: - Helpers
@@ -108,26 +103,26 @@ fileprivate extension GeoTrackAnalyzer {
     /// - Returns: a new set of legs that represents a reduced set of legs, such that there are no longer adjacent legs moving in the same direction.
     func collapse(relatives relativePoints: [Leg]) -> [Leg] {
         var collapsed = [Leg]()
-        
+
         // if there are no legs, just return
         guard relativePoints.count > 0 else {
             return collapsed
         }
-        
+
         var last = relativePoints[0]
         for i in 1..<relativePoints.count {
-            
+
             guard last.isSameDirection(as: relativePoints[i]) else {
                 // if the legs are not moving in the same direction, then just add the current leg to the collapsed list and move onto the next one
                 collapsed.append(last)
                 last = relativePoints[i]
                 continue
             }
-            
+
             // if the 2 legs are moving in the same direction, then combine them and set the last to be the combination of the last and the current and then move on to the next.
             last = last.combine(with: relativePoints[i], direction: last.direction)
         }
-        
+
         // If we haven't added the last one to the collapsed list yet, then do it now:
         if last != collapsed.last {
             collapsed.append(last)

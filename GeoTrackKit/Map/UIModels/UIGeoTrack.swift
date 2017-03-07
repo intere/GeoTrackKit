@@ -7,11 +7,11 @@
 //
 
 public class UIGeoTrack {
-    
+
     public let track: GeoTrack
     public let analyzer: GeoTrackAnalyzer
     fileprivate var visibleLegs: [Leg] = []
-    
+
     /// Initializes the UI Model with the provided track.  It then creates the analyzer and calculates the stats for it.
     ///
     /// - Parameter track: The track to initialize with.
@@ -21,7 +21,7 @@ public class UIGeoTrack {
         analyzer.calculate()
         enableAll()
     }
-    
+
 }
 
 // MARK: - API
