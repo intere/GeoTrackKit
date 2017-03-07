@@ -13,7 +13,7 @@ import CoreLocation
 /// ### Sample Usage:
 /// ```
 /// GeoTrackManager.shared.stopTracking()
-/// 
+///
 /// ```
 public class GeoTrackManager: NSObject {
     public static let shared = GeoTrackManager()
@@ -236,5 +236,5 @@ fileprivate extension GeoTrackManager {
         track?.stopTracking()
         locationManager.stopUpdatingLocation()
     }
-    
+
 }

@@ -134,7 +134,7 @@ fileprivate extension GeoTrackAnalyzer {
 }
 
 extension Leg {
-    
+
     /// This function is responsible for combining the current leg with another leg (into a new Leg), setting the direction and returning that result.
     ///
     /// - Parameters:
@@ -145,16 +145,16 @@ extension Leg {
         let leg: Leg
         if index < anotherLeg.index {
             leg = Leg(index: index, point: point, direction: direction, endIndex: anotherLeg.endIndex, endPoint: anotherLeg.endPoint)
-            
+
         } else {
             leg = Leg(index: anotherLeg.index, point: anotherLeg.point, direction: direction, endIndex: endIndex, endPoint: endPoint)
         }
         leg.stat = stat
         stat.combine(with: anotherLeg.stat)
-        
+
         return leg
     }
-    
+
 }
 extension CLLocation {
 

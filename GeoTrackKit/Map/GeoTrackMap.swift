@@ -11,7 +11,7 @@ import CoreLocation
 
 /// This class provides you an easy way to visualize your track on a map.  You can configure the unknown, ascent and descent colors.  They have sensible defaults.  Using the UIGeoTrack model, you can set which legs of your track are visible and we'll render them accordingly.  Keep in mind, performance of this control may degrade if your tracks have too many points.
 public class GeoTrackMap: MKMapView {
-    
+
     public var unknownColor: UIColor = .yellow
     public var ascentColor: UIColor = .red
     public var descentColor: UIColor = .blue
@@ -47,7 +47,7 @@ public extension GeoTrackMap {
         guard let polylines = model?.polylines else {
             return
         }
-        
+
         for polyline in polylines {
             add(polyline)
         }
@@ -127,7 +127,7 @@ fileprivate extension GeoTrackMap {
 // MARK: - converters
 
 fileprivate extension UIGeoTrack {
-    
+
     /// gets you an array of polylines to draw based on the array of legs
     var polylines: [MKPolyline] {
         var polys = [MKPolyline]()

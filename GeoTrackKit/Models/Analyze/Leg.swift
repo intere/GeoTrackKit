@@ -24,7 +24,7 @@ public class Stat {
     }
     fileprivate var initialized = false
     var direction: Direction = .unknown
-    
+
     /// Updates the stats using the provided point
     ///
     /// - Parameter point: The point to track
@@ -42,7 +42,7 @@ public class Stat {
         minimumAltitude = min(minimumAltitude, point.altitude)
         maximumSpeed = max(maximumSpeed, point.speed)
     }
-    
+
     func combine(with stat: Stat) {
         distance += stat.distance
         maximumAltitude = max(maximumAltitude, stat.maximumAltitude)
@@ -60,7 +60,8 @@ public class TrackStat: Stat {
     public let ascentDistance: CLLocationDistance
     public let descentDistance: CLLocationDistance
     public let totalDistance: CLLocationDistance
-    
+
+    // swiftlint:disable:next funtion_parameter_count
     init(runs: Int, ascent: CLLocationDistance, descent: CLLocationDistance, ascentDistance: CLLocationDistance, descentDistance: CLLocationDistance, totalDistance: CLLocationDistance) {
         self.runs = runs
         verticalAscent = ascent
@@ -69,7 +70,7 @@ public class TrackStat: Stat {
         self.descentDistance = descentDistance
         self.totalDistance = totalDistance
     }
-    
+
     public static func summarize(from legs: [Leg]) -> TrackStat {
         let baseOverallStat = Stat()
         var runs = 0
@@ -78,7 +79,7 @@ public class TrackStat: Stat {
         var aDistance: CLLocationDistance = 0
         var dDistance: CLLocationDistance = 0
         var tDistance: CLLocationDistance = 0
-        
+
         for leg in legs {
             let stat = leg.stat
             baseOverallStat.combine(with: stat)
@@ -92,7 +93,7 @@ public class TrackStat: Stat {
             }
             tDistance += stat.distance
         }
-        
+
         var stat = TrackStat(runs: runs, ascent: vAscent, descent: vDescent, ascentDistance: aDistance, descentDistance: dDistance, totalDistance: tDistance)
         stat.combine(with: baseOverallStat)
         return stat
@@ -207,7 +208,7 @@ public class Leg {
 
 extension Leg: Equatable {
 
-    public static func ==(lhs: Leg, rhs: Leg) -> Bool {
+    public static func == (lhs: Leg, rhs: Leg) -> Bool {
         guard lhs.index == rhs.index, Int(lhs.altitude) == Int(rhs.altitude), lhs.direction == rhs.direction, lhs.endIndex == rhs.endIndex else {
             return false
         }

@@ -178,7 +178,6 @@ public extension GeoTrackLocationEvent {
         static let index = "index"
     }
 
-
     /// Deserializes the provided map into a GeoTrackLocationEvent.
     ///
     /// - Parameter map: the map to be deserialized.
@@ -186,8 +185,7 @@ public extension GeoTrackLocationEvent {
     static func from(map: [String: Any]) -> GeoTrackLocationEvent? {
         guard let rawType = map[Constants.type] as? Int,
             let type = EventType(rawValue: rawType),
-            let msse = map[Constants.timestamp] as? TimeInterval else
-        {
+            let msse = map[Constants.timestamp] as? TimeInterval else {
             return nil
         }
         let message = map[Constants.message] as? String

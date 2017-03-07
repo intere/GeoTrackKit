@@ -12,7 +12,7 @@ import Foundation
 
 /// Protocol that is used to define an appender
 public protocol GeoTrackLogAppender {
-    
+
     /// The unique identifier for the instance
     var uniqueId: String { get }
 
@@ -42,16 +42,6 @@ public class GeoTrackEventLog {
 // MARK: - API
 
 public extension GeoTrackEventLog {
-
-//    /// Gets you the event log
-//    var eventLog: [GeoTrackEvent] {
-//        return iEventLog
-//    }
-//
-//    /// Gets you the list of appenders
-//    var appenders: [GeoTrackLogAppender] {
-//        return iAppenders
-//    }
 
     /// Gets you the most recent event in the event log
     var mostRecentEvent: GeoTrackEvent? {

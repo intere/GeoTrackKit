@@ -28,5 +28,5 @@ public protocol GeoTrackService {
 
     /** Stops tracking.  */
     func stopTracking()
-    
+
 }
