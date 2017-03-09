@@ -40,7 +40,7 @@ public extension GeoTrackAnalyzer {
     func calculate() {
         let points = track.points
         guard points.count > 0 else {
-            // TODO(EGI): Log a warning or something
+            GTWarn(message: "No points to calculate statistics from")
             return
         }
 

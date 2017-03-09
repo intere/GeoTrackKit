@@ -135,7 +135,7 @@ extension GeoTrackManager: CLLocationManagerDelegate {
             return
         }
         track.add(locations: locations)
-        // TODO(EGI): send out a notification
+        NotificationCenter.default.post(name: Notification.Name.GeoTrackKit.didUpdateLocations, object: locations)
     }
 
     /// Handles location tracking pauses
@@ -144,7 +144,7 @@ extension GeoTrackManager: CLLocationManagerDelegate {
     public func locationManagerDidPauseLocationUpdates(_ manager: CLLocationManager) {
         GTDebug(message: "Paused Location Updates")
         track?.pauseTracking(message: "locationManagerDidPauseLocationUpdates event")
-        // TODO(EGI): send out a notification
+        NotificationCenter.default.post(name: Notification.Name.GeoTrackKit.didPauseLocationUpdates, object: nil)
     }
 
     /// Handles location tracking resuming.
@@ -153,7 +153,7 @@ extension GeoTrackManager: CLLocationManagerDelegate {
     public func locationManagerDidResumeLocationUpdates(_ manager: CLLocationManager) {
         GTDebug(message: "Resumed Location Updates")
         track?.startTracking(message: "locationManagerDidResumeLocationUpdates event")
-        // TODO(EGI): send out a notification
+        NotificationCenter.default.post(name: Notification.Name.GeoTrackKit.didResumeLocationUpdates, object: nil)
     }
 
     /// Handles location tracking errors
@@ -164,7 +164,7 @@ extension GeoTrackManager: CLLocationManagerDelegate {
     public func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         GTError(message: "Failed to perform location tracking: \(error.localizedDescription), \(error)")
         track?.error(error: error)
-        // TODO(EGI): send out a notification
+        NotificationCenter.default.post(name: Notification.Name.GeoTrackKit.didFailWithError, object: error)
     }
 
     /// Handles deferred update errors.
@@ -179,7 +179,7 @@ extension GeoTrackManager: CLLocationManagerDelegate {
         } else {
             track?.error(message: "locationManager:didFinishDeferredUpdatesWithError: nil error")
         }
-        // TODO(EGI): send out a notification
+        NotificationCenter.default.post(name: Notification.Name.GeoTrackKit.didFinishDeferredUpdatesWithError, object: error)
     }
 
 }
@@ -237,4 +237,27 @@ fileprivate extension GeoTrackManager {
         locationManager.stopUpdatingLocation()
     }
 
+}
+
+// MARK: - Notifications
+
+public extension Notification.Name {
+
+    /// GeoTrackKit notification constants
+    public struct GeoTrackKit {
+        /// Notofication that the location was updated
+        public static let didUpdateLocations = Notification.Name(rawValue: "com.geotrackkit.did.update.locations")
+
+        /// Notification that location updates were paused
+        public static let didPauseLocationUpdates = Notification.Name(rawValue: "com.geotrackkit.did.pause.location.updates")
+
+        /// Notification that location updates have been resumed
+        public static let didResumeLocationUpdates = Notification.Name(rawValue: "com.geotrackkit.did.resume.location.updates")
+
+        /// Notification that there was a failure tracking location updates
+        public static let didFailWithError = Notification.Name(rawValue: "com.geotrackkit.did.fail.with.error")
+
+        /// Notification that deferred updates have failed with an error
+        public static let didFinishDeferredUpdatesWithError = Notification.Name(rawValue: "com.geotrackkit.did.finish.deferred.updates.with.error")
+    }
 }

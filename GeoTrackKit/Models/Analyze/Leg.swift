@@ -61,7 +61,6 @@ public class TrackStat: Stat {
     public let descentDistance: CLLocationDistance
     public let totalDistance: CLLocationDistance
 
-    // swiftlint:disable:next funtion_parameter_count
     init(runs: Int, ascent: CLLocationDistance, descent: CLLocationDistance, ascentDistance: CLLocationDistance, descentDistance: CLLocationDistance, totalDistance: CLLocationDistance) {
         self.runs = runs
         verticalAscent = ascent

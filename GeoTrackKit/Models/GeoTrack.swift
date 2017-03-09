@@ -196,14 +196,13 @@ fileprivate extension GeoTrack {
     func parse(_ json: [String: Any]) {
         self.name = json["name"] as? String ?? ""
         self.description = json["description"] as? String ?? ""
-
         guard let points = json["points"] as? [[String: Any]] else {
             return
         }
 
         for pointMap in points {
             guard let location = CLLocation.from(map: pointMap) else {
-                // TODO(EGI): make note of this somewhere
+                GTWarn(message: "Failed to deserialize a point from the map")
                 continue
             }
             iPoints.append(location)
