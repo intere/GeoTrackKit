@@ -13,7 +13,7 @@ class TrackMapViewController: UIViewController {
 
     @IBOutlet var mapView: GeoTrackMap!
     @IBOutlet var legContainerView: UIView!
-    
+
     var model: UIGeoTrack? {
         didSet {
             model?.toggleAll(visibility: false)
@@ -21,18 +21,18 @@ class TrackMapViewController: UIViewController {
             tableVC?.model = model
         }
     }
-    
+
     var tableVC: TrackOverviewTableViewController?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         guard let track = TrackMapViewController.loadFromBundle(filename: "reference-track-1", type: "json") else {
             return assertionFailure("Couldn't load the test track")
         }
         model = UIGeoTrack(with: track)
         assert(model != nil, "There is no track")
-        
+
         NotificationCenter.default.addObserver(self, selector: #selector(legVisiblityChanged(_:)), name: Notification.Name.GeoMapping.legVisibilityChanged, object: nil)
     }
 
@@ -65,17 +65,17 @@ class TrackMapViewController: UIViewController {
 // MARK: - Listeners
 
 extension TrackMapViewController {
-    
+
     func legVisiblityChanged(_ notification: NSNotification) {
         mapView.renderTrack()
     }
-    
+
 }
 
 // MARK: - Navigation
 
 extension TrackMapViewController {
-    
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let destinationVC = segue.destination as? TrackOverviewTableViewController else {
             return
@@ -83,5 +83,5 @@ extension TrackMapViewController {
         tableVC = destinationVC
         tableVC?.model = model
     }
-    
+
 }

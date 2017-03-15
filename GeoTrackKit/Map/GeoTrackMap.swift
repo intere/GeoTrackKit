@@ -16,6 +16,8 @@ public class GeoTrackMap: MKMapView {
     public var ascentColor: UIColor = .red
     public var descentColor: UIColor = .blue
 
+    var zoomDelegate: ZoomDefining = DefaultMapZoom()
+
     /// The UI Model for the track.  When you set it, we render it!
     public var model: UIGeoTrack? {
         didSet {
@@ -52,8 +54,12 @@ public extension GeoTrackMap {
             add(polyline)
         }
 
+        if zoomDelegate.shouldZoom {
+            setRegion(zoomDelegate.zoomRegion(for: analyzer.track.points), animated: true)
+        }
+
         // TODO(EGI) move this out into a protocol approach so that we can externalize what and when we should set the zoom region on the map
-        setRegion(getZoomRegion(analyzer.track.points), animated: true)
+//        setRegion(getZoomRegion(analyzer.track.points), animated: true)
     }
 }
 
@@ -87,42 +93,6 @@ extension GeoTrackMap: MKMapViewDelegate {
     }
 }
 
-// MARK: - Helpers
-
-fileprivate extension GeoTrackMap {
-
-    /// helper that will figure out what region on the map should be visible, based on your current points.
-    ///
-    /// - Parameter points: the points to analyze to determine the zoom window.
-    /// - Returns: A zoom region.
-    func getZoomRegion(_ points: [CLLocation]) -> MKCoordinateRegion {
-        var region = MKCoordinateRegion()
-        var maxLat: CLLocationDegrees = -90
-        var maxLon: CLLocationDegrees = -180
-        var minLat: CLLocationDegrees = 90
-        var minLon: CLLocationDegrees = 180
-
-        for point in points {
-            maxLat = max(maxLat, point.coordinate.latitude)
-            maxLon = max(maxLon, point.coordinate.longitude)
-            minLat = min(minLat, point.coordinate.latitude)
-            minLon = min(minLon, point.coordinate.longitude)
-        }
-
-        region.center.latitude = (maxLat + minLat) / 2
-        region.center.longitude = (maxLon + minLon) / 2
-        region.span.latitudeDelta = maxLat - minLat + 0.01
-        region.span.longitudeDelta = maxLon - minLon + 0.01
-
-        if points.count < 4 {
-            region.span.latitudeDelta = 0.0005
-            region.span.longitudeDelta = 0.001
-        }
-
-        return region
-    }
-
-}
 
 // MARK: - converters
 

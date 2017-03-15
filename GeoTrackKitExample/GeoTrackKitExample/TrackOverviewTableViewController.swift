@@ -50,11 +50,11 @@ extension TrackOverviewTableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "LegSwitchCell", for: indexPath)
-        
+
         guard let model = model, let legCell = cell as? LegSwitchCell else {
             return cell
         }
-        
+
         legCell.toggleSwitch.isOn = model.isVisible(at: indexPath.row)
         legCell.label.text = analyzer?.legs[indexPath.row].string
         legCell.indexPath = indexPath
@@ -68,7 +68,7 @@ extension TrackOverviewTableViewController {
 // MARK: - GeoTrackAnalyzer Helpers
 
 extension Leg {
-    
+
     var string: String {
         return String(index) + " - "
             + String(endIndex) + ", "
@@ -76,5 +76,5 @@ extension Leg {
             + String(Int(altitude)) + "-" + String(Int(endPoint!.altitude)) + ", "
             + String(Int(altitudeChange)) + "m"
     }
-    
+
 }

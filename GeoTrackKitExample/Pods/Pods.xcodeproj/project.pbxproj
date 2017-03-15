@@ -80,6 +80,8 @@
 		892937D83D59321F22C2259E4CC5D344 /* Quick-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = DFABEEB10F2E9D33C12ECA566D5947A1 /* Quick-dummy.m */; };
 		8C30EAD5FFD28B387099B41C74657A67 /* NMBExpectation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215D2DBBD2F1901DAD0BA635F194457A /* NMBExpectation.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		917949F596E1188261FC59214782C3D9 /* NMBExceptionCapture.h in Headers */ = {isa = PBXBuildFile; fileRef = 72B50685A7115CB568F2F23A42E31BEA /* NMBExceptionCapture.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		936E692E1E78E47D00D97A6B /* DefaultMapZoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 936E692D1E78E47D00D97A6B /* DefaultMapZoom.swift */; };
+		936E69301E78E67300D97A6B /* ZoomDefining.swift in Sources */ = {isa = PBXBuildFile; fileRef = 936E692F1E78E67300D97A6B /* ZoomDefining.swift */; };
 		93EEFC021E66FC1900090CE7 /* Leg.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93EEFC011E66FC1900090CE7 /* Leg.swift */; };
 		947162383483B6391F8CDF38249BFBD2 /* CwlCatchException.m in Sources */ = {isa = PBXBuildFile; fileRef = B4E171821B1D0ED4DB541E993A5B631F /* CwlCatchException.m */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
 		9544A4EEC2A8448743ECA9981F88B60F /* BeCloseTo.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF53CCA7C0DCBC78C82FED3FBDD6BF88 /* BeCloseTo.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
@@ -245,6 +247,8 @@
 		8BD3BF5EB0A249E68523B43B6402EA1C /* World.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = World.swift; path = Sources/Quick/World.swift; sourceTree = "<group>"; };
 		8C64DCE9D714CA88C06BDCC413FD3661 /* BeVoid.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BeVoid.swift; path = Sources/Nimble/Matchers/BeVoid.swift; sourceTree = "<group>"; };
 		91C1B940CAE99BBBBC563963CD22996B /* DSL.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DSL.m; path = Sources/NimbleObjectiveC/DSL.m; sourceTree = "<group>"; };
+		936E692D1E78E47D00D97A6B /* DefaultMapZoom.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultMapZoom.swift; sourceTree = "<group>"; };
+		936E692F1E78E67300D97A6B /* ZoomDefining.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZoomDefining.swift; sourceTree = "<group>"; };
 		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		93EEFC011E66FC1900090CE7 /* Leg.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Leg.swift; sourceTree = "<group>"; };
 		94B9FC85D7FEB2B0433347BA137CC7E1 /* QuickSelectedTestSuiteBuilder.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = QuickSelectedTestSuiteBuilder.swift; path = Sources/Quick/QuickSelectedTestSuiteBuilder.swift; sourceTree = "<group>"; };
@@ -432,6 +436,8 @@
 			children = (
 				36E5258B1E66315E00691144 /* UIModels */,
 				3691C9AF1E64ECC5007D4718 /* GeoTrackMap.swift */,
+				936E692D1E78E47D00D97A6B /* DefaultMapZoom.swift */,
+				936E692F1E78E67300D97A6B /* ZoomDefining.swift */,
 			);
 			path = Map;
 			sourceTree = "<group>";
@@ -874,10 +880,12 @@
 			files = (
 				A43DCE86418E73DA87196904D4EEE313 /* CLLocationExtension.swift in Sources */,
 				37EB47657CEBE193C1F3103C2CDCB940 /* DateExtension.swift in Sources */,
+				936E69301E78E67300D97A6B /* ZoomDefining.swift in Sources */,
 				42ACDA0A987DC93F485784C1928C0D9C /* GeoTrack.swift in Sources */,
 				6C8FB43240553C1A068A84156B5A9909 /* GeoTrackConsoleAppender.swift in Sources */,
 				9B4FD0E9E8A0AE36DBA5D502D8295BBE /* GeoTrackEvent.swift in Sources */,
 				7FE243FE5C822A37DA4912A9DF08FFDB /* GeoTrackEventLog.swift in Sources */,
+				936E692E1E78E47D00D97A6B /* DefaultMapZoom.swift in Sources */,
 				2ED55E346D583A95A42348E7AC3DEFEC /* GeoTrackKit-dummy.m in Sources */,
 				AD85D0FDEE27655418944D4168BD5DA1 /* GeoTrackLocationEvent.swift in Sources */,
 				3691C9B01E64ECC5007D4718 /* GeoTrackMap.swift in Sources */,

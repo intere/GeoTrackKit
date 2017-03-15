@@ -13,7 +13,7 @@ import GeoTrackKit
 import GeoTrackKitExample
 
 class GeoTrackLocationEventTests: QuickSpec {
-    
+
     override func spec() {
         describe("Factory Creation") {
             it("does create a start tracking event") {
@@ -65,5 +65,5 @@ class GeoTrackLocationEventTests: QuickSpec {
             }
         }
     }
-    
+
 }

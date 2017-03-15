@@ -10,13 +10,13 @@ import GeoTrackKit
 import UIKit
 
 class LegSwitchCell: UITableViewCell {
-    
+
     @IBOutlet var toggleSwitch: UISwitch!
     @IBOutlet var label: UILabel!
-    
+
     var indexPath: IndexPath?
     weak var model: UIGeoTrack?
-    
+
     @IBAction func didToggleSwitch(_ sender: UISwitch) {
         guard let indexPath = indexPath else {
             return assertionFailure("IndexPath not set on cell")
@@ -26,6 +26,5 @@ class LegSwitchCell: UITableViewCell {
         }
         model.set(visibility: toggleSwitch.isOn, for: model.allLegs[indexPath.row])
     }
-    
-    
+
 }

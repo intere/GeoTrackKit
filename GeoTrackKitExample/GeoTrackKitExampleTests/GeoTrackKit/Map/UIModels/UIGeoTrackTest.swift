@@ -10,11 +10,11 @@ import XCTest
 import GeoTrackKit
 
 class UIGeoTrackTest: XCTestCase {
-    
+
     override func setUp() {
         super.setUp()
     }
-    
+
     override func tearDown() {
         super.tearDown()
     }
@@ -26,5 +26,5 @@ class UIGeoTrackTest: XCTestCase {
         let model = UIGeoTrack(with: track)
         XCTAssertNotNil(model)
     }
-    
+
 }
