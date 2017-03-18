@@ -1,8 +1,21 @@
 included:
+  - ./
   - ../GeoTrackKit/
 
+excluded:
+  - Pods
+
 disabled_rules:
-    - line_length
-    - file_length
+  - line_length
+  - todo
+
+function_body_length:
+    - 80
+
+file_length:
+  warning: 500
+
+vertical_whitespace:
+  max_empty_lines: 3
 
 reporter: "xcode"

@@ -20,19 +20,14 @@ public class GeoTrackConsoleAppender {
 
 extension GeoTrackConsoleAppender: GeoTrackLogAppender {
 
+    /// The Unique ID of the appender (for comparison)
     public var uniqueId: String {
         return "GeoTrackConsoleAppender"
     }
 
-//    public var logLevel: GeoTrackEvent.Level {
-//        get {
-//            return iLogLevel
-//        }
-//        set {
-//            iLogLevel = newValue
-//        }
-//    }
-
+    /// Handles the logging of an event (prints it to the console in this case).
+    ///
+    /// - Parameter someEvent: The event to log.
     public func logged(event someEvent: GeoTrackEvent) {
         print(someEvent.string)
     }

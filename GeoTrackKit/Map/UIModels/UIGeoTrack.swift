@@ -96,10 +96,14 @@ fileprivate extension UIGeoTrack {
 
 }
 
+// MARK: - Geo Mapping Notification (for Map Updates)
+
 public extension Notification.Name {
 
     /// A notification that tells us that a visibility of one or more legs has been toggled on the map.
     public struct GeoMapping {
+
+        /// Tells you that a leg's visibility has been toggle on or off and therefore the map should be updated
         public static let legVisibilityChanged = Notification.Name(rawValue: "geo.mapping.leg.visibility.changed")
     }
 }

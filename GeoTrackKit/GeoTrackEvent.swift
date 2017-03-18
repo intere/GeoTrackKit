@@ -8,7 +8,10 @@
 
 import Foundation
 
+/// This class is used to track a GeoTrackEvent (for logging purposes).
 public class GeoTrackEvent {
+
+    /// The Logging Level
     public enum Level: Int {
         case trace = 1
         case debug
@@ -56,22 +59,42 @@ public class GeoTrackEvent {
 
 public extension GeoTrackEvent {
 
+    /// Log at the tracing level (potentially very chatty).
+    ///
+    /// - Parameter message: the message to be logged
+    /// - Returns: The GeoTrackEvent
     static func trace(message: String) -> GeoTrackEvent {
         return GeoTrackEvent(level: .trace, message: message)
     }
 
+    /// Log at the debug level (could be quite chatty).
+    ///
+    /// - Parameter message: The message to be logged
+    /// - Returns: The GeoTrackEvent
     static func debug(message: String) -> GeoTrackEvent {
         return GeoTrackEvent(level: .debug, message: message)
     }
 
+    /// Log at the info level (should not be very chatty)
+    ///
+    /// - Parameter message: The message to be logged
+    /// - Returns: The GeoTrackEvent
     static func info(message: String) -> GeoTrackEvent {
         return GeoTrackEvent(level: .info, message: message)
     }
 
+    /// Log at the warn level (should not happen very often)
+    ///
+    /// - Parameter message: The message to be logged
+    /// - Returns: The GeoTrackEvent
     static func warn(message: String) -> GeoTrackEvent {
         return GeoTrackEvent(level: .warn, message: message)
     }
 
+    /// Log at the error level (this should not happen very often at all)
+    ///
+    /// - Parameter message: The message to be logged
+    /// - Returns: The GeoTrackEvent
     static func error(message: String) -> GeoTrackEvent {
         return GeoTrackEvent(level: .error, message: message)
     }

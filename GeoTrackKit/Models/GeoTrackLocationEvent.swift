@@ -12,6 +12,7 @@ import CoreLocation
  This class is responsible for keeping track of different types of track events.  For example when the user starts tracking, stops tracking, pauses tracking, and your own custom event types.
  */
 public class GeoTrackLocationEvent {
+
     public enum EventType: Int {
         case startedTrack = 1
         case pausedTrack = 2
@@ -40,8 +41,8 @@ public class GeoTrackLocationEvent {
 
     private(set) public var type: EventType = .other
     private(set) public var timestamp: Date = Date()
-    private(set) public var message: String? = nil
-    private(set) public var index: Int? = nil
+    private(set) public var message: String?
+    private(set) public var index: Int?
 
     internal init(type: EventType, timestamp: Date? = nil, message: String? = nil, index: Int? = nil) {
         self.type = type
@@ -57,22 +58,7 @@ public class GeoTrackLocationEvent {
 
 public extension GeoTrackLocationEvent {
 
-//    var type: EventType {
-//        return iType
-//    }
-//
-//    var timestamp: Date {
-//        return iTimestamp
-//    }
-//
-//    var message: String? {
-//        return iMessage
-//    }
-//
-//    var index: Int? {
-//        return iIndex
-//    }
-
+    /// Converts this event to a human readable string
     var string: String {
         var result = "[\(timestamp)] [\(type.string.uppercased())]"
         if let index = index {

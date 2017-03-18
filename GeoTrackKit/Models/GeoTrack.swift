@@ -208,7 +208,7 @@ fileprivate extension GeoTrack {
             iPoints.append(location)
         }
 
-        guard let events = json["events"] as? [[String: Any]] else {
+        guard let _ = json["events"] as? [[String: Any]] else {
             return
         }
 

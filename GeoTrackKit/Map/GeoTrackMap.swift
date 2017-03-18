@@ -12,11 +12,16 @@ import CoreLocation
 /// This class provides you an easy way to visualize your track on a map.  You can configure the unknown, ascent and descent colors.  They have sensible defaults.  Using the UIGeoTrack model, you can set which legs of your track are visible and we'll render them accordingly.  Keep in mind, performance of this control may degrade if your tracks have too many points.
 public class GeoTrackMap: MKMapView {
 
+    /// The color to use when rendering a leg of unknown direction (could be flat, or we just don't have enough altitude change to tell if it's an ascent or descent)
     public var unknownColor: UIColor = .yellow
+
+    /// The color to use when rendering an ascent
     public var ascentColor: UIColor = .red
+
+    /// The color to use when rendering a descent
     public var descentColor: UIColor = .blue
 
-    var zoomDelegate: ZoomDefining = DefaultMapZoom()
+    weak var zoomDelegate: ZoomDefining?
 
     /// The UI Model for the track.  When you set it, we render it!
     public var model: UIGeoTrack? {
@@ -28,11 +33,13 @@ public class GeoTrackMap: MKMapView {
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         delegate = self
+        zoomDelegate = DefaultMapZoom()
     }
 
     override public init(frame: CGRect) {
         super.init(frame: frame)
         delegate = self
+        zoomDelegate = DefaultMapZoom()
     }
 }
 
@@ -54,12 +61,12 @@ public extension GeoTrackMap {
             add(polyline)
         }
 
+        guard let zoomDelegate = zoomDelegate else {
+            return
+        }
         if zoomDelegate.shouldZoom {
             setRegion(zoomDelegate.zoomRegion(for: analyzer.track.points), animated: true)
         }
-
-        // TODO(EGI) move this out into a protocol approach so that we can externalize what and when we should set the zoom region on the map
-//        setRegion(getZoomRegion(analyzer.track.points), animated: true)
     }
 }
 

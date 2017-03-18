@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="B8m-Nk-0NK" kind="relationship" relationship="rootViewController" id="QCh-Kl-hM4"/>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="EEu-Yz-OB7"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="V0g-9X-vRk" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -87,7 +87,7 @@
                                 <rect key="frame" x="329" y="28" width="30" height="30"/>
                                 <state key="normal" title="Map"/>
                                 <connections>
-                                    <segue destination="B8m-Nk-0NK" kind="showDetail" id="EWF-6j-kNk"/>
+                                    <segue destination="B8m-Nk-0NK" kind="show" id="biC-Rg-7eV"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -192,7 +192,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="nYJ-8N-gqT" id="uDD-QK-TzM">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="59.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aRp-un-fY3">
@@ -235,7 +235,4 @@
             <point key="canvasLocation" x="957.60000000000002" y="721.88905547226398"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="EWF-6j-kNk"/>
-    </inferredMetricsTieBreakers>
 </document>

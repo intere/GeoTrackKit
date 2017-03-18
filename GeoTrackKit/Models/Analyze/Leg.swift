@@ -9,6 +9,7 @@
 
 import CoreLocation
 
+/// This class keeps track of statistics for a Leg (ascent or descent) of a track.
 public class Stat {
     /// Minimum altitude in meters
     fileprivate(set) public var minimumAltitude: CLLocationDistance = 0
@@ -43,6 +44,9 @@ public class Stat {
         maximumSpeed = max(maximumSpeed, point.speed)
     }
 
+    /// Combines this stat with another stat (it generally makes sense to do this with another leg that is in the same direction)
+    ///
+    /// - Parameter stat: The stat to combine with
     func combine(with stat: Stat) {
         distance += stat.distance
         maximumAltitude = max(maximumAltitude, stat.maximumAltitude)
@@ -52,15 +56,30 @@ public class Stat {
     }
 }
 
+/// This class keeps track of statistics for an entire Geo Track.  It summarizes the stats of all of the legs that comprise it and it keeps trak of the number of runs.
 public class TrackStat: Stat {
     /// The number of "ski runs" (aka the number of times descended)
     public let runs: Int
+    /// The total vertical ascent for the entire track
     public let verticalAscent: CLLocationDistance
+    /// The total vertical descent for the entire track
     public let verticalDescent: CLLocationDistance
+    /// The total distance covered during ascents for this track
     public let ascentDistance: CLLocationDistance
+    /// The total distance covered during descents for this track
     public let descentDistance: CLLocationDistance
+    /// The total distance covered for this track
     public let totalDistance: CLLocationDistance
 
+    /// Initialize this TrackStat with the required properties.  Generally you want to create this stat using the `summarize(from legs: [Leg])` factory creation function to create one of these objects.  That function will compute all of the required fields and delegate to this initializer.
+    ///
+    /// - Parameters:
+    ///   - runs: the number of runs for the track
+    ///   - ascent: the vertical ascent for the track
+    ///   - descent: the vertical descent for this track
+    ///   - ascentDistance: the total ascent distance for this track
+    ///   - descentDistance: the total descent distance for this track
+    ///   - totalDistance: the total distance for this track
     init(runs: Int, ascent: CLLocationDistance, descent: CLLocationDistance, ascentDistance: CLLocationDistance, descentDistance: CLLocationDistance, totalDistance: CLLocationDistance) {
         self.runs = runs
         verticalAscent = ascent
@@ -70,6 +89,10 @@ public class TrackStat: Stat {
         self.totalDistance = totalDistance
     }
 
+    /// Using the provided array of Legs, this function will compute the track summary stats and provide you with a a summary TrackStat for the entire track.
+    ///
+    /// - Parameter legs: The legs to summarize
+    /// - Returns: A TrackStat that contains the results of the overall stats for the track.
     public static func summarize(from legs: [Leg]) -> TrackStat {
         let baseOverallStat = Stat()
         var runs = 0
@@ -93,7 +116,7 @@ public class TrackStat: Stat {
             tDistance += stat.distance
         }
 
-        var stat = TrackStat(runs: runs, ascent: vAscent, descent: vDescent, ascentDistance: aDistance, descentDistance: dDistance, totalDistance: tDistance)
+        let stat = TrackStat(runs: runs, ascent: vAscent, descent: vDescent, ascentDistance: aDistance, descentDistance: dDistance, totalDistance: tDistance)
         stat.combine(with: baseOverallStat)
         return stat
     }
