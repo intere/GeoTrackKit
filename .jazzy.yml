@@ -1,0 +1,8 @@
+module: GeoTrackKit
+author: Eric Internicola
+author_url: http://intere.github.io
+github_url: https://github.com/intere/GeoTrackKit
+copyright: "© 2016-2017 [Eric Internicola](http://intere.github.io)"
+clean: true
+podspec: ../GeoTrackKit.podspec
+swift_version: 3.0

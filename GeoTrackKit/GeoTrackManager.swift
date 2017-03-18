@@ -20,12 +20,16 @@ public class GeoTrackManager: NSObject {
 
     // GeoTrackService stuff
     internal var trackingState: GeoTrackState = .notTracking
+    /// Your app's name
     internal var appName: String = "No Application Name"
 
     // Other stuff
     internal var locationManager: CLLocationManager?
+    /// The last Geo Point to be tracked
     fileprivate(set) public var lastPoint: CLLocation?
+    /// Are we authorized for location tracking?
     fileprivate(set) public var authorized: Bool = false
+    /// The Track
     fileprivate(set) public var track: GeoTrack?
 }
 

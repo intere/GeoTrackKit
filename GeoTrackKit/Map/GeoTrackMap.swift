@@ -21,7 +21,7 @@ public class GeoTrackMap: MKMapView {
     /// The color to use when rendering a descent
     public var descentColor: UIColor = .blue
 
-    weak var zoomDelegate: ZoomDefining?
+    public var zoomDelegate: ZoomDefining?
 
     /// The UI Model for the track.  When you set it, we render it!
     public var model: UIGeoTrack? {
