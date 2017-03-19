@@ -19,10 +19,9 @@ public extension Date {
         return Date(timeIntervalSince1970: timeInterval)
     }
 
-
     /// Gives you the MSSE (Milliseconds Since the Epoch) representation of this date
     var msse: Double {
         return timeIntervalSince1970 * 1000
     }
-    
+
 }

@@ -90,7 +90,34 @@ class GeoTrackSerializationTests: QuickSpec {
                 let reader = TrackReader(filename: "reference-track-1")
                 expect(reader).toNot(beNil())
                 expect(reader.track).toNot(beNil())
-                expect(reader.track?.points.count).to(beGreaterThan(0))
+
+                guard let points = reader.track?.points else {
+                    fail("No points")
+                    return
+                }
+
+                expect(points.count).to(beGreaterThan(0))
+
+                var last: Date?
+                for point in points {
+                    defer {
+                        last = point.timestamp
+                    }
+                    guard let lastTime = last else {
+                        continue
+                    }
+                    expect(lastTime.timeIntervalSince1970).to(beLessThan(point.timestamp.timeIntervalSince1970))
+                }
+            }
+
+            it("does analyze a track file") {
+                let reader = TrackReader(filename: "reference-track-1")
+                guard let track = reader.track else {
+                    fail("No track")
+                    return
+                }
+                let analyzer = GeoTrackAnalyzer(track: track)
+                analyzer.calculate()
             }
 
         }

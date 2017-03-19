@@ -9,25 +9,35 @@
 import Foundation
 import CoreLocation
 
+/// This class is responsible for managing (and brokering) everything related to tracking for you.
+/// ### Sample Usage:
+/// ```
+/// GeoTrackManager.shared.startTracking()
+///
+/// ```
 public class GeoTrackManager: NSObject {
-    public static let shared = GeoTrackManager()
+    public static let shared: GeoTrackService = GeoTrackManager()
 
     // GeoTrackService stuff
     internal var trackingState: GeoTrackState = .notTracking
+    /// Your app's name
     internal var appName: String = "No Application Name"
 
     // Other stuff
     internal var locationManager: CLLocationManager?
-    internal var _lastPoint: CLLocation?
-    internal var _authorized: Bool = false
-
-    internal var _track: GeoTrack?
+    /// The last Geo Point to be tracked
+    fileprivate(set) public var lastPoint: CLLocation?
+    /// Are we authorized for location tracking?
+    fileprivate(set) public var authorized: Bool = false
+    /// The Track
+    fileprivate(set) public var track: GeoTrack?
 }
 
 // MARK: - API
 
 extension GeoTrackManager: GeoTrackService {
 
+    /// The application name - do we really need this?
     public var applicationName: String {
         get {
             return appName
@@ -35,16 +45,6 @@ extension GeoTrackManager: GeoTrackService {
         set {
             appName = newValue
         }
-    }
-
-    /// Gives you the current track
-    public var track: GeoTrack? {
-        return _track
-    }
-
-    /// Gives you the last received location point
-    public var lastPoint: CLLocation? {
-        return _lastPoint
     }
 
     /// Are we currently tracking?
@@ -70,6 +70,7 @@ extension GeoTrackManager: GeoTrackService {
         trackingState = .awaitingFix
     }
 
+    /// Stops tracking
     public func stopTracking() {
         GTInfo(message: "User requested Stop Tracking")
 
@@ -78,82 +79,111 @@ extension GeoTrackManager: GeoTrackService {
     }
 }
 
+// MARK: - CLLocationManagerDelegate
+
 extension GeoTrackManager: CLLocationManagerDelegate {
 
+    /// Handler for location authorization changes.
+    ///
+    /// - Parameters:
+    ///   - manager: The source of the notification.
+    ///   - status: The status change.
     public func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
 
         switch status {
         case .authorizedAlways:
             GTDebug(message: "Authorization has been updated, starting location updates")
             locationManager?.startUpdatingLocation()
-            _authorized = true
+            authorized = true
 
         case .denied:
             GTError(message: "User denied location updates")
-            _track?.error(message: "Location access denied")
-            _authorized = false
+            track?.error(message: "Location access denied")
+            authorized = false
 
         case .notDetermined:
             GTDebug(message: "Could not determine access to location updates")
-            _track?.error(message: "Location access not determined")
-            _authorized = false
+            track?.error(message: "Location access not determined")
+            authorized = false
 
         case .restricted:
             GTError(message: "Restricted from access to location updates")
-            _track?.error(message: "Location access restricted")
-            _authorized = false
+            track?.error(message: "Location access restricted")
+            authorized = false
 
         default:
             GTError(message: "Other access to location updates (unacceptable)")
-            _track?.error(message: "Location access not acceptable")
-            _authorized = false
+            track?.error(message: "Location access not acceptable")
+            authorized = false
         }
     }
 
+    /// Handles location updates.
+    ///
+    /// - Parameters:
+    ///   - manager: The source of the event.
+    ///   - locations: The location updates that happened.
     public func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if trackingState == .awaitingFix {
             trackingState = .tracking
         }
         GTDebug(message: "New Locations: \(locations)")
         guard let location = locations.last else {
-            _lastPoint = nil
+            lastPoint = nil
             return
         }
-        _lastPoint = location
+        lastPoint = location
 
-        guard let track = _track else {
+        guard let track = track else {
             GTError(message: "No current track to store points within")
             return
         }
         track.add(locations: locations)
+        NotificationCenter.default.post(name: Notification.Name.GeoTrackKit.didUpdateLocations, object: locations)
     }
 
+    /// Handles location tracking pauses
+    ///
+    /// - Parameter manager: the source of the event.
     public func locationManagerDidPauseLocationUpdates(_ manager: CLLocationManager) {
-        // TODO: Implement me
         GTDebug(message: "Paused Location Updates")
         track?.pauseTracking(message: "locationManagerDidPauseLocationUpdates event")
+        NotificationCenter.default.post(name: Notification.Name.GeoTrackKit.didPauseLocationUpdates, object: nil)
     }
 
+    /// Handles location tracking resuming.
+    ///
+    /// - Parameter manager: the source of the event.
     public func locationManagerDidResumeLocationUpdates(_ manager: CLLocationManager) {
-        // TODO: Implement me
         GTDebug(message: "Resumed Location Updates")
         track?.startTracking(message: "locationManagerDidResumeLocationUpdates event")
+        NotificationCenter.default.post(name: Notification.Name.GeoTrackKit.didResumeLocationUpdates, object: nil)
     }
 
+    /// Handles location tracking errors
+    ///
+    /// - Parameters:
+    ///   - manager: the source of the event.
+    ///   - error: the error that occurred.
     public func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        // TODO: Impelement me
         GTError(message: "Failed to perform location tracking: \(error.localizedDescription), \(error)")
-        _track?.error(error: error)
+        track?.error(error: error)
+        NotificationCenter.default.post(name: Notification.Name.GeoTrackKit.didFailWithError, object: error)
     }
 
+    /// Handles deferred update errors.
+    ///
+    /// - Parameters:
+    ///   - manager: the source of the event.
+    ///   - error: the error that occurred.
     public func locationManager(_ manager: CLLocationManager, didFinishDeferredUpdatesWithError error: Error?) {
-        // TODO: Implement me
         GTError(message: "Failed Deffered Updates: \(error?.localizedDescription), \(error)")
         if let error = error {
-            _track?.error(error: error)
+            track?.error(error: error)
         } else {
-            _track?.error(message: "locationManager:didFinishDeferredUpdatesWithError: nil error")
+            track?.error(message: "locationManager:didFinishDeferredUpdatesWithError: nil error")
         }
+        NotificationCenter.default.post(name: Notification.Name.GeoTrackKit.didFinishDeferredUpdatesWithError, object: error)
     }
 
 }
@@ -162,6 +192,7 @@ extension GeoTrackManager: CLLocationManagerDelegate {
 
 fileprivate extension GeoTrackManager {
 
+    /// Initializes the location manager and sets the preferences
     func initializeLocationManager() {
         guard self.locationManager == nil else {
             return
@@ -170,40 +201,67 @@ fileprivate extension GeoTrackManager {
         let locationManager = CLLocationManager()
         locationManager.activityType = .fitness
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
+
         // Until we come up with a heuristic to unpause it
         locationManager.pausesLocationUpdatesAutomatically = false
-        locationManager.allowsBackgroundLocationUpdates = true
-        // only give us updates when we have 10 meters of change
+
+        // only give us updates when we have 10 meters of change (otherwise we get way too much data)
         locationManager.distanceFilter = 10
+        locationManager.allowsBackgroundLocationUpdates = true
         locationManager.delegate = self
 
         self.locationManager = locationManager
     }
 
+    /// Handles requesting always authorization from location services
     func beginLocationUpdates() {
         guard let locationManager = locationManager else {
             return
         }
 
-        if _track == nil {
+        if track == nil {
             GTDebug(message: "Created new GeoTrack object")
-            _track = GeoTrack()
+            track = GeoTrack()
         }
-        _track?.startTracking()
+        track?.startTracking()
 
-        if !_authorized {
+        if !authorized {
             locationManager.requestAlwaysAuthorization()
         } else {
             locationManager.startUpdatingLocation()
         }
     }
 
+    /// Handles stopping tracking
     func endLocationUpdates() {
         guard let locationManager = locationManager else {
             return
         }
-        _track?.stopTracking()
+        track?.stopTracking()
         locationManager.stopUpdatingLocation()
     }
-    
+
+}
+
+// MARK: - Notifications
+
+public extension Notification.Name {
+
+    /// GeoTrackKit notification constants
+    public struct GeoTrackKit {
+        /// Notofication that the location was updated
+        public static let didUpdateLocations = Notification.Name(rawValue: "com.geotrackkit.did.update.locations")
+
+        /// Notification that location updates were paused
+        public static let didPauseLocationUpdates = Notification.Name(rawValue: "com.geotrackkit.did.pause.location.updates")
+
+        /// Notification that location updates have been resumed
+        public static let didResumeLocationUpdates = Notification.Name(rawValue: "com.geotrackkit.did.resume.location.updates")
+
+        /// Notification that there was a failure tracking location updates
+        public static let didFailWithError = Notification.Name(rawValue: "com.geotrackkit.did.fail.with.error")
+
+        /// Notification that deferred updates have failed with an error
+        public static let didFinishDeferredUpdatesWithError = Notification.Name(rawValue: "com.geotrackkit.did.finish.deferred.updates.with.error")
+    }
 }

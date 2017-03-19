@@ -8,19 +8,25 @@
 
 import CoreLocation
 
-/**
- This class is responsible for keeping track of different types of track events.  For example when the user starts tracking, stops tracking, pauses tracking, and your own custom event types.
- */
+/// This class is responsible for keeping track of different types of track events.  For example when the user starts tracking, stops tracking, pauses tracking, and your own custom event types.
 public class GeoTrackLocationEvent {
+
     public enum EventType: Int {
+        /// Tracking has started
         case startedTrack = 1
+        /// Tracking has been paused
         case pausedTrack = 2
+        /// Tracking has been stopped
         case stoppedTrack = 3
+        /// A Tracking error has occurred
         case error = 4
+        /// A custom event has happened
         case custom = 5
+        /// Some other type of event has occurred
         case other = 6
 
-        var string: String {
+        /// A human readable string for the event
+        public var string: String {
             switch self {
             case .startedTrack:
                 return "Started Track"
@@ -38,18 +44,29 @@ public class GeoTrackLocationEvent {
         }
     }
 
-    var _type: EventType = .other
-    var _timestamp: Date = Date()
-    var _message: String? = nil
-    var _index: Int? = nil
+    /// The type of event (see EventType)
+    private(set) public var type: EventType = .other
+    /// The timestamp of the event
+    private(set) public var timestamp: Date = Date()
+    /// The message for this event
+    private(set) public var message: String?
+    /// The index of the point that the event is related to.
+    private(set) public var index: Int?
 
+    /// Initializer - not meant to be used directly, call one of the factory creation functions.
+    ///
+    /// - Parameters:
+    ///   - type: The type of event
+    ///   - timestamp: The timestamp of the event
+    ///   - message: The message for the event
+    ///   - index: The (optional) index of a point that this event is related to (in the Track)
     internal init(type: EventType, timestamp: Date? = nil, message: String? = nil, index: Int? = nil) {
-        _type = type
+        self.type = type
         if let timestamp = timestamp {
-            _timestamp = timestamp
+            self.timestamp = timestamp
         }
-        _message = message
-        _index = index
+        self.message = message
+        self.index = index
     }
 }
 
@@ -57,22 +74,7 @@ public class GeoTrackLocationEvent {
 
 public extension GeoTrackLocationEvent {
 
-    var type: EventType {
-        return _type
-    }
-
-    var timestamp: Date {
-        return _timestamp
-    }
-
-    var message: String? {
-        return _message
-    }
-
-    var index: Int? {
-        return _index
-    }
-
+    /// Converts this event to a human readable string
     var string: String {
         var result = "[\(timestamp)] [\(type.string.uppercased())]"
         if let index = index {
@@ -178,7 +180,6 @@ public extension GeoTrackLocationEvent {
         static let index = "index"
     }
 
-
     /// Deserializes the provided map into a GeoTrackLocationEvent.
     ///
     /// - Parameter map: the map to be deserialized.
@@ -186,8 +187,7 @@ public extension GeoTrackLocationEvent {
     static func from(map: [String: Any]) -> GeoTrackLocationEvent? {
         guard let rawType = map[Constants.type] as? Int,
             let type = EventType(rawValue: rawType),
-            let msse = map[Constants.timestamp] as? TimeInterval else
-        {
+            let msse = map[Constants.timestamp] as? TimeInterval else {
             return nil
         }
         let message = map[Constants.message] as? String
@@ -204,13 +204,13 @@ public extension GeoTrackLocationEvent {
     /// - Returns: A map of [String: Any]
     var map: [String: Any] {
         var dict: [String: Any] = [
-            Constants.type: _type.rawValue,
-            Constants.timestamp: _timestamp.msse
+            Constants.type: type.rawValue,
+            Constants.timestamp: timestamp.msse
         ]
-        if let message = _message {
+        if let message = message {
             dict[Constants.message] = message
         }
-        if let index = _index {
+        if let index = index {
             dict[Constants.index] = index
         }
 

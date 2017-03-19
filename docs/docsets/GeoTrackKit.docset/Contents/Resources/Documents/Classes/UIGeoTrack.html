@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>UIGeoTrack Class Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a name="//apple_ref/swift/Class/UIGeoTrack" class="dashAnchor"></a>
+    <a title="UIGeoTrack Class Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="../index.html">GeoTrackKit Docs</a> (97% documented)</p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../index.html">GeoTrackKit Reference</a>
+        <img id="carat" src="../img/carat.png" />
+        UIGeoTrack Class Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="../Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Classes/DefaultMapZoom.html">DefaultMapZoom</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/GeoTrack.html">GeoTrack</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/GeoTrackAnalyzer.html">GeoTrackAnalyzer</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/GeoTrackConsoleAppender.html">GeoTrackConsoleAppender</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/GeoTrackEvent.html">GeoTrackEvent</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/GeoTrackEvent/Level.html">– Level</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/GeoTrackEventLog.html">GeoTrackEventLog</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/GeoTrackLocationEvent.html">GeoTrackLocationEvent</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/GeoTrackLocationEvent/EventType.html">– EventType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/GeoTrackManager.html">GeoTrackManager</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/GeoTrackMap.html">GeoTrackMap</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Leg.html">Leg</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Stat.html">Stat</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/TrackStat.html">TrackStat</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/UIGeoTrack.html">UIGeoTrack</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Enums.html">Enums</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Enums/Direction.html">Direction</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/GeoTrackState.html">GeoTrackState</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Extensions.html">Extensions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Extensions/CLLocation.html">CLLocation</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/Date.html">Date</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/Notification.html">Notification</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/Notification/GeoMapping.html">– GeoMapping</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/Notification/GeoTrackKit.html">– GeoTrackKit</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Protocols/GeoTrackLogAppender.html">GeoTrackLogAppender</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/GeoTrackService.html">GeoTrackService</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/ZoomDefining.html">ZoomDefining</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Typealiases.html">Typealiases</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:11GeoTrackKit20GeoTrackAuthCallback">GeoTrackAuthCallback</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>UIGeoTrack</h1>
+              <div class="declaration">
+                <div class="language">
+                  <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">UIGeoTrack</span></code></pre>
+
+                </div>
+              </div>
+            <p>A UI Model for a track.  It keeps track of a Track (<code><a href="../Classes/GeoTrack.html">GeoTrack</a></code>), a Track Analyzer (<code><a href="../Classes/GeoTrackAnalyzer.html">GeoTrackAnalyzer</a></code>) and a collection of Legs (ascents, descents) that are currently visible</p>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vC11GeoTrackKit10UIGeoTrack5trackCS_8GeoTrack"></a>
+                    <a name="//apple_ref/swift/Property/track" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vC11GeoTrackKit10UIGeoTrack5trackCS_8GeoTrack">track</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The Track</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">track</span><span class="p">:</span> <span class="kt"><a href="../Classes/GeoTrack.html">GeoTrack</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vC11GeoTrackKit10UIGeoTrack8analyzerCS_16GeoTrackAnalyzer"></a>
+                    <a name="//apple_ref/swift/Property/analyzer" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vC11GeoTrackKit10UIGeoTrack8analyzerCS_16GeoTrackAnalyzer">analyzer</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The Track analyzer (provides stats about the track)</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">analyzer</span><span class="p">:</span> <span class="kt"><a href="../Classes/GeoTrackAnalyzer.html">GeoTrackAnalyzer</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC11GeoTrackKit10UIGeoTrackcFT4withCS_8GeoTrack_S0_"></a>
+                    <a name="//apple_ref/swift/Method/init(with:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC11GeoTrackKit10UIGeoTrackcFT4withCS_8GeoTrack_S0_">init(with:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Initializes the UI Model with the provided track.  It then creates the analyzer and calculates the stats for it.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="n">with</span> <span class="nv">track</span><span class="p">:</span> <span class="kt"><a href="../Classes/GeoTrack.html">GeoTrack</a></span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>track</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The track to initialize with.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC11GeoTrackKit10UIGeoTrack9toggleAllFT10visibilitySb_T_"></a>
+                    <a name="//apple_ref/swift/Method/toggleAll(visibility:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC11GeoTrackKit10UIGeoTrack9toggleAllFT10visibilitySb_T_">toggleAll(visibility:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Toggles the visibility of all cells</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">toggleAll</span><span class="p">(</span><span class="n">visibility</span> <span class="nv">visible</span><span class="p">:</span> <span class="kt">Bool</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>visible</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Whether they should all be visible or not.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC11GeoTrackKit10UIGeoTrack9isVisibleFT2atSi_Sb"></a>
+                    <a name="//apple_ref/swift/Method/isVisible(at:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC11GeoTrackKit10UIGeoTrack9isVisibleFT2atSi_Sb">isVisible(at:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Tells you if the leg at the specified index is visible or not</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">isVisible</span><span class="p">(</span><span class="n">at</span> <span class="nv">index</span><span class="p">:</span> <span class="kt">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>index</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The index to check for visibility</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>true if it’s visible, false if it’s not.</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC11GeoTrackKit10UIGeoTrack3setFT10visibilitySb3forCS_3Leg_T_"></a>
+                    <a name="//apple_ref/swift/Method/set(visibility:for:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC11GeoTrackKit10UIGeoTrack3setFT10visibilitySb3forCS_3Leg_T_">set(visibility:for:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Toggles the visibility and sends out a notification</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">set</span><span class="p">(</span><span class="n">visibility</span> <span class="nv">visible</span><span class="p">:</span> <span class="kt">Bool</span><span class="p">,</span> <span class="k">for</span> <span class="nv">leg</span><span class="p">:</span> <span class="kt"><a href="../Classes/Leg.html">Leg</a></span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>visible</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The visibility to set for the</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>leg</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The leg to be toggled</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vC11GeoTrackKit10UIGeoTrack4legsGSaCS_3Leg_"></a>
+                    <a name="//apple_ref/swift/Property/legs" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vC11GeoTrackKit10UIGeoTrack4legsGSaCS_3Leg_">legs</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The current set of legs that are visible on the map</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">legs</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Classes/Leg.html">Leg</a></span><span class="p">]</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vC11GeoTrackKit10UIGeoTrack7allLegsGSaCS_3Leg_"></a>
+                    <a name="//apple_ref/swift/Property/allLegs" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vC11GeoTrackKit10UIGeoTrack7allLegsGSaCS_3Leg_">allLegs</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The entire set of legs (including those that are hidden)</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">allLegs</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Classes/Leg.html">Leg</a></span><span class="p">]</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2017 <a class="link" href="https://github.com/intere/GeoTrackKit" target="_blank" rel="external">Eric Internicola</a>. All rights reserved. (Last updated: 2017-03-19)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.7.4</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>

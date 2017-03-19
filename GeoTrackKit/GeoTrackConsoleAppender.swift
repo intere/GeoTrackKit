@@ -11,28 +11,25 @@ import Foundation
 /// The Console Appender
 public class GeoTrackConsoleAppender {
 
+    /// Singelton instance of the Console Appender
     public static let shared = GeoTrackConsoleAppender()
 
-    var _logLevel: GeoTrackEvent.Level = .debug
+    /// The current log level
+    public var logLevel: GeoTrackEvent.Level = .debug
 
     private init() {}
 }
 
 extension GeoTrackConsoleAppender: GeoTrackLogAppender {
 
+    /// The Unique ID of the appender (for comparison)
     public var uniqueId: String {
         return "GeoTrackConsoleAppender"
     }
 
-    public var logLevel: GeoTrackEvent.Level {
-        get {
-            return _logLevel
-        }
-        set {
-            _logLevel = newValue
-        }
-    }
-
+    /// Handles the logging of an event (prints it to the console in this case).
+    ///
+    /// - Parameter someEvent: The event to log.
     public func logged(event someEvent: GeoTrackEvent) {
         print(someEvent.string)
     }

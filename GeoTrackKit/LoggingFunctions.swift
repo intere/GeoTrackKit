@@ -5,6 +5,7 @@
 //  Created by Internicola, Eric on 12/7/16.
 //
 //
+//  This module contains internal logging functions that can be used anywhere in the framework
 
 import Foundation
 

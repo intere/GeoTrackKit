@@ -20,12 +20,20 @@ class ViewController: UIViewController {
     @IBOutlet weak var eventLog: UITextView!
     @IBOutlet weak var speedLabel: UILabel!
 
-    var timer: Timer?
-
     override func viewDidLoad() {
         super.viewDidLoad()
         updateLabels()
         eventLog.text = ""
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        NotificationCenter.default.addObserver(self, selector: #selector(locationDidUpdate(_:)), name: Notification.Name.GeoTrackKit.didUpdateLocations, object: nil)
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        NotificationCenter.default.removeObserver(self)
+        super.viewWillDisappear(animated)
     }
 
     override func didReceiveMemoryWarning() {
@@ -37,6 +45,18 @@ class ViewController: UIViewController {
     }
 }
 
+// MARK: - Listeners
+
+extension ViewController {
+
+    func locationDidUpdate(_ notification: NSNotification) {
+        DispatchQueue.main.async {
+            self.updateLabels()
+        }
+    }
+
+}
+
 // MARK: - Helpers
 
 fileprivate extension ViewController {
@@ -44,10 +64,8 @@ fileprivate extension ViewController {
     func handleTrackingClick() {
         if GeoTrackManager.shared.isTracking {
             GeoTrackManager.shared.stopTracking()
-            timer?.invalidate()
         } else {
             GeoTrackManager.shared.startTracking()
-            timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateLabels), userInfo: nil, repeats: true)
         }
         updateButtonText()
         updateLabels()
@@ -57,7 +75,7 @@ fileprivate extension ViewController {
         button.setTitle(GeoTrackManager.shared.isTracking ? "Stop Tracking" : "Start Tracking", for: .normal)
     }
 
-    @objc func updateLabels() {
+    func updateLabels() {
         updateButtonText()
         let track = GeoTrackManager.shared.track
         updatePointCount(track: track)
@@ -114,24 +132,36 @@ fileprivate extension ViewController {
         pointsLabel.text = "Points: \(track.points.count)"
     }
 
+    /// Updates the speed label
+    ///
+    /// - Parameter location: The location point to fetch the speed from.
     func updateSpeed(location: CLLocation) {
         let mph = String(format: "%.1f", location.speed.metersPerSecondToMilesPerHour)
         let kmph = String(format: "%.1f", location.speed.metersPerSecondToKilometersPerHour)
         speedLabel.text = "Speed: \(mph) mph / \(kmph) kmph"
     }
 
+    /// Updates the Accuracy label and displays the horizontal and veritcal accuracies.
+    ///
+    /// - Parameter location: The location point to fetch the accuracies from.
     func updateAccuracy(location: CLLocation) {
         let hAcc = String(format: "%.2f", location.horizontalAccuracy)
         let vAcc = String(format: "%.2f", location.verticalAccuracy)
         accuracyLabel.text = "hAcc/vAcc: \(hAcc) / \(vAcc)"
     }
 
+    /// Updates the Location label.
+    ///
+    /// - Parameter location: The location to fetch the location from.
     func updateLocation(location: CLLocation) {
         let lat = String(format: "%.5f", location.coordinate.latitude)
         let lon = String(format: "%.5f", location.coordinate.longitude)
         locationLabel.text = "Lat/Lon: \(lat) / \(lon)"
     }
 
+    /// Updates the Altitude label and displays it to the user.
+    ///
+    /// - Parameter location: The location to fetch the altitude from.
     func updateAltitude(location: CLLocation) {
         let feet = Int(location.altitude.metersToFeet)
         let meters = Int(location.altitude)
@@ -144,10 +174,12 @@ fileprivate extension ViewController {
 
 extension CLLocationSpeed {
 
+    /// Converts "meters per second" to "miles per hour".
     var metersPerSecondToMilesPerHour: Double {
         return self * 2.23694
     }
 
+    /// Converts "meters per second" to "kilometers per hour"
     var metersPerSecondToKilometersPerHour: Double {
         return self * 3.6
     }
@@ -155,6 +187,7 @@ extension CLLocationSpeed {
 
 extension CLLocationDistance {
 
+    /// Converts meters to feet
     var metersToFeet: Double {
         return self * 3.28084
     }

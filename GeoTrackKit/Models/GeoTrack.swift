@@ -11,18 +11,32 @@ import CoreLocation
 
 /// Data structure to keep track of points for a track
 public class GeoTrack {
-    internal var _points = [CLLocation]()
-    internal var _events = [GeoTrackLocationEvent]()
+
+    /// The internal list of points
+    fileprivate var iPoints = [CLLocation]()
+    /// The Track Events that have occured that are related to this track
+    fileprivate(set) public var events = [GeoTrackLocationEvent]()
+    /// The track name (defaults to an empty string)
     public var name = ""
+    /// A description for the track
     public var description = ""
 
+    /// Default initializer, defaults all properties
     public init() { }
 
+    /// Initializer that sets the name and description for the track
+    ///
+    /// - Parameters:
+    ///   - name: The name
+    ///   - description: The description
     public init(name: String? = nil, description: String? = nil) {
         self.name = name ?? ""
         self.description = description ?? ""
     }
 
+    /// Initializer that will deserialize the provided json into CLLocation objects.  This is essentially the deserializer
+    ///
+    /// - Parameter json: The JSON to create a GeoTrack from
     public init(json: [String: Any]) {
         parse(json)
     }
@@ -34,23 +48,22 @@ public extension GeoTrack {
 
     /// Get the points in the Track
     var points: [CLLocation] {
-        return _points
+        return iPoints.sorted { return $0.timestamp.timeIntervalSince1970 < $1.timestamp.timeIntervalSince1970 }
     }
 
     /// Adds a location to the track
     ///
     /// - Parameter location: The location point to add
     func add(location: CLLocation) {
-        _points.append(location)
+        iPoints.append(location)
     }
 
     /// Adds an array of locations to the track
     ///
     /// - Parameter locations: The array of location points to add
     func add(locations: [CLLocation]) {
-        _points.append(contentsOf: locations)
+        iPoints.append(contentsOf: locations)
     }
-
 
     /// Gets you the event log, and will include the points if you want them.
     ///
@@ -70,7 +83,7 @@ public extension GeoTrack {
     ///
     /// - Parameter event: The event to add to the event log.
     public func add(event: GeoTrackLocationEvent) {
-        _events.append(event)
+        events.append(event)
     }
 
     /// Adds a Start Tracking event to the track's event log.
@@ -119,12 +132,13 @@ public extension GeoTrack {
 
 public extension GeoTrack {
 
-    var map: [String: Any] {
+    /// Converts this Grack to a Map so you can serialize it
+    public var map: [String: Any] {
         return [
             "name": name,
             "description": description,
             "points": points.map { $0.map },
-            "events": _events.map { $0.map }
+            "events": events.map { $0.map }
         ]
     }
 
@@ -151,13 +165,13 @@ public extension GeoTrack {
             guard let location = CLLocation.from(map: map) else {
                 continue
             }
-            track._points.append(location)
+            track.add(location: location)
         }
         for map in eventMaps {
             guard let event = GeoTrackLocationEvent.from(map: map) else {
                 continue
             }
-            track._events.append(event)
+            track.events.append(event)
         }
 
         return track
@@ -189,20 +203,19 @@ fileprivate extension GeoTrack {
     func parse(_ json: [String: Any]) {
         self.name = json["name"] as? String ?? ""
         self.description = json["description"] as? String ?? ""
-
         guard let points = json["points"] as? [[String: Any]] else {
             return
         }
 
         for pointMap in points {
             guard let location = CLLocation.from(map: pointMap) else {
-                // TODO(EGI): make note of this somewhere
+                GTWarn(message: "Failed to deserialize a point from the map")
                 continue
             }
-            _points.append(location)
+            iPoints.append(location)
         }
 
-        guard let events = json["events"] as? [[String: Any]] else {
+        guard let _ = json["events"] as? [[String: Any]] else {
             return
         }
 
@@ -210,10 +223,10 @@ fileprivate extension GeoTrack {
     }
 
     func buildEventLog(showPoints: Bool) -> [String] {
-        var events = _events.map { Log(event:$0) }
+        var events = self.events.map { Log(event:$0) }
 
         if showPoints {
-            events.append(contentsOf: _points.map({ Log(location: $0) }))
+            events.append(contentsOf: points.map({ Log(location: $0) }))
         }
 
         let sorted = events.sorted { $0.date<$1.date }

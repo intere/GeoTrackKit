@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>GeoTrackKit  Reference</title>
+    <link rel="stylesheet" type="text/css" href="css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="js/jquery.min.js" defer></script>
+    <script src="js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a title="GeoTrackKit  Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="index.html">GeoTrackKit Docs</a> (97% documented)</p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="index.html">GeoTrackKit Reference</a>
+        <img id="carat" src="img/carat.png" />
+        GeoTrackKit  Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Classes/DefaultMapZoom.html">DefaultMapZoom</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/GeoTrack.html">GeoTrack</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/GeoTrackAnalyzer.html">GeoTrackAnalyzer</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/GeoTrackConsoleAppender.html">GeoTrackConsoleAppender</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/GeoTrackEvent.html">GeoTrackEvent</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/GeoTrackEvent/Level.html">– Level</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/GeoTrackEventLog.html">GeoTrackEventLog</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/GeoTrackLocationEvent.html">GeoTrackLocationEvent</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/GeoTrackLocationEvent/EventType.html">– EventType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/GeoTrackManager.html">GeoTrackManager</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/GeoTrackMap.html">GeoTrackMap</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/Leg.html">Leg</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/Stat.html">Stat</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/TrackStat.html">TrackStat</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/UIGeoTrack.html">UIGeoTrack</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Enums.html">Enums</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Enums/Direction.html">Direction</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Enums/GeoTrackState.html">GeoTrackState</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Extensions.html">Extensions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Extensions/CLLocation.html">CLLocation</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Extensions/Date.html">Date</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Extensions/Notification.html">Notification</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Extensions/Notification/GeoMapping.html">– GeoMapping</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Extensions/Notification/GeoTrackKit.html">– GeoTrackKit</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Protocols/GeoTrackLogAppender.html">GeoTrackLogAppender</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/GeoTrackService.html">GeoTrackService</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/ZoomDefining.html">ZoomDefining</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Typealiases.html">Typealiases</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Typealiases.html#/s:11GeoTrackKit20GeoTrackAuthCallback">GeoTrackAuthCallback</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            
+            <a href='#geotrackkit' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h1 id='geotrackkit'>GeoTrackKit</h1>
+<a href='#an-ios-library-for-geo-tracking' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='an-ios-library-for-geo-tracking'>An iOS Library for Geo Tracking</h3>
+<a href='#features' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='features'>Features</h2>
+
+<ul>
+<li>Handles user authorization</li>
+<li>Handles track creation</li>
+<li>Handles track analyzing (for ascents, descents and other stats)</li>
+<li>Custom MKMapKit control for plotting your tracks on a map</li>
+<li>Example App to demonstrate capabilities</li>
+</ul>
+<a href='#project-status' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='project-status'>Project Status</h2>
+
+<p>This project is currently a work in progress.</p>
+
+<p><a href="https://dashboard.buddybuild.com/apps/58a5d9cf4d78ba0100bda868/build/latest?branch=feature/BuildingBlocks"><img src="https://dashboard.buddybuild.com/api/statusImage?appID=58a5d9cf4d78ba0100bda868&branch=feature/BuildingBlocks&build=latest" alt="BuddyBuild"></a></p>
+<a href='#initial-roadmap' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='initial-roadmap'>Initial Roadmap</h3>
+
+<ul>
+<li>[ ] Carthage Support</li>
+<li>[x] CocoaPods Support</li>
+<li>[x] Continuous Integration (Buddy Build)</li>
+<li>[x] Function Documentation</li>
+<li>[x] Jazzy Docs</li>
+<li>[ ] Performance Tests</li>
+<li>[ ] Swift Package Manager</li>
+<li>[x] SwiftLint Integration</li>
+<li>[ ] 90% Code Coverage</li>
+</ul>
+<a href='#installation' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='installation'>Installation</h3>
+<a href='#installation-instructions' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='installation-instructions'>Installation Instructions</h2>
+<a href='#cocoapods' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='cocoapods'>CocoaPods</h3>
+<pre class="highlight ruby"><code><span class="n">pod</span> <span class="s1">'GeoTrackKit'</span><span class="p">,</span> <span class="ss">:git</span> <span class="o">=&gt;</span> <span class="s1">'git@github.com:intere/GeoTrackKit.git'</span><span class="p">,</span> <span class="ss">:branch</span> <span class="o">=&gt;</span> <span class="s1">'master'</span>
+</code></pre>
+<a href='#example-usage' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='example-usage'>Example Usage</h2>
+<pre class="highlight plaintext"><code>// This will either start tracking, or prompt the user for access to track their location
+GeoTrackManager.shared.startTracking()
+</code></pre>
+
+<p><img alt="Location Prompt" src="screenshots/LocationTrackingPrompt.png">
+<img alt="Tracking" src="screenshots/Usage.png"></p>
+
+<p>This library also includes a map control that will map the GeoTrack:
+<img alt="Geo Track Map" src="screenshots/Mapping.png"></p>
+<a href='#inspiration' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='inspiration'>Inspiration</h2>
+
+<p>I&rsquo;ve built a couple of variations of Geo Tracking applications, but I wanted to build a library for the community that I can share and get feedback and build a better product.</p>
+<a href='#created-and-maintained-by' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='created-and-maintained-by'>Created and maintained by</h2>
+
+<p><a href="http://intere.github.io">Eric Internicola</a></p>
+<a href='#key-classes' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='key-classes'>Key Classes</h2>
+
+<p><img alt="Key GeoTrackKit Classes" src="screenshots/GeoTrackKitClasses.png"></p>
+<a href='#documentation' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='documentation'>Documentation</h2>
+
+<p>See the generated documentation in the <code>docs</code> folder</p>
+
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2017 <a class="link" href="https://github.com/intere/GeoTrackKit" target="_blank" rel="external">Eric Internicola</a>. All rights reserved. (Last updated: 2017-03-19)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.7.4</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>

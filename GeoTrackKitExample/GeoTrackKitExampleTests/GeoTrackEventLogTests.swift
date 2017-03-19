@@ -44,6 +44,5 @@ class GeoTrackEventLogTests: QuickSpec {
             }
         }
     }
-    
-}
 
+}
