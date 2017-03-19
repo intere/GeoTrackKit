@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>GeoTrackAnalyzer Class Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a name="//apple_ref/swift/Class/GeoTrackAnalyzer" class="dashAnchor"></a>
+    <a title="GeoTrackAnalyzer Class Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="../index.html">GeoTrackKit Docs</a> (97% documented)</p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../index.html">GeoTrackKit Reference</a>
+        <img id="carat" src="../img/carat.png" />
+        GeoTrackAnalyzer Class Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="../Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Classes/DefaultMapZoom.html">DefaultMapZoom</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/GeoTrack.html">GeoTrack</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/GeoTrackAnalyzer.html">GeoTrackAnalyzer</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/GeoTrackConsoleAppender.html">GeoTrackConsoleAppender</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/GeoTrackEvent.html">GeoTrackEvent</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/GeoTrackEvent/Level.html">– Level</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/GeoTrackEventLog.html">GeoTrackEventLog</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/GeoTrackLocationEvent.html">GeoTrackLocationEvent</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/GeoTrackLocationEvent/EventType.html">– EventType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/GeoTrackManager.html">GeoTrackManager</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/GeoTrackMap.html">GeoTrackMap</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Leg.html">Leg</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Stat.html">Stat</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/TrackStat.html">TrackStat</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/UIGeoTrack.html">UIGeoTrack</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Enums.html">Enums</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Enums/Direction.html">Direction</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/GeoTrackState.html">GeoTrackState</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Extensions.html">Extensions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Extensions/CLLocation.html">CLLocation</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/Date.html">Date</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/Notification.html">Notification</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/Notification/GeoMapping.html">– GeoMapping</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/Notification/GeoTrackKit.html">– GeoTrackKit</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Protocols/GeoTrackLogAppender.html">GeoTrackLogAppender</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/GeoTrackService.html">GeoTrackService</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/ZoomDefining.html">ZoomDefining</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Typealiases.html">Typealiases</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:11GeoTrackKit20GeoTrackAuthCallback">GeoTrackAuthCallback</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>GeoTrackAnalyzer</h1>
+              <div class="declaration">
+                <div class="language">
+                  <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">GeoTrackAnalyzer</span></code></pre>
+
+                </div>
+              </div>
+            <p>This class is used to generate statistics about your track.  Please note, this is a trivial implementation for ascent / descent detection.  This implementation does not (currently) do any sort of noise reduction or utilize the vertical accuracy of the data to remove potentially erronious points.  It might make sense (down the roade) to abstract a protocol from this and have multiple implementations to choose from that perform noise reduction or some sort of statistical smoothing to clean up the data for accuracy.</p>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:ZvC11GeoTrackKit16GeoTrackAnalyzer19altitudeSensitivitySd"></a>
+                    <a name="//apple_ref/swift/Variable/altitudeSensitivity" class="dashAnchor"></a>
+                    <a class="token" href="#/s:ZvC11GeoTrackKit16GeoTrackAnalyzer19altitudeSensitivitySd">altitudeSensitivity</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The sensitivity of the <q>track</q> detection (in meters).  If you set this too high, it won&rsquo;t detect <q>runs</q> properly, if you set it too low, it will detect more <q>runs</q> than you actually have done</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">var</span> <span class="nv">altitudeSensitivity</span><span class="p">:</span> <span class="kt">CLLocationDistance</span> <span class="o">=</span> <span class="mi">25</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vC11GeoTrackKit16GeoTrackAnalyzer5trackCS_8GeoTrack"></a>
+                    <a name="//apple_ref/swift/Property/track" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vC11GeoTrackKit16GeoTrackAnalyzer5trackCS_8GeoTrack">track</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The track that we&rsquo;re calculating the statistics from</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">track</span><span class="p">:</span> <span class="kt"><a href="../Classes/GeoTrack.html">GeoTrack</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vC11GeoTrackKit16GeoTrackAnalyzer5statsGSqCS_9TrackStat_"></a>
+                    <a name="//apple_ref/swift/Property/stats" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vC11GeoTrackKit16GeoTrackAnalyzer5statsGSqCS_9TrackStat_">stats</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The statistics for the track</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">stats</span><span class="p">:</span> <span class="kt"><a href="../Classes/TrackStat.html">TrackStat</a></span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vC11GeoTrackKit16GeoTrackAnalyzer4legsGSaCS_3Leg_"></a>
+                    <a name="//apple_ref/swift/Property/legs" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vC11GeoTrackKit16GeoTrackAnalyzer4legsGSaCS_3Leg_">legs</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The [mutable] legs of the track (ascents and descents)</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="nf">fileprivate</span><span class="p">(</span><span class="k">set</span><span class="p">)</span> <span class="kd">public</span> <span class="k">var</span> <span class="nv">legs</span> <span class="o">=</span> <span class="p">[</span><span class="kt"><a href="../Classes/Leg.html">Leg</a></span><span class="p">]()</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC11GeoTrackKit16GeoTrackAnalyzercFT5trackCS_8GeoTrack_S0_"></a>
+                    <a name="//apple_ref/swift/Method/init(track:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC11GeoTrackKit16GeoTrackAnalyzercFT5trackCS_8GeoTrack_S0_">init(track:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Initializes this Track Analyzer with a track.  You must still call <code><a href="../Classes/GeoTrackAnalyzer.html#/s:FC11GeoTrackKit16GeoTrackAnalyzer9calculateFT_T_">calculate()</a></code> to generate the statistics.  This isn&rsquo;t done on construction for performance reasons.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">track</span><span class="p">:</span> <span class="kt"><a href="../Classes/GeoTrack.html">GeoTrack</a></span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>track</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The track to initialize with</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC11GeoTrackKit16GeoTrackAnalyzer9calculateFT_T_"></a>
+                    <a name="//apple_ref/swift/Method/calculate()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC11GeoTrackKit16GeoTrackAnalyzer9calculateFT_T_">calculate()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Calculates the statistics from the data set.  It will populate the legs and the stats.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">calculate</span><span class="p">()</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2017 <a class="link" href="https://github.com/intere/GeoTrackKit" target="_blank" rel="external">Eric Internicola</a>. All rights reserved. (Last updated: 2017-03-19)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.7.4</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>

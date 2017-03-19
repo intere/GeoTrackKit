@@ -7,11 +7,26 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3634C55B1E7EBCCA00933DB2 /* CLLocationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3634C5451E7EBCCA00933DB2 /* CLLocationExtension.swift */; };
+		3634C55C1E7EBCCA00933DB2 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3634C5461E7EBCCA00933DB2 /* DateExtension.swift */; };
+		3634C55D1E7EBCCA00933DB2 /* GeoTrackAnalyzer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3634C5471E7EBCCA00933DB2 /* GeoTrackAnalyzer.swift */; };
+		3634C55E1E7EBCCA00933DB2 /* GeoTrackConsoleAppender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3634C5481E7EBCCA00933DB2 /* GeoTrackConsoleAppender.swift */; };
+		3634C55F1E7EBCCA00933DB2 /* GeoTrackEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3634C5491E7EBCCA00933DB2 /* GeoTrackEvent.swift */; };
+		3634C5601E7EBCCA00933DB2 /* GeoTrackEventLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3634C54A1E7EBCCA00933DB2 /* GeoTrackEventLog.swift */; };
+		3634C5611E7EBCCA00933DB2 /* GeoTrackManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3634C54B1E7EBCCA00933DB2 /* GeoTrackManager.swift */; };
+		3634C5621E7EBCCA00933DB2 /* GeoTrackService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3634C54C1E7EBCCA00933DB2 /* GeoTrackService.swift */; };
+		3634C5631E7EBCCA00933DB2 /* GeoTrackState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3634C54D1E7EBCCA00933DB2 /* GeoTrackState.swift */; };
+		3634C5641E7EBCCA00933DB2 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3634C54E1E7EBCCA00933DB2 /* Info.plist */; };
+		3634C5651E7EBCCA00933DB2 /* LoggingFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3634C54F1E7EBCCA00933DB2 /* LoggingFunctions.swift */; };
+		3634C5661E7EBCCA00933DB2 /* DefaultMapZoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3634C5511E7EBCCA00933DB2 /* DefaultMapZoom.swift */; };
+		3634C5671E7EBCCA00933DB2 /* GeoTrackMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3634C5521E7EBCCA00933DB2 /* GeoTrackMap.swift */; };
+		3634C5681E7EBCCA00933DB2 /* UIGeoTrack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3634C5541E7EBCCA00933DB2 /* UIGeoTrack.swift */; };
+		3634C5691E7EBCCA00933DB2 /* ZoomDefining.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3634C5551E7EBCCA00933DB2 /* ZoomDefining.swift */; };
+		3634C56A1E7EBCCA00933DB2 /* Leg.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3634C5581E7EBCCA00933DB2 /* Leg.swift */; };
+		3634C56B1E7EBCCA00933DB2 /* GeoTrack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3634C5591E7EBCCA00933DB2 /* GeoTrack.swift */; };
+		3634C56C1E7EBCCA00933DB2 /* GeoTrackLocationEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3634C55A1E7EBCCA00933DB2 /* GeoTrackLocationEvent.swift */; };
 		36C45E281DCE2BD000E87710 /* GeoTrackKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36C45E1E1DCE2BD000E87710 /* GeoTrackKit.framework */; };
 		36C45E2D1DCE2BD000E87710 /* GeoTrackKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36C45E2C1DCE2BD000E87710 /* GeoTrackKitTests.swift */; };
-		36C45E651DCE326F00E87710 /* GeoTrackManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36C45E641DCE326F00E87710 /* GeoTrackManager.swift */; };
-		36C45E671DCE3AC500E87710 /* GeoTrackEventLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36C45E661DCE3AC500E87710 /* GeoTrackEventLog.swift */; };
-		36C45E691DCE3AEF00E87710 /* GeoTrackEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36C45E681DCE3AEF00E87710 /* GeoTrackEvent.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -25,14 +40,29 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3634C5451E7EBCCA00933DB2 /* CLLocationExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CLLocationExtension.swift; sourceTree = "<group>"; };
+		3634C5461E7EBCCA00933DB2 /* DateExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
+		3634C5471E7EBCCA00933DB2 /* GeoTrackAnalyzer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeoTrackAnalyzer.swift; sourceTree = "<group>"; };
+		3634C5481E7EBCCA00933DB2 /* GeoTrackConsoleAppender.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeoTrackConsoleAppender.swift; sourceTree = "<group>"; };
+		3634C5491E7EBCCA00933DB2 /* GeoTrackEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeoTrackEvent.swift; sourceTree = "<group>"; };
+		3634C54A1E7EBCCA00933DB2 /* GeoTrackEventLog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeoTrackEventLog.swift; sourceTree = "<group>"; };
+		3634C54B1E7EBCCA00933DB2 /* GeoTrackManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeoTrackManager.swift; sourceTree = "<group>"; };
+		3634C54C1E7EBCCA00933DB2 /* GeoTrackService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeoTrackService.swift; sourceTree = "<group>"; };
+		3634C54D1E7EBCCA00933DB2 /* GeoTrackState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeoTrackState.swift; sourceTree = "<group>"; };
+		3634C54E1E7EBCCA00933DB2 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3634C54F1E7EBCCA00933DB2 /* LoggingFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoggingFunctions.swift; sourceTree = "<group>"; };
+		3634C5511E7EBCCA00933DB2 /* DefaultMapZoom.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultMapZoom.swift; sourceTree = "<group>"; };
+		3634C5521E7EBCCA00933DB2 /* GeoTrackMap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeoTrackMap.swift; sourceTree = "<group>"; };
+		3634C5541E7EBCCA00933DB2 /* UIGeoTrack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIGeoTrack.swift; sourceTree = "<group>"; };
+		3634C5551E7EBCCA00933DB2 /* ZoomDefining.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZoomDefining.swift; sourceTree = "<group>"; };
+		3634C5581E7EBCCA00933DB2 /* Leg.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Leg.swift; sourceTree = "<group>"; };
+		3634C5591E7EBCCA00933DB2 /* GeoTrack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeoTrack.swift; sourceTree = "<group>"; };
+		3634C55A1E7EBCCA00933DB2 /* GeoTrackLocationEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeoTrackLocationEvent.swift; sourceTree = "<group>"; };
 		36C45E1E1DCE2BD000E87710 /* GeoTrackKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = GeoTrackKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		36C45E221DCE2BD000E87710 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		36C45E271DCE2BD000E87710 /* GeoTrackKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GeoTrackKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		36C45E2C1DCE2BD000E87710 /* GeoTrackKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeoTrackKitTests.swift; sourceTree = "<group>"; };
 		36C45E2E1DCE2BD000E87710 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		36C45E641DCE326F00E87710 /* GeoTrackManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeoTrackManager.swift; sourceTree = "<group>"; };
-		36C45E661DCE3AC500E87710 /* GeoTrackEventLog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeoTrackEventLog.swift; sourceTree = "<group>"; };
-		36C45E681DCE3AEF00E87710 /* GeoTrackEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeoTrackEvent.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +84,52 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3634C5441E7EBCCA00933DB2 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				3634C5451E7EBCCA00933DB2 /* CLLocationExtension.swift */,
+				3634C5461E7EBCCA00933DB2 /* DateExtension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		3634C5501E7EBCCA00933DB2 /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				3634C5511E7EBCCA00933DB2 /* DefaultMapZoom.swift */,
+				3634C5521E7EBCCA00933DB2 /* GeoTrackMap.swift */,
+				3634C5531E7EBCCA00933DB2 /* UIModels */,
+				3634C5551E7EBCCA00933DB2 /* ZoomDefining.swift */,
+			);
+			path = Map;
+			sourceTree = "<group>";
+		};
+		3634C5531E7EBCCA00933DB2 /* UIModels */ = {
+			isa = PBXGroup;
+			children = (
+				3634C5541E7EBCCA00933DB2 /* UIGeoTrack.swift */,
+			);
+			path = UIModels;
+			sourceTree = "<group>";
+		};
+		3634C5561E7EBCCA00933DB2 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				3634C5571E7EBCCA00933DB2 /* Analyze */,
+				3634C5591E7EBCCA00933DB2 /* GeoTrack.swift */,
+				3634C55A1E7EBCCA00933DB2 /* GeoTrackLocationEvent.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		3634C5571E7EBCCA00933DB2 /* Analyze */ = {
+			isa = PBXGroup;
+			children = (
+				3634C5581E7EBCCA00933DB2 /* Leg.swift */,
+			);
+			path = Analyze;
+			sourceTree = "<group>";
+		};
 		36C45E141DCE2BD000E87710 = {
 			isa = PBXGroup;
 			children = (
@@ -75,10 +151,19 @@
 		36C45E201DCE2BD000E87710 /* GeoTrackKit */ = {
 			isa = PBXGroup;
 			children = (
+				3634C5441E7EBCCA00933DB2 /* Extension */,
+				3634C5471E7EBCCA00933DB2 /* GeoTrackAnalyzer.swift */,
+				3634C5481E7EBCCA00933DB2 /* GeoTrackConsoleAppender.swift */,
+				3634C5491E7EBCCA00933DB2 /* GeoTrackEvent.swift */,
+				3634C54A1E7EBCCA00933DB2 /* GeoTrackEventLog.swift */,
+				3634C54B1E7EBCCA00933DB2 /* GeoTrackManager.swift */,
+				3634C54C1E7EBCCA00933DB2 /* GeoTrackService.swift */,
+				3634C54D1E7EBCCA00933DB2 /* GeoTrackState.swift */,
+				3634C54E1E7EBCCA00933DB2 /* Info.plist */,
+				3634C54F1E7EBCCA00933DB2 /* LoggingFunctions.swift */,
+				3634C5501E7EBCCA00933DB2 /* Map */,
+				3634C5561E7EBCCA00933DB2 /* Models */,
 				36C45E221DCE2BD000E87710 /* Info.plist */,
-				36C45E641DCE326F00E87710 /* GeoTrackManager.swift */,
-				36C45E661DCE3AC500E87710 /* GeoTrackEventLog.swift */,
-				36C45E681DCE3AEF00E87710 /* GeoTrackEvent.swift */,
 			);
 			path = GeoTrackKit;
 			sourceTree = "<group>";
@@ -153,7 +238,7 @@
 				TargetAttributes = {
 					36C45E1D1DCE2BD000E87710 = {
 						CreatedOnToolsVersion = 8.1;
-						LastSwiftMigration = 0810;
+						LastSwiftMigration = 0820;
 						ProvisioningStyle = Automatic;
 					};
 					36C45E261DCE2BD000E87710 = {
@@ -185,6 +270,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3634C5641E7EBCCA00933DB2 /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -202,9 +288,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				36C45E651DCE326F00E87710 /* GeoTrackManager.swift in Sources */,
-				36C45E671DCE3AC500E87710 /* GeoTrackEventLog.swift in Sources */,
-				36C45E691DCE3AEF00E87710 /* GeoTrackEvent.swift in Sources */,
+				3634C5681E7EBCCA00933DB2 /* UIGeoTrack.swift in Sources */,
+				3634C5611E7EBCCA00933DB2 /* GeoTrackManager.swift in Sources */,
+				3634C5621E7EBCCA00933DB2 /* GeoTrackService.swift in Sources */,
+				3634C56C1E7EBCCA00933DB2 /* GeoTrackLocationEvent.swift in Sources */,
+				3634C56A1E7EBCCA00933DB2 /* Leg.swift in Sources */,
+				3634C55B1E7EBCCA00933DB2 /* CLLocationExtension.swift in Sources */,
+				3634C55C1E7EBCCA00933DB2 /* DateExtension.swift in Sources */,
+				3634C55E1E7EBCCA00933DB2 /* GeoTrackConsoleAppender.swift in Sources */,
+				3634C5651E7EBCCA00933DB2 /* LoggingFunctions.swift in Sources */,
+				3634C5631E7EBCCA00933DB2 /* GeoTrackState.swift in Sources */,
+				3634C56B1E7EBCCA00933DB2 /* GeoTrack.swift in Sources */,
+				3634C5691E7EBCCA00933DB2 /* ZoomDefining.swift in Sources */,
+				3634C5661E7EBCCA00933DB2 /* DefaultMapZoom.swift in Sources */,
+				3634C55D1E7EBCCA00933DB2 /* GeoTrackAnalyzer.swift in Sources */,
+				3634C55F1E7EBCCA00933DB2 /* GeoTrackEvent.swift in Sources */,
+				3634C5671E7EBCCA00933DB2 /* GeoTrackMap.swift in Sources */,
+				3634C5601E7EBCCA00933DB2 /* GeoTrackEventLog.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -408,6 +508,7 @@
 				36C45E341DCE2BD000E87710 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		36C45E351DCE2BD000E87710 /* Build configuration list for PBXNativeTarget "GeoTrackKitTests" */ = {
 			isa = XCConfigurationList;
@@ -416,6 +517,7 @@
 				36C45E371DCE2BD000E87710 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

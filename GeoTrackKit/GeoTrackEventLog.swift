@@ -28,10 +28,14 @@ public protocol GeoTrackLogAppender {
 
 /// The Event Log for GeoTrackKit
 public class GeoTrackEventLog {
+    /// Singleton instance
     public static let shared = GeoTrackEventLog()
 
-    // TODO: Rip this out and create an appender that collects events.
+    // TODO: Rip out the eventLog and create an appender that collects events.
+
+    /// The Event Log
     fileprivate(set) public var eventLog = [GeoTrackEvent]()
+    /// The Appenders
     fileprivate(set) public var appenders = [GeoTrackLogAppender]()
 
     private init() {

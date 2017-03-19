@@ -8,20 +8,25 @@
 
 import CoreLocation
 
-/**
- This class is responsible for keeping track of different types of track events.  For example when the user starts tracking, stops tracking, pauses tracking, and your own custom event types.
- */
+/// This class is responsible for keeping track of different types of track events.  For example when the user starts tracking, stops tracking, pauses tracking, and your own custom event types.
 public class GeoTrackLocationEvent {
 
     public enum EventType: Int {
+        /// Tracking has started
         case startedTrack = 1
+        /// Tracking has been paused
         case pausedTrack = 2
+        /// Tracking has been stopped
         case stoppedTrack = 3
+        /// A Tracking error has occurred
         case error = 4
+        /// A custom event has happened
         case custom = 5
+        /// Some other type of event has occurred
         case other = 6
 
-        var string: String {
+        /// A human readable string for the event
+        public var string: String {
             switch self {
             case .startedTrack:
                 return "Started Track"
@@ -39,11 +44,22 @@ public class GeoTrackLocationEvent {
         }
     }
 
+    /// The type of event (see EventType)
     private(set) public var type: EventType = .other
+    /// The timestamp of the event
     private(set) public var timestamp: Date = Date()
+    /// The message for this event
     private(set) public var message: String?
+    /// The index (order) of the event
     private(set) public var index: Int?
 
+    /// Initializer - not meant to be used directly, call one of the factory creation functions.
+    ///
+    /// - Parameters:
+    ///   - type: The type of event
+    ///   - timestamp: The timestamp of the event
+    ///   - message: The message for the event
+    ///   - index: The index of the event
     internal init(type: EventType, timestamp: Date? = nil, message: String? = nil, index: Int? = nil) {
         self.type = type
         if let timestamp = timestamp {

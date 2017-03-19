@@ -11,18 +11,32 @@ import CoreLocation
 
 /// Data structure to keep track of points for a track
 public class GeoTrack {
+
+    /// The internal list of points
     fileprivate var iPoints = [CLLocation]()
+    /// The Track Events that have occured that are related to this track
     fileprivate(set) public var events = [GeoTrackLocationEvent]()
+    /// The track name (defaults to an empty string)
     public var name = ""
+    /// A description for the track
     public var description = ""
 
+    /// Default initializer, defaults all properties
     public init() { }
 
+    /// Initializer that sets the name and description for the track
+    ///
+    /// - Parameters:
+    ///   - name: The name
+    ///   - description: The description
     public init(name: String? = nil, description: String? = nil) {
         self.name = name ?? ""
         self.description = description ?? ""
     }
 
+    /// Initializer that will deserialize the provided json into CLLocation objects.  This is essentially the deserializer
+    ///
+    /// - Parameter json: The JSON to create a GeoTrack from
     public init(json: [String: Any]) {
         parse(json)
     }
@@ -68,7 +82,7 @@ public extension GeoTrack {
 
     /// Adds a new point to the list of points
     ///
-    /// - Parameter point: <#point description#>
+    /// - Parameter point: The CLLocation point to add to the track
     public func add(point: CLLocation) {
         iPoints.append(point)
     }
@@ -126,7 +140,8 @@ public extension GeoTrack {
 
 public extension GeoTrack {
 
-    var map: [String: Any] {
+    /// Converts this Grack to a Map so you can serialize it
+    public var map: [String: Any] {
         return [
             "name": name,
             "description": description,

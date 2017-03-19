@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>GeoTrackMap Class Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a name="//apple_ref/swift/Class/GeoTrackMap" class="dashAnchor"></a>
+    <a title="GeoTrackMap Class Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="../index.html">GeoTrackKit Docs</a> (97% documented)</p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../index.html">GeoTrackKit Reference</a>
+        <img id="carat" src="../img/carat.png" />
+        GeoTrackMap Class Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="../Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Classes/DefaultMapZoom.html">DefaultMapZoom</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/GeoTrack.html">GeoTrack</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/GeoTrackAnalyzer.html">GeoTrackAnalyzer</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/GeoTrackConsoleAppender.html">GeoTrackConsoleAppender</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/GeoTrackEvent.html">GeoTrackEvent</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/GeoTrackEvent/Level.html">– Level</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/GeoTrackEventLog.html">GeoTrackEventLog</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/GeoTrackLocationEvent.html">GeoTrackLocationEvent</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/GeoTrackLocationEvent/EventType.html">– EventType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/GeoTrackManager.html">GeoTrackManager</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/GeoTrackMap.html">GeoTrackMap</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Leg.html">Leg</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Stat.html">Stat</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/TrackStat.html">TrackStat</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/UIGeoTrack.html">UIGeoTrack</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Enums.html">Enums</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Enums/Direction.html">Direction</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/GeoTrackState.html">GeoTrackState</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Extensions.html">Extensions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Extensions/CLLocation.html">CLLocation</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/Date.html">Date</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/Notification.html">Notification</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/Notification/GeoMapping.html">– GeoMapping</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/Notification/GeoTrackKit.html">– GeoTrackKit</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Protocols/GeoTrackLogAppender.html">GeoTrackLogAppender</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/GeoTrackService.html">GeoTrackService</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/ZoomDefining.html">ZoomDefining</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Typealiases.html">Typealiases</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:11GeoTrackKit20GeoTrackAuthCallback">GeoTrackAuthCallback</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>GeoTrackMap</h1>
+              <div class="declaration">
+                <div class="language">
+                  <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">GeoTrackMap</span><span class="p">:</span> <span class="kt">MKMapView</span></code></pre>
+
+                </div>
+              </div>
+            <p>This class provides you an easy way to visualize your track on a map.  You can configure the unknown, ascent and descent colors.  They have sensible defaults.  Using the UIGeoTrack model, you can set which legs of your track are visible and we&rsquo;ll render them accordingly.  Keep in mind, performance of this control may degrade if your tracks have too many points.</p>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vC11GeoTrackKit11GeoTrackMap12unknownColorCSo7UIColor"></a>
+                    <a name="//apple_ref/swift/Property/unknownColor" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vC11GeoTrackKit11GeoTrackMap12unknownColorCSo7UIColor">unknownColor</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The color to use when rendering a leg of unknown direction (could be flat, or we just don&rsquo;t have enough altitude change to tell if it&rsquo;s an ascent or descent)</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">unknownColor</span><span class="p">:</span> <span class="kt">UIColor</span> <span class="o">=</span> <span class="o">.</span><span class="n">yellow</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vC11GeoTrackKit11GeoTrackMap11ascentColorCSo7UIColor"></a>
+                    <a name="//apple_ref/swift/Property/ascentColor" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vC11GeoTrackKit11GeoTrackMap11ascentColorCSo7UIColor">ascentColor</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The color to use when rendering an ascent</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">ascentColor</span><span class="p">:</span> <span class="kt">UIColor</span> <span class="o">=</span> <span class="o">.</span><span class="n">red</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vC11GeoTrackKit11GeoTrackMap12descentColorCSo7UIColor"></a>
+                    <a name="//apple_ref/swift/Property/descentColor" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vC11GeoTrackKit11GeoTrackMap12descentColorCSo7UIColor">descentColor</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The color to use when rendering a descent</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">descentColor</span><span class="p">:</span> <span class="kt">UIColor</span> <span class="o">=</span> <span class="o">.</span><span class="n">blue</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vC11GeoTrackKit11GeoTrackMap12zoomDelegateGSqPS_12ZoomDefining__"></a>
+                    <a name="//apple_ref/swift/Property/zoomDelegate" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vC11GeoTrackKit11GeoTrackMap12zoomDelegateGSqPS_12ZoomDefining__">zoomDelegate</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The Zoom Delegate: which tells us if / where to zoom to</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">zoomDelegate</span><span class="p">:</span> <span class="kt"><a href="../Protocols/ZoomDefining.html">ZoomDefining</a></span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:vC11GeoTrackKit11GeoTrackMap5modelGSqCS_10UIGeoTrack_"></a>
+                    <a name="//apple_ref/swift/Property/model" class="dashAnchor"></a>
+                    <a class="token" href="#/s:vC11GeoTrackKit11GeoTrackMap5modelGSqCS_10UIGeoTrack_">model</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The UI Model for the track.  When you set it, we render it!</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">model</span><span class="p">:</span> <span class="kt"><a href="../Classes/UIGeoTrack.html">UIGeoTrack</a></span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC11GeoTrackKit11GeoTrackMapcFT5coderCSo7NSCoder_GSqS0__"></a>
+                    <a name="//apple_ref/swift/Method/init(coder:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC11GeoTrackKit11GeoTrackMapcFT5coderCSo7NSCoder_GSqS0__">init(coder:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">GeoTrackMap</span><span class="p">:</span> <span class="kt">MKMapView</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC11GeoTrackKit11GeoTrackMapcFT5frameVSC6CGRect_S0_"></a>
+                    <a name="//apple_ref/swift/Method/init(frame:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC11GeoTrackKit11GeoTrackMapcFT5frameVSC6CGRect_S0_">init(frame:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">GeoTrackMap</span><span class="p">:</span> <span class="kt">MKMapView</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC11GeoTrackKit11GeoTrackMap11renderTrackFT_T_"></a>
+                    <a name="//apple_ref/swift/Method/renderTrack()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC11GeoTrackKit11GeoTrackMap11renderTrackFT_T_">renderTrack()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>This will render your track on the map (based on what you&rsquo;ve toggled as visible in the model)</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">renderTrack</span><span class="p">()</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FC11GeoTrackKit11GeoTrackMap7mapViewFTCSo9MKMapView11rendererForPSo9MKOverlay__CSo17MKOverlayRenderer"></a>
+                    <a name="//apple_ref/swift/Method/mapView(_:rendererFor:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FC11GeoTrackKit11GeoTrackMap7mapViewFTCSo9MKMapView11rendererForPSo9MKOverlay__CSo17MKOverlayRenderer">mapView(_:rendererFor:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Delegate function that provides the MKOverlayRenderer for the Leg Overlays</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">mapView</span><span class="p">(</span><span class="n">_</span> <span class="nv">mapView</span><span class="p">:</span> <span class="kt">MKMapView</span><span class="p">,</span> <span class="n">rendererFor</span> <span class="nv">overlay</span><span class="p">:</span> <span class="kt">MKOverlay</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">MKOverlayRenderer</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>mapView</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The map view</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>overlay</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The overlay to create a renderer for</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>The result MKOverlay renderer</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2017 <a class="link" href="https://github.com/intere/GeoTrackKit" target="_blank" rel="external">Eric Internicola</a>. All rights reserved. (Last updated: 2017-03-19)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.7.4</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>

@@ -16,8 +16,12 @@ import Foundation
 /// - tracking: We are currently tracking.
 /// - notTracking: We are not tracking
 public enum GeoTrackState: Int {
+    /// Unknown tracking state
     case unknown
+    /// Awaiting a location fix
     case awaitingFix
+    /// Currently tracking
     case tracking
+    /// Not currently tracking
     case notTracking
 }

@@ -11,8 +11,10 @@ import Foundation
 /// The Console Appender
 public class GeoTrackConsoleAppender {
 
+    /// Singelton instance of the Console Appender
     public static let shared = GeoTrackConsoleAppender()
 
+    /// The current log level
     public var logLevel: GeoTrackEvent.Level = .debug
 
     private init() {}

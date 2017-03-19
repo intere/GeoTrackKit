@@ -17,16 +17,16 @@ public typealias GeoTrackAuthCallback = () -> Void
 /// This is the protocol for the GeoTrackService.  It will handle starting and stopping tracking.
 public protocol GeoTrackService {
 
-    /** Application Name.  */
+    /// Application name
     var applicationName: String { get set }
 
-    /** Is the service currently tracking?  */
+    /// Is the service currently tracking?
     var isTracking: Bool { get }
 
-    /** Starts tracking.  */
+    /// Starts tracking
     func startTracking()
 
-    /** Stops tracking.  */
+    /// Stops tracking
     func stopTracking()
 
 }

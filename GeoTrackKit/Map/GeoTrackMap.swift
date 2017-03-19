@@ -21,6 +21,7 @@ public class GeoTrackMap: MKMapView {
     /// The color to use when rendering a descent
     public var descentColor: UIColor = .blue
 
+    /// The Zoom Delegate: which tells us if / where to zoom to
     public var zoomDelegate: ZoomDefining?
 
     /// The UI Model for the track.  When you set it, we render it!
@@ -74,6 +75,12 @@ public extension GeoTrackMap {
 
 extension GeoTrackMap: MKMapViewDelegate {
 
+    /// Delegate function that provides the MKOverlayRenderer for the Leg Overlays
+    ///
+    /// - Parameters:
+    ///   - mapView: The map view
+    ///   - overlay: The overlay to create a renderer for
+    /// - Returns: The result MKOverlay renderer
     public func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         guard let polyline = overlay as? MKPolyline else {
             return MKPolylineRenderer(overlay: overlay)

@@ -17,8 +17,8 @@ This project is currently a work in progress.
 - [ ] Carthage Support
 - [x] CocoaPods Support
 - [x] Continuous Integration (Buddy Build)
-- [ ] Function Documentation
-- [X] Jazzy Docs
+- [x] Function Documentation
+- [x] Jazzy Docs
 - [ ] Performance Tests
 - [ ] Swift Package Manager
 - [x] SwiftLint Integration

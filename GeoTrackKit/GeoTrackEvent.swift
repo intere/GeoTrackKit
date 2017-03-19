@@ -13,13 +13,19 @@ public class GeoTrackEvent {
 
     /// The Logging Level
     public enum Level: Int {
+        /// Trace log level
         case trace = 1
+        /// Debug log level
         case debug
+        /// Info log level
         case info
+        /// Warning log level
         case warn
+        /// Error log level
         case error
 
-        var name: String {
+        /// The human readable name for this log level
+        public var name: String {
             switch self {
             case .trace:
                 return "TRACE"
@@ -35,22 +41,37 @@ public class GeoTrackEvent {
         }
     }
 
+    /// The log level for this event (defaults to Info)
     public private(set) var level: Level = .info
+    /// The timestamp for the log event
     public private(set) var date: Date = Date()
+    /// The message for the log event
     public private(set) var message: String = ""
 
+    /// Initializes the GeoTrackEvent with a log level, message and the current Date.
+    ///
+    /// - Parameters:
+    ///   - level: The log level
+    ///   - message: The log message
     public init(level: Level, message: String) {
         self.level = level
         self.message = message
     }
 
+    /// Initializes the GeoTrackEvent iwth a log level, message and specific date.
+    ///
+    /// - Parameters:
+    ///   - level: The log level
+    ///   - date: The event date
+    ///   - message: The log message
     public init(level: Level, date: Date, message: String) {
         self.level = level
         self.date = date
         self.message = message
     }
 
-    var string: String {
+    /// Human readable string for the event
+    public var string: String {
         return "\(date) [" + level.name + "]: " + message
     }
 }

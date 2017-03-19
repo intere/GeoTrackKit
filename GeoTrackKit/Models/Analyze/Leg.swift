@@ -128,8 +128,11 @@ public class TrackStat: Stat {
 /// - up: The upward direction
 /// - down: The downward direction
 public enum Direction: String {
+    /// Unknown direction
     case unknown
+    /// Upward direction (ascent)
     case up
+    /// Downward direction (descent)
     case down
 }
 
@@ -142,6 +145,8 @@ public class Leg {
     public let point: CLLocation
     /// The overridden direction of the leg
     private var _direction: Direction = .unknown
+
+    /// The direction of this leg (see Direction)
     public var direction: Direction {
         set {
             _direction = newValue
@@ -175,6 +180,14 @@ public class Leg {
         return endPoint.altitude - point.altitude
     }
 
+    /// Initializes the Leg with an index, point, direction, endIndex and endPoint
+    ///
+    /// - Parameters:
+    ///   - index: The index of the first point in the Track Points
+    ///   - point: The first point
+    ///   - direction: The direction we're headed: ascent vs. descent (see Direction)
+    ///   - endIndex: The index of the last point in the Track Points
+    ///   - endPoint: The end point
     public init(index: Int, point: CLLocation, direction: Direction = .unknown, endIndex: Int = -1, endPoint: CLLocation? = nil) {
         self.index = index
         self.point = point
@@ -215,6 +228,12 @@ public class Leg {
         return direction == anotherLeg.direction
     }
 
+    /// Is this leg between the two provided legs?
+    ///
+    /// - Parameters:
+    ///   - left: The prior leg
+    ///   - right: The next leg
+    /// - Returns: True if our altitude is between the altitude on the left and right
     func isBetween(left: Leg, right: Leg) -> Bool {
         if left.altitude <= altitude && altitude <= right.altitude {
             return true
@@ -230,6 +249,12 @@ public class Leg {
 
 extension Leg: Equatable {
 
+    /// Tells us if two legs are "the same".  They are the same if their indices, altitude and direction are the same.
+    ///
+    /// - Parameters:
+    ///   - lhs: The first Leg to compare
+    ///   - rhs: The second leg to compare
+    /// - Returns: <#return value description#>
     public static func == (lhs: Leg, rhs: Leg) -> Bool {
         guard lhs.index == rhs.index, Int(lhs.altitude) == Int(rhs.altitude), lhs.direction == rhs.direction, lhs.endIndex == rhs.endIndex else {
             return false
