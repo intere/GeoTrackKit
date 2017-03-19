@@ -55,4 +55,5 @@ I've built a couple of variations of Geo Tracking applications, but I wanted to 
 ## Key Classes
 <img alt="Key GeoTrackKit Classes" src="screenshots/GeoTrackKitClasses.png">
 
-[Documentation](docs/index.html)
+## Documentation
+See the generated documentation in the `docs` folder
