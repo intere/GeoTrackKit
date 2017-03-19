@@ -1,5 +1,5 @@
 PODS:
-  - GeoTrackKit (0.0.1)
+  - GeoTrackKit (0.1.0)
   - Nimble (5.1.1)
   - Quick (1.0.0)
 
@@ -10,10 +10,10 @@ DEPENDENCIES:
 
 EXTERNAL SOURCES:
   GeoTrackKit:
-    :path: ..
+    :path: ".."
 
 SPEC CHECKSUMS:
-  GeoTrackKit: 1290c05f9c0e8d74179e57fd38204b9ad472ac21
+  GeoTrackKit: 0f88a91b58f1da7a5c821bc8126c62593162ec21
   Nimble: 415e3aa3267e7bc2c96b05fa814ddea7bb686a29
   Quick: 8024e4a47e6cc03a9d5245ef0948264fc6d27cff
 
