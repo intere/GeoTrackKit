@@ -13,7 +13,7 @@ A Geo Location Tracking and statistic calculation library for iOS.  It also prov
   }
   s.source = {
     # TODO: Use HTTPS
-    :git => 'https://github.com/intere/GeoTrackKit',
+    :git => 'https://github.com/intere/GeoTrackKit.git',
     :tag => s.version.to_s
   }
   s.license = {
