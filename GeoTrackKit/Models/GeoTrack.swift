@@ -65,7 +65,6 @@ public extension GeoTrack {
         iPoints.append(contentsOf: locations)
     }
 
-
     /// Gets you the event log, and will include the points if you want them.
     ///
     /// - Parameter showPoints: Whether or not to include the points in the event log.
@@ -79,13 +78,6 @@ public extension GeoTrack {
 // MARK: - API(Events)
 
 public extension GeoTrack {
-
-    /// Adds a new point to the list of points
-    ///
-    /// - Parameter point: The CLLocation point to add to the track
-    public func add(point: CLLocation) {
-        iPoints.append(point)
-    }
 
     /// Lets you add a custom event.
     ///
@@ -173,7 +165,7 @@ public extension GeoTrack {
             guard let location = CLLocation.from(map: map) else {
                 continue
             }
-            track.add(point: location)
+            track.add(location: location)
         }
         for map in eventMaps {
             guard let event = GeoTrackLocationEvent.from(map: map) else {
