@@ -29,6 +29,13 @@
       "warning": "undocumented"
     },
     {
+      "file": "/Users/einternicola/Code/Personal/GeoTrackKit/GeoTrackKit/Models/Analyze/Leg.swift",
+      "line": 27,
+      "symbol": "Stat.direction",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
       "file": "/Users/einternicola/Code/Personal/GeoTrackKit/GeoTrackKit/Models/GeoTrackLocationEvent.swift",
       "line": 14,
       "symbol": "GeoTrackLocationEvent.EventType",

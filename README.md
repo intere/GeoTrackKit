@@ -50,3 +50,9 @@ I've built a couple of variations of Geo Tracking applications, but I wanted to 
 
 ## Created and maintained by
 [Eric Internicola](http://intere.github.io)
+
+
+## Key Classes
+<img alt="Key GeoTrackKit Classes" src="screenshots/GeoTrackKitClasses.png">
+
+[Documentation](docs/index.html)

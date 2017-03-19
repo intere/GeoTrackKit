@@ -24,7 +24,7 @@ public class Stat {
         return maximumAltitude - minimumAltitude
     }
     fileprivate var initialized = false
-    var direction: Direction = .unknown
+    internal(set) public var direction: Direction = .unknown
 
     /// Updates the stats using the provided point
     ///

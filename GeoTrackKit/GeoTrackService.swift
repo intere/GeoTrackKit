@@ -23,6 +23,15 @@ public protocol GeoTrackService {
     /// Is the service currently tracking?
     var isTracking: Bool { get }
 
+    /// Are we awaiting our fix?
+    var isAwaitingFix: Bool { get }
+
+    /// The current track
+    var track: GeoTrack? { get }
+
+    /// The most recently tracked point
+    var lastPoint: CLLocation? { get }
+
     /// Starts tracking
     func startTracking()
 

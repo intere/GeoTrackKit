@@ -16,7 +16,7 @@ import CoreLocation
 ///
 /// ```
 public class GeoTrackManager: NSObject {
-    public static let shared = GeoTrackManager()
+    public static let shared: GeoTrackService = GeoTrackManager()
 
     // GeoTrackService stuff
     internal var trackingState: GeoTrackState = .notTracking

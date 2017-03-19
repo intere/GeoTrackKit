@@ -11,7 +11,9 @@ import Foundation
 /// A UI Model for a track.  It keeps track of a Track (`GeoTrack`), a Track Analyzer (`GeoTrackAnalyzer`) and a collection of Legs (ascents, descents) that are currently visible
 public class UIGeoTrack {
     /// The Track
-    public let track: GeoTrack
+    public var track: GeoTrack {
+        return analyzer.track
+    }
     /// The Track analyzer (provides stats about the track)
     public let analyzer: GeoTrackAnalyzer
     /// The legs that are currently visible
@@ -21,7 +23,6 @@ public class UIGeoTrack {
     ///
     /// - Parameter track: The track to initialize with.
     public init(with track: GeoTrack) {
-        self.track = track
         analyzer = GeoTrackAnalyzer(track: track)
         analyzer.calculate()
         enableAll()

@@ -50,7 +50,7 @@ public class GeoTrackLocationEvent {
     private(set) public var timestamp: Date = Date()
     /// The message for this event
     private(set) public var message: String?
-    /// The index (order) of the event
+    /// The index of the point that the event is related to.
     private(set) public var index: Int?
 
     /// Initializer - not meant to be used directly, call one of the factory creation functions.
@@ -59,7 +59,7 @@ public class GeoTrackLocationEvent {
     ///   - type: The type of event
     ///   - timestamp: The timestamp of the event
     ///   - message: The message for the event
-    ///   - index: The index of the event
+    ///   - index: The (optional) index of a point that this event is related to (in the Track)
     internal init(type: EventType, timestamp: Date? = nil, message: String? = nil, index: Int? = nil) {
         self.type = type
         if let timestamp = timestamp {
