@@ -2,8 +2,11 @@
 
 Pod::Spec.new do |s|
   s.name      = 'GeoTrackKit'
-  s.version   = '0.0.1'
+  s.version   = '0.1.0'
   s.summary   = 'Geo Tracking and statistics for iOS'
+  s.description = <<-DESC
+A Geo Location Tracking and statistic calculation library for iOS.  It also provides rendering location tracks over a map for you.
+  DESC
   s.homepage  = 'https://github.com/intere/GeoTrackKit'
   s.author = {
     'Eric Internicola' => 'intere@gmail.com'
