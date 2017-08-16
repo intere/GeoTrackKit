@@ -8,7 +8,7 @@
     "Eric Internicola": "intere@gmail.com"
   },
   "source": {
-    "git": "https://github.com/intere/GeoTrackKit",
+    "git": "https://github.com/intere/GeoTrackKit.git",
     "tag": "0.1.0"
   },
   "license": {

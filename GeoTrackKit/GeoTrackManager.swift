@@ -177,7 +177,7 @@ extension GeoTrackManager: CLLocationManagerDelegate {
     ///   - manager: the source of the event.
     ///   - error: the error that occurred.
     public func locationManager(_ manager: CLLocationManager, didFinishDeferredUpdatesWithError error: Error?) {
-        GTError(message: "Failed Deffered Updates: \(error?.localizedDescription), \(error)")
+        GTError(message: "Failed Deffered Updates: \(String(describing: error?.localizedDescription)), \(String(describing: error))")
         if let error = error {
             track?.error(error: error)
         } else {
