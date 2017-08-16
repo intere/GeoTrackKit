@@ -66,6 +66,7 @@ class TrackMapViewController: UIViewController {
 
 extension TrackMapViewController {
 
+    @objc
     func legVisiblityChanged(_ notification: NSNotification) {
         mapView.renderTrack()
     }

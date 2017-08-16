@@ -22,7 +22,7 @@ public class GeoTrackMap: MKMapView {
     public var descentColor: UIColor = .blue
 
     /// The Zoom Delegate: which tells us if / where to zoom to
-    public var zoomDelegate: ZoomDefining?
+    public weak var zoomDelegate: ZoomDefining?
 
     /// The UI Model for the track.  When you set it, we render it!
     public var model: UIGeoTrack? {
@@ -95,9 +95,9 @@ extension GeoTrackMap: MKMapViewDelegate {
         }
 
         switch direction {
-        case .down:
+        case .downward:
             renderer.strokeColor = descentColor
-        case .up:
+        case .upward:
             renderer.strokeColor = ascentColor
         default:
             break

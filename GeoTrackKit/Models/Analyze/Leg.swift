@@ -105,10 +105,10 @@ public class TrackStat: Stat {
         for leg in legs {
             let stat = leg.stat
             baseOverallStat.combine(with: stat)
-            if leg.direction == .up {
+            if leg.direction == .upward {
                 vAscent += stat.verticalDelta
                 aDistance += stat.distance
-            } else if leg.direction == .down {
+            } else if leg.direction == .downward {
                 vDescent -= stat.verticalDelta
                 dDistance += stat.distance
                 runs += 1
@@ -131,9 +131,9 @@ public enum Direction: String {
     /// Unknown direction
     case unknown
     /// Upward direction (ascent)
-    case up
+    case upward
     /// Downward direction (descent)
-    case down
+    case downward
 }
 
 /// A relative minima or maxima
@@ -155,9 +155,9 @@ public class Leg {
             if Int(altitudeChange) == 0 {
                 return .unknown
             } else if Int(altitudeChange) > 0 {
-                return .up
+                return .upward
             }
-            return .down
+            return .downward
         }
     }
     /// The ending index of the leg

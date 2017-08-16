@@ -31,11 +31,6 @@ class ViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(locationDidUpdate(_:)), name: Notification.Name.GeoTrackKit.didUpdateLocations, object: nil)
     }
 
-    override func viewWillDisappear(_ animated: Bool) {
-        NotificationCenter.default.removeObserver(self)
-        super.viewWillDisappear(animated)
-    }
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
@@ -43,12 +38,17 @@ class ViewController: UIViewController {
     @IBAction func clickedTrackButton(_ sender: UIButton) {
         handleTrackingClick()
     }
+
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
 }
 
 // MARK: - Listeners
 
 extension ViewController {
 
+    @objc
     func locationDidUpdate(_ notification: NSNotification) {
         DispatchQueue.main.async {
             self.updateLabels()

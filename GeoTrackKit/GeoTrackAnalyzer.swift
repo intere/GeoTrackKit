@@ -166,9 +166,9 @@ extension CLLocation {
         if altitude == point.altitude {
             return .unknown
         } else if altitude > point.altitude {
-            return .down
+            return .downward
         }
-        return .up
+        return .upward
     }
 
 }

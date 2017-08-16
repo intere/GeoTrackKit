@@ -74,10 +74,11 @@ public extension GeoTrackEventLog {
     /// - Parameter appender: The appender to be removed.
     func remove(appender: GeoTrackLogAppender) {
         for index in 0..<appenders.count {
-            if appenders[index].uniqueId == appender.uniqueId {
-                appenders.remove(at: index)
-                return
+            guard appenders[index].uniqueId == appender.uniqueId else {
+                continue
             }
+            appenders.remove(at: index)
+            return
         }
     }
 
