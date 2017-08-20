@@ -22,7 +22,8 @@ public class GeoTrackMap: MKMapView {
     public var descentColor: UIColor = .blue
 
     /// The Zoom Delegate: which tells us if / where to zoom to
-    public weak var zoomDelegate: ZoomDefining?
+    public var zoomDelegate: ZoomDefining?
+    // swiftlint:disable:previous weak_delegate
 
     /// The UI Model for the track.  When you set it, we render it!
     public var model: UIGeoTrack? {
