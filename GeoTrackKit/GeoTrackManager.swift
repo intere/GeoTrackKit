@@ -91,7 +91,7 @@ extension GeoTrackManager: CLLocationManagerDelegate {
     public func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
 
         switch status {
-        case .authorizedAlways:
+        case .authorizedAlways, .authorizedWhenInUse:
             GTDebug(message: "Authorization has been updated, starting location updates")
             locationManager?.startUpdatingLocation()
             authorized = true

@@ -36,9 +36,18 @@ class TrackMapViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(legVisiblityChanged(_:)), name: Notification.Name.GeoMapping.legVisibilityChanged, object: nil)
     }
 
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        mapView.delegate = nil
+        model = nil
+    }
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    }
+
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
 
     static func loadFromBundle(filename: String, type: String) -> GeoTrack? {

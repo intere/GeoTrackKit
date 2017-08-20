@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>We use location services to create tracks for you (but we only track when you explicitly ask us to).</string>
+	<string>We use location services to create tracks for you. We only use location services when you explicitly ask us to.</string>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>We use location services to create tracks for you (but we only track when you explicitly ask us to).</string>
+	<string>We use location services to create tracks for you. We only use location services when you explicitly ask us to.</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleExecutable</key>
@@ -25,7 +25,7 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSLocationAlwaysUsageDescription</key>
-	<string>We use location services to create tracks for you (but we only track when you explicitly ask us to).</string>
+	<string>We use location services to create tracks for you. We only use location services when you explicitly ask us to.</string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>location</string>
