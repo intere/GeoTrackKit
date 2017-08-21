@@ -110,11 +110,6 @@ extension GeoTrackManager: CLLocationManagerDelegate {
             GTError(message: "Restricted from access to location updates")
             track?.error(message: "Location access restricted")
             authorized = false
-
-        default:
-            GTError(message: "Other access to location updates (unacceptable)")
-            track?.error(message: "Location access not acceptable")
-            authorized = false
         }
     }
 
