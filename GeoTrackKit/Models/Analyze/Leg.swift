@@ -132,6 +132,8 @@ public enum Direction: String {
     case unknown
     /// Upward direction (ascent)
     case up
+    // swiftlint:disable:previous identifier_name
+
     /// Downward direction (descent)
     case down
 }

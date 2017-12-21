@@ -23,6 +23,7 @@ public class GeoTrackMap: MKMapView {
 
     /// The Zoom Delegate: which tells us if / where to zoom to
     public var zoomDelegate: ZoomDefining?
+    // swiftlint:disable:previous weak_delegate
 
     /// The UI Model for the track.  When you set it, we render it!
     public var model: UIGeoTrack? {
