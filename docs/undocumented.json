@@ -16,14 +16,14 @@
     },
     {
       "file": "/Users/einternicola/Code/Personal/GeoTrackKit/GeoTrackKit/Map/GeoTrackMap.swift",
-      "line": 34,
+      "line": 35,
       "symbol": "GeoTrackMap.init(coder:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/einternicola/Code/Personal/GeoTrackKit/GeoTrackKit/Map/GeoTrackMap.swift",
-      "line": 40,
+      "line": 41,
       "symbol": "GeoTrackMap.init(frame:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
