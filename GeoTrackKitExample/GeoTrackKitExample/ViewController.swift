@@ -40,6 +40,7 @@ class ViewController: UIViewController {
 
 extension ViewController {
 
+    @objc
     func locationDidUpdate(_ notification: NSNotification) {
         DispatchQueue.main.async {
             self.updateLabels()
