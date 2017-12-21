@@ -182,6 +182,13 @@ public extension GeoTrack {
 
 fileprivate extension GeoTrack {
 
+    struct PropertyKeys {
+        static let name = "name"
+        static let description = "description"
+        static let points = "points"
+        static let events = "events"
+    }
+
     struct Log {
         let date: Date
         let message: String
@@ -201,9 +208,9 @@ fileprivate extension GeoTrack {
     ///
     /// - Parameter json: the JSON map to parse.
     func parse(_ json: [String: Any]) {
-        self.name = json["name"] as? String ?? ""
-        self.description = json["description"] as? String ?? ""
-        guard let points = json["points"] as? [[String: Any]] else {
+        self.name = json[PropertyKeys.name] as? String ?? ""
+        self.description = json[PropertyKeys.description] as? String ?? ""
+        guard let points = json[PropertyKeys.points] as? [[String: Any]] else {
             return
         }
 
@@ -215,7 +222,7 @@ fileprivate extension GeoTrack {
             iPoints.append(location)
         }
 
-        guard let _ = json["events"] as? [[String: Any]] else {
+        guard json[PropertyKeys.events] as? [[String: Any]] != nil else {
             return
         }
 
