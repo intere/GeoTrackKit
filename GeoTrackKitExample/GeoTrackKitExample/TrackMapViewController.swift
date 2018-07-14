@@ -42,14 +42,6 @@ class TrackMapViewController: UIViewController {
         model = nil
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
-
-    deinit {
-        NotificationCenter.default.removeObserver(self)
-    }
-
     static func loadFromBundle(filename: String, type: String) -> GeoTrack? {
         guard let path = Bundle(for: TrackMapViewController.self).path(forResource: filename, ofType: type) else {
             assertionFailure("Couldn't load file: \(filename).\(type)")

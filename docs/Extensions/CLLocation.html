@@ -78,7 +78,7 @@
             </ul>
           </li>
           <li class="nav-group-name">
-            <a href="../Enums.html">Enums</a>
+            <a href="../Enums.html">Enumerations</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
                 <a href="../Enums/Direction.html">Direction</a>
@@ -101,10 +101,7 @@
                 <a href="../Extensions/Notification.html">Notification</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Extensions/Notification/GeoMapping.html">– GeoMapping</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../Extensions/Notification/GeoTrackKit.html">– GeoTrackKit</a>
+                <a href="../Extensions/Notification/Name.html">– Name</a>
               </li>
             </ul>
           </li>
@@ -123,10 +120,10 @@
             </ul>
           </li>
           <li class="nav-group-name">
-            <a href="../Typealiases.html">Typealiases</a>
+            <a href="../Typealiases.html">Type Aliases</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a href="../Typealiases.html#/s:11GeoTrackKit20GeoTrackAuthCallback">GeoTrackAuthCallback</a>
+                <a href="../Typealiases.html#/s:11GeoTrackKit0aB12AuthCallbacka">GeoTrackAuthCallback</a>
               </li>
             </ul>
           </li>
@@ -136,8 +133,13 @@
         <section>
           <section class="section">
             <h1>CLLocation</h1>
-            <p>Undocumented</p>
+              <div class="declaration">
+                <div class="language">
+                  <pre class="highlight swift"><code><span class="kd">class</span> <span class="kt">CLLocation</span> <span class="p">:</span> <span class="kt">NSObject</span><span class="p">,</span> <span class="kt">NSCopying</span><span class="p">,</span> <span class="kt">NSSecureCoding</span></code></pre>
 
+                </div>
+              </div>
+            
           </section>
           <section class="section task-group-section">
             <div class="task-group">
@@ -145,9 +147,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:vE11GeoTrackKitCSo10CLLocation6stringSS"></a>
+                    <a name="/c:@CM@GeoTrackKit@@objc(cs)CLLocation(py)string"></a>
                     <a name="//apple_ref/swift/Property/string" class="dashAnchor"></a>
-                    <a class="token" href="#/s:vE11GeoTrackKitCSo10CLLocation6stringSS">string</a>
+                    <a class="token" href="#/c:@CM@GeoTrackKit@@objc(cs)CLLocation(py)string">string</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -157,6 +159,14 @@
                       <div class="abstract">
                         <p>Undocumented</p>
 
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">string</span><span class="p">:</span> <span class="kt">String</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
                       </div>
                     </section>
                   </div>
@@ -168,9 +178,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:ZFE11GeoTrackKitCSo10CLLocation4fromFT3mapGVs10DictionarySSP___GSqS0__"></a>
+                    <a name="/c:@CM@GeoTrackKit@@objc(cs)CLLocation(cm)fromMap:"></a>
                     <a name="//apple_ref/swift/Method/from(map:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:ZFE11GeoTrackKitCSo10CLLocation4fromFT3mapGVs10DictionarySSP___GSqS0__">from(map:)</a>
+                    <a class="token" href="#/c:@CM@GeoTrackKit@@objc(cs)CLLocation(cm)fromMap:">from(map:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -185,7 +195,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">static</span> <span class="kd">func</span> <span class="nf">from</span><span class="p">(</span><span class="nv">map</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">:</span> <span class="kt">Any</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kt">CLLocation</span><span class="p">?</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">static</span> <span class="kd">func</span> <span class="nf">from</span><span class="p">(</span><span class="nv">map</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span> <span class="p">:</span> <span class="kt">Any</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kt">CLLocation</span><span class="p">?</span></code></pre>
 
                         </div>
                       </div>
@@ -202,7 +212,6 @@
                               <td>
                                 <div>
                                   <p>the map to attempt to create the location from.</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -212,7 +221,6 @@
                       <div>
                         <h4>Return Value</h4>
                         <p>A CLLocation object if it could be created, nil if not.</p>
-
                       </div>
                     </section>
                   </div>
@@ -220,9 +228,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:vE11GeoTrackKitCSo10CLLocation3mapGVs10DictionarySSP__"></a>
+                    <a name="/c:@CM@GeoTrackKit@@objc(cs)CLLocation(py)map"></a>
                     <a name="//apple_ref/swift/Property/map" class="dashAnchor"></a>
-                    <a class="token" href="#/s:vE11GeoTrackKitCSo10CLLocation3mapGVs10DictionarySSP__">map</a>
+                    <a class="token" href="#/c:@CM@GeoTrackKit@@objc(cs)CLLocation(py)map">map</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -237,7 +245,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">map</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">:</span> <span class="kt">Any</span><span class="p">]</span></code></pre>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">map</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span> <span class="p">:</span> <span class="kt">Any</span><span class="p">]</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
 
                         </div>
                       </div>
@@ -249,8 +257,8 @@
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2017 <a class="link" href="https://github.com/intere/GeoTrackKit" target="_blank" rel="external">Eric Internicola</a>. All rights reserved. (Last updated: 2017-03-19)</p>
-          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.7.4</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+          <p>&copy; 2018 <a class="link" href="https://github.com/intere/GeoTrackKit" target="_blank" rel="external">Eric Internicola</a>. All rights reserved. (Last updated: 2018-07-13)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.3</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>
     </div>

@@ -31,6 +31,10 @@ public class GeoTrackManager: NSObject {
     fileprivate(set) public var authorized: Bool = false
     /// The Track
     fileprivate(set) public var track: GeoTrack?
+
+    /// When we startup, if we find points to be older than this threshold, we toss them away.
+    /// Defaults to 5 seconds, but you can adjust this as you see fit.
+    static var oldPointThreshold: TimeInterval = 5
 }
 
 // MARK: - API
@@ -122,8 +126,26 @@ extension GeoTrackManager: CLLocationManagerDelegate {
         if trackingState == .awaitingFix {
             trackingState = .tracking
         }
-        GTDebug(message: "New Locations: \(locations)")
-        guard let location = locations.last else {
+
+        var recentLocations = [CLLocation]()
+
+        // Ensure that the first point is recent (not old points which we often get when tracking begins):
+        if lastPoint == nil {
+            locations.forEach { (location) in
+                guard abs(location.timestamp.timeIntervalSinceNow) < GeoTrackManager.oldPointThreshold else {
+                    return
+                }
+                recentLocations.append(location)
+            }
+            guard !recentLocations.isEmpty else {
+                return
+            }
+        } else {
+            recentLocations = locations
+        }
+
+        GTDebug(message: "New Locations: \(recentLocations)")
+        guard let location = recentLocations.last else {
             lastPoint = nil
             return
         }
@@ -133,8 +155,8 @@ extension GeoTrackManager: CLLocationManagerDelegate {
             GTError(message: "No current track to store points within")
             return
         }
-        track.add(locations: locations)
-        NotificationCenter.default.post(name: Notification.Name.GeoTrackKit.didUpdateLocations, object: locations)
+        track.add(locations: recentLocations)
+        NotificationCenter.default.post(name: Notification.Name.GeoTrackKit.didUpdateLocations, object: recentLocations)
     }
 
     /// Handles location tracking pauses
@@ -172,7 +194,10 @@ extension GeoTrackManager: CLLocationManagerDelegate {
     ///   - manager: the source of the event.
     ///   - error: the error that occurred.
     public func locationManager(_ manager: CLLocationManager, didFinishDeferredUpdatesWithError error: Error?) {
-        GTError(message: "Failed Deffered Updates: \(String(describing: error?.localizedDescription)), \(String(describing: error))")
+        if let error = error {
+            GTError(message: "Failed Deffered Updates: \(error.localizedDescription)")
+        }
+
         if let error = error {
             track?.error(error: error)
         } else {

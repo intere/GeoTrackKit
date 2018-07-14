@@ -78,7 +78,7 @@
             </ul>
           </li>
           <li class="nav-group-name">
-            <a href="../Enums.html">Enums</a>
+            <a href="../Enums.html">Enumerations</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
                 <a href="../Enums/Direction.html">Direction</a>
@@ -101,10 +101,7 @@
                 <a href="../Extensions/Notification.html">Notification</a>
               </li>
               <li class="nav-group-task">
-                <a href="../Extensions/Notification/GeoMapping.html">– GeoMapping</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="../Extensions/Notification/GeoTrackKit.html">– GeoTrackKit</a>
+                <a href="../Extensions/Notification/Name.html">– Name</a>
               </li>
             </ul>
           </li>
@@ -123,10 +120,10 @@
             </ul>
           </li>
           <li class="nav-group-name">
-            <a href="../Typealiases.html">Typealiases</a>
+            <a href="../Typealiases.html">Type Aliases</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a href="../Typealiases.html#/s:11GeoTrackKit20GeoTrackAuthCallback">GeoTrackAuthCallback</a>
+                <a href="../Typealiases.html#/s:11GeoTrackKit0aB12AuthCallbacka">GeoTrackAuthCallback</a>
               </li>
             </ul>
           </li>
@@ -138,7 +135,7 @@
             <h1>ZoomDefining</h1>
               <div class="declaration">
                 <div class="language">
-                  <pre class="highlight"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">ZoomDefining</span><span class="p">:</span> <span class="kd">class</span></code></pre>
+                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">ZoomDefining</span> <span class="p">:</span> <span class="kt">AnyObject</span></code></pre>
 
                 </div>
               </div>
@@ -151,9 +148,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:vP11GeoTrackKit12ZoomDefining10shouldZoomSb"></a>
+                    <a name="/s:11GeoTrackKit12ZoomDefiningP06shouldD0Sbvp"></a>
                     <a name="//apple_ref/swift/Property/shouldZoom" class="dashAnchor"></a>
-                    <a class="token" href="#/s:vP11GeoTrackKit12ZoomDefining10shouldZoomSb">shouldZoom</a>
+                    <a class="token" href="#/s:11GeoTrackKit12ZoomDefiningP06shouldD0Sbvp">shouldZoom</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -168,7 +165,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="k">var</span> <span class="nv">shouldZoom</span><span class="p">:</span> <span class="kt">Bool</span></code></pre>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">shouldZoom</span><span class="p">:</span> <span class="kt">Bool</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
 
                         </div>
                       </div>
@@ -178,9 +175,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:FP11GeoTrackKit12ZoomDefining10zoomRegionFT3forGSaCSo10CLLocation__VSC18MKCoordinateRegion"></a>
+                    <a name="/s:11GeoTrackKit12ZoomDefiningP10zoomRegionSC012MKCoordinateG0VSaySo10CLLocationCG3for_tF"></a>
                     <a name="//apple_ref/swift/Method/zoomRegion(for:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:FP11GeoTrackKit12ZoomDefining10zoomRegionFT3forGSaCSo10CLLocation__VSC18MKCoordinateRegion">zoomRegion(for:)</a>
+                    <a class="token" href="#/s:11GeoTrackKit12ZoomDefiningP10zoomRegionSC012MKCoordinateG0VSaySo10CLLocationCG3for_tF">zoomRegion(for:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -195,7 +192,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">func</span> <span class="nf">zoomRegion</span><span class="p">(</span><span class="k">for</span> <span class="nv">points</span><span class="p">:</span> <span class="p">[</span><span class="kt">CLLocation</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kt">MKCoordinateRegion</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">zoomRegion</span><span class="p">(</span><span class="k">for</span> <span class="nv">points</span><span class="p">:</span> <span class="p">[</span><span class="kt">CLLocation</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kt">MKCoordinateRegion</span></code></pre>
 
                         </div>
                       </div>
@@ -212,7 +209,6 @@
                               <td>
                                 <div>
                                   <p>The points to calculate the zoom region for.</p>
-
                                 </div>
                               </td>
                             </tr>
@@ -222,7 +218,6 @@
                       <div>
                         <h4>Return Value</h4>
                         <p>The zoom region that allows you to see all of the points.</p>
-
                       </div>
                     </section>
                   </div>
@@ -232,8 +227,8 @@
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2017 <a class="link" href="https://github.com/intere/GeoTrackKit" target="_blank" rel="external">Eric Internicola</a>. All rights reserved. (Last updated: 2017-03-19)</p>
-          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.7.4</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+          <p>&copy; 2018 <a class="link" href="https://github.com/intere/GeoTrackKit" target="_blank" rel="external">Eric Internicola</a>. All rights reserved. (Last updated: 2018-07-13)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.3</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>
     </div>

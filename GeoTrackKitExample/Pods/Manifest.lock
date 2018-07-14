@@ -1,5 +1,5 @@
 PODS:
-  - GeoTrackKit (0.1.0)
+  - GeoTrackKit (0.2.0)
 
 DEPENDENCIES:
   - GeoTrackKit (from `..`)
@@ -9,8 +9,8 @@ EXTERNAL SOURCES:
     :path: ".."
 
 SPEC CHECKSUMS:
-  GeoTrackKit: f62cdf0daad5fb1df5728194feecde739dd7b15c
+  GeoTrackKit: f508317c18eb725eb5a4db1e8e60103312f71672
 
-PODFILE CHECKSUM: 6a173460f1cfe1e82d45b47d32d1fca03fc4e6ca
+PODFILE CHECKSUM: cc1da6334709957828672f92fddd35ad258f2004
 
-COCOAPODS: 1.1.1
+COCOAPODS: 1.5.3

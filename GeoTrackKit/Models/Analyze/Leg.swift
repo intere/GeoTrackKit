@@ -125,13 +125,15 @@ public class TrackStat: Stat {
 /// The direction that we're going
 ///
 /// - unknown: Unknown direction (e.g. the first point
-/// - up: The upward direction
-/// - down: The downward direction
+/// - upward: The upward direction
+/// - downward: The downward direction
 public enum Direction: String {
     /// Unknown direction
     case unknown
+
     /// Upward direction (ascent)
     case upward
+
     /// Downward direction (descent)
     case downward
 }
@@ -160,10 +162,13 @@ public class Leg {
             return .downward
         }
     }
+
     /// The ending index of the leg
     public var endIndex: Int
+
     /// The ending point of the leg
     public var endPoint: CLLocation?
+
     /// The current stats for the leg
     public var stat = Stat()
 
@@ -254,7 +259,7 @@ extension Leg: Equatable {
     /// - Parameters:
     ///   - lhs: The first Leg to compare
     ///   - rhs: The second leg to compare
-    /// - Returns: <#return value description#>
+    /// - Returns: True if the two legs seem to be the same, false if not.
     public static func == (lhs: Leg, rhs: Leg) -> Bool {
         guard lhs.index == rhs.index, Int(lhs.altitude) == Int(rhs.altitude), lhs.direction == rhs.direction, lhs.endIndex == rhs.endIndex else {
             return false
