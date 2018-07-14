@@ -59,4 +59,4 @@ I've built a couple of variations of Geo Tracking applications, but I wanted to 
 <img alt="Key GeoTrackKit Classes" src="screenshots/GeoTrackKitClasses.png">
 
 ## Documentation
-See the generated documentation in the `docs` folder
+See the generated documentation in the [`docs`](https://intere.github.io/GeoTrackKit/docs/) folder
