@@ -1,4 +1,6 @@
 # GeoTrackKit.podspec
+# to lint:
+# pod lib lint --allow-warnings GeoTrackKit.podspec
 
 Pod::Spec.new do |s|
   s.name      = 'GeoTrackKit'
@@ -7,15 +9,14 @@ Pod::Spec.new do |s|
   s.description = <<-DESC
 A Geo Location Tracking and statistic calculation library for iOS.  It also provides rendering location tracks over a map for you.
   DESC
+
   s.homepage  = 'https://github.com/intere/GeoTrackKit'
-  s.author = {
-    'Eric Internicola' => 'intere@gmail.com'
-  }
+  s.author = { 'Eric Internicola' => 'intere@gmail.com' }
   s.source = {
-    # TODO: Use HTTPS
     :git => 'https://github.com/intere/GeoTrackKit.git',
     :tag => s.version.to_s
   }
+
   s.license = {
     :type => 'MIT',
     :text => <<-LICENSE
@@ -35,6 +36,9 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
     'GeoTrackKit/Map/UIModels/*.swift',
     'GeoTrackKit/Models/*.swift',
     'GeoTrackKit/Models/Analyze/*.swift',
-     'GeoTrackKit/*.h'
+    'GeoTrackKit/*.h'
+
   s.platform = :ios, '9.0'
+  s.swift_version = '4.1'
+
 end
