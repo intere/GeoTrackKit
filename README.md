@@ -11,7 +11,7 @@
 ## Project Status
 This project is currently a work in progress.
 
-[![BuddyBuild](https://dashboard.buddybuild.com/api/statusImage?appID=58a5d9cf4d78ba0100bda868&branch=master&build=latest)](https://dashboard.buddybuild.com/apps/58a5d9cf4d78ba0100bda868/build/latest?branch=feature/BuildingBlocks)
+[![Build Status](https://travis-ci.org/intere/GeoTrackKit.svg?branch=develop)](https://travis-ci.org/intere/GeoTrackKit)
 [![Documentation](https://cdn.rawgit.com/intere/GeoTrackKit/master/docs/badge.svg)](https://intere.github.io/GeoTrackKit/docs/index.html)
 [![Platform](https://img.shields.io/badge/Platforms-iOS-lightgray.svg?style=flat)](http://cocoadocs.org/docsets/GeoTrackKit)
 [![CocoaPods](https://img.shields.io/cocoapods/v/GeoTrackKit.svg)](https://cocoapods.org/pods/GeoTrackKit)  
