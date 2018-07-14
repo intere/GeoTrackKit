@@ -96,9 +96,9 @@ extension GeoTrackMap: MKMapViewDelegate {
         }
 
         switch direction {
-        case .down:
+        case .downward:
             renderer.strokeColor = descentColor
-        case .up:
+        case .upward:
             renderer.strokeColor = ascentColor
         default:
             break
@@ -118,13 +118,13 @@ fileprivate extension UIGeoTrack {
         var polys = [MKPolyline]()
         let points = track.points
 
-        for index in legs {
+        for leg in legs {
             var coordinates = [CLLocationCoordinate2D]()
-            for i in index.index...index.endIndex {
-                coordinates.append(points[i].coordinate)
+            for index in leg.index...leg.endIndex {
+                coordinates.append(points[index].coordinate)
             }
             let poly = MKPolyline(coordinates: &coordinates, count: coordinates.count)
-            poly.title = index.direction.rawValue
+            poly.title = leg.direction.rawValue
             polys.append(poly)
         }
 

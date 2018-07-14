@@ -10,6 +10,7 @@
     
   </head>
   <body>
+    <a name="//apple_ref/swift/Section/Classes" class="dashAnchor"></a>
     <a title="Classes  Reference"></a>
     <header>
       <div class="content-wrapper">
@@ -77,7 +78,7 @@
             </ul>
           </li>
           <li class="nav-group-name">
-            <a href="Enums.html">Enums</a>
+            <a href="Enums.html">Enumerations</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
                 <a href="Enums/Direction.html">Direction</a>
@@ -100,10 +101,7 @@
                 <a href="Extensions/Notification.html">Notification</a>
               </li>
               <li class="nav-group-task">
-                <a href="Extensions/Notification/GeoMapping.html">– GeoMapping</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Extensions/Notification/GeoTrackKit.html">– GeoTrackKit</a>
+                <a href="Extensions/Notification/Name.html">– Name</a>
               </li>
             </ul>
           </li>
@@ -122,7 +120,7 @@
             </ul>
           </li>
           <li class="nav-group-name">
-            <a href="Typealiases.html">Typealiases</a>
+            <a href="Typealiases.html">Type Aliases</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
                 <a href="Typealiases.html#/s:11GeoTrackKit0aB12AuthCallbacka">GeoTrackAuthCallback</a>
@@ -144,9 +142,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:11GeoTrackKit05UIGeoB0C"></a>
-                    <a name="//apple_ref/swift/Class/UIGeoTrack" class="dashAnchor"></a>
-                    <a class="token" href="#/s:11GeoTrackKit05UIGeoB0C">UIGeoTrack</a>
+                    <a name="/s:11GeoTrackKit0aB8AnalyzerC"></a>
+                    <a name="//apple_ref/swift/Class/GeoTrackAnalyzer" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11GeoTrackKit0aB8AnalyzerC">GeoTrackAnalyzer</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -154,172 +152,15 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>A UI Model for a track.  It keeps track of a Track (<code><a href="Classes/GeoTrack.html">GeoTrack</a></code>), a Track Analyzer (<code><a href="Classes/GeoTrackAnalyzer.html">GeoTrackAnalyzer</a></code>) and a collection of Legs (ascents, descents) that are currently visible</p>
+                        <p>This class is used to generate statistics about your track.  Please note, this is a trivial implementation for ascent / descent detection.  This implementation does not (currently) do any sort of noise reduction or utilize the vertical accuracy of the data to remove potentially erronious points.  It might make sense (down the roade) to abstract a protocol from this and have multiple implementations to choose from that perform noise reduction or some sort of statistical smoothing to clean up the data for accuracy.</p>
 
-                        <a href="Classes/UIGeoTrack.html" class="slightly-smaller">See more</a>
+                        <a href="Classes/GeoTrackAnalyzer.html" class="slightly-smaller">See more</a>
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">UIGeoTrack</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <ul>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/c:@M@GeoTrackKit@objc(cs)GeoTrackManager"></a>
-                    <a name="//apple_ref/swift/Class/GeoTrackManager" class="dashAnchor"></a>
-                    <a class="token" href="#/c:@M@GeoTrackKit@objc(cs)GeoTrackManager">GeoTrackManager</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>This class is responsible for managing (and brokering) everything related to tracking for you.</p>
-
-<p><a href='#sample-usage' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='sample-usage'>Sample Usage:</h3>
-<pre class="highlight plaintext"><code>GeoTrackManager.shared.startTracking()</p>
-
-<p></code></pre></p>
-
-                        <a href="Classes/GeoTrackManager.html" class="slightly-smaller">See more</a>
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">GeoTrackManager</span><span class="p">:</span> <span class="kt">NSObject</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <ul>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:11GeoTrackKit0aB13LocationEventC"></a>
-                    <a name="//apple_ref/swift/Class/GeoTrackLocationEvent" class="dashAnchor"></a>
-                    <a class="token" href="#/s:11GeoTrackKit0aB13LocationEventC">GeoTrackLocationEvent</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>This class is responsible for keeping track of different types of track events.  For example when the user starts tracking, stops tracking, pauses tracking, and your own custom event types.</p>
-
-                        <a href="Classes/GeoTrackLocationEvent.html" class="slightly-smaller">See more</a>
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">GeoTrackLocationEvent</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <ul>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:11GeoTrackKit4StatC"></a>
-                    <a name="//apple_ref/swift/Class/Stat" class="dashAnchor"></a>
-                    <a class="token" href="#/s:11GeoTrackKit4StatC">Stat</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>This class keeps track of statistics for a Leg (ascent or descent) of a track.</p>
-
-                        <a href="Classes/Stat.html" class="slightly-smaller">See more</a>
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">Stat</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:11GeoTrackKit0B4StatC"></a>
-                    <a name="//apple_ref/swift/Class/TrackStat" class="dashAnchor"></a>
-                    <a class="token" href="#/s:11GeoTrackKit0B4StatC">TrackStat</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>This class keeps track of statistics for an entire Geo Track.  It summarizes the stats of all of the legs that comprise it and it keeps trak of the number of runs.</p>
-
-                        <a href="Classes/TrackStat.html" class="slightly-smaller">See more</a>
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">TrackStat</span><span class="p">:</span> <span class="kt"><a href="Classes/Stat.html">Stat</a></span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:11GeoTrackKit3LegC"></a>
-                    <a name="//apple_ref/swift/Class/Leg" class="dashAnchor"></a>
-                    <a class="token" href="#/s:11GeoTrackKit3LegC">Leg</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>A relative minima or maxima</p>
-
-                        <a href="Classes/Leg.html" class="slightly-smaller">See more</a>
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">Leg</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">GeoTrackAnalyzer</span></code></pre>
 
                         </div>
                       </div>
@@ -351,103 +192,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">GeoTrackConsoleAppender</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <ul>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:11GeoTrackKit0aB0C"></a>
-                    <a name="//apple_ref/swift/Class/GeoTrack" class="dashAnchor"></a>
-                    <a class="token" href="#/s:11GeoTrackKit0aB0C">GeoTrack</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Data structure to keep track of points for a track</p>
-
-                        <a href="Classes/GeoTrack.html" class="slightly-smaller">See more</a>
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">GeoTrack</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <ul>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:11GeoTrackKit14DefaultMapZoomC"></a>
-                    <a name="//apple_ref/swift/Class/DefaultMapZoom" class="dashAnchor"></a>
-                    <a class="token" href="#/s:11GeoTrackKit14DefaultMapZoomC">DefaultMapZoom</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>This is an implementation of the default map zooming.  It basically just states that you should always zoom to fit the points (whenever a redraw on the map is requested) and it calculates a zoom region that has a very tiny amount of padding around the points</p>
-
-                        <a href="Classes/DefaultMapZoom.html" class="slightly-smaller">See more</a>
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="n">open</span> <span class="kd">class</span> <span class="kt">DefaultMapZoom</span><span class="p">:</span> <span class="kt"><a href="Protocols/ZoomDefining.html">ZoomDefining</a></span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <ul>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:11GeoTrackKit0aB8AnalyzerC"></a>
-                    <a name="//apple_ref/swift/Class/GeoTrackAnalyzer" class="dashAnchor"></a>
-                    <a class="token" href="#/s:11GeoTrackKit0aB8AnalyzerC">GeoTrackAnalyzer</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>This class is used to generate statistics about your track.  Please note, this is a trivial implementation for ascent / descent detection.  This implementation does not (currently) do any sort of noise reduction or utilize the vertical accuracy of the data to remove potentially erronious points.  It might make sense (down the roade) to abstract a protocol from this and have multiple implementations to choose from that perform noise reduction or some sort of statistical smoothing to clean up the data for accuracy.</p>
-
-                        <a href="Classes/GeoTrackAnalyzer.html" class="slightly-smaller">See more</a>
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">GeoTrackAnalyzer</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">GeoTrackConsoleAppender</span></code></pre>
 
                         </div>
                       </div>
@@ -479,39 +224,7 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">GeoTrackEvent</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <ul>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/c:@M@GeoTrackKit@objc(cs)GeoTrackMap"></a>
-                    <a name="//apple_ref/swift/Class/GeoTrackMap" class="dashAnchor"></a>
-                    <a class="token" href="#/c:@M@GeoTrackKit@objc(cs)GeoTrackMap">GeoTrackMap</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>This class provides you an easy way to visualize your track on a map.  You can configure the unknown, ascent and descent colors.  They have sensible defaults.  Using the UIGeoTrack model, you can set which legs of your track are visible and we&rsquo;ll render them accordingly.  Keep in mind, performance of this control may degrade if your tracks have too many points.</p>
-
-                        <a href="Classes/GeoTrackMap.html" class="slightly-smaller">See more</a>
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">GeoTrackMap</span><span class="p">:</span> <span class="kt">MKMapView</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">GeoTrackEvent</span></code></pre>
 
                         </div>
                       </div>
@@ -543,7 +256,291 @@
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">GeoTrackEventLog</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">GeoTrackEventLog</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@GeoTrackKit@objc(cs)GeoTrackManager"></a>
+                    <a name="//apple_ref/swift/Class/GeoTrackManager" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@GeoTrackKit@objc(cs)GeoTrackManager">GeoTrackManager</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>This class is responsible for managing (and brokering) everything related to tracking for you.</p>
+<h3 id='sample-usage' class='heading'>Sample Usage:</h3>
+<pre class="highlight swift"><code><span class="kt">GeoTrackManager</span><span class="o">.</span><span class="n">shared</span><span class="o">.</span><span class="nf">startTracking</span><span class="p">()</span>
+
+</code></pre>
+
+                        <a href="Classes/GeoTrackManager.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">GeoTrackManager</span> <span class="p">:</span> <span class="kt">NSObject</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11GeoTrackKit14DefaultMapZoomC"></a>
+                    <a name="//apple_ref/swift/Class/DefaultMapZoom" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11GeoTrackKit14DefaultMapZoomC">DefaultMapZoom</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>This is an implementation of the default map zooming.  It basically just states that you should always zoom to fit the points (whenever a redraw on the map is requested) and it calculates a zoom region that has a very tiny amount of padding around the points</p>
+
+                        <a href="Classes/DefaultMapZoom.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">class</span> <span class="kt">DefaultMapZoom</span> <span class="p">:</span> <span class="kt"><a href="Protocols/ZoomDefining.html">ZoomDefining</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@GeoTrackKit@objc(cs)GeoTrackMap"></a>
+                    <a name="//apple_ref/swift/Class/GeoTrackMap" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@GeoTrackKit@objc(cs)GeoTrackMap">GeoTrackMap</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>This class provides you an easy way to visualize your track on a map.  You can configure the unknown, ascent and descent colors.  They have sensible defaults.  Using the UIGeoTrack model, you can set which legs of your track are visible and we&rsquo;ll render them accordingly.  Keep in mind, performance of this control may degrade if your tracks have too many points.</p>
+
+                        <a href="Classes/GeoTrackMap.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">GeoTrackMap</span> <span class="p">:</span> <span class="kt">MKMapView</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11GeoTrackKit05UIGeoB0C"></a>
+                    <a name="//apple_ref/swift/Class/UIGeoTrack" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11GeoTrackKit05UIGeoB0C">UIGeoTrack</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>A UI Model for a track.  It keeps track of a Track (<code><a href="Classes/GeoTrack.html">GeoTrack</a></code>), a Track Analyzer (<code><a href="Classes/GeoTrackAnalyzer.html">GeoTrackAnalyzer</a></code>) and a collection of Legs (ascents, descents) that are currently visible</p>
+
+                        <a href="Classes/UIGeoTrack.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">UIGeoTrack</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11GeoTrackKit4StatC"></a>
+                    <a name="//apple_ref/swift/Class/Stat" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11GeoTrackKit4StatC">Stat</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>This class keeps track of statistics for a Leg (ascent or descent) of a track.</p>
+
+                        <a href="Classes/Stat.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">Stat</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11GeoTrackKit0B4StatC"></a>
+                    <a name="//apple_ref/swift/Class/TrackStat" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11GeoTrackKit0B4StatC">TrackStat</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>This class keeps track of statistics for an entire Geo Track.  It summarizes the stats of all of the legs that comprise it and it keeps trak of the number of runs.</p>
+
+                        <a href="Classes/TrackStat.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">TrackStat</span> <span class="p">:</span> <span class="kt"><a href="Classes/Stat.html">Stat</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11GeoTrackKit3LegC"></a>
+                    <a name="//apple_ref/swift/Class/Leg" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11GeoTrackKit3LegC">Leg</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>A relative minima or maxima</p>
+
+                        <a href="Classes/Leg.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">Leg</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11GeoTrackKit0aB0C"></a>
+                    <a name="//apple_ref/swift/Class/GeoTrack" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11GeoTrackKit0aB0C">GeoTrack</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Data structure to keep track of points for a track</p>
+
+                        <a href="Classes/GeoTrack.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">GeoTrack</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11GeoTrackKit0aB13LocationEventC"></a>
+                    <a name="//apple_ref/swift/Class/GeoTrackLocationEvent" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11GeoTrackKit0aB13LocationEventC">GeoTrackLocationEvent</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>This class is responsible for keeping track of different types of track events.  For example when the user starts tracking, stops tracking, pauses tracking, and your own custom event types.</p>
+
+                        <a href="Classes/GeoTrackLocationEvent.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">GeoTrackLocationEvent</span></code></pre>
 
                         </div>
                       </div>
@@ -555,8 +552,8 @@
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2017 <a class="link" href="https://github.com/intere/GeoTrackKit" target="_blank" rel="external">Eric Internicola</a>. All rights reserved. (Last updated: 2017-12-21)</p>
-          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.7.4</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+          <p>&copy; 2018 <a class="link" href="https://github.com/intere/GeoTrackKit" target="_blank" rel="external">Eric Internicola</a>. All rights reserved. (Last updated: 2018-07-13)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.3</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>
     </div>

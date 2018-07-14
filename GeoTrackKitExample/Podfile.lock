@@ -1,22 +1,16 @@
 PODS:
-  - GeoTrackKit (0.1.1)
-  - Nimble (7.0.3)
-  - Quick (1.2.0)
+  - GeoTrackKit (0.2.0)
 
 DEPENDENCIES:
   - GeoTrackKit (from `..`)
-  - Nimble
-  - Quick
 
 EXTERNAL SOURCES:
   GeoTrackKit:
     :path: ".."
 
 SPEC CHECKSUMS:
-  GeoTrackKit: fde466f02a79a78bdfb20ecd564fbd21b79d4d12
-  Nimble: 7f5a9c447a33002645a071bddafbfb24ea70e0ac
-  Quick: 58d203b1c5e27fff7229c4c1ae445ad7069a7a08
+  GeoTrackKit: f508317c18eb725eb5a4db1e8e60103312f71672
 
-PODFILE CHECKSUM: 46b148caee26849ee73862d6826dce72e66e67b4
+PODFILE CHECKSUM: cc1da6334709957828672f92fddd35ad258f2004
 
-COCOAPODS: 1.1.1
+COCOAPODS: 1.5.3

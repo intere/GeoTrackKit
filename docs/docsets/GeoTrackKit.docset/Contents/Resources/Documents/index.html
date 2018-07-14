@@ -77,7 +77,7 @@
             </ul>
           </li>
           <li class="nav-group-name">
-            <a href="Enums.html">Enums</a>
+            <a href="Enums.html">Enumerations</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
                 <a href="Enums/Direction.html">Direction</a>
@@ -100,10 +100,7 @@
                 <a href="Extensions/Notification.html">Notification</a>
               </li>
               <li class="nav-group-task">
-                <a href="Extensions/Notification/GeoMapping.html">– GeoMapping</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Extensions/Notification/GeoTrackKit.html">– GeoTrackKit</a>
+                <a href="Extensions/Notification/Name.html">– Name</a>
               </li>
             </ul>
           </li>
@@ -122,7 +119,7 @@
             </ul>
           </li>
           <li class="nav-group-name">
-            <a href="Typealiases.html">Typealiases</a>
+            <a href="Typealiases.html">Type Aliases</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
                 <a href="Typealiases.html#/s:11GeoTrackKit0aB12AuthCallbacka">GeoTrackAuthCallback</a>
@@ -135,9 +132,9 @@
         <section>
           <section class="section">
             
-            <a href='#geotrackkit' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h1 id='geotrackkit'>GeoTrackKit</h1>
-<a href='#an-ios-library-for-geo-tracking' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='an-ios-library-for-geo-tracking'>An iOS Library for Geo Tracking</h3>
-<a href='#features' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='features'>Features</h2>
+            <h1 id='geotrackkit' class='heading'>GeoTrackKit</h1>
+<h3 id='an-ios-library-for-geo-tracking' class='heading'>An iOS Library for Geo Tracking</h3>
+<h2 id='features' class='heading'>Features</h2>
 
 <ul>
 <li>Handles user authorization</li>
@@ -146,7 +143,7 @@
 <li>Custom MKMapKit control for plotting your tracks on a map</li>
 <li>Example App to demonstrate capabilities</li>
 </ul>
-<a href='#project-status' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='project-status'>Project Status</h2>
+<h2 id='project-status' class='heading'>Project Status</h2>
 
 <p>This project is currently a work in progress.</p>
 
@@ -155,7 +152,7 @@
 <a href="http://cocoadocs.org/docsets/GeoTrackKit"><img src="https://img.shields.io/badge/Platforms-iOS-lightgray.svg?style=flat" alt="Platform"></a>
 <a href="https://cocoapods.org/pods/GeoTrackKit"><img src="https://img.shields.io/cocoapods/v/GeoTrackKit.svg" alt="CocoaPods"></a><br>
  <a href="https://cocoapods.org/pods/GeoTrackKit"><img src="https://img.shields.io/cocoapods/dt/GeoTrackKit.svg" alt="CocoaPods"></a> <a href="https://cocoapods.org/pods/GeoTrackKit"><img src="https://img.shields.io/cocoapods/dm/GeoTrackKit.svg" alt="CocoaPods"></a></p>
-<a href='#initial-roadmap' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='initial-roadmap'>Initial Roadmap</h3>
+<h3 id='initial-roadmap' class='heading'>Initial Roadmap</h3>
 
 <ul>
 <li>[ ] Carthage Support</li>
@@ -167,12 +164,12 @@
 <li>[x] SwiftLint Integration</li>
 <li>[ ] 90% Code Coverage</li>
 </ul>
-<a href='#installation' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='installation'>Installation</h3>
-<a href='#installation-instructions' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='installation-instructions'>Installation Instructions</h2>
-<a href='#cocoapods' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='cocoapods'>CocoaPods</h3>
+<h3 id='installation' class='heading'>Installation</h3>
+<h2 id='installation-instructions' class='heading'>Installation Instructions</h2>
+<h3 id='cocoapods' class='heading'>CocoaPods</h3>
 <pre class="highlight ruby"><code><span class="n">pod</span> <span class="s1">'GeoTrackKit'</span><span class="p">,</span> <span class="ss">:git</span> <span class="o">=&gt;</span> <span class="s1">'git@github.com:intere/GeoTrackKit.git'</span><span class="p">,</span> <span class="ss">:branch</span> <span class="o">=&gt;</span> <span class="s1">'master'</span>
 </code></pre>
-<a href='#example-usage' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='example-usage'>Example Usage</h2>
+<h2 id='example-usage' class='heading'>Example Usage</h2>
 <pre class="highlight plaintext"><code>// This will either start tracking, or prompt the user for access to track their location
 GeoTrackManager.shared.startTracking()
 </code></pre>
@@ -182,24 +179,24 @@ GeoTrackManager.shared.startTracking()
 
 <p>This library also includes a map control that will map the GeoTrack:
 <img alt="Geo Track Map" src="screenshots/Mapping.png"></p>
-<a href='#inspiration' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='inspiration'>Inspiration</h2>
+<h2 id='inspiration' class='heading'>Inspiration</h2>
 
 <p>I&rsquo;ve built a couple of variations of Geo Tracking applications, but I wanted to build a library for the community that I can share and get feedback and build a better product.</p>
-<a href='#created-and-maintained-by' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='created-and-maintained-by'>Created and maintained by</h2>
+<h2 id='created-and-maintained-by' class='heading'>Created and maintained by</h2>
 
 <p><a href="http://intere.github.io">Eric Internicola</a></p>
-<a href='#key-classes' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='key-classes'>Key Classes</h2>
+<h2 id='key-classes' class='heading'>Key Classes</h2>
 
 <p><img alt="Key GeoTrackKit Classes" src="screenshots/GeoTrackKitClasses.png"></p>
-<a href='#documentation' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='documentation'>Documentation</h2>
+<h2 id='documentation' class='heading'>Documentation</h2>
 
 <p>See the generated documentation in the <code>docs</code> folder</p>
 
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2017 <a class="link" href="https://github.com/intere/GeoTrackKit" target="_blank" rel="external">Eric Internicola</a>. All rights reserved. (Last updated: 2017-12-21)</p>
-          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.7.4</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+          <p>&copy; 2018 <a class="link" href="https://github.com/intere/GeoTrackKit" target="_blank" rel="external">Eric Internicola</a>. All rights reserved. (Last updated: 2018-07-13)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.3</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>
     </div>

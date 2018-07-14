@@ -95,7 +95,7 @@ extension GeoTrackManager: CLLocationManagerDelegate {
     public func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
 
         switch status {
-        case .authorizedAlways:
+        case .authorizedAlways, .authorizedWhenInUse:
             GTDebug(message: "Authorization has been updated, starting location updates")
             locationManager?.startUpdatingLocation()
             authorized = true
@@ -113,11 +113,6 @@ extension GeoTrackManager: CLLocationManagerDelegate {
         case .restricted:
             GTError(message: "Restricted from access to location updates")
             track?.error(message: "Location access restricted")
-            authorized = false
-
-        default:
-            GTError(message: "Other access to location updates (unacceptable)")
-            track?.error(message: "Location access not acceptable")
             authorized = false
         }
     }

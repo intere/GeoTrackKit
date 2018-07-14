@@ -49,20 +49,20 @@ public extension GeoTrackAnalyzer {
         var legs = [Leg]()
         var leg = Leg(index: 0, point: points[0])
 
-        for i in 0..<points.count {
+        for index in 0..<points.count {
             defer {
-                leg.stat.track(point: points[i], distance: lastPoint?.distance(from: points[i]) ?? 0)
-                lastPoint = points[i]
+                leg.stat.track(point: points[index], distance: lastPoint?.distance(from: points[index]) ?? 0)
+                lastPoint = points[index]
             }
             guard let last = lastPoint else {
                 continue
             }
-            leg.endIndex = i-1
-            leg.endPoint = points[i-1]
+            leg.endIndex = index-1
+            leg.endPoint = points[index-1]
 
-            if leg.trendChanged(direction: last.compare(to: points[i])) {
+            if leg.trendChanged(direction: last.compare(to: points[index])) {
                 legs.append(leg)
-                leg = Leg(index: i, point: points[i])
+                leg = Leg(index: index, point: points[index])
             }
         }
         leg.endIndex = points.count - 1
@@ -110,17 +110,16 @@ fileprivate extension GeoTrackAnalyzer {
         }
 
         var last = relativePoints[0]
-        for i in 1..<relativePoints.count {
-
-            guard last.isSameDirection(as: relativePoints[i]) else {
+        for index in 1..<relativePoints.count {
+            guard last.isSameDirection(as: relativePoints[index]) else {
                 // if the legs are not moving in the same direction, then just add the current leg to the collapsed list and move onto the next one
                 collapsed.append(last)
-                last = relativePoints[i]
+                last = relativePoints[index]
                 continue
             }
 
             // if the 2 legs are moving in the same direction, then combine them and set the last to be the combination of the last and the current and then move on to the next.
-            last = last.combine(with: relativePoints[i], direction: last.direction)
+            last = last.combine(with: relativePoints[index], direction: last.direction)
         }
 
         // If we haven't added the last one to the collapsed list yet, then do it now:
@@ -166,9 +165,9 @@ extension CLLocation {
         if altitude == point.altitude {
             return .unknown
         } else if altitude > point.altitude {
-            return .down
+            return .downward
         }
-        return .up
+        return .upward
     }
 
 }

@@ -105,10 +105,10 @@ public class TrackStat: Stat {
         for leg in legs {
             let stat = leg.stat
             baseOverallStat.combine(with: stat)
-            if leg.direction == .up {
+            if leg.direction == .upward {
                 vAscent += stat.verticalDelta
                 aDistance += stat.distance
-            } else if leg.direction == .down {
+            } else if leg.direction == .downward {
                 vDescent -= stat.verticalDelta
                 dDistance += stat.distance
                 runs += 1
@@ -125,17 +125,17 @@ public class TrackStat: Stat {
 /// The direction that we're going
 ///
 /// - unknown: Unknown direction (e.g. the first point
-/// - up: The upward direction
-/// - down: The downward direction
+/// - upward: The upward direction
+/// - downward: The downward direction
 public enum Direction: String {
     /// Unknown direction
     case unknown
+
     /// Upward direction (ascent)
-    case up
-    // swiftlint:disable:previous identifier_name
+    case upward
 
     /// Downward direction (descent)
-    case down
+    case downward
 }
 
 /// A relative minima or maxima
@@ -157,15 +157,18 @@ public class Leg {
             if Int(altitudeChange) == 0 {
                 return .unknown
             } else if Int(altitudeChange) > 0 {
-                return .up
+                return .upward
             }
-            return .down
+            return .downward
         }
     }
+
     /// The ending index of the leg
     public var endIndex: Int
+
     /// The ending point of the leg
     public var endPoint: CLLocation?
+
     /// The current stats for the leg
     public var stat = Stat()
 
@@ -256,7 +259,7 @@ extension Leg: Equatable {
     /// - Parameters:
     ///   - lhs: The first Leg to compare
     ///   - rhs: The second leg to compare
-    /// - Returns: <#return value description#>
+    /// - Returns: True if the two legs seem to be the same, false if not.
     public static func == (lhs: Leg, rhs: Leg) -> Bool {
         guard lhs.index == rhs.index, Int(lhs.altitude) == Int(rhs.altitude), lhs.direction == rhs.direction, lhs.endIndex == rhs.endIndex else {
             return false

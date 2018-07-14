@@ -70,11 +70,13 @@ extension TrackOverviewTableViewController {
 extension Leg {
 
     var string: String {
-        return String(index) + " - "
-            + String(endIndex) + ", "
-            + direction.rawValue + ", "
-            + String(Int(altitude)) + "-" + String(Int(endPoint!.altitude)) + ", "
-            + String(Int(altitudeChange)) + "m"
+        var result = String(index) + " - "
+        result += String(endIndex) + ", "
+        result += direction.rawValue + ", "
+        result += String(Int(altitude)) + "-" + String(Int(endPoint!.altitude)) + ", "
+        result += String(Int(altitudeChange)) + "m"
+
+        return result
     }
 
 }

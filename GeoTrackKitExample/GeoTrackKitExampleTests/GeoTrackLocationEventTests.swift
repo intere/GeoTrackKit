@@ -7,63 +7,51 @@
 //
 
 import XCTest
-import Quick
-import Nimble
 import GeoTrackKit
 import GeoTrackKitExample
 
-class GeoTrackLocationEventTests: QuickSpec {
+class GeoTrackLocationEventTests: XCTestCase {
 
-    override func spec() {
-        describe("Factory Creation") {
-            it("does create a start tracking event") {
-                let event = GeoTrackLocationEvent.startedTracking(message: "hello world")
-                expect(event.type).to(equal(GeoTrackLocationEvent.EventType.startedTrack))
-                expect(event.timestamp).toNot(beNil())
-                expect(event.message).to(equal("hello world"))
-                expect(event.index).to(beNil())
-            }
-        }
-
-        describe("Serialization") {
-            it("does serialize to a map") {
-                let event = GeoTrackLocationEvent.startedTracking(message: "hello world")
-                let map = event.map
-                expect(map).toNot(beNil())
-
-                // required values
-                expect(map["type"] as? Int).to(equal(event.type.rawValue))
-                expect(map["timestamp"] as? TimeInterval).to(equal(event.timestamp.msse))
-
-                // optional values
-                expect(map["message"] as? String).to(equal(event.message))
-                expect(map["index"]).to(beNil())
-                expect(map["index"] as? Int).to(beNil())
-            }
-        }
-
-        describe("Deserialization") {
-            it("does not deserialize an empty map") {
-                let event = GeoTrackLocationEvent.from(map: [:])
-                expect(event).to(beNil())
-            }
-
-            it("does deserialize from a map") {
-                let date = Date()
-                let map: [String:Any] = [
-                    "type": GeoTrackLocationEvent.EventType.custom.rawValue,
-                    "timestamp": date.msse,
-                    "message": "hello world",
-                    "index": 12
-                ]
-                let event = GeoTrackLocationEvent.from(map: map)
-                expect(event).toNot(beNil())
-                expect(event?.type).to(equal(GeoTrackLocationEvent.EventType.custom))
-                expect(event?.timestamp.msse).to(equal(date.msse))
-                expect(event?.message).to(equal("hello world"))
-                expect(event?.index).to(equal(12))
-            }
-        }
+    func testCreateTrackingEvent() {
+        let event = GeoTrackLocationEvent.startedTracking(message: "hello world")
+        XCTAssertEqual(event.type, GeoTrackLocationEvent.EventType.startedTrack)
+        XCTAssertNotNil(event.timestamp)
+        XCTAssertEqual("hello world", event.message)
+        XCTAssertNil(event.index)
     }
 
+    func testSerializeTrackingEvent() {
+        let event = GeoTrackLocationEvent.startedTracking(message: "hello world")
+        let map = event.map
+        XCTAssertNotNil(map)
+
+        // required values
+        XCTAssertEqual(map["type"] as? Int, event.type.rawValue)
+        XCTAssertEqual(map["timestamp"] as? TimeInterval, event.timestamp.msse)
+
+        // optional values
+        XCTAssertEqual(map["message"] as? String, event.message)
+        XCTAssertNil(map["index"])
+    }
+
+    func testDeserializeTrackingEventEmptyMap() {
+        let event = GeoTrackLocationEvent.from(map: [:])
+        XCTAssertNil(event)
+    }
+
+    func testDeserializeTrackingEvent() {
+        let date = Date()
+        let map: [String:Any] = [
+            "type": GeoTrackLocationEvent.EventType.custom.rawValue,
+            "timestamp": date.msse,
+            "message": "hello world",
+            "index": 12
+        ]
+        let event = GeoTrackLocationEvent.from(map: map)
+        XCTAssertNotNil(event)
+        XCTAssertEqual(GeoTrackLocationEvent.EventType.custom, event?.type)
+        XCTAssertEqual(date.msse, event?.timestamp.msse)
+        XCTAssertEqual("hello world", event?.message)
+        XCTAssertEqual(12, event?.index)
+    }
 }

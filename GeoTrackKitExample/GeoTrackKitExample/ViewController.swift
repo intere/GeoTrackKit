@@ -34,6 +34,10 @@ class ViewController: UIViewController {
     @IBAction func clickedTrackButton(_ sender: UIButton) {
         handleTrackingClick()
     }
+
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
 }
 
 // MARK: - Listeners
