@@ -15,6 +15,20 @@
       "warning": "undocumented"
     },
     {
+      "file": "/Users/einternicola/code/personal/GeoTrackKit/GeoTrackKit/GeoTrackManager.swift",
+      "line": 22,
+      "symbol": "GeoTrackManager.trackingState",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/code/personal/GeoTrackKit/GeoTrackKit/GeoTrackManager.swift",
+      "line": 27,
+      "symbol": "GeoTrackManager.locationManager",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
       "file": "/Users/einternicola/code/personal/GeoTrackKit/GeoTrackKit/Map/GeoTrackMap.swift",
       "line": 35,
       "symbol": "GeoTrackMap.init(coder:)",
@@ -33,6 +47,13 @@
       "line": 27,
       "symbol": "Stat.direction",
       "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/code/personal/GeoTrackKit/GeoTrackKit/Models/GeoTrack.swift",
+      "line": 245,
+      "symbol": "elog(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.free",
       "warning": "undocumented"
     },
     {

@@ -13,7 +13,8 @@
     <a title="GeoTrackKit  Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="index.html">GeoTrackKit Docs</a> (97% documented)</p>
+        <p><a href="index.html">GeoTrackKit Docs</a> (96% documented)</p>
+        <p class="header-right"><a href="https://github.com/intere/GeoTrackKit"><img src="img/gh.png"/>View on GitHub</a></p>
       </div>
     </header>
     <div class="content-wrapper">
@@ -105,6 +106,29 @@
             </ul>
           </li>
           <li class="nav-group-name">
+            <a href="Functions.html">Functions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Functions.html#/s:11GeoTrackKit7GTDebugySS7message_tF">GTDebug(message:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Functions.html#/s:11GeoTrackKit7GTErrorySS7message_tF">GTError(message:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Functions.html#/s:11GeoTrackKit6GTInfoySS7message_tF">GTInfo(message:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Functions.html#/s:11GeoTrackKit7GTTraceySS7message_tF">GTTrace(message:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Functions.html#/s:11GeoTrackKit6GTWarnySS7message_tF">GTWarn(message:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Functions.html#/s:11GeoTrackKit4elogySSF">elog(_:)</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
             <a href="Protocols.html">Protocols</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
@@ -147,7 +171,7 @@
 
 <p>This project is currently a work in progress.</p>
 
-<p><a href="https://dashboard.buddybuild.com/apps/58a5d9cf4d78ba0100bda868/build/latest?branch=feature/BuildingBlocks"><img src="https://dashboard.buddybuild.com/api/statusImage?appID=58a5d9cf4d78ba0100bda868&branch=master&build=latest" alt="BuddyBuild"></a>
+<p><a href="https://travis-ci.org/intere/GeoTrackKit"><img src="https://travis-ci.org/intere/GeoTrackKit.svg?branch=develop" alt="Build Status"></a>
 <a href="https://intere.github.io/GeoTrackKit/docs/index.html"><img src="https://cdn.rawgit.com/intere/GeoTrackKit/master/docs/badge.svg" alt="Documentation"></a>
 <a href="http://cocoadocs.org/docsets/GeoTrackKit"><img src="https://img.shields.io/badge/Platforms-iOS-lightgray.svg?style=flat" alt="Platform"></a>
 <a href="https://cocoapods.org/pods/GeoTrackKit"><img src="https://img.shields.io/cocoapods/v/GeoTrackKit.svg" alt="CocoaPods"></a><br>
@@ -167,18 +191,23 @@
 <h3 id='installation' class='heading'>Installation</h3>
 <h2 id='installation-instructions' class='heading'>Installation Instructions</h2>
 <h3 id='cocoapods' class='heading'>CocoaPods</h3>
-<pre class="highlight ruby"><code><span class="n">pod</span> <span class="s1">'GeoTrackKit'</span><span class="p">,</span> <span class="ss">:git</span> <span class="o">=&gt;</span> <span class="s1">'git@github.com:intere/GeoTrackKit.git'</span><span class="p">,</span> <span class="ss">:branch</span> <span class="o">=&gt;</span> <span class="s1">'master'</span>
+
+<p>Directly from Github:</p>
+<pre class="highlight ruby"><code><span class="n">pod</span> <span class="s1">'GeoTrackKit'</span><span class="p">,</span> <span class="ss">:git</span> <span class="o">=&gt;</span> <span class="s1">'git@github.com:intere/GeoTrackKit.git'</span><span class="p">,</span> <span class="ss">:branch</span> <span class="o">=&gt;</span> <span class="s1">'develop'</span>
+</code></pre>
+
+<p>Directly from Cocoapods:</p>
+<pre class="highlight ruby"><code><span class="n">pod</span> <span class="s1">'GeoTrackKit'</span><span class="p">,</span> <span class="s1">'0.2.0'</span>
 </code></pre>
 <h2 id='example-usage' class='heading'>Example Usage</h2>
 <pre class="highlight plaintext"><code>// This will either start tracking, or prompt the user for access to track their location
 GeoTrackManager.shared.startTracking()
 </code></pre>
 
-<p><img alt="Location Prompt" src="screenshots/LocationTrackingPrompt.png">
-<img alt="Tracking" src="screenshots/Usage.png"></p>
+<p><img src="screenshots/GeoTrackKit-Tracking.gif" title="Tracking Example"></p>
 
 <p>This library also includes a map control that will map the GeoTrack:
-<img alt="Geo Track Map" src="screenshots/Mapping.png"></p>
+<img src="screenshots/GeoTrackKit-MapView.gif" title="Map View"></p>
 <h2 id='inspiration' class='heading'>Inspiration</h2>
 
 <p>I&rsquo;ve built a couple of variations of Geo Tracking applications, but I wanted to build a library for the community that I can share and get feedback and build a better product.</p>
@@ -190,12 +219,12 @@ GeoTrackManager.shared.startTracking()
 <p><img alt="Key GeoTrackKit Classes" src="screenshots/GeoTrackKitClasses.png"></p>
 <h2 id='documentation' class='heading'>Documentation</h2>
 
-<p>See the generated documentation in the <code>docs</code> folder</p>
+<p>See the generated documentation in the <a href="https://intere.github.io/GeoTrackKit/docs/"><code>docs</code></a> folder</p>
 
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2018 <a class="link" href="https://github.com/intere/GeoTrackKit" target="_blank" rel="external">Eric Internicola</a>. All rights reserved. (Last updated: 2018-07-13)</p>
+          <p>© 2016-2017 <a class="link" href="http://intere.github.io" target="_blank" rel="external">Eric Internicola</a></p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.3</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>

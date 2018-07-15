@@ -14,7 +14,8 @@
     <a title="Stat Class Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html">GeoTrackKit Docs</a> (97% documented)</p>
+        <p><a href="../index.html">GeoTrackKit Docs</a> (96% documented)</p>
+        <p class="header-right"><a href="https://github.com/intere/GeoTrackKit"><img src="../img/gh.png"/>View on GitHub</a></p>
       </div>
     </header>
     <div class="content-wrapper">
@@ -102,6 +103,29 @@
               </li>
               <li class="nav-group-task">
                 <a href="../Extensions/Notification/Name.html">– Name</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Functions.html">Functions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:11GeoTrackKit7GTDebugySS7message_tF">GTDebug(message:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:11GeoTrackKit7GTErrorySS7message_tF">GTError(message:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:11GeoTrackKit6GTInfoySS7message_tF">GTInfo(message:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:11GeoTrackKit7GTTraceySS7message_tF">GTTrace(message:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:11GeoTrackKit6GTWarnySS7message_tF">GTWarn(message:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:11GeoTrackKit4elogySSF">elog(_:)</a>
               </li>
             </ul>
           </li>
@@ -307,12 +331,104 @@
                     </section>
                   </div>
                 </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11GeoTrackKit4StatC5trackySo10CLLocationC5point_Sd8distancetF"></a>
+                    <a name="//apple_ref/swift/Method/track(point:distance:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11GeoTrackKit4StatC5trackySo10CLLocationC5point_Sd8distancetF">track(point:distance:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Updates the stats using the provided point</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">track</span><span class="p">(</span><span class="nv">point</span><span class="p">:</span> <span class="kt">CLLocation</span><span class="p">,</span> <span class="nv">distance</span><span class="p">:</span> <span class="kt">CLLocationDistance</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>point</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The point to track</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11GeoTrackKit4StatC7combineyAC4with_tF"></a>
+                    <a name="//apple_ref/swift/Method/combine(with:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11GeoTrackKit4StatC7combineyAC4with_tF">combine(with:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Combines this stat with another stat (it generally makes sense to do this with another leg that is in the same direction)</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">combine</span><span class="p">(</span><span class="n">with</span> <span class="nv">stat</span><span class="p">:</span> <span class="kt">Stat</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>stat</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The stat to combine with</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
               </ul>
             </div>
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2018 <a class="link" href="https://github.com/intere/GeoTrackKit" target="_blank" rel="external">Eric Internicola</a>. All rights reserved. (Last updated: 2018-07-13)</p>
+          <p>© 2016-2017 <a class="link" href="http://intere.github.io" target="_blank" rel="external">Eric Internicola</a></p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.3</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>
