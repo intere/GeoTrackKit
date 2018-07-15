@@ -32,8 +32,15 @@ This project is currently a work in progress.
 ## Installation Instructions
 
 ### CocoaPods
+
+Directly from Github:
 ```ruby
-pod 'GeoTrackKit', :git => 'git@github.com:intere/GeoTrackKit.git', :branch => 'master'
+pod 'GeoTrackKit', :git => 'git@github.com:intere/GeoTrackKit.git', :branch => 'develop'
+```
+
+Directly from Cocoapods:
+```ruby
+pod 'GeoTrackKit', '0.2.0'
 ```
 
 ## Example Usage
@@ -42,11 +49,11 @@ pod 'GeoTrackKit', :git => 'git@github.com:intere/GeoTrackKit.git', :branch => '
 // This will either start tracking, or prompt the user for access to track their location
 GeoTrackManager.shared.startTracking()
 ```
-<img alt="Location Prompt" src="screenshots/LocationTrackingPrompt.png">
-<img alt="Tracking" src="screenshots/Usage.png">
+<img src="https://github.com/intere/GeoTrackKit/raw/develop/screenshots/GeoTrackKit-Tracking.gif" title="Tracking Example">
 
 This library also includes a map control that will map the GeoTrack:
-<img alt="Geo Track Map" src="screenshots/Mapping.png">
+
+<img src="https://github.com/intere/GeoTrackKit/raw/develop/screenshots/GeoTrackKit-MapView.gif" title="Map View">
 
 ## Inspiration
 I've built a couple of variations of Geo Tracking applications, but I wanted to build a library for the community that I can share and get feedback and build a better product.
@@ -56,7 +63,7 @@ I've built a couple of variations of Geo Tracking applications, but I wanted to 
 
 
 ## Key Classes
-<img alt="Key GeoTrackKit Classes" src="screenshots/GeoTrackKitClasses.png">
+<img src="https://github.com/intere/GeoTrackKit/raw/develop/screenshots/GeoTrackKitClasses.png" title="Key GeoTrackKit Classes">
 
 ## Documentation
 See the generated documentation in the [`docs`](https://intere.github.io/GeoTrackKit/docs/) folder

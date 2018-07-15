@@ -14,7 +14,8 @@
     <a title="TrackStat Class Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html">GeoTrackKit Docs</a> (97% documented)</p>
+        <p><a href="../index.html">GeoTrackKit Docs</a> (96% documented)</p>
+        <p class="header-right"><a href="https://github.com/intere/GeoTrackKit"><img src="../img/gh.png"/>View on GitHub</a></p>
       </div>
     </header>
     <div class="content-wrapper">
@@ -102,6 +103,29 @@
               </li>
               <li class="nav-group-task">
                 <a href="../Extensions/Notification/Name.html">– Name</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Functions.html">Functions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:11GeoTrackKit7GTDebugySS7message_tF">GTDebug(message:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:11GeoTrackKit7GTErrorySS7message_tF">GTError(message:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:11GeoTrackKit6GTInfoySS7message_tF">GTInfo(message:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:11GeoTrackKit7GTTraceySS7message_tF">GTTrace(message:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:11GeoTrackKit6GTWarnySS7message_tF">GTWarn(message:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:11GeoTrackKit4elogySSF">elog(_:)</a>
               </li>
             </ul>
           </li>
@@ -310,6 +334,112 @@
                 <li class="item">
                   <div>
                     <code>
+                    <a name="/s:11GeoTrackKit0B4StatCACSi4runs_Sd6ascentSd7descentSd0F8DistanceSd0gH0Sd05totalH0tcfc"></a>
+                    <a name="//apple_ref/swift/Method/init(runs:ascent:descent:ascentDistance:descentDistance:totalDistance:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11GeoTrackKit0B4StatCACSi4runs_Sd6ascentSd7descentSd0F8DistanceSd0gH0Sd05totalH0tcfc">init(runs:ascent:descent:ascentDistance:descentDistance:totalDistance:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Initialize this TrackStat with the required properties.  Generally you want to create this stat using the <code>summarize(from legs: [Leg])</code> factory creation function to create one of these objects.  That function will compute all of the required fields and delegate to this initializer.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="nf">init</span><span class="p">(</span><span class="nv">runs</span><span class="p">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="nv">ascent</span><span class="p">:</span> <span class="kt">CLLocationDistance</span><span class="p">,</span> <span class="nv">descent</span><span class="p">:</span> <span class="kt">CLLocationDistance</span><span class="p">,</span> <span class="nv">ascentDistance</span><span class="p">:</span> <span class="kt">CLLocationDistance</span><span class="p">,</span> <span class="nv">descentDistance</span><span class="p">:</span> <span class="kt">CLLocationDistance</span><span class="p">,</span> <span class="nv">totalDistance</span><span class="p">:</span> <span class="kt">CLLocationDistance</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>runs</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>the number of runs for the track</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>ascent</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>the vertical ascent for the track</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>descent</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>the vertical descent for this track</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>ascentDistance</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>the total ascent distance for this track</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>descentDistance</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>the total descent distance for this track</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>totalDistance</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>the total distance for this track</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
                     <a name="/s:11GeoTrackKit0B4StatC9summarizeACSayAA3LegCG4from_tFZ"></a>
                     <a name="//apple_ref/swift/Method/summarize(from:)" class="dashAnchor"></a>
                     <a class="token" href="#/s:11GeoTrackKit0B4StatC9summarizeACSayAA3LegCG4from_tFZ">summarize(from:)</a>
@@ -362,7 +492,7 @@
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2018 <a class="link" href="https://github.com/intere/GeoTrackKit" target="_blank" rel="external">Eric Internicola</a>. All rights reserved. (Last updated: 2018-07-13)</p>
+          <p>© 2016-2017 <a class="link" href="http://intere.github.io" target="_blank" rel="external">Eric Internicola</a></p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.3</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>
