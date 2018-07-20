@@ -41,4 +41,10 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   s.platform = :ios, '9.0'
   s.swift_version = '4.1'
 
+  s.subspec 'GoogleMaps' do |sub|
+    sub.dependency 'GoogleMaps'
+    sub.source_files = 'GeoTrackKit/GoogleMaps/*.swift'
+    sub.resources = 'GeoTrackKit/GoogleMaps/*.{xcassets,xib,storyboard}'
+  end
+
 end
