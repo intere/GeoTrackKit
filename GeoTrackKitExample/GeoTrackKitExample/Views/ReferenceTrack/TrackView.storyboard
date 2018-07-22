@@ -48,6 +48,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="VYk-ay-sEK"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="" image="location-on-map" id="kru-Lr-wbc"/>
                     <navigationItem key="navigationItem" id="47H-N1-kVm"/>
                     <connections>
                         <outlet property="legContainerView" destination="j3W-b1-aMI" id="fJ2-sJ-TjM"/>
@@ -56,7 +57,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="k8i-GX-Rz3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-78" y="71"/>
+            <point key="canvasLocation" x="860" y="70.614692653673174"/>
         </scene>
         <!--Track Overview Table View Controller-->
         <scene sceneID="YYC-2n-qhc">
@@ -114,4 +115,7 @@
             <point key="canvasLocation" x="-78" y="669"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="location-on-map" width="42" height="42"/>
+    </resources>
 </document>

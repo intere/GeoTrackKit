@@ -36,12 +36,6 @@ class TrackMapViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(legVisiblityChanged(_:)), name: Notification.Name.GeoMapping.legVisibilityChanged, object: nil)
     }
 
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        mapView.delegate = nil
-        model = nil
-    }
-
     static func loadFromBundle(filename: String, type: String) -> GeoTrack? {
         guard let path = Bundle(for: TrackMapViewController.self).path(forResource: filename, ofType: type) else {
             assertionFailure("Couldn't load file: \(filename).\(type)")

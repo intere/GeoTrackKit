@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="MKo-pQ-XZ6">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tKr-l8-hIX">
+            <objects>
+                <viewController storyboardIdentifier="LiveTrackView" id="MKo-pQ-XZ6" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="raw-S7-kTm">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="hybrid" translatesAutoresizingMaskIntoConstraints="NO" id="gev-ov-hTt">
+                                <rect key="frame" x="0.0" y="20" width="375" height="447"/>
+                            </mapView>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="096-lh-ZDZ">
+                                <rect key="frame" x="0.0" y="467" width="375" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="KoT-O1-bcQ"/>
+                                </constraints>
+                                <connections>
+                                    <segue destination="3Og-pV-VhC" kind="embed" id="qBe-6v-tBZ"/>
+                                </connections>
+                            </containerView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="gev-ov-hTt" firstAttribute="leading" secondItem="aMm-tk-WmY" secondAttribute="leading" id="46Z-er-6Uf"/>
+                            <constraint firstItem="096-lh-ZDZ" firstAttribute="top" secondItem="gev-ov-hTt" secondAttribute="bottom" id="ISf-hO-mN8"/>
+                            <constraint firstItem="gev-ov-hTt" firstAttribute="trailing" secondItem="aMm-tk-WmY" secondAttribute="trailing" id="PHD-LN-1f5"/>
+                            <constraint firstItem="096-lh-ZDZ" firstAttribute="trailing" secondItem="aMm-tk-WmY" secondAttribute="trailing" id="Pdo-zx-Ag9"/>
+                            <constraint firstItem="096-lh-ZDZ" firstAttribute="bottom" secondItem="aMm-tk-WmY" secondAttribute="bottom" id="j0J-E8-iTf"/>
+                            <constraint firstItem="gev-ov-hTt" firstAttribute="top" secondItem="aMm-tk-WmY" secondAttribute="top" id="lkv-or-eB3"/>
+                            <constraint firstItem="096-lh-ZDZ" firstAttribute="leading" secondItem="aMm-tk-WmY" secondAttribute="leading" id="qKW-Wi-42J"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="aMm-tk-WmY"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="" image="map-location" id="wb3-oF-Cjh"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="e5W-TS-hXc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="788" y="170.46476761619192"/>
+        </scene>
+        <!--Table View Controller-->
+        <scene sceneID="JnQ-ia-5wV">
+            <objects>
+                <tableViewController id="3Og-pV-VhC" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="oad-Ev-DlB">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="quS-pB-iv2">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="quS-pB-iv2" id="hct-Wb-MmY">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="3Og-pV-VhC" id="wEB-Z9-xcn"/>
+                            <outlet property="delegate" destination="3Og-pV-VhC" id="776-Te-IPl"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="awp-XJ-Scr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-152" y="793"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="map-location" width="42" height="42"/>
+    </resources>
+</document>

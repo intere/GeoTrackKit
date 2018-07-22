@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  TrackConsoleViewController.swift
 //  GeoTrackKitExample
 //
 //  Created by Eric Internicola on 11/5/16.
@@ -10,7 +10,7 @@ import UIKit
 import CoreLocation
 import GeoTrackKit
 
-class ViewController: UIViewController {
+class TrackConsoleViewController: UIViewController {
 
     @IBOutlet weak var button: UIButton!
     @IBOutlet var altitudeLabel: UILabel!
@@ -31,18 +31,15 @@ class ViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(locationDidUpdate(_:)), name: Notification.Name.GeoTrackKit.didUpdateLocations, object: nil)
     }
 
-    @IBAction func clickedTrackButton(_ sender: UIButton) {
+    @IBAction
+    func clickedTrackButton(_ sender: UIButton) {
         handleTrackingClick()
-    }
-
-    deinit {
-        NotificationCenter.default.removeObserver(self)
     }
 }
 
 // MARK: - Listeners
 
-extension ViewController {
+extension TrackConsoleViewController {
 
     @objc
     func locationDidUpdate(_ notification: NSNotification) {
@@ -55,7 +52,7 @@ extension ViewController {
 
 // MARK: - Helpers
 
-fileprivate extension ViewController {
+fileprivate extension TrackConsoleViewController {
 
     func handleTrackingClick() {
         if GeoTrackManager.shared.isTracking {
