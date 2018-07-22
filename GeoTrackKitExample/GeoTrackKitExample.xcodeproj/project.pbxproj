@@ -14,7 +14,8 @@
 		368A87B11E63332E003D115A /* TrackReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 368A87B01E63332E003D115A /* TrackReader.swift */; };
 		368A87B71E636FCE003D115A /* GeoTrackAnalyzerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 368A87B61E636FCE003D115A /* GeoTrackAnalyzerTests.swift */; };
 		369723131E64FCBF00C1698E /* TrackMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 369723121E64FCBF00C1698E /* TrackMapViewController.swift */; };
-		36A7C6C72100B0980073407A /* EventLotAppender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36A7C6C62100B0980073407A /* EventLotAppender.swift */; };
+		36A7C6C72100B0980073407A /* EventLogAppender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36A7C6C62100B0980073407A /* EventLogAppender.swift */; };
+		36A7C6D02103ECB40073407A /* ConsoleLogAppender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36A7C6CF2103ECB40073407A /* ConsoleLogAppender.swift */; };
 		36C45E451DCE2D3500E87710 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36C45E441DCE2D3500E87710 /* AppDelegate.swift */; };
 		36C45E471DCE2D3500E87710 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36C45E461DCE2D3500E87710 /* ViewController.swift */; };
 		36C45E4A1DCE2D3500E87710 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 36C45E481DCE2D3500E87710 /* Main.storyboard */; };
@@ -45,7 +46,8 @@
 		368A87B01E63332E003D115A /* TrackReader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackReader.swift; sourceTree = "<group>"; };
 		368A87B61E636FCE003D115A /* GeoTrackAnalyzerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeoTrackAnalyzerTests.swift; sourceTree = "<group>"; };
 		369723121E64FCBF00C1698E /* TrackMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackMapViewController.swift; sourceTree = "<group>"; };
-		36A7C6C62100B0980073407A /* EventLotAppender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventLotAppender.swift; sourceTree = "<group>"; };
+		36A7C6C62100B0980073407A /* EventLogAppender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventLogAppender.swift; sourceTree = "<group>"; };
+		36A7C6CF2103ECB40073407A /* ConsoleLogAppender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsoleLogAppender.swift; sourceTree = "<group>"; };
 		36C45E411DCE2D3500E87710 /* GeoTrackKitExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GeoTrackKitExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		36C45E441DCE2D3500E87710 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		36C45E461DCE2D3500E87710 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -117,7 +119,8 @@
 		36A7C6C52100B0730073407A /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				36A7C6C62100B0980073407A /* EventLotAppender.swift */,
+				36A7C6C62100B0980073407A /* EventLogAppender.swift */,
+				36A7C6CF2103ECB40073407A /* ConsoleLogAppender.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -425,9 +428,10 @@
 				36E525851E65C2DB00691144 /* TrackOverviewTableViewController.swift in Sources */,
 				36C45E471DCE2D3500E87710 /* ViewController.swift in Sources */,
 				36C45E451DCE2D3500E87710 /* AppDelegate.swift in Sources */,
-				36A7C6C72100B0980073407A /* EventLotAppender.swift in Sources */,
+				36A7C6C72100B0980073407A /* EventLogAppender.swift in Sources */,
 				369723131E64FCBF00C1698E /* TrackMapViewController.swift in Sources */,
 				36E525901E66452100691144 /* LegSwitchCell.swift in Sources */,
+				36A7C6D02103ECB40073407A /* ConsoleLogAppender.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

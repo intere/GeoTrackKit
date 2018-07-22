@@ -12,7 +12,6 @@
 		3C4938CD6D6AE8335F8D252C50F558C2 /* GeoTrackKit-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 68C7F861BAC1DB30B5B52FE47606FE08 /* GeoTrackKit-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4024D1ED119717E8288E64AF8CC01673 /* CLLocationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B85076E7257D1BD7F48095608A84C009 /* CLLocationExtension.swift */; };
 		42471E240B164F8D2B7AA61936C0E686 /* GeoTrackEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EB37F10FD385A2614CE97849770CC3C /* GeoTrackEvent.swift */; };
-		44C54C8D35CA04D4C6ECE9D1BD794503 /* GeoTrackConsoleAppender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26CB0068B6EF1B79CFA432C887235379 /* GeoTrackConsoleAppender.swift */; };
 		516732EDBA9AB99428047D8E8025D17B /* UIGeoTrack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5639218BC17BBF260C5CA5FE94D5036B /* UIGeoTrack.swift */; };
 		5B96AE43646F44BCC2E7BF394F8CD751 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CFCEA8AB143E7AC4962B18BCE9C391E /* DateExtension.swift */; };
 		72CEDAFA1500D7FAE5D6B2EF3E7D1F1F /* Pods-GeoTrackKitExampleTests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = C5A04C84C5C1455273889A2E9D7ED64E /* Pods-GeoTrackKitExampleTests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -73,7 +72,6 @@
 		22721DF15C35F3C20EA4BF1B63EC193B /* EventType.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html; name = EventType.html; path = docs/Classes/GeoTrackLocationEvent/EventType.html; sourceTree = "<group>"; };
 		22BAB273A61A65091067943ADD5122EB /* jazzy.css */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.css; name = jazzy.css; path = docs/docsets/GeoTrackKit.docset/Contents/Resources/Documents/css/jazzy.css; sourceTree = "<group>"; };
 		25C6F896B13D96F74A6C7440DFAE161A /* GeoTrackState.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html.documentation; name = GeoTrackState.html; path = docs/docsets/GeoTrackKit.docset/Contents/Resources/Documents/Enums/GeoTrackState.html; sourceTree = "<group>"; };
-		26CB0068B6EF1B79CFA432C887235379 /* GeoTrackConsoleAppender.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GeoTrackConsoleAppender.swift; path = GeoTrackKit/GeoTrackConsoleAppender.swift; sourceTree = "<group>"; };
 		2829797D6D1DEC21487DF701E3441478 /* Pods-GeoTrackKitExample-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-GeoTrackKitExample-dummy.m"; sourceTree = "<group>"; };
 		2A28300512935589BD93999165B9221B /* GeoTrackManager.html */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.html; name = GeoTrackManager.html; path = docs/Classes/GeoTrackManager.html; sourceTree = "<group>"; };
 		2CC3B4F49EF601A9614116D25CD7F96F /* GeoTrackService.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GeoTrackService.swift; path = GeoTrackKit/GeoTrackService.swift; sourceTree = "<group>"; };
@@ -238,7 +236,6 @@
 			isa = PBXGroup;
 			children = (
 				D5EDDCDD401BBADA2F04D798EFBC6463 /* GeoTrackAnalyzer.swift */,
-				26CB0068B6EF1B79CFA432C887235379 /* GeoTrackConsoleAppender.swift */,
 				9EB37F10FD385A2614CE97849770CC3C /* GeoTrackEvent.swift */,
 				2FA2A5D4CF0569FFCB24C43B147F9F22 /* GeoTrackEventLog.swift */,
 				85BD5B8DB5D1962AA382BE73271278BB /* GeoTrackManager.swift */,
@@ -625,7 +622,6 @@
 				EBF72A543CDFFA8191A443E18B9C194F /* DefaultMapZoom.swift in Sources */,
 				86FD113A75EC9A5FF2EAF6D7966D18F9 /* GeoTrack.swift in Sources */,
 				9C6320D0A3DF5CC1165A4F7D6A3DD42E /* GeoTrackAnalyzer.swift in Sources */,
-				44C54C8D35CA04D4C6ECE9D1BD794503 /* GeoTrackConsoleAppender.swift in Sources */,
 				42471E240B164F8D2B7AA61936C0E686 /* GeoTrackEvent.swift in Sources */,
 				34037EE1868CD589CF9688698B67D9F3 /* GeoTrackEventLog.swift in Sources */,
 				3013DD4B9B989D0616D1E9755069A244 /* GeoTrackKit-dummy.m in Sources */,

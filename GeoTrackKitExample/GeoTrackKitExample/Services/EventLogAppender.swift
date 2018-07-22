@@ -1,5 +1,5 @@
 //
-//  EventLotAppender.swift
+//  EventLogAppender.swift
 //  GeoTrackKitExample
 //
 //  Created by Eric Internicola on 7/19/18.
@@ -8,9 +8,17 @@
 
 import GeoTrackKit
 
+/// A Log Appender that collects logs and stores them in an array
+/// This implementation allows you to get the most recent event as well
+/// as the entire list of events
 class EventLogAppender: GeoTrackLogAppender {
 
-    var uniqueId = type(of: self)
+    /// The shared instance
+    static let shared = EventLogAppender()
+
+    var uniqueId: String {
+        return "EventLogAppender"
+    }
 
     var logLevel = GeoTrackEvent.Level.debug
 
@@ -25,12 +33,10 @@ class EventLogAppender: GeoTrackLogAppender {
         return eventLog[eventLog.count-1]
     }
 
-
     // MARK: - GeoTrackLogAppender API
 
     func logged(event: GeoTrackEvent) {
         eventLog.append(event)
     }
 
-    
 }

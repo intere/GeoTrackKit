@@ -35,7 +35,6 @@ public class GeoTrackEventLog {
     fileprivate(set) public var appenders = [GeoTrackLogAppender]()
 
     private init() {
-        add(appender: GeoTrackConsoleAppender.shared)
     }
 }
 
@@ -54,6 +53,9 @@ public extension GeoTrackEventLog {
     ///
     /// - Parameter appender: The appender to be added.
     func add(appender: GeoTrackLogAppender) {
+        guard !appenders.contains(where: { $0.uniqueId == appender.uniqueId }) else {
+            return
+        }
         appenders.append(appender)
     }
 
@@ -63,6 +65,7 @@ public extension GeoTrackEventLog {
     func remove(appender: GeoTrackLogAppender) {
         for index in 0..<appenders.count where appenders[index].uniqueId == appender.uniqueId {
             appenders.remove(at: index)
+            return
         }
     }
 

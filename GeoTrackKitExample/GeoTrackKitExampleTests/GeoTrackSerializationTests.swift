@@ -31,7 +31,7 @@ class GeoTrackSerializationTests: XCTestCase {
         ]
         let track = GeoTrack()
         points.forEach { track.add(location: $0) }
-        guard let pointMaps = track.map["points"] as? [[String:Any]] else {
+        guard let pointMaps = track.map["points"] as? [[String: Any]] else {
             return XCTFail("Failed to get the right type of data from the map for the points")
         }
 
@@ -51,7 +51,7 @@ class GeoTrackSerializationTests: XCTestCase {
 
         let track = GeoTrack()
         events.forEach { track.add(event: $0) }
-        guard let eventMaps = track.map["events"] as? [[String:Any]] else {
+        guard let eventMaps = track.map["events"] as? [[String: Any]] else {
             return XCTFail("Failed to get the right type of data from the map for the events")
         }
 

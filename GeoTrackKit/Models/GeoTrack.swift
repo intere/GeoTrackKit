@@ -149,11 +149,11 @@ public extension GeoTrack {
     static func fromMap(map: [String: Any]) -> GeoTrack? {
         let name = map["name"] as? String ?? ""
         let description = map["description"] as? String ?? ""
-        guard let pointMaps = map["points"] as? [[String:Any]] else {
+        guard let pointMaps = map["points"] as? [[String: Any]] else {
             elog("No points in the track")
             return nil
         }
-        guard let eventMaps = map["events"] as? [[String:Any]] else {
+        guard let eventMaps = map["events"] as? [[String: Any]] else {
             elog("No events in the track")
             return nil
         }
@@ -230,7 +230,7 @@ fileprivate extension GeoTrack {
     }
 
     func buildEventLog(showPoints: Bool) -> [String] {
-        var events = self.events.map { Log(event:$0) }
+        var events = self.events.map { Log(event: $0) }
 
         if showPoints {
             events.append(contentsOf: points.map({ Log(location: $0) }))
