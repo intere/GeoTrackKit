@@ -41,7 +41,7 @@ class GeoTrackLocationEventTests: XCTestCase {
 
     func testDeserializeTrackingEvent() {
         let date = Date()
-        let map: [String:Any] = [
+        let map: [String: Any] = [
             "type": GeoTrackLocationEvent.EventType.custom.rawValue,
             "timestamp": date.msse,
             "message": "hello world",

@@ -31,29 +31,16 @@ public class GeoTrackEventLog {
     /// Singleton instance
     public static let shared = GeoTrackEventLog()
 
-    // TODO: Rip out the eventLog and create an appender that collects events.
-
-    /// The Event Log
-    fileprivate(set) public var eventLog = [GeoTrackEvent]()
     /// The Appenders
     fileprivate(set) public var appenders = [GeoTrackLogAppender]()
 
     private init() {
-        add(appender: GeoTrackConsoleAppender.shared)
     }
 }
 
 // MARK: - API
 
 public extension GeoTrackEventLog {
-
-    /// Gets you the most recent event in the event log
-    var mostRecentEvent: GeoTrackEvent? {
-        guard eventLog.count > 0 else {
-            return nil
-        }
-        return eventLog[eventLog.count-1]
-    }
 
     /// Logs an event
     ///
@@ -66,6 +53,9 @@ public extension GeoTrackEventLog {
     ///
     /// - Parameter appender: The appender to be added.
     func add(appender: GeoTrackLogAppender) {
+        guard !appenders.contains(where: { $0.uniqueId == appender.uniqueId }) else {
+            return
+        }
         appenders.append(appender)
     }
 
@@ -75,6 +65,7 @@ public extension GeoTrackEventLog {
     func remove(appender: GeoTrackLogAppender) {
         for index in 0..<appenders.count where appenders[index].uniqueId == appender.uniqueId {
             appenders.remove(at: index)
+            return
         }
     }
 
@@ -92,7 +83,6 @@ internal extension GeoTrackEventLog {
     ///
     /// - Parameter event: The event that occurred
     func add(event: GeoTrackEvent) {
-        eventLog.append(event)
         for appender in appenders {
             appender.logged(event: event)
         }

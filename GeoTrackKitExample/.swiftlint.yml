@@ -7,7 +7,6 @@ excluded:
 
 disabled_rules:
   - line_length
-  - todo
 
 function_body_length:
     - 80
