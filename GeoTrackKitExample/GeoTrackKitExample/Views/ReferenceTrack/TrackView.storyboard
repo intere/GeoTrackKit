@@ -24,13 +24,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="hybrid" translatesAutoresizingMaskIntoConstraints="NO" id="egO-IS-oa8" customClass="GeoTrackMap" customModule="GeoTrackKit">
-                                <rect key="frame" x="0.0" y="28" width="375" height="300"/>
+                                <rect key="frame" x="0.0" y="28" width="375" height="400"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="300" id="JIZ-6W-ZA3"/>
+                                    <constraint firstAttribute="height" constant="400" id="JIZ-6W-ZA3"/>
                                 </constraints>
                             </mapView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j3W-b1-aMI">
-                                <rect key="frame" x="0.0" y="328" width="375" height="339"/>
+                                <rect key="frame" x="0.0" y="428" width="375" height="239"/>
                                 <connections>
                                     <segue destination="Kom-qy-mum" kind="embed" id="c3y-gj-OWQ"/>
                                 </connections>
@@ -64,7 +64,7 @@
             <objects>
                 <tableViewController id="Kom-qy-mum" customClass="TrackOverviewTableViewController" customModule="GeoTrackKitExample" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsMultipleSelection="YES" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="G5G-Aw-OMU">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="339"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="239"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
@@ -112,7 +112,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3rU-5I-LKZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-78" y="669"/>
+            <point key="canvasLocation" x="860" y="655"/>
         </scene>
     </scenes>
     <resources>

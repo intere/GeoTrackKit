@@ -36,7 +36,7 @@
                     <tabBarItem key="tabBarItem" title="" image="map-location" id="u9j-ex-vh6"/>
                 </viewControllerPlaceholder>
             </objects>
-            <point key="canvasLocation" x="-210" y="-1410"/>
+            <point key="canvasLocation" x="-197" y="-1332"/>
         </scene>
         <!--LiveTrackView-->
         <scene sceneID="NfS-Us-370">
@@ -46,7 +46,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Avb-ui-oOP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-209" y="-1303"/>
+            <point key="canvasLocation" x="-247" y="-1418"/>
         </scene>
         <!--TrackConsole-->
         <scene sceneID="0QX-aq-1Os">
