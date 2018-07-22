@@ -1,6 +1,6 @@
 //
 //  DefaultMapZoom.swift
-//  Pods
+//  GeoTrackKit
 //
 //  Created by Internicola, Eric on 3/14/17.
 //

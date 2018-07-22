@@ -1,6 +1,6 @@
 //
 //  DateExtension.swift
-//  Pods
+//  GeoTrackKit
 //
 //  Created by Eric Internicola on 12/10/16.
 //

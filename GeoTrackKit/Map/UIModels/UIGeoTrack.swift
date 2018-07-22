@@ -1,6 +1,6 @@
 //
 //  UIGeoTrack.swift
-//  GeoTrackKitExample
+//  GeoTrackKit
 //
 //  Created by Eric Internicola on 2/28/17.
 //  Copyright © 2017 Eric Internicola. All rights reserved.

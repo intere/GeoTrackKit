@@ -1,11 +1,10 @@
 //
 //  Leg.swift
-//  Pods
+//  GeoTrackKit
 //
 //  Created by Internicola, Eric on 3/1/17.
 //
 //  Models that are used for Analyzing Tracks
-//  TODO(EGI) Document Me!
 
 import CoreLocation
 
