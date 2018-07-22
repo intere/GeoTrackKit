@@ -16,6 +16,7 @@
 		369723131E64FCBF00C1698E /* TrackMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 369723121E64FCBF00C1698E /* TrackMapViewController.swift */; };
 		36A7C6C72100B0980073407A /* EventLogAppender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36A7C6C62100B0980073407A /* EventLogAppender.swift */; };
 		36A7C6D02103ECB40073407A /* ConsoleLogAppender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36A7C6CF2103ECB40073407A /* ConsoleLogAppender.swift */; };
+		36A7C6D221043E810073407A /* TrackView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 36A7C6D121043E810073407A /* TrackView.storyboard */; };
 		36C45E451DCE2D3500E87710 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36C45E441DCE2D3500E87710 /* AppDelegate.swift */; };
 		36C45E471DCE2D3500E87710 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36C45E461DCE2D3500E87710 /* ViewController.swift */; };
 		36C45E4A1DCE2D3500E87710 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 36C45E481DCE2D3500E87710 /* Main.storyboard */; };
@@ -48,6 +49,7 @@
 		369723121E64FCBF00C1698E /* TrackMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackMapViewController.swift; sourceTree = "<group>"; };
 		36A7C6C62100B0980073407A /* EventLogAppender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventLogAppender.swift; sourceTree = "<group>"; };
 		36A7C6CF2103ECB40073407A /* ConsoleLogAppender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsoleLogAppender.swift; sourceTree = "<group>"; };
+		36A7C6D121043E810073407A /* TrackView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TrackView.storyboard; sourceTree = "<group>"; };
 		36C45E411DCE2D3500E87710 /* GeoTrackKitExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GeoTrackKitExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		36C45E441DCE2D3500E87710 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		36C45E461DCE2D3500E87710 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -182,6 +184,7 @@
 				36C45E461DCE2D3500E87710 /* ViewController.swift */,
 				369723121E64FCBF00C1698E /* TrackMapViewController.swift */,
 				36E525841E65C2DB00691144 /* TrackOverviewTableViewController.swift */,
+				36A7C6D121043E810073407A /* TrackView.storyboard */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -333,6 +336,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				36C45E4F1DCE2D3500E87710 /* LaunchScreen.storyboard in Resources */,
+				36A7C6D221043E810073407A /* TrackView.storyboard in Resources */,
 				36E3C43D1F4A0817005738DB /* reference-track-1.json in Resources */,
 				36C45E4C1DCE2D3500E87710 /* Assets.xcassets in Resources */,
 				36C45E4A1DCE2D3500E87710 /* Main.storyboard in Resources */,
