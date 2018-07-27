@@ -1,6 +1,6 @@
 //
 //  GeoTrack.swift
-//  Pods
+//  GeoTrackKit
 //
 //  Created by Eric Internicola on 11/27/16.
 //

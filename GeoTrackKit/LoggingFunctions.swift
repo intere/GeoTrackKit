@@ -1,6 +1,6 @@
 //
 //  LoggingFunctions.swift
-//  Pods
+//  GeoTrackKit
 //
 //  Created by Internicola, Eric on 12/7/16.
 //

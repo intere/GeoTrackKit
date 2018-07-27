@@ -117,7 +117,9 @@ extension GeoTrackManager: CLLocationManagerDelegate {
         }
     }
 
-    /// Handles location updates.
+    /// Handles location updates.  When the track is updated, it will send out a
+    /// notification to NotificationCenter.
+    /// See `Notification.Name.GeoTrackKit.didUpdateLocations`
     ///
     /// - Parameters:
     ///   - manager: The source of the event.
