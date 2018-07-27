@@ -26,6 +26,14 @@ This project is currently a work in progress.
 - [ ] Performance Tests
 - [x] SwiftLint Integration
 - [ ] 90% Code Coverage
+- [ ] Pull tracks from HealthKit (Workouts)
+
+### Example App
+
+TODO:
+- [ ] Save tracks to disk
+- [ ] Provide a track list
+- [ ] Pull tracks in from HealthKit
 
 ### Installation
 

@@ -136,19 +136,11 @@
 		36A7C6D52104C7480073407A /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				36A7C6D62104C7480073407A /* Settings */,
 				36A7C6D72104C7480073407A /* TrackConsole */,
 				36A7C6D82104C7480073407A /* ReferenceTrack */,
 				36A7C6D92104C7480073407A /* LiveTracking */,
 			);
 			path = Views;
-			sourceTree = "<group>";
-		};
-		36A7C6D62104C7480073407A /* Settings */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Settings;
 			sourceTree = "<group>";
 		};
 		36A7C6D72104C7480073407A /* TrackConsole */ = {
