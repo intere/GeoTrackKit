@@ -5,11 +5,13 @@
 //  Created by Eric Internicola on 7/27/18.
 //
 
+import CoreLocation
 import Foundation
 import HealthKit
 
 public typealias AuthorizationCallback = (Bool, Error?) -> Void
 public typealias WorkoutCallback = ([HKWorkout]?, Error?) -> Void
+public typealias TrackCallback = ([CLLocation]?, Error?) -> Void
 
 public class ActivityService {
 
@@ -23,15 +25,30 @@ public class ActivityService {
     /// The HealthKitStore (if available)
     private var store = HKHealthStore()
 
+    /// A collection of points to call back with.
+    private var points = [CLLocation]()
+
+    private var currentRouteQuery: HKQuery?
+
     /// Request authorization for health kit data.
     ///
     /// - Parameter callback: the callback that will hand back a boolean (indicating success or failure)
     /// and an optional Error object.
     public func authorize(_ callback: @escaping AuthorizationCallback) {
+        guard isHealthDataAvailable else {
+            GTError(message: "Health data is not available on this device")
+            return callback(false, nil)
+        }
+        guard #available(iOS 11.0, *) else {
+            GTError(message: "You must be on iOS 11")
+            return callback(false, nil)
+        }
+
         let allTypes = Set([
             HKObjectType.workoutType(),
-            HKObjectType.activitySummaryType()
-        ])
+            HKObjectType.activitySummaryType(),
+            HKObjectType.seriesType(forIdentifier: HKWorkoutRouteTypeIdentifier)!
+            ])
 
         store.requestAuthorization(toShare: nil, read: allTypes) { (success, error) in
             defer {
@@ -51,9 +68,9 @@ public class ActivityService {
         }
     }
 
-    /// <#Description#>
+    /// Queries HealthKit to get all of your workouts
     ///
-    /// - Parameter callback: <#callback description#>
+    /// - Parameter callback: The block to handle the result (whether it's success or failure)
     public func queryWorkouts(_ callback: @escaping WorkoutCallback) {
         let workoutPredicate = HKQuery.predicateForWorkouts(with: .greaterThan, totalDistance: HKQuantity(unit: HKUnit.meter(), doubleValue: 100))
         let sortDescriptor = NSSortDescriptor(key: HKSampleSortIdentifierEndDate, ascending: false)
@@ -71,46 +88,64 @@ public class ActivityService {
         HKHealthStore().execute(query)
     }
 
-    public func queryActivities() {
-
-        // Create the date components for the predicate
-        guard let calendar = NSCalendar(calendarIdentifier: NSCalendar.Identifier.gregorian) else {
-            fatalError("*** This should never fail. ***")
+    public func queryTrack(from workout: HKWorkout, callback: @escaping TrackCallback) {
+        guard #available(iOS 11.0, *) else {
+            GTError(message: "You must be running iOS 11 or newer")
+            // TODO: Fallback on earlier versions
+            return callback(nil, nil)
         }
 
-        let endDate = NSDate()
+        let runningObjectQuery = HKQuery.predicateForObjects(from: workout)
 
-        guard let startDate = calendar.date(byAdding: .day, value: -7, to: endDate as Date, options: []) else {
-            fatalError("*** unable to calculate the start date ***")
+        let routeQuery = HKAnchoredObjectQuery(type: HKSeriesType.workoutRoute(), predicate: runningObjectQuery, anchor: nil, limit: HKObjectQueryNoLimit) { [weak self] (query, samples, _, _, error) in
+
+            if let error = error {
+                GTError(message: "Failed to load route: \(error.localizedDescription)")
+                return callback(nil, error)
+            }
+            guard let route = samples?.first as? HKWorkoutRoute else {
+                GTError(message: "We didn't get back any samples")
+                return callback(nil, nil)
+            }
+
+            self?.queryPoints(route: route, callback: callback)
         }
 
-        let units: NSCalendar.Unit = [.day, .month, .year, .era]
+        store.execute(routeQuery)
 
-        var startDateComponents = calendar.components(units, from: startDate)
-        startDateComponents.calendar = calendar as Calendar
+    }
 
-        var endDateComponents = calendar.components(units, from: endDate as Date)
-        endDateComponents.calendar = calendar as Calendar
+    @available(iOS 11.0, *)
+    func queryPoints(route: HKWorkoutRoute, callback: @escaping TrackCallback) {
 
-        // Create the predicate for the query
+        // Create the route query.
+        currentRouteQuery = HKWorkoutRouteQuery(route: route) { (query, locations, done, error) in
 
-        let summariesWithinRange = HKQuery.predicate(forActivitySummariesBetweenStart: startDateComponents, end: endDateComponents)
+            // This block may be called multiple times.
 
-        let query = HKActivitySummaryQuery(predicate: summariesWithinRange) { (query, summaries, error) -> Void in
-            guard summaries != nil else {
-                guard error != nil else {
-                    fatalError("*** Did not return a valid error object. ***")
-                }
+            if let error = error {
+                GTError(message: "Failed to get points for route: \(error.localizedDescription)")
+                self.store.stop(query)
+                self.currentRouteQuery = nil
+                return callback(nil, error)
+            }
 
-                // Handle the error here...
+            guard let locations = locations else {
+                return GTError(message: "There were no location points")
+            }
 
+            guard done else {
+                GTError(message: "We're processing an incomplete track with \(locations.count) points")
+                self.points.append(contentsOf: locations)
                 return
             }
+
+            callback(locations, nil)
         }
 
-        // Run the query
-        store.execute(query)
-
-
+        guard let currentRouteQuery = currentRouteQuery else {
+            return
+        }
+        store.execute(currentRouteQuery)
     }
 }

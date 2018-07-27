@@ -16,24 +16,38 @@ class TrackMapViewController: UIViewController {
 
     var model: UIGeoTrack? {
         didSet {
-            model?.toggleAll(visibility: false)
-            mapView.model = model
-            tableVC?.model = model
+            modelUpdated()
         }
     }
+
+    var useDemoTrack = true
 
     var tableVC: TrackOverviewTableViewController?
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        guard let track = TrackMapViewController.loadFromBundle(filename: "reference-track-1", type: "json") else {
-            return assertionFailure("Couldn't load the test track")
+        if useDemoTrack {
+            guard let track = TrackMapViewController.loadFromBundle(filename: "reference-track-1", type: "json") else {
+                return assertionFailure("Couldn't load the test track")
+            }
+            model = UIGeoTrack(with: track)
+            assert(model != nil, "There is no track")
         }
-        model = UIGeoTrack(with: track)
-        assert(model != nil, "There is no track")
 
         NotificationCenter.default.addObserver(self, selector: #selector(legVisiblityChanged(_:)), name: Notification.Name.GeoMapping.legVisibilityChanged, object: nil)
+
+        modelUpdated()
+    }
+
+    /// Loads this view from a storyboard.
+    ///
+    /// - Returns: A new TrackMapViewController.
+    class func loadFromStoryboard(useDemoTrack: Bool = false) -> TrackMapViewController {
+        // swiftlint:disable:next force_cast
+        let trackVC = UIStoryboard(name: "TrackView", bundle: nil).instantiateViewController(withIdentifier: "TrackMapViewController") as! TrackMapViewController
+        trackVC.useDemoTrack = useDemoTrack
+        return trackVC
     }
 
     static func loadFromBundle(filename: String, type: String) -> GeoTrack? {
@@ -54,6 +68,15 @@ class TrackMapViewController: UIViewController {
         let track = GeoTrack(json: jsonMap)
 
         return track
+    }
+
+    private func modelUpdated() {
+        model?.toggleAll(visibility: false)
+        guard mapView != nil else {
+            return
+        }
+        mapView.model = model
+        tableVC?.model = model
     }
 }
 

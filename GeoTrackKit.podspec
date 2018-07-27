@@ -40,7 +40,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   end
 
   s.subspec 'HealthKit' do |ss|
-    ss.ios.deployment_target = '9.3'
+    ss.ios.deployment_target = '11.0'
     ss.source_files = 'GeoTrackKit/HealthKit/**/*.{swift,h,m}'
     ss.dependency 'GeoTrackKit/Core'
   end

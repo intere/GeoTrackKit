@@ -60,6 +60,31 @@ class TrackImportTableViewController: UITableViewController {
         return cell
     }
 
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let workouts = workouts, indexPath.row < workouts.count else {
+            return print("ERROR: either there are no workouts, or your selection is out of bounds")
+        }
+
+        let workout = workouts[indexPath.row]
+
+        ActivityService.shared.queryTrack(from: workout) { (locations, error) in
+            if let error = error {
+                return print("Error getting points: \(error.localizedDescription)")
+            }
+            guard let locations = locations else {
+                return print("Locations came back empty")
+            }
+
+            DispatchQueue.main.async { [weak self] in
+                let mapView = TrackMapViewController.loadFromStoryboard()
+                let track = GeoTrack(points: locations, name: workout.tableDescription, description: workout.description)
+                mapView.model = UIGeoTrack(with: track)
+                self?.navigationController?.pushViewController(mapView, animated: true)
+            }
+        }
+
+    }
+
 }
 
 // MARK: - HKWorkout stuff
@@ -77,7 +102,12 @@ extension HKWorkout {
     /// Gets the description for the table
     var tableDescription: String {
         let time = Constants.formatter.string(from: startDate)
-        return "\(time): \(source.name) - \(workoutActivityType.description)"
+        if let burned = totalEnergyBurned {
+            let calories = Int(burned.doubleValue(for: HKUnit.kilocalorie()))
+            return "\(time): \(sourceRevision.source.name) - \(workoutActivityType.description) - \(calories) Cal"
+        } else {
+            return "\(time): \(sourceRevision.source.name) - \(workoutActivityType.description)"
+        }
     }
 
 }
