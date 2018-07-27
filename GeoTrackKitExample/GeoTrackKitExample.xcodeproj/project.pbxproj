@@ -27,6 +27,9 @@
 		36C45E4A1DCE2D3500E87710 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 36C45E481DCE2D3500E87710 /* Main.storyboard */; };
 		36C45E4C1DCE2D3500E87710 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 36C45E4B1DCE2D3500E87710 /* Assets.xcassets */; };
 		36C45E4F1DCE2D3500E87710 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 36C45E4D1DCE2D3500E87710 /* LaunchScreen.storyboard */; };
+		36D099B1210B607300C8C841 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36D099B0210B607300C8C841 /* HealthKit.framework */; };
+		36D099B5210B64E200C8C841 /* TrackImport.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 36D099B4210B64E200C8C841 /* TrackImport.storyboard */; };
+		36D099B7210B6A2C00C8C841 /* TrackImportTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36D099B6210B6A2C00C8C841 /* TrackImportTableViewController.swift */; };
 		36E1E3461DEB3D0D00CFC7BC /* GeoTrackLocationEventTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36E1E3451DEB3D0D00CFC7BC /* GeoTrackLocationEventTests.swift */; };
 		36E3C43D1F4A0817005738DB /* reference-track-1.json in Resources */ = {isa = PBXBuildFile; fileRef = 368A87AD1E6332C1003D115A /* reference-track-1.json */; };
 		93090E201DF822D9004F56FB /* GeoTrackEventLogTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93090E1F1DF822D9004F56FB /* GeoTrackEventLogTests.swift */; };
@@ -67,6 +70,10 @@
 		36C45E501DCE2D3500E87710 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		36C45E551DCE2D3500E87710 /* GeoTrackKitExampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GeoTrackKitExampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		36C45E5B1DCE2D3500E87710 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		36D099AF210B607200C8C841 /* GeoTrackKitExample.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = GeoTrackKitExample.entitlements; sourceTree = "<group>"; };
+		36D099B0210B607300C8C841 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
+		36D099B4210B64E200C8C841 /* TrackImport.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TrackImport.storyboard; sourceTree = "<group>"; };
+		36D099B6210B6A2C00C8C841 /* TrackImportTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackImportTableViewController.swift; sourceTree = "<group>"; };
 		36E1E3451DEB3D0D00CFC7BC /* GeoTrackLocationEventTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeoTrackLocationEventTests.swift; sourceTree = "<group>"; };
 		51B54550121FF2A0DC20134F /* Pods-GeoTrackKitExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GeoTrackKitExample.release.xcconfig"; path = "Pods/Target Support Files/Pods-GeoTrackKitExample/Pods-GeoTrackKitExample.release.xcconfig"; sourceTree = "<group>"; };
 		8992FE79B7159E02B95D4ABA /* Pods-GeoTrackKitExampleTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GeoTrackKitExampleTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GeoTrackKitExampleTests/Pods-GeoTrackKitExampleTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -85,6 +92,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0E1E09A3899897CDAE589A5B /* Pods_GeoTrackKitExample.framework in Frameworks */,
+				36D099B1210B607300C8C841 /* HealthKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -102,6 +110,7 @@
 		1293B838470181209049C3A4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				36D099B0210B607300C8C841 /* HealthKit.framework */,
 				8A51639AB7B6B4BAEF27C313 /* Pods_GeoTrackKitExample.framework */,
 				A6E72B23B9554498B66030FE /* Pods_GeoTrackKitExampleTests.framework */,
 			);
@@ -136,6 +145,7 @@
 		36A7C6D52104C7480073407A /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				36D099B3210B64D900C8C841 /* TrackImport */,
 				36A7C6D72104C7480073407A /* TrackConsole */,
 				36A7C6D82104C7480073407A /* ReferenceTrack */,
 				36A7C6D92104C7480073407A /* LiveTracking */,
@@ -195,6 +205,7 @@
 		36C45E431DCE2D3500E87710 /* GeoTrackKitExample */ = {
 			isa = PBXGroup;
 			children = (
+				36D099AF210B607200C8C841 /* GeoTrackKitExample.entitlements */,
 				36A7C6C52100B0730073407A /* Services */,
 				36A7C6D52104C7480073407A /* Views */,
 				36C45E441DCE2D3500E87710 /* AppDelegate.swift */,
@@ -220,6 +231,15 @@
 				368A87B61E636FCE003D115A /* GeoTrackAnalyzerTests.swift */,
 			);
 			path = GeoTrackKitExampleTests;
+			sourceTree = "<group>";
+		};
+		36D099B3210B64D900C8C841 /* TrackImport */ = {
+			isa = PBXGroup;
+			children = (
+				36D099B4210B64E200C8C841 /* TrackImport.storyboard */,
+				36D099B6210B6A2C00C8C841 /* TrackImportTableViewController.swift */,
+			);
+			path = TrackImport;
 			sourceTree = "<group>";
 		};
 		3946A07E733955EE7C410B0B /* Pods */ = {
@@ -277,7 +297,7 @@
 				3649061B1E6C62EB00B6A0C4 /* Swiftlint */,
 				36C45E3E1DCE2D3500E87710 /* Frameworks */,
 				36C45E3F1DCE2D3500E87710 /* Resources */,
-				4B6FA6C5D31F27109F72FB6E /* [CP] Embed Pods Frameworks */,
+				15F80713F620802C6C8F2402 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -326,6 +346,9 @@
 							com.apple.BackgroundModes = {
 								enabled = 1;
 							};
+							com.apple.HealthKit = {
+								enabled = 1;
+							};
 						};
 					};
 					36C45E541DCE2D3500E87710 = {
@@ -365,6 +388,7 @@
 				36E3C43D1F4A0817005738DB /* reference-track-1.json in Resources */,
 				36A7C6E72104CD120073407A /* TrackView.storyboard in Resources */,
 				36C45E4C1DCE2D3500E87710 /* Assets.xcassets in Resources */,
+				36D099B5210B64E200C8C841 /* TrackImport.storyboard in Resources */,
 				36A7C6E32104CC360073407A /* LiveTrackingView.storyboard in Resources */,
 				36C45E4A1DCE2D3500E87710 /* Main.storyboard in Resources */,
 			);
@@ -381,6 +405,24 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		15F80713F620802C6C8F2402 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-GeoTrackKitExample/Pods-GeoTrackKitExample-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GeoTrackKit/GeoTrackKit.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GeoTrackKit.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-GeoTrackKitExample/Pods-GeoTrackKitExample-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		21BFE0984A76732705781C0B /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -431,24 +473,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		4B6FA6C5D31F27109F72FB6E /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-GeoTrackKitExample/Pods-GeoTrackKitExample-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/GeoTrackKit/GeoTrackKit.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GeoTrackKit.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-GeoTrackKitExample/Pods-GeoTrackKitExample-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -460,6 +484,7 @@
 				36A7C6E52104CC690073407A /* TrackOverviewTableViewController.swift in Sources */,
 				36A7C6E12104CC0D0073407A /* TrackMapViewController.swift in Sources */,
 				36A7C6DD2104CBFE0073407A /* TrackConsoleViewController.swift in Sources */,
+				36D099B7210B6A2C00C8C841 /* TrackImportTableViewController.swift in Sources */,
 				36A7C6E92104D8870073407A /* LiveTrackingViewController.swift in Sources */,
 				36C45E451DCE2D3500E87710 /* AppDelegate.swift in Sources */,
 				36A7C6C72100B0980073407A /* EventLogAppender.swift in Sources */,
@@ -630,10 +655,11 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = GeoTrackKitExample/GeoTrackKitExample.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 268S5GJFWZ;
 				INFOPLIST_FILE = GeoTrackKitExample/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.icolasoft.GeoTrackKitExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -649,10 +675,11 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = GeoTrackKitExample/GeoTrackKitExample.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 268S5GJFWZ;
 				INFOPLIST_FILE = GeoTrackKitExample/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.icolasoft.GeoTrackKitExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";

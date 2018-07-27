@@ -22,6 +22,7 @@
                         <segue destination="tBK-oR-W6E" kind="relationship" relationship="viewControllers" id="0g8-hp-Ff4"/>
                         <segue destination="OVK-Q8-tUv" kind="relationship" relationship="viewControllers" id="H0b-r1-kbD"/>
                         <segue destination="OaI-S6-tDf" kind="relationship" relationship="viewControllers" id="dcO-FC-dRU"/>
+                        <segue destination="j5O-Cr-Gkr" kind="relationship" relationship="viewControllers" id="Gxm-EH-npj"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oUu-qc-X2x" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -31,12 +32,22 @@
         <!--TrackMapViewController-->
         <scene sceneID="9hM-Gc-zrp">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="K2p-gH-Vvj" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewControllerPlaceholder storyboardName="TrackView" referencedIdentifier="TrackMapViewController" id="OaI-S6-tDf" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="" image="map-location" id="u9j-ex-vh6"/>
                 </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="K2p-gH-Vvj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-197" y="-1332"/>
+        </scene>
+        <!--TrackImport-->
+        <scene sceneID="9lZ-bp-zgW">
+            <objects>
+                <viewControllerPlaceholder storyboardName="TrackImport" id="j5O-Cr-Gkr" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="84P-L1-4Zl"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="F5Y-gl-5gM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-257" y="-1258"/>
         </scene>
         <!--LiveTrackView-->
         <scene sceneID="NfS-Us-370">
