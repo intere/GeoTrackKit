@@ -12,7 +12,7 @@ import UIKit
 
 class TrackImportTableViewController: UITableViewController {
 
-    var workouts: [HKWorkout]?
+    var workouts = [HKWorkout]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,16 +22,25 @@ class TrackImportTableViewController: UITableViewController {
                 print("We won't be querying activities, no authorization")
                 return
             }
-            ActivityService.shared.queryWorkouts() { (results, error) in
+            ActivityService.shared.queryWorkouts { (results, error) in
                 if let error = error {
                     return print("We got an error: \(error.localizedDescription)")
                 }
                 guard let results = results else {
                     return print("We didn't get an error, but we didn't get results either")
                 }
-                self.workouts = results
-                DispatchQueue.main.async { [weak self] in
-                    self?.tableView.reloadData()
+
+                results.forEach { workout in
+                    // If the workout has a route, we'll add it to the table
+                    ActivityService.shared.queryRoute(from: workout) { [weak self] (route, _) in
+                        guard route != nil else {
+                            return
+                        }
+                        self?.workouts.append(workout)
+                        DispatchQueue.main.async { [weak self] in
+                            self?.tableView.reloadData()
+                        }
+                    }
                 }
             }
         }
@@ -44,14 +53,12 @@ class TrackImportTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return workouts?.count ?? 0
+        return workouts.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        guard let workout = workouts?[indexPath.row] else {
-            return cell
-        }
+        let workout = workouts[indexPath.row]
 
         print("Cell: \(workout.tableDescription)")
 
@@ -61,7 +68,7 @@ class TrackImportTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let workouts = workouts, indexPath.row < workouts.count else {
+        guard indexPath.row < workouts.count else {
             return print("ERROR: either there are no workouts, or your selection is out of bounds")
         }
 

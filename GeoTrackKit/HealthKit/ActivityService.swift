@@ -11,6 +11,7 @@ import HealthKit
 
 public typealias AuthorizationCallback = (Bool, Error?) -> Void
 public typealias WorkoutCallback = ([HKWorkout]?, Error?) -> Void
+public typealias RouteSampleCallback = (HKSeriesSample?, Error?) -> Void
 public typealias TrackCallback = ([CLLocation]?, Error?) -> Void
 
 public class ActivityService {
@@ -88,7 +89,12 @@ public class ActivityService {
         HKHealthStore().execute(query)
     }
 
-    public func queryTrack(from workout: HKWorkout, callback: @escaping TrackCallback) {
+    /// Queries to see if there is a `HKWorkoutRoute` related to the provided workout.
+    ///
+    /// - Parameters:
+    ///   - workout: The workout to query.
+    ///   - callback: The callback that will tell you if there is a sample (Route) or not.
+    public func queryRoute(from workout: HKWorkout, callback: @escaping RouteSampleCallback) {
         guard #available(iOS 11.0, *) else {
             GTError(message: "You must be running iOS 11 or newer")
             // TODO: Fallback on earlier versions
@@ -97,26 +103,51 @@ public class ActivityService {
 
         let runningObjectQuery = HKQuery.predicateForObjects(from: workout)
 
-        let routeQuery = HKAnchoredObjectQuery(type: HKSeriesType.workoutRoute(), predicate: runningObjectQuery, anchor: nil, limit: HKObjectQueryNoLimit) { [weak self] (query, samples, _, _, error) in
+        let routeQuery = HKAnchoredObjectQuery(type: HKSeriesType.workoutRoute(), predicate: runningObjectQuery, anchor: nil, limit: HKObjectQueryNoLimit) { (query, samples, _, _, error) in
 
+            if let error = error {
+                return callback(nil, error)
+            }
+            guard let route = samples?.first as? HKWorkoutRoute else {
+                GTError(message: "We didn't get back any Workout Routes (samples)")
+                return callback(nil, nil)
+            }
+
+            callback(route, nil)
+        }
+
+        store.execute(routeQuery)
+    }
+
+    /// Queries for the points related to a workout.
+    ///
+    /// - Parameters:
+    ///   - workout: The workout you want to query for a track from.
+    ///   - callback: A callback that will either give you track points (an array of CLLocation) or an error.
+    public func queryTrack(from workout: HKWorkout, callback: @escaping TrackCallback) {
+        guard #available(iOS 11.0, *) else {
+            GTError(message: "You must be running iOS 11 or newer")
+            // TODO: Fallback on earlier versions
+            return callback(nil, nil)
+        }
+        queryRoute(from: workout) { (route, error) in
             if let error = error {
                 GTError(message: "Failed to load route: \(error.localizedDescription)")
                 return callback(nil, error)
             }
-            guard let route = samples?.first as? HKWorkoutRoute else {
-                GTError(message: "We didn't get back any samples")
+            guard let route = route as? HKWorkoutRoute else {
+                GTError(message: "We didn't get back any routes")
                 return callback(nil, nil)
             }
 
-            self?.queryPoints(route: route, callback: callback)
+            self.queryPoints(route: route, callback: callback)
         }
-
-        store.execute(routeQuery)
-
     }
 
     @available(iOS 11.0, *)
     func queryPoints(route: HKWorkoutRoute, callback: @escaping TrackCallback) {
+
+        self.points.removeAll()
 
         // Create the route query.
         currentRouteQuery = HKWorkoutRouteQuery(route: route) { (query, locations, done, error) in
@@ -124,8 +155,8 @@ public class ActivityService {
             // This block may be called multiple times.
 
             if let error = error {
-                GTError(message: "Failed to get points for route: \(error.localizedDescription)")
                 self.store.stop(query)
+                GTError(message: "Failed to get points for route: \(error.localizedDescription)")
                 self.currentRouteQuery = nil
                 return callback(nil, error)
             }
@@ -134,18 +165,24 @@ public class ActivityService {
                 return GTError(message: "There were no location points")
             }
 
+            self.addPoints(locations)
+
             guard done else {
-                GTError(message: "We're processing an incomplete track with \(locations.count) points")
-                self.points.append(contentsOf: locations)
                 return
             }
 
-            callback(locations, nil)
+            GTDebug(message: "Completed importing points")
+            callback(self.points, nil)
         }
 
         guard let currentRouteQuery = currentRouteQuery else {
             return
         }
         store.execute(currentRouteQuery)
+    }
+
+    func addPoints(_ points: [CLLocation]) {
+        self.points.append(contentsOf: points)
+        GTDebug(message: "Added \(points.count) points - for a total of \(self.points.count)")
     }
 }

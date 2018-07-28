@@ -21,6 +21,7 @@ class TrackMapViewController: UIViewController {
     }
 
     var useDemoTrack = true
+    var legVisibleByDefault = false
 
     var tableVC: TrackOverviewTableViewController?
 
@@ -47,6 +48,7 @@ class TrackMapViewController: UIViewController {
         // swiftlint:disable:next force_cast
         let trackVC = UIStoryboard(name: "TrackView", bundle: nil).instantiateViewController(withIdentifier: "TrackMapViewController") as! TrackMapViewController
         trackVC.useDemoTrack = useDemoTrack
+        trackVC.legVisibleByDefault = !useDemoTrack
         return trackVC
     }
 
@@ -71,12 +73,13 @@ class TrackMapViewController: UIViewController {
     }
 
     private func modelUpdated() {
-        model?.toggleAll(visibility: false)
+        model?.toggleAll(visibility: legVisibleByDefault)
         guard mapView != nil else {
             return
         }
         mapView.model = model
         tableVC?.model = model
+        title = model?.track.name
     }
 }
 
