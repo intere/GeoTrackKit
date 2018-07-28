@@ -79,7 +79,10 @@ class TrackMapViewController: UIViewController {
         }
         mapView.model = model
         tableVC?.model = model
-        title = model?.track.name
+
+        if !useDemoTrack {
+            title = model?.track.name
+        }
     }
 }
 
