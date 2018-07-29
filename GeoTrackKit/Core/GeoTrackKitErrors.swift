@@ -4,32 +4,16 @@
 //
 //  Created by Eric Internicola on 7/29/18.
 
-public protocol GenericError: LocalizedError {
 
-    /// For human-friendly error messages, use humanReadableDescription property.
-    ///
-    /// - Note: Default implementation returns `errorDescription`.
-    var humanReadableDescription: String { get }
-
-}
-
-// MARK: - Default Implementation
-
-public extension GenericError {
-
-    var humanReadableDescription: String {
-        return errorDescription ?? "Error description not provided"
-    }
-
-}
-
-enum GeoTrackKitError: GenericError {
+/// A group of some errors that GeoTrackKit provides
+enum GeoTrackKitError: LocalizedError {
     case healthDataNotAvailable
     case iOS11Required
     case authNoErrorButUnsuccessful
     case workoutWithoutRoutes
     case sampleMissingPoints
 
+    /// A description of the error
     public var errorDescription: String? {
         switch self {
         case .healthDataNotAvailable:
@@ -43,6 +27,11 @@ enum GeoTrackKitError: GenericError {
         case .sampleMissingPoints:
             return "Route called back without any points"
         }
+    }
+
+    /// The human readable description for the error.
+    var humanReadableDescription: String {
+        return errorDescription ?? "Error description not provided"
     }
 
 }
