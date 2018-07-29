@@ -40,6 +40,18 @@ public class GeoTrack {
     public init(json: [String: Any]) {
         parse(json)
     }
+
+    /// Create a GeoTrack from an array of `CLLocation` points and an optional name and description.
+    ///
+    /// - Parameters:
+    ///   - points: The points to initialize this GeoTrack with.
+    ///   - name: The name for the track (defaults to empty string)
+    ///   - description: A description for the track (defaults to empty string).
+    public init(points: [CLLocation], name: String = "", description: String = "") {
+        self.iPoints = points
+        self.name = name
+        self.description = description
+    }
 }
 
 // MARK: - API(Points)
