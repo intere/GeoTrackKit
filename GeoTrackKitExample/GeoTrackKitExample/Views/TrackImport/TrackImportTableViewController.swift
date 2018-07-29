@@ -17,33 +17,7 @@ class TrackImportTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        ActivityService.shared.authorize { (success, _) in
-            guard success else {
-                print("We won't be querying activities, no authorization")
-                return
-            }
-            ActivityService.shared.queryWorkouts { (results, error) in
-                if let error = error {
-                    return print("We got an error: \(error.localizedDescription)")
-                }
-                guard let results = results else {
-                    return print("We didn't get an error, but we didn't get results either")
-                }
-
-                results.forEach { workout in
-                    // If the workout has a route, we'll add it to the table
-                    ActivityService.shared.queryRoute(from: workout) { [weak self] (route, _) in
-                        guard route != nil else {
-                            return
-                        }
-                        self?.workouts.append(workout)
-                        DispatchQueue.main.async { [weak self] in
-                            self?.tableView.reloadData()
-                        }
-                    }
-                }
-            }
-        }
+        loadTracksFromWorkouts()
     }
 
     // MARK: - Table view data source
@@ -90,6 +64,44 @@ class TrackImportTableViewController: UITableViewController {
             }
         }
 
+    }
+
+}
+
+// MARK: - Implementation
+
+extension TrackImportTableViewController {
+
+    func loadTracksFromWorkouts() {
+        ActivityService.shared.authorize { (success, _) in
+            guard success else {
+                print("We won't be querying activities, no authorization")
+                return
+            }
+            ActivityService.shared.queryWorkouts { (results, error) in
+                if let error = error {
+                    return print("We got an error: \(error.localizedDescription)")
+                }
+                guard let results = results else {
+                    return print("We didn't get an error, but we didn't get results either")
+                }
+
+                results.forEach { workout in
+                    // If the workout has a route, we'll add it to the table
+                    ActivityService.shared.queryRoute(from: workout) { [weak self] (routes, _) in
+                        guard let strongSelf = self, let routes = routes, routes.count > 0 else {
+                            return
+                        }
+                        strongSelf.workouts.append(workout)
+                        strongSelf.workouts = strongSelf.workouts.sorted(by: { $0.startDate > $1.startDate })
+
+                        DispatchQueue.main.async { [weak self] in
+                            self?.tableView.reloadData()
+                        }
+                    }
+                }
+            }
+        }
     }
 
 }

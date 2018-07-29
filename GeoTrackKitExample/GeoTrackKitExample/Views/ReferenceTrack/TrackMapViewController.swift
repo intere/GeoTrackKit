@@ -21,7 +21,9 @@ class TrackMapViewController: UIViewController {
     }
 
     var useDemoTrack = true
-    var legVisibleByDefault = false
+    var legVisibleByDefault: Bool {
+        return !useDemoTrack
+    }
 
     var tableVC: TrackOverviewTableViewController?
 
@@ -48,7 +50,6 @@ class TrackMapViewController: UIViewController {
         // swiftlint:disable:next force_cast
         let trackVC = UIStoryboard(name: "TrackView", bundle: nil).instantiateViewController(withIdentifier: "TrackMapViewController") as! TrackMapViewController
         trackVC.useDemoTrack = useDemoTrack
-        trackVC.legVisibleByDefault = !useDemoTrack
         return trackVC
     }
 
