@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0E1E09A3899897CDAE589A5B /* Pods_GeoTrackKitExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A51639AB7B6B4BAEF27C313 /* Pods_GeoTrackKitExample.framework */; };
 		1B2451A1B46FD1E813C13A25 /* Pods_GeoTrackKitExampleTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6E72B23B9554498B66030FE /* Pods_GeoTrackKitExampleTests.framework */; };
+		36302DB9210E17B400834A1D /* GeoTrackKitErrorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36302DB8210E17B400834A1D /* GeoTrackKitErrorTests.swift */; };
 		366CE43C1DFCAC360090BD42 /* GeoTrackSerializationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 366CE43B1DFCAC360090BD42 /* GeoTrackSerializationTests.swift */; };
 		368A87AE1E6332C1003D115A /* reference-track-1.json in Resources */ = {isa = PBXBuildFile; fileRef = 368A87AD1E6332C1003D115A /* reference-track-1.json */; };
 		368A87B11E63332E003D115A /* TrackReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 368A87B01E63332E003D115A /* TrackReader.swift */; };
@@ -48,6 +49,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		36302DB8210E17B400834A1D /* GeoTrackKitErrorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeoTrackKitErrorTests.swift; sourceTree = "<group>"; };
 		366CE43B1DFCAC360090BD42 /* GeoTrackSerializationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeoTrackSerializationTests.swift; sourceTree = "<group>"; };
 		368A87AD1E6332C1003D115A /* reference-track-1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "reference-track-1.json"; sourceTree = "<group>"; };
 		368A87B01E63332E003D115A /* TrackReader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackReader.swift; sourceTree = "<group>"; };
@@ -115,6 +117,14 @@
 				A6E72B23B9554498B66030FE /* Pods_GeoTrackKitExampleTests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		36302DB2210E139100834A1D /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				36302DB8210E17B400834A1D /* GeoTrackKitErrorTests.swift */,
+			);
+			path = Core;
 			sourceTree = "<group>";
 		};
 		368A87AC1E6332B7003D115A /* Resources */ = {
@@ -264,6 +274,7 @@
 		93EEFC031E6DAD0300090CE7 /* GeoTrackKit */ = {
 			isa = PBXGroup;
 			children = (
+				36302DB2210E139100834A1D /* Core */,
 				93EEFC041E6DAD0300090CE7 /* Map */,
 			);
 			path = GeoTrackKit;
@@ -497,6 +508,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				366CE43C1DFCAC360090BD42 /* GeoTrackSerializationTests.swift in Sources */,
+				36302DB9210E17B400834A1D /* GeoTrackKitErrorTests.swift in Sources */,
 				36E1E3461DEB3D0D00CFC7BC /* GeoTrackLocationEventTests.swift in Sources */,
 				368A87B11E63332E003D115A /* TrackReader.swift in Sources */,
 				93090E231DF82520004F56FB /* MockAppender.swift in Sources */,
@@ -585,7 +597,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -639,7 +651,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -659,7 +671,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 268S5GJFWZ;
 				INFOPLIST_FILE = GeoTrackKitExample/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.icolasoft.GeoTrackKitExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -679,7 +691,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 268S5GJFWZ;
 				INFOPLIST_FILE = GeoTrackKitExample/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.icolasoft.GeoTrackKitExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";

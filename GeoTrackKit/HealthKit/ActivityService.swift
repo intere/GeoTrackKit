@@ -39,35 +39,32 @@ extension ActivityService {
     /// and an optional Error object.
     public func authorize(_ callback: @escaping AuthorizationCallback) {
         guard isHealthDataAvailable else {
-            GTError(message: "Health data is not available on this device")
-            return callback(false, nil)
+            GTError(message: GeoTrackKitError.healthDataNotAvailable.humanReadableDescription)
+            return callback(false, GeoTrackKitError.healthDataNotAvailable)
         }
         guard #available(iOS 11.0, *) else {
-            GTError(message: "You must be using iOS >= 11")
-            return callback(false, nil)
+            GTError(message: GeoTrackKitError.iOS11Required.humanReadableDescription)
+            return callback(false, GeoTrackKitError.iOS11Required)
         }
 
         let allTypes = Set([
             HKObjectType.workoutType(),
             HKObjectType.activitySummaryType(),
             HKObjectType.seriesType(forIdentifier: HKWorkoutRouteTypeIdentifier)!
-            ])
+        ])
 
         store.requestAuthorization(toShare: nil, read: allTypes) { (success, error) in
-            defer {
-                callback(success, error)
-            }
             if let error = error {
+                callback(success, error)
                 return GTError(message: "Could not get health store authorization: \(error.localizedDescription)")
             }
             if !success {
-                return GTError(message: "We didn't get an auth error, but we did not get success either")
+                GTError(message: GeoTrackKitError.authNoErrorButUnsuccessful.humanReadableDescription)
+                return callback(success, GeoTrackKitError.authNoErrorButUnsuccessful)
             }
 
-            guard self.isHealthDataAvailable else {
-                return GTError(message: "We seem to have access, however no health data is available")
-            }
             GTInfo(message: "Successful authorization")
+            callback(success, error)
         }
     }
 
@@ -91,8 +88,8 @@ extension ActivityService {
             // Cast the samples to the HKWorkout type
             guard let samples = samples as? [HKWorkout], error == nil else {
                 self.store.stop(query)
-                callback(nil, error)
-                return GTError(message: error?.localizedDescription ?? "couldn't get the samples")
+                GTError(message: error?.localizedDescription ?? "couldn't get the samples")
+                return callback(nil, error)
             }
             GTInfo(message: "We got \(samples.count) workouts back")
             callback(samples, nil)
@@ -108,9 +105,8 @@ extension ActivityService {
     ///   - callback: The callback that will tell you if there is a sample (Route) or not.
     public func queryRoute(from workout: HKWorkout, callback: @escaping RouteSampleCallback) {
         guard #available(iOS 11.0, *) else {
-            GTError(message: "You must be using iOS >= 11")
-            // TODO: Callback with an appropriate error.
-            return callback(nil, nil)
+            GTError(message: GeoTrackKitError.iOS11Required.humanReadableDescription)
+            return callback(nil, GeoTrackKitError.iOS11Required)
         }
 
         let runningObjectQuery = HKQuery.predicateForObjects(from: workout)
@@ -122,9 +118,8 @@ extension ActivityService {
                 return callback(nil, error)
             }
             guard let routes = samples as? [HKWorkoutRoute] else {
-                GTError(message: "We didn't get back any Workout Routes (samples)")
-                // TODO: Callback with an appropriate error
-                return callback(nil, nil)
+                GTError(message: GeoTrackKitError.workoutWithoutRoutes.humanReadableDescription)
+                return callback(nil, GeoTrackKitError.workoutWithoutRoutes)
             }
 
             callback(routes, nil)
@@ -140,9 +135,8 @@ extension ActivityService {
     ///   - callback: A callback that will either give you track points (an array of CLLocation) or an error.
     public func queryTrack(from workout: HKWorkout, callback: @escaping TrackCallback) {
         guard #available(iOS 11.0, *) else {
-            GTError(message: "You must be using iOS >= 11")
-            // TODO: Fallback on earlier versions
-            return callback(nil, nil)
+            GTError(message: GeoTrackKitError.iOS11Required.humanReadableDescription)
+            return callback(nil, GeoTrackKitError.iOS11Required)
         }
 
         queryRoute(from: workout) { (routes, error) in
@@ -151,9 +145,8 @@ extension ActivityService {
                 return callback(nil, error)
             }
             guard let routes = routes as? [HKWorkoutRoute] else {
-                GTError(message: "We didn't get back any Workout Routes (samples)")
-                // TODO: Return an appropriate error
-                return callback(nil, nil)
+                GTError(message: GeoTrackKitError.workoutWithoutRoutes.humanReadableDescription)
+                return callback(nil, GeoTrackKitError.workoutWithoutRoutes)
             }
 
             // keep track of the number of routes that have completed
@@ -206,7 +199,7 @@ extension ActivityService {
             }
 
             guard let locations = locations else {
-                return GTError(message: "There were no location points")
+                return GTError(message: GeoTrackKitError.sampleMissingPoints.humanReadableDescription)
             }
 
             points.append(contentsOf: locations)

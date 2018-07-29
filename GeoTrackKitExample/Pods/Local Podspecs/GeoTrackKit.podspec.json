@@ -28,7 +28,7 @@
     {
       "name": "HealthKit",
       "platforms": {
-        "ios": "9.3"
+        "ios": "11.0"
       },
       "source_files": "GeoTrackKit/HealthKit/**/*.{swift,h,m}",
       "dependencies": {

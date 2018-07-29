@@ -10,8 +10,10 @@ import GeoTrackKit
 import HealthKit
 import UIKit
 
+/// A ViewController for a table that will show you a list of workouts that have routes associated with them.
 class TrackImportTableViewController: UITableViewController {
 
+    /// The workouts that the table will show
     var workouts = [HKWorkout]()
 
     override func viewDidLoad() {
@@ -33,8 +35,6 @@ class TrackImportTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         let workout = workouts[indexPath.row]
-
-        print("Cell: \(workout.tableDescription)")
 
         cell.textLabel?.text = workout.tableDescription
 
@@ -72,6 +72,7 @@ class TrackImportTableViewController: UITableViewController {
 
 extension TrackImportTableViewController {
 
+    /// Loads the tracks from the workouts for you.
     func loadTracksFromWorkouts() {
         ActivityService.shared.authorize { (success, _) in
             guard success else {
@@ -118,7 +119,7 @@ extension HKWorkout {
         }()
     }
 
-    /// Gets the description for the table
+    /// Gets the description of this `HKWorkout` to display in the table
     var tableDescription: String {
         let time = Constants.formatter.string(from: startDate)
         if let burned = totalEnergyBurned {
