@@ -6,7 +6,11 @@
 - Handles track creation
 - Handles track analyzing (for ascents, descents and other stats)
 - Custom MKMapKit control for plotting your tracks on a map
+- Pull tracks in from HealthKit (Activity App)
+    - `NOTE:` This is an iOS 11+ only feature and requires a physical device to test
+    - This capability is in a subspec: `HealthKit`
 - Example App to demonstrate capabilities
+
 
 ## Project Status
 This project is currently a work in progress.
@@ -26,14 +30,14 @@ This project is currently a work in progress.
 - [ ] Performance Tests
 - [x] SwiftLint Integration
 - [ ] 90% Code Coverage
-- [ ] Pull tracks from HealthKit (Workouts)
+- [x] Pull tracks from HealthKit (Workouts)
 
 ### Example App
 
 TODO:
 - [ ] Save tracks to disk
 - [ ] Provide a track list
-- [ ] Pull tracks in from HealthKit
+- [x] Pull tracks in from HealthKit
 
 ### Installation
 
@@ -48,7 +52,7 @@ pod 'GeoTrackKit', :git => 'git@github.com:intere/GeoTrackKit.git', :branch => '
 
 Directly from Cocoapods:
 ```ruby
-pod 'GeoTrackKit', '0.2.0'
+pod 'GeoTrackKit'
 ```
 
 ## Example Usage
@@ -61,10 +65,10 @@ GeoTrackManager.shared.startTracking()
 
 This library also includes a map control that will map the GeoTrack:
 
-<img src="https://github.com/intere/GeoTrackKit/raw/develop/screenshots/GeoTrackKit-MapView.gif" title="Map View">
+<img src="https://user-images.githubusercontent.com/2284832/43367309-19f759ce-9308-11e8-974a-8823f3aade66.gif" title="Map View">
 
 ## Inspiration
-I've built a couple of variations of Geo Tracking applications, but I wanted to build a library for the community that I can share and get feedback and build a better product.
+I've built a couple of variations of Geo Tracking applications, but I wanted to build a library for the community that I can share and get feedback and build better products.
 
 ## Created and maintained by
 [Eric Internicola](http://intere.github.io)

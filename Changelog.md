@@ -2,8 +2,10 @@
 
 ## 0.3.0
 - Added Live Tracking in Example App
-- Factored base code into a (default) subspec: `Core`
+- Refactored Example App into a tab bar based UI
+- Factored existing code into a (default) subspec: `Core`
 - Added `HealthKit` subspec
+    - Provides the ability to read tracks from Workouts in HealthKit
 
 ## 0.2.0
 - Swift 4

@@ -35,10 +35,12 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   s.swift_version = '4.1'
   s.default_subspecs = 'Core'
 
+  # Core Tracking functionality + Apple Maps rendering
   s.subspec 'Core' do |ss|
     ss.source_files = 'GeoTrackKit/Core/**/*.{swift,h,m}'
   end
 
+  # HealthKit subspec, provides the ability to read tracks from Workouts
   s.subspec 'HealthKit' do |ss|
     ss.ios.deployment_target = '11.0'
     ss.source_files = 'GeoTrackKit/HealthKit/**/*.{swift,h,m}'
