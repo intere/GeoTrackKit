@@ -19,22 +19,34 @@ public class GeoTrackManager: NSObject {
     public static let shared: GeoTrackService = GeoTrackManager()
 
     // GeoTrackService stuff
-    internal var trackingState: GeoTrackState = .notTracking
+    var trackingState: GeoTrackState = .notTracking
     /// Your app's name
-    internal var appName: String = "No Application Name"
+    var appName: String = "No Application Name"
 
     // Other stuff
-    internal var locationManager: CLLocationManager?
+    var locationManager: CLLocationManager?
+
     /// The last Geo Point to be tracked
     fileprivate(set) public var lastPoint: CLLocation?
+
     /// Are we authorized for location tracking?
     fileprivate(set) public var authorized: Bool = false
+
     /// The Track
     fileprivate(set) public var track: GeoTrack?
 
     /// When we startup, if we find points to be older than this threshold, we toss them away.
     /// Defaults to 5 seconds, but you can adjust this as you see fit.
-    static var oldPointThreshold: TimeInterval = 5
+    public static var oldPointThreshold: TimeInterval = 5
+
+    /// Sets the locationManager instance and then configures it to the needs
+    /// of GeoTrackKit.
+    ///
+    /// - Parameter locationManager: The locationManager instance to set.
+    public func setLocationManager(_ locationManager: CLLocationManager?) {
+        self.locationManager = locationManager
+        configureLocationManager()
+    }
 }
 
 // MARK: - API
@@ -133,7 +145,7 @@ extension GeoTrackManager: CLLocationManagerDelegate {
 
         // Ensure that the first point is recent (not old points which we often get when tracking begins):
         if lastPoint == nil {
-            locations.forEach { (location) in
+            locations.filter({ $0.isAccurateEnough }).forEach { location in
                 guard abs(location.timestamp.timeIntervalSinceNow) < GeoTrackManager.oldPointThreshold else {
                     return
                 }
@@ -143,7 +155,7 @@ extension GeoTrackManager: CLLocationManagerDelegate {
                 return
             }
         } else {
-            recentLocations = locations
+            recentLocations = locations.filter { $0.isAccurateEnough }
         }
 
         GTDebug(message: "New Locations: \(recentLocations)")
@@ -212,7 +224,7 @@ extension GeoTrackManager: CLLocationManagerDelegate {
 
 // MARK: - Helpers
 
-fileprivate extension GeoTrackManager {
+private extension GeoTrackManager {
 
     /// Initializes the location manager and sets the preferences
     func initializeLocationManager() {
@@ -221,6 +233,14 @@ fileprivate extension GeoTrackManager {
         }
 
         let locationManager = CLLocationManager()
+        setLocationManager(locationManager)
+    }
+
+    /// Configures the locationManager
+    func configureLocationManager() {
+        guard let locationManager = locationManager else {
+            return
+        }
         locationManager.activityType = .fitness
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
 
@@ -231,8 +251,6 @@ fileprivate extension GeoTrackManager {
         locationManager.distanceFilter = 10
         locationManager.allowsBackgroundLocationUpdates = true
         locationManager.delegate = self
-
-        self.locationManager = locationManager
     }
 
     /// Handles requesting always authorization from location services
@@ -263,6 +281,16 @@ fileprivate extension GeoTrackManager {
         locationManager.stopUpdatingLocation()
     }
 
+}
+
+// MARK: - CLLocation
+
+extension CLLocation {
+
+    /// Is the accuracy of the point within the acceptable range?
+    var isAccurateEnough: Bool {
+        return horizontalAccuracy <= 50
+    }
 }
 
 // MARK: - Notifications
