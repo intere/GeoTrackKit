@@ -9,6 +9,9 @@
 - Pull tracks in from HealthKit (Activity App)
     - `NOTE:` This is an iOS 11+ only feature and requires a physical device to test
     - This capability is in a subspec: `HealthKit`
+- Write tracks to HealthKit
+    - `NOTE:` This is an iOS 11+ only feature and requires a physical device to test
+    - This capability is in a subspec: `HealthKit`
 - Example App to demonstrate capabilities
 
 
@@ -35,7 +38,7 @@ This project is currently a work in progress.
 ### Example App
 
 TODO:
-- [ ] Save tracks to disk
+- [x] Save tracks to disk
 - [ ] Provide a track list
 - [x] Pull tracks in from HealthKit
 

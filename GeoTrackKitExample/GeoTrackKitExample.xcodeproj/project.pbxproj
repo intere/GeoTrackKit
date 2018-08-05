@@ -10,6 +10,7 @@
 		0E1E09A3899897CDAE589A5B /* Pods_GeoTrackKitExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A51639AB7B6B4BAEF27C313 /* Pods_GeoTrackKitExample.framework */; };
 		1B2451A1B46FD1E813C13A25 /* Pods_GeoTrackKitExampleTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6E72B23B9554498B66030FE /* Pods_GeoTrackKitExampleTests.framework */; };
 		36302DB9210E17B400834A1D /* GeoTrackKitErrorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36302DB8210E17B400834A1D /* GeoTrackKitErrorTests.swift */; };
+		3665F7D521176FA200B58BBA /* TrackFileService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3665F7D421176FA200B58BBA /* TrackFileService.swift */; };
 		366CE43C1DFCAC360090BD42 /* GeoTrackSerializationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 366CE43B1DFCAC360090BD42 /* GeoTrackSerializationTests.swift */; };
 		368A87AE1E6332C1003D115A /* reference-track-1.json in Resources */ = {isa = PBXBuildFile; fileRef = 368A87AD1E6332C1003D115A /* reference-track-1.json */; };
 		368A87B11E63332E003D115A /* TrackReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 368A87B01E63332E003D115A /* TrackReader.swift */; };
@@ -51,6 +52,7 @@
 
 /* Begin PBXFileReference section */
 		36302DB8210E17B400834A1D /* GeoTrackKitErrorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeoTrackKitErrorTests.swift; sourceTree = "<group>"; };
+		3665F7D421176FA200B58BBA /* TrackFileService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackFileService.swift; sourceTree = "<group>"; };
 		366CE43B1DFCAC360090BD42 /* GeoTrackSerializationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeoTrackSerializationTests.swift; sourceTree = "<group>"; };
 		368A87AD1E6332C1003D115A /* reference-track-1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "reference-track-1.json"; sourceTree = "<group>"; };
 		368A87B01E63332E003D115A /* TrackReader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackReader.swift; sourceTree = "<group>"; };
@@ -150,6 +152,7 @@
 			children = (
 				36A7C6C62100B0980073407A /* EventLogAppender.swift */,
 				36A7C6CF2103ECB40073407A /* ConsoleLogAppender.swift */,
+				3665F7D421176FA200B58BBA /* TrackFileService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -496,6 +499,7 @@
 			files = (
 				36A7C6E02104CC0D0073407A /* LegSwitchCell.swift in Sources */,
 				36A7C6E52104CC690073407A /* TrackOverviewTableViewController.swift in Sources */,
+				3665F7D521176FA200B58BBA /* TrackFileService.swift in Sources */,
 				36A7C6E12104CC0D0073407A /* TrackMapViewController.swift in Sources */,
 				36A7C6DD2104CBFE0073407A /* TrackConsoleViewController.swift in Sources */,
 				36D099B7210B6A2C00C8C841 /* TrackImportTableViewController.swift in Sources */,
