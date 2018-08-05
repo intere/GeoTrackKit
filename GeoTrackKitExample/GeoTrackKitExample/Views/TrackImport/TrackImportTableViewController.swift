@@ -18,7 +18,10 @@ class TrackImportTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         loadTracksFromWorkouts()
     }
 
@@ -74,6 +77,7 @@ extension TrackImportTableViewController {
 
     /// Loads the tracks from the workouts for you.
     func loadTracksFromWorkouts() {
+        workouts.removeAll()
         ActivityService.shared.authorize { (success, _) in
             guard success else {
                 print("We won't be querying activities, no authorization")

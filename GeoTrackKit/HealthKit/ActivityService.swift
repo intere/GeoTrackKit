@@ -29,11 +29,33 @@ public typealias TrackCallback = ([CLLocation]?, Error?) -> Void
 /// `HKWorkoutRoute` is a `HKSeriesSample`
 ///
 /// A typical workflow goes like this:
-/// 1. Ensure we are authorized: `ActivityService.shared.authorize { //...`
-/// 2. Query for the workouts: `ActivityService.shared.queryWorkouts { //...`
-/// 3. Filter down to workouts that have Routes: `ActivityService.shared.queryRoute(from: workout) { // ...`
-/// 4. Get the Track (Route) for a workout: `ActivityService.shared.queryTrack(from: workout) { // ...`
+/// 1. Set Access Type: ``
+/// 2. Ensure we are authorized: `ActivityService.shared.authorize { //...`
+/// 3. Query for the workouts: `ActivityService.shared.queryWorkouts { //...`
+/// 4. Filter down to workouts that have Routes: `ActivityService.shared.queryRoute(from: workout) { // ...`
+/// 5. Get the Track (Route) for a workout: `ActivityService.shared.queryTrack(from: workout) { // ...`
 public class ActivityService {
+
+    /// Access modes for HealthKit data
+    ///
+    /// - readonly: I only wish to read data from health kit.
+    /// - writeonly: I only wish to write data to health kit.
+    /// - readwrite: I wish to read and write data to health kit.
+    public enum AccessType {
+        case readonly
+        case writeonly
+        case readwrite
+
+        /// Does this access type have read access?
+        var readAccess: Bool {
+            return [AccessType.readonly, AccessType.readwrite].contains(self)
+        }
+
+        /// Does this access type have write access?
+        var writeAccess: Bool {
+            return [AccessType.writeonly, AccessType.readwrite].contains(self)
+        }
+    }
 
     /// Shared (singleton) instance of the `ActivityService`
     public static let shared = ActivityService()
@@ -46,12 +68,14 @@ public class ActivityService {
     /// The HealthKitStore (if available)
     private var store = HKHealthStore()
 
+    /// The way in which you wish to access data with HealthKit.
+    public var accessType = AccessType.readwrite
+
 }
 
 // MARK: - Authorization API
 
 extension ActivityService {
-
 
     /// Request authorization for health kit data.
     ///
@@ -67,13 +91,15 @@ extension ActivityService {
             return callback(false, GeoTrackKitError.iOS11Required)
         }
 
-        let allTypes = Set([
+        let workoutsWithRoutes = Set([
             HKObjectType.workoutType(),
-            HKObjectType.activitySummaryType(),
             HKObjectType.seriesType(forIdentifier: HKWorkoutRouteTypeIdentifier)!
         ])
 
-        store.requestAuthorization(toShare: nil, read: allTypes) { (success, error) in
+        let shareMode = accessType.writeAccess ? workoutsWithRoutes : nil
+        let readMode = accessType.readAccess ? workoutsWithRoutes : nil
+
+        store.requestAuthorization(toShare: shareMode, read: readMode) { (success, error) in
             if let error = error {
                 callback(success, error)
                 return GTError(message: "Could not get health store authorization: \(error.localizedDescription)")
@@ -90,7 +116,94 @@ extension ActivityService {
 
 }
 
-// MARK: - Workout Queries
+// MARK: - Write APIs
+
+extension ActivityService {
+
+    /// Saves the provided track to HealthKit
+    ///
+    /// - Parameter model: the model that contains the points, legs, etc to be
+    /// saved in HealthKit.
+    public func saveTrack(_ model: UIGeoTrack, for activity: HKWorkoutActivityType) {
+        guard let startDate = model.startDate, let endDate = model.endDate, let distance = model.analyzer.stats?.totalDistance else {
+            return assertionFailure("No start / end date")
+        }
+        let elapsed = endDate.timeIntervalSince1970 - startDate.timeIntervalSince1970
+        let workout = HKWorkout(activityType: activity, start: startDate,
+                  end: endDate,
+                  duration: elapsed,
+                  totalEnergyBurned: nil,
+                  totalDistance: HKQuantity(unit: HKUnit.meter(), doubleValue: distance), metadata: nil)
+
+        store.save(workout) { (success, error) in
+            if let error = error {
+                return GTError(message: error.localizedDescription)
+            }
+            self.helpSaveTrack(model, workout: workout)
+        }
+    }
+
+    private func helpSaveTrack(_ model: UIGeoTrack, workout: HKWorkout) {
+        var savedLegs = 0
+        var failure = false
+        for leg in model.allLegs {
+            guard let points = model.getPoints(for: leg) else {
+                savedLegs += 1
+                failure = true
+                continue
+            }
+            let builder = HKWorkoutRouteBuilder(healthStore: store, device: nil)
+            builder.insertRouteData(points) { (success, error) in
+                if let error = error {
+                    savedLegs += 1
+                    failure = true
+                    return GTError(message: error.localizedDescription)
+                }
+
+                builder.finishRoute(with: workout, metadata: model.metadata(for: leg), completion: { (route, error) in
+                    savedLegs += 1
+                    if let error = error {
+                        failure = true
+                        return GTError(message: error.localizedDescription)
+                    }
+
+                })
+            }
+        }
+    }
+
+}
+
+// MARK: - UIGeoTrack extensions
+
+extension UIGeoTrack {
+
+    func averageSpeed(for leg: Leg) -> CLLocationSpeed {
+        guard let points = getPoints(for: leg) else {
+            return 0
+        }
+
+        return points.reduce(0, { $0 + $1.speed }) / CLLocationSpeed(points.count)
+    }
+
+    func metadata(for leg: Leg) -> [String: Any]? {
+        var metamap = [String: Any]()
+
+        if #available(iOS 11.2, *) {
+            if leg.direction == .downward {
+                metamap[HKMetadataKeyElevationDescended] = abs(leg.altitudeChange)
+            } else if leg.direction == .upward {
+                metamap[HKMetadataKeyElevationAscended] = abs(leg.altitudeChange)
+            }
+            metamap[HKMetadataKeyMaximumSpeed] = leg.stat.maximumSpeed
+            metamap[HKMetadataKeyAverageSpeed] = averageSpeed(for: leg)
+        }
+
+        return metamap
+    }
+}
+
+// MARK: - Read APIs
 
 extension ActivityService {
 

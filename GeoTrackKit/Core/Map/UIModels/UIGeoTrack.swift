@@ -6,6 +6,7 @@
 //  Copyright © 2017 Eric Internicola. All rights reserved.
 //
 
+import CoreLocation
 import Foundation
 
 /// A UI Model for a track.  It keeps track of a Track (`GeoTrack`), a Track Analyzer (`GeoTrackAnalyzer`) and a collection of Legs (ascents, descents) that are currently visible
@@ -86,6 +87,35 @@ public extension UIGeoTrack {
         return analyzer.legs
     }
 
+    /// Gets you an array of points for the provided leg
+    ///
+    /// - Parameter index: The index of the leg you want to get the points for.
+    /// - Returns: An array of CLLocation objects which are the points for the leg.
+    func getPoints(forLeg index: Int) -> [CLLocation]? {
+        guard index < allLegs.count else {
+            return nil
+        }
+        let leg = allLegs[index]
+        return getPoints(for: leg)
+    }
+
+    /// Gets you an array of points for the provided leg
+    ///
+    /// - Parameter leg: The leg that you want the points for.
+    /// - Returns: An array of CLLocation objects which are teh points for the leg.
+    func getPoints(for leg: Leg) -> [CLLocation]? {
+        let range = leg.index...leg.endIndex
+
+        return Array(track.points[range])
+    }
+
+    var startDate: Date? {
+        return track.points.first?.timestamp
+    }
+
+    var endDate: Date? {
+        return track.points.last?.timestamp
+    }
 }
 
 // MARK: - Helpers

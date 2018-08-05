@@ -21,6 +21,7 @@ class TrackMapViewController: UIViewController {
     }
 
     var useDemoTrack = true
+
     var legVisibleByDefault: Bool {
         return !useDemoTrack
     }
@@ -108,6 +109,7 @@ extension TrackMapViewController {
         }
         tableVC = destinationVC
         tableVC?.model = model
+        tableVC?.showSaveTrackCell = useDemoTrack
     }
 
 }
