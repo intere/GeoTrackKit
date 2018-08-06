@@ -17,6 +17,7 @@ class TrackListTableViewController: UITableViewController {
         super.viewWillAppear(animated)
         trackList = TrackFileService.shared.trackFiles
         tableView.reloadData()
+        tableView.tableFooterView = UIView()
     }
 
     // MARK: - Table view data source
@@ -26,16 +27,28 @@ class TrackListTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        guard trackList.count > 0 else {
+            return 1
+        }
         return trackList.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard trackList.count > 0 else {
+            let cell = UITableViewCell()
+            cell.textLabel?.text = "No tracks yet"
+            cell.textLabel?.textAlignment = .center
+            return cell
+        }
         let cell = tableView.dequeueReusableCell(withIdentifier: "TrackCell", for: indexPath)
         cell.textLabel?.text = trackList[indexPath.row]
         return cell
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard trackList.count > 0 else {
+            return
+        }
         let filePath = "\(TrackFileService.shared.documents)/\(trackList[indexPath.row])"
         guard let data = try? Data(contentsOf: URL(fileURLWithPath: filePath)) else {
             return assertionFailure("Failed to open file: \(trackList[indexPath.row])")
