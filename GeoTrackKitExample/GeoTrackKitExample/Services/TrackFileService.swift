@@ -12,6 +12,10 @@ import GeoTrackKit
 class TrackFileService {
     static let shared = TrackFileService()
 
+    var documents: String {
+        return fileManager.urls(for: .documentDirectory, in: .userDomainMask)[0].path
+    }
+
     /// Gets you the track files in the folder
     ///
     /// - Returns: a list of track files in the folder
@@ -20,7 +24,8 @@ class TrackFileService {
         let docs = fileManager.urls(for: .documentDirectory, in: .userDomainMask)[0].path
 
         // List all contents of directory and return as [String] OR nil if failed
-        return (try? fileManager.contentsOfDirectory(atPath: docs).filter({ $0.hasSuffix(Constants.trackSuffix) })) ?? []
+        let fileList = (try? fileManager.contentsOfDirectory(atPath: docs).filter({ $0.hasSuffix(Constants.trackSuffix) })) ?? []
+        return fileList.sorted(by: { $0 > $1 })
     }
 
     /// Saves the provided track to a file.
@@ -80,10 +85,6 @@ private extension TrackFileService {
 
     var fileManager: FileManager {
         return FileManager.default
-    }
-
-    var documents: String {
-        return fileManager.urls(for: .documentDirectory, in: .userDomainMask)[0].path
     }
 
 }
