@@ -44,6 +44,45 @@ class TrackMapViewController: UIViewController {
         modelUpdated()
     }
 
+    @IBAction
+    func tappedShare(_ source: Any) {
+        guard let trackWrittenToJsonFile = trackWrittenToJsonFile else {
+            return
+        }
+        let activityVC = UIActivityViewController(activityItems: [trackWrittenToJsonFile], applicationActivities: nil)
+        present(activityVC, animated: true, completion: nil)
+    }
+
+    var trackWrittenToJsonFile: URL? {
+        guard let model = model else {
+            return nil
+        }
+
+        do {
+            let data = try JSONSerialization.data(withJSONObject: model.track.map, options: .prettyPrinted)
+            guard let jsonString = String(data: data, encoding: .utf8) else {
+                return nil
+            }
+            let documentsFolder = try FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
+            let fileName = model.track.name.replacingOccurrences(of: "/", with: "-").replacingOccurrences(of: ":", with: "_")
+            let fileUrl = documentsFolder.appendingPathComponent("\(fileName).json")
+            do {
+                try jsonString.write(to: fileUrl, atomically: false, encoding: .utf8)
+            } catch {
+                print(error)
+                assertionFailure(error.localizedDescription)
+                return nil
+            }
+            return fileUrl
+        } catch {
+            print("ERROR trying to serialize to JSON: \(error.localizedDescription)")
+            print("\(error)")
+            assertionFailure(error.localizedDescription)
+        }
+
+        return nil
+    }
+
     /// Loads this view from a storyboard.
     ///
     /// - Returns: A new TrackMapViewController.

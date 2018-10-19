@@ -60,7 +60,7 @@ public extension GeoTrackMap {
         }
 
         for polyline in polylines {
-            add(polyline)
+            addOverlay(polyline)
         }
 
         guard let zoomDelegate = zoomDelegate else {

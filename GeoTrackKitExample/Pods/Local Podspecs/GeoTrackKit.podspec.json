@@ -1,6 +1,6 @@
 {
   "name": "GeoTrackKit",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "summary": "Geo Tracking and statistics for iOS",
   "description": "A Geo Location Tracking and statistic calculation library for iOS.  It also provides rendering location tracks over a map for you.",
   "homepage": "https://github.com/intere/GeoTrackKit",
@@ -9,7 +9,7 @@
   },
   "source": {
     "git": "https://github.com/intere/GeoTrackKit.git",
-    "tag": "0.3.0"
+    "tag": "0.4.0"
   },
   "license": {
     "type": "MIT",
@@ -18,7 +18,7 @@
   "platforms": {
     "ios": "9.0"
   },
-  "swift_version": "4.1",
+  "swift_version": "4.2",
   "default_subspecs": "Core",
   "subspecs": [
     {
