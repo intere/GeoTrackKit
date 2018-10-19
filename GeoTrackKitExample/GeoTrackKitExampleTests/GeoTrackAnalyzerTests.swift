@@ -28,23 +28,6 @@ class GeoTrackAnalyzerTests: XCTestCase {
         }
     }
 
-//    func testRewriteInOrder() {
-//        guard let track = track else {
-//            return XCTFail("No track")
-//        }
-//
-//        guard let data = try? JSONSerialization.data(withJSONObject: track.map, options: .prettyPrinted) else {
-//            return XCTFail("Failed to serialize the track into data")
-//        }
-//
-//        let path = "/tmp/out.json"
-//        do {
-//            try data.write(to: URL(fileURLWithPath: path))
-//        } catch {
-//            XCTFail(error.localizedDescription)
-//        }
-//    }
-
     func testAnalyze() {
         guard let track = track else {
             return XCTFail("No track")

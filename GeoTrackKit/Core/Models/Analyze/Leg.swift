@@ -10,18 +10,25 @@ import CoreLocation
 
 /// This class keeps track of statistics for a Leg (ascent or descent) of a track.
 public class Stat {
+
+    public static var zero: Stat {
+        return Stat()
+    }
+
     /// Minimum altitude in meters
-    fileprivate(set) public var minimumAltitude: CLLocationDistance = 0
+    fileprivate(set) public var minimumAltitude: CLLocationDistance = CLLocationDistanceMax
     /// Maximum altitude in meters
     fileprivate(set) public var maximumAltitude: CLLocationDistance = 0
     /// The distance travelled
     fileprivate(set) public var distance: CLLocationDistance = 0
     /// The maximum recorded speed (in meters per second)
     fileprivate(set) public var maximumSpeed: CLLocationSpeed = 0
+
     /// What is the change in vertical?
     public var verticalDelta: CLLocationDistance {
         return maximumAltitude - minimumAltitude
     }
+
     fileprivate var initialized = false
     internal(set) public var direction: Direction = .unknown
 
@@ -53,12 +60,28 @@ public class Stat {
         maximumSpeed = max(maximumSpeed, stat.maximumSpeed)
         initialized = initialized || stat.initialized
     }
+
 }
 
+// MARK: - Stat: CustomDebugStringConvertible
+
+extension Stat: CustomDebugStringConvertible {
+
+    public var debugDescription: String {
+        return "\(direction.rawValue) - \(verticalDelta.int)m, " +
+            "Altitude: \(minimumAltitude.int)m - \(maximumAltitude.int)m, " +
+            "Distance: \(distance.int)m, Max Speed: \(maximumSpeed.int)"
+    }
+
+}
+
+
 /// This class keeps track of statistics for an entire Geo Track.  It summarizes the stats of all of the legs that comprise it and it keeps trak of the number of runs.
-public class TrackStat: Stat {
+public class TrackStat {
     /// The number of "ski runs" (aka the number of times descended)
     public let runs: Int
+    /// The number of "legs" (ascent count + descent count)
+    public let legs: Int
     /// The total vertical ascent for the entire track
     public let verticalAscent: CLLocationDistance
     /// The total vertical descent for the entire track
@@ -69,23 +92,36 @@ public class TrackStat: Stat {
     public let descentDistance: CLLocationDistance
     /// The total distance covered for this track
     public let totalDistance: CLLocationDistance
+    /// Minimum altitude in meters
+    public let minimumAltitude: CLLocationDistance
+    /// Maximum altitude in meters
+    public let maximumAltitude: CLLocationDistance
+    /// The maximum recorded speed (in meters per second)
+    public let maximumSpeed: CLLocationSpeed
 
     /// Initialize this TrackStat with the required properties.  Generally you want to create this stat using the `summarize(from legs: [Leg])` factory creation function to create one of these objects.  That function will compute all of the required fields and delegate to this initializer.
     ///
     /// - Parameters:
     ///   - runs: the number of runs for the track
+    ///   - legs: The number of legs for the track (number of ascents + descents)
     ///   - ascent: the vertical ascent for the track
     ///   - descent: the vertical descent for this track
     ///   - ascentDistance: the total ascent distance for this track
     ///   - descentDistance: the total descent distance for this track
     ///   - totalDistance: the total distance for this track
-    init(runs: Int, ascent: CLLocationDistance, descent: CLLocationDistance, ascentDistance: CLLocationDistance, descentDistance: CLLocationDistance, totalDistance: CLLocationDistance) {
+    init(runs: Int, legs: Int, ascent: CLLocationDistance, descent: CLLocationDistance,
+         ascentDistance: CLLocationDistance, descentDistance: CLLocationDistance, totalDistance: CLLocationDistance,
+         minimumAltitude: CLLocationDistance, maximumAltitude: CLLocationDistance, maximumSpeed: CLLocationSpeed) {
         self.runs = runs
+        self.legs = legs
         verticalAscent = ascent
         verticalDescent = descent
         self.ascentDistance = ascentDistance
         self.descentDistance = descentDistance
         self.totalDistance = totalDistance
+        self.minimumAltitude = minimumAltitude
+        self.maximumAltitude = maximumAltitude
+        self.maximumSpeed = maximumSpeed
     }
 
     /// Using the provided array of Legs, this function will compute the track summary stats and provide you with a a summary TrackStat for the entire track.
@@ -100,6 +136,9 @@ public class TrackStat: Stat {
         var aDistance: CLLocationDistance = 0
         var dDistance: CLLocationDistance = 0
         var tDistance: CLLocationDistance = 0
+        var minAlt: CLLocationDistance = CLLocationDistanceMax
+        var maxAlt: CLLocationDistance = 0
+        var maxSpeed: CLLocationSpeed = 0
 
         for leg in legs {
             let stat = leg.stat
@@ -113,11 +152,30 @@ public class TrackStat: Stat {
                 runs += 1
             }
             tDistance += stat.distance
+            minAlt = min(minAlt, stat.minimumAltitude)
+            maxAlt = max(maxAlt, stat.maximumAltitude)
+            maxSpeed = max(maxSpeed, stat.maximumSpeed)
         }
 
-        let stat = TrackStat(runs: runs, ascent: vAscent, descent: vDescent, ascentDistance: aDistance, descentDistance: dDistance, totalDistance: tDistance)
-        stat.combine(with: baseOverallStat)
+        let stat = TrackStat(runs: runs, legs: legs.count, ascent: vAscent, descent: vDescent,
+                             ascentDistance: aDistance, descentDistance: dDistance, totalDistance: tDistance,
+                             minimumAltitude: minAlt, maximumAltitude: maxAlt, maximumSpeed: maxSpeed)
         return stat
+    }
+
+}
+
+// MARK: - Stat: CustomDebugStringConvertible
+
+extension TrackStat: CustomDebugStringConvertible {
+
+
+    public var debugDescription: String {
+        return "\(runs) runs, (\(legs) legs), " +
+            "Altitude: \(minimumAltitude.int)m - \(maximumAltitude.int)m, " +
+            "Vertical ascent: \(verticalAscent.int)m, Vertical descent: \(verticalDescent.int)m, " +
+            "Distance(ascent): \(ascentDistance.int)m, Distance(descent): \(descentDistance.int)m, " +
+        "Distance(total): \(totalDistance.int)m, Max Speed: \(maximumSpeed.int)m/s"
     }
 }
 
@@ -265,4 +323,14 @@ extension Leg: Equatable {
         }
         return true
     }
+}
+
+// MARK: - Number Helpers
+
+extension CLLocationDistance {
+
+    var int: Int {
+        return Int(self)
+    }
+
 }
