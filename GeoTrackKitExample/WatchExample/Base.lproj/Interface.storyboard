@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="14313.18" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
+    <device id="watch38" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="14238.10"/>
+    </dependencies>
+    <scenes>
+        <!--Interface Controller-->
+        <scene sceneID="aou-V4-d1y">
+            <objects>
+                <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModule="WatchExample" customModuleProvider="target">
+                    <items>
+                        <map height="68" alignment="left" id="mZJ-Yb-lEg"/>
+                        <button width="1" alignment="left" title="Get Current Location" id="EWO-Wl-BWe">
+                            <fontDescription key="font" type="system" pointSize="12"/>
+                            <connections>
+                                <action selector="tappedGetCurrentLocation" destination="AgC-eL-Hgc" id="10n-Tg-ZFK"/>
+                            </connections>
+                        </button>
+                        <label width="133" alignment="left" text="Latitude" id="8jz-T5-dfx"/>
+                        <label width="133" alignment="left" text="Longitude" id="SRA-Gl-8ny"/>
+                        <label width="133" alignment="left" text="Elevation" id="Ztb-3T-rW8"/>
+                    </items>
+                    <connections>
+                        <outlet property="elevationLabel" destination="Ztb-3T-rW8" id="5IY-8b-pxb"/>
+                        <outlet property="getCurrentLocationButton" destination="EWO-Wl-BWe" id="uqM-Uo-mj2"/>
+                        <outlet property="latitudeLabel" destination="8jz-T5-dfx" id="dp0-Bo-ct3"/>
+                        <outlet property="longitudeLabel" destination="SRA-Gl-8ny" id="Aiv-bC-r0a"/>
+                        <outlet property="map" destination="mZJ-Yb-lEg" id="zfl-eA-aLC"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="-2" y="73"/>
+        </scene>
+        <!--Static Notification Interface Controller-->
+        <scene sceneID="AEw-b0-oYE">
+            <objects>
+                <notificationController id="YCC-NB-fut">
+                    <items>
+                        <label alignment="left" text="Alert Label" numberOfLines="0" id="IdU-wH-bcW"/>
+                    </items>
+                    <notificationCategory key="notificationCategory" identifier="myCategory" id="JfB-70-Muf"/>
+                    <connections>
+                        <outlet property="notificationAlertLabel" destination="IdU-wH-bcW" id="JKC-fr-R95"/>
+                        <segue destination="4sK-HA-Art" kind="relationship" relationship="dynamicNotificationInterface" id="kXh-Jw-8B1"/>
+                        <segue destination="eXb-UN-Cd0" kind="relationship" relationship="dynamicInteractiveNotificationInterface" id="mpB-YA-K8N"/>
+                    </connections>
+                </notificationController>
+            </objects>
+            <point key="canvasLocation" x="51" y="532"/>
+        </scene>
+        <!--Notification Controller-->
+        <scene sceneID="ZPc-GJ-vnh">
+            <objects>
+                <controller id="4sK-HA-Art" customClass="NotificationController" customModule="WatchExample" customModuleProvider="target"/>
+            </objects>
+            <point key="canvasLocation" x="468" y="668"/>
+        </scene>
+        <!--Notification Controller-->
+        <scene sceneID="Niz-AI-uX2">
+            <objects>
+                <controller id="eXb-UN-Cd0" customClass="NotificationController" customModule="WatchExample" customModuleProvider="target"/>
+            </objects>
+            <point key="canvasLocation" x="468" y="345"/>
+        </scene>
+    </scenes>
+</document>
