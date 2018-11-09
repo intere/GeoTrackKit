@@ -10,6 +10,6 @@ import XCTest
 
 class GeoTrackStatisticsTests: XCTestCase {
 
-    
+
 
 }
