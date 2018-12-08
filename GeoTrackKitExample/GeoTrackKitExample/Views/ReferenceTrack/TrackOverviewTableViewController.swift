@@ -29,7 +29,7 @@ class TrackOverviewTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.estimatedRowHeight = 45
-        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.rowHeight = UITableView.automaticDimension
 
         NotificationCenter.default.addObserver(self, selector: #selector(saveTrack(_:)), name: SaveTrackCell.Constants.saveTrackNotification, object: nil)
     }
