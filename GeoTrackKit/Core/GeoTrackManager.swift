@@ -19,22 +19,34 @@ public class GeoTrackManager: NSObject {
     public static let shared: GeoTrackService = GeoTrackManager()
 
     // GeoTrackService stuff
-    internal var trackingState: GeoTrackState = .notTracking
+    var trackingState: GeoTrackState = .notTracking
     /// Your app's name
-    internal var appName: String = "No Application Name"
+    var appName: String = "No Application Name"
 
     // Other stuff
-    internal var locationManager: CLLocationManager?
+    var locationManager: CLLocationManager?
+
     /// The last Geo Point to be tracked
     fileprivate(set) public var lastPoint: CLLocation?
+
     /// Are we authorized for location tracking?
     fileprivate(set) public var authorized: Bool = false
+
     /// The Track
     fileprivate(set) public var track: GeoTrack?
 
     /// When we startup, if we find points to be older than this threshold, we toss them away.
     /// Defaults to 5 seconds, but you can adjust this as you see fit.
-    static var oldPointThreshold: TimeInterval = 5
+    public static var oldPointThreshold: TimeInterval = 5
+
+    /// Sets the locationManager instance and then configures it to the needs
+    /// of GeoTrackKit.
+    ///
+    /// - Parameter locationManager: The locationManager instance to set.
+    public func setLocationManager(_ locationManager: CLLocationManager?) {
+        self.locationManager = locationManager
+        configureLocationManager()
+    }
 }
 
 // MARK: - API
@@ -61,6 +73,16 @@ extension GeoTrackManager: GeoTrackService {
         return trackingState == .awaitingFix
     }
 
+    /// Resets the current track
+    public func reset() {
+        guard trackingState == .notTracking else {
+            assertionFailure("reset() cannot be called when tracking")
+            return GTError(message: "reset() cannot be called when tracking")
+        }
+        lastPoint = nil
+        track = nil
+    }
+
     /// Attempts to start tracking (if we're not already).
     public func startTracking() {
         GTInfo(message: "User requested Start Tracking")
@@ -72,6 +94,7 @@ extension GeoTrackManager: GeoTrackService {
         initializeLocationManager()
         beginLocationUpdates()
         trackingState = .awaitingFix
+        NotificationCenter.default.post(name: Notification.GeoTrackKit.trackingStarted, object: nil)
     }
 
     /// Stops tracking
@@ -80,6 +103,7 @@ extension GeoTrackManager: GeoTrackService {
 
         endLocationUpdates()
         trackingState = .notTracking
+        NotificationCenter.default.post(name: Notification.GeoTrackKit.trackingStopped, object: nil)
     }
 }
 
@@ -133,7 +157,7 @@ extension GeoTrackManager: CLLocationManagerDelegate {
 
         // Ensure that the first point is recent (not old points which we often get when tracking begins):
         if lastPoint == nil {
-            locations.forEach { (location) in
+            locations.filter({ $0.isAccurateEnough }).forEach { location in
                 guard abs(location.timestamp.timeIntervalSinceNow) < GeoTrackManager.oldPointThreshold else {
                     return
                 }
@@ -143,7 +167,7 @@ extension GeoTrackManager: CLLocationManagerDelegate {
                 return
             }
         } else {
-            recentLocations = locations
+            recentLocations = locations.filter { $0.isAccurateEnough }
         }
 
         GTDebug(message: "New Locations: \(recentLocations)")
@@ -158,7 +182,7 @@ extension GeoTrackManager: CLLocationManagerDelegate {
             return
         }
         track.add(locations: recentLocations)
-        NotificationCenter.default.post(name: Notification.Name.GeoTrackKit.didUpdateLocations, object: recentLocations)
+        NotificationCenter.default.post(name: Notification.GeoTrackKit.didUpdateLocations, object: recentLocations)
     }
 
     /// Handles location tracking pauses
@@ -167,7 +191,7 @@ extension GeoTrackManager: CLLocationManagerDelegate {
     public func locationManagerDidPauseLocationUpdates(_ manager: CLLocationManager) {
         GTDebug(message: "Paused Location Updates")
         track?.pauseTracking(message: "locationManagerDidPauseLocationUpdates event")
-        NotificationCenter.default.post(name: Notification.Name.GeoTrackKit.didPauseLocationUpdates, object: nil)
+        NotificationCenter.default.post(name: Notification.GeoTrackKit.didPauseLocationUpdates, object: nil)
     }
 
     /// Handles location tracking resuming.
@@ -176,7 +200,7 @@ extension GeoTrackManager: CLLocationManagerDelegate {
     public func locationManagerDidResumeLocationUpdates(_ manager: CLLocationManager) {
         GTDebug(message: "Resumed Location Updates")
         track?.startTracking(message: "locationManagerDidResumeLocationUpdates event")
-        NotificationCenter.default.post(name: Notification.Name.GeoTrackKit.didResumeLocationUpdates, object: nil)
+        NotificationCenter.default.post(name: Notification.GeoTrackKit.didResumeLocationUpdates, object: nil)
     }
 
     /// Handles location tracking errors
@@ -187,7 +211,7 @@ extension GeoTrackManager: CLLocationManagerDelegate {
     public func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         GTError(message: "Failed to perform location tracking: \(error.localizedDescription), \(error)")
         track?.error(error: error)
-        NotificationCenter.default.post(name: Notification.Name.GeoTrackKit.didFailWithError, object: error)
+        NotificationCenter.default.post(name: Notification.GeoTrackKit.didFailWithError, object: error)
     }
 
     /// Handles deferred update errors.
@@ -205,14 +229,14 @@ extension GeoTrackManager: CLLocationManagerDelegate {
         } else {
             track?.error(message: "locationManager:didFinishDeferredUpdatesWithError: nil error")
         }
-        NotificationCenter.default.post(name: Notification.Name.GeoTrackKit.didFinishDeferredUpdatesWithError, object: error)
+        NotificationCenter.default.post(name: Notification.GeoTrackKit.didFinishDeferredUpdatesWithError, object: error)
     }
 
 }
 
 // MARK: - Helpers
 
-fileprivate extension GeoTrackManager {
+private extension GeoTrackManager {
 
     /// Initializes the location manager and sets the preferences
     func initializeLocationManager() {
@@ -221,6 +245,14 @@ fileprivate extension GeoTrackManager {
         }
 
         let locationManager = CLLocationManager()
+        setLocationManager(locationManager)
+    }
+
+    /// Configures the locationManager
+    func configureLocationManager() {
+        guard let locationManager = locationManager else {
+            return
+        }
         locationManager.activityType = .fitness
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
 
@@ -231,8 +263,6 @@ fileprivate extension GeoTrackManager {
         locationManager.distanceFilter = 10
         locationManager.allowsBackgroundLocationUpdates = true
         locationManager.delegate = self
-
-        self.locationManager = locationManager
     }
 
     /// Handles requesting always authorization from location services
@@ -265,12 +295,29 @@ fileprivate extension GeoTrackManager {
 
 }
 
+// MARK: - CLLocation
+
+extension CLLocation {
+
+    /// Is the accuracy of the point within the acceptable range?
+    var isAccurateEnough: Bool {
+        return horizontalAccuracy <= 50
+    }
+}
+
 // MARK: - Notifications
 
-public extension Notification.Name {
+public extension Notification {
 
     /// GeoTrackKit notification constants
     public struct GeoTrackKit {
+
+        /// Notification that the user has started tracking
+        public static let trackingStarted = Notification.Name(rawValue: "com.geotrackkit.user.started.tracking")
+
+        /// Notification that the user has stopped tracking
+        public static let trackingStopped = Notification.Name(rawValue: "com.geotrackkit.user.stopped.tracking")
+
         /// Notofication that the location was updated
         public static let didUpdateLocations = Notification.Name(rawValue: "com.geotrackkit.did.update.locations")
 

@@ -32,6 +32,9 @@ public protocol GeoTrackService {
     /// The most recently tracked point
     var lastPoint: CLLocation? { get }
 
+    /// Resets the current track
+    func reset()
+
     /// Starts tracking
     func startTracking()
 

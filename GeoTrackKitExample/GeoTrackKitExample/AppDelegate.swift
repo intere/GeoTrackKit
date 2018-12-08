@@ -21,6 +21,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         GeoTrackEventLog.shared.add(appender: ConsoleLogAppender.shared)
         #endif
 
+        // Bootstrap the TrackFileService
+        TrackFileService.shared
+
         return true
     }
 

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="cse-if-UgT">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="cse-if-UgT">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -14,18 +14,22 @@
         <scene sceneID="F2u-vF-JEG">
             <objects>
                 <viewController storyboardIdentifier="TrackMapViewController" id="cse-if-UgT" customClass="TrackMapViewController" customModule="GeoTrackKitExample" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="EnE-t6-OwX"/>
+                        <viewControllerLayoutGuide type="bottom" id="xrp-L5-HeW"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="tMM-2p-rKC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="hybrid" translatesAutoresizingMaskIntoConstraints="NO" id="egO-IS-oa8" customClass="GeoTrackMap" customModule="GeoTrackKit">
-                                <rect key="frame" x="0.0" y="8" width="375" height="400"/>
+                                <rect key="frame" x="0.0" y="28" width="375" height="400"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="400" id="JIZ-6W-ZA3"/>
                                 </constraints>
                             </mapView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j3W-b1-aMI">
-                                <rect key="frame" x="0.0" y="408" width="375" height="195"/>
+                                <rect key="frame" x="0.0" y="428" width="375" height="239"/>
                                 <connections>
                                     <segue destination="Kom-qy-mum" kind="embed" id="c3y-gj-OWQ"/>
                                 </connections>
@@ -33,25 +37,18 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="mo8-EK-DS1" firstAttribute="trailing" secondItem="egO-IS-oa8" secondAttribute="trailing" id="4ss-w2-V3K"/>
-                            <constraint firstItem="mo8-EK-DS1" firstAttribute="bottom" secondItem="j3W-b1-aMI" secondAttribute="bottom" id="BBh-kE-aAV"/>
-                            <constraint firstItem="egO-IS-oa8" firstAttribute="leading" secondItem="mo8-EK-DS1" secondAttribute="leading" id="GXe-gS-9L5"/>
+                            <constraint firstAttribute="trailing" secondItem="egO-IS-oa8" secondAttribute="trailing" id="4ss-w2-V3K"/>
+                            <constraint firstItem="xrp-L5-HeW" firstAttribute="top" secondItem="j3W-b1-aMI" secondAttribute="bottom" id="BBh-kE-aAV"/>
+                            <constraint firstItem="egO-IS-oa8" firstAttribute="leading" secondItem="tMM-2p-rKC" secondAttribute="leading" id="GXe-gS-9L5"/>
                             <constraint firstItem="j3W-b1-aMI" firstAttribute="top" secondItem="egO-IS-oa8" secondAttribute="bottom" id="XXx-KW-So4"/>
-                            <constraint firstItem="j3W-b1-aMI" firstAttribute="leading" secondItem="mo8-EK-DS1" secondAttribute="leading" id="bpm-T6-axO"/>
-                            <constraint firstItem="egO-IS-oa8" firstAttribute="top" secondItem="mo8-EK-DS1" secondAttribute="top" constant="8" id="qN7-UG-1HQ"/>
-                            <constraint firstItem="mo8-EK-DS1" firstAttribute="trailing" secondItem="j3W-b1-aMI" secondAttribute="trailing" id="qQC-f2-bA9"/>
+                            <constraint firstItem="j3W-b1-aMI" firstAttribute="leading" secondItem="tMM-2p-rKC" secondAttribute="leading" id="bpm-T6-axO"/>
+                            <constraint firstItem="egO-IS-oa8" firstAttribute="top" secondItem="EnE-t6-OwX" secondAttribute="bottom" constant="8" id="qN7-UG-1HQ"/>
+                            <constraint firstAttribute="trailing" secondItem="j3W-b1-aMI" secondAttribute="trailing" id="qQC-f2-bA9"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="mo8-EK-DS1"/>
+                        <viewLayoutGuide key="safeArea" id="VYk-ay-sEK"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="location-on-map" id="kru-Lr-wbc"/>
-                    <navigationItem key="navigationItem" id="47H-N1-kVm">
-                        <barButtonItem key="rightBarButtonItem" systemItem="action" id="ULr-uf-YjX">
-                            <connections>
-                                <action selector="tappedShare:" destination="cse-if-UgT" id="XOb-VX-9ax"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
+                    <navigationItem key="navigationItem" id="47H-N1-kVm"/>
                     <connections>
                         <outlet property="legContainerView" destination="j3W-b1-aMI" id="fJ2-sJ-TjM"/>
                         <outlet property="mapView" destination="egO-IS-oa8" id="aI6-Jr-Pkn"/>
@@ -66,19 +63,43 @@
             <objects>
                 <tableViewController id="Kom-qy-mum" customClass="TrackOverviewTableViewController" customModule="GeoTrackKitExample" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsMultipleSelection="YES" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="G5G-Aw-OMU">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="195"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="239"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="LegSwitchCell" rowHeight="60" id="pAP-x2-ikh" customClass="LegSwitchCell" customModule="GeoTrackKitExample" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SaveTrackCell" rowHeight="60" id="5te-h1-040" customClass="SaveTrackCell" customModule="GeoTrackKitExample" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="60"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="5te-h1-040" id="57j-FG-LLj">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="59.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Ke-vD-HD3">
+                                            <rect key="frame" x="107.5" y="19" width="160" height="22"/>
+                                            <state key="normal" title="Save Track to HealthKit"/>
+                                            <connections>
+                                                <action selector="tappedSaveTrack:" destination="5te-h1-040" eventType="touchUpInside" id="zo1-9h-a49"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="2Ke-vD-HD3" secondAttribute="trailing" constant="8" id="fKj-vg-y1V"/>
+                                        <constraint firstItem="2Ke-vD-HD3" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="57j-FG-LLj" secondAttribute="leadingMargin" constant="8" id="huH-AP-PI1"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="2Ke-vD-HD3" secondAttribute="bottom" constant="8" id="k3q-nM-cvW"/>
+                                        <constraint firstItem="2Ke-vD-HD3" firstAttribute="top" secondItem="57j-FG-LLj" secondAttribute="topMargin" constant="8" id="pX7-d9-dMI"/>
+                                        <constraint firstItem="2Ke-vD-HD3" firstAttribute="centerX" secondItem="57j-FG-LLj" secondAttribute="centerX" id="x4I-BW-OXy"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="LegSwitchCell" rowHeight="60" id="pAP-x2-ikh" customClass="LegSwitchCell" customModule="GeoTrackKitExample" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="88" width="375" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="pAP-x2-ikh" id="ArL-vv-iLB">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="59.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iPi-Gc-OZD">
-                                            <rect key="frame" x="16" y="14.5" width="51" height="31"/>
+                                            <rect key="frame" x="16" y="14" width="51" height="31"/>
                                             <connections>
                                                 <action selector="didToggleSwitch:" destination="pAP-x2-ikh" eventType="valueChanged" id="wR4-Ux-xrK"/>
                                             </connections>

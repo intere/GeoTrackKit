@@ -9,6 +9,9 @@
 - Pull tracks in from HealthKit (Activity App)
     - `NOTE:` This is an iOS 11+ only feature and requires a physical device to test
     - This capability is in a subspec: `HealthKit`
+- Write tracks to HealthKit
+    - `NOTE:` This is an iOS 11+ only feature and requires a physical device to test
+    - This capability is in a subspec: `HealthKit`
 - Example App to demonstrate capabilities
 
 
@@ -35,7 +38,7 @@ This project is currently a work in progress.
 ### Example App
 
 TODO:
-- [ ] Save tracks to disk
+- [x] Save tracks to disk
 - [ ] Provide a track list
 - [x] Pull tracks in from HealthKit
 
@@ -90,3 +93,7 @@ See the generated documentation in the [`docs`](https://intere.github.io/GeoTrac
     - <div>Icons made by <a href="http://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>
 - [Map Location free icon](https://www.flaticon.com/free-icon/map-location_149985#term=gps&page=1&position=24)
     - <div>Icons made by <a href="https://www.flaticon.com/authors/smashicons" title="Smashicons">Smashicons</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>
+- [List Icon](https://www.flaticon.com/free-icon/list_149367#term=listing&page=1&position=2)
+    - <div>Icons made by <a href="https://www.flaticon.com/authors/smashicons" title="Smashicons">Smashicons</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>
+
+I've taken the above images and converted them into less than 50x50 icons to use for tabs

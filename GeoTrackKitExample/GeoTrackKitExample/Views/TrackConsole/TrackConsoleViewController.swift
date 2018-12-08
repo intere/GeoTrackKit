@@ -28,7 +28,7 @@ class TrackConsoleViewController: UIViewController {
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        NotificationCenter.default.addObserver(self, selector: #selector(locationDidUpdate(_:)), name: Notification.Name.GeoTrackKit.didUpdateLocations, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(locationDidUpdate(_:)), name: Notification.GeoTrackKit.didUpdateLocations, object: nil)
     }
 
     @IBAction
@@ -58,6 +58,7 @@ fileprivate extension TrackConsoleViewController {
         if GeoTrackManager.shared.isTracking {
             GeoTrackManager.shared.stopTracking()
         } else {
+            GeoTrackManager.shared.reset()
             GeoTrackManager.shared.startTracking()
         }
         updateButtonText()

@@ -11,6 +11,8 @@
 		1B2451A1B46FD1E813C13A25 /* Pods_GeoTrackKitExampleTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6E72B23B9554498B66030FE /* Pods_GeoTrackKitExampleTests.framework */; };
 		3604FC77217150AB00B46BAA /* GeoTrackStatisticsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3604FC76217150AB00B46BAA /* GeoTrackStatisticsTests.swift */; };
 		36302DB9210E17B400834A1D /* GeoTrackKitErrorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36302DB8210E17B400834A1D /* GeoTrackKitErrorTests.swift */; };
+		3665F7D521176FA200B58BBA /* TrackFileService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3665F7D421176FA200B58BBA /* TrackFileService.swift */; };
+		36682DFF2117BC0C0076A6A8 /* TrackListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36682DFE2117BC0C0076A6A8 /* TrackListTableViewController.swift */; };
 		366CE43C1DFCAC360090BD42 /* GeoTrackSerializationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 366CE43B1DFCAC360090BD42 /* GeoTrackSerializationTests.swift */; };
 		368A87AE1E6332C1003D115A /* reference-track-1.json in Resources */ = {isa = PBXBuildFile; fileRef = 368A87AD1E6332C1003D115A /* reference-track-1.json */; };
 		368A87B11E63332E003D115A /* TrackReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 368A87B01E63332E003D115A /* TrackReader.swift */; };
@@ -25,6 +27,8 @@
 		36A7C6E52104CC690073407A /* TrackOverviewTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36A7C6E42104CC690073407A /* TrackOverviewTableViewController.swift */; };
 		36A7C6E72104CD120073407A /* TrackView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 36A7C6E62104CD120073407A /* TrackView.storyboard */; };
 		36A7C6E92104D8870073407A /* LiveTrackingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36A7C6E82104D8870073407A /* LiveTrackingViewController.swift */; };
+		36B5A61C21173EBA008D8E5D /* SaveTrackCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B5A61B21173EBA008D8E5D /* SaveTrackCell.swift */; };
+		36B5A61F2117BA60008D8E5D /* TrackList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 36B5A61E2117BA60008D8E5D /* TrackList.storyboard */; };
 		36C45E451DCE2D3500E87710 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36C45E441DCE2D3500E87710 /* AppDelegate.swift */; };
 		36C45E4A1DCE2D3500E87710 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 36C45E481DCE2D3500E87710 /* Main.storyboard */; };
 		36C45E4C1DCE2D3500E87710 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 36C45E4B1DCE2D3500E87710 /* Assets.xcassets */; };
@@ -52,6 +56,8 @@
 /* Begin PBXFileReference section */
 		3604FC76217150AB00B46BAA /* GeoTrackStatisticsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeoTrackStatisticsTests.swift; sourceTree = "<group>"; };
 		36302DB8210E17B400834A1D /* GeoTrackKitErrorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeoTrackKitErrorTests.swift; sourceTree = "<group>"; };
+		3665F7D421176FA200B58BBA /* TrackFileService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackFileService.swift; sourceTree = "<group>"; };
+		36682DFE2117BC0C0076A6A8 /* TrackListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackListTableViewController.swift; sourceTree = "<group>"; };
 		366CE43B1DFCAC360090BD42 /* GeoTrackSerializationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeoTrackSerializationTests.swift; sourceTree = "<group>"; };
 		368A87AD1E6332C1003D115A /* reference-track-1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "reference-track-1.json"; sourceTree = "<group>"; };
 		368A87B01E63332E003D115A /* TrackReader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackReader.swift; sourceTree = "<group>"; };
@@ -66,6 +72,8 @@
 		36A7C6E42104CC690073407A /* TrackOverviewTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackOverviewTableViewController.swift; sourceTree = "<group>"; };
 		36A7C6E62104CD120073407A /* TrackView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TrackView.storyboard; sourceTree = "<group>"; };
 		36A7C6E82104D8870073407A /* LiveTrackingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveTrackingViewController.swift; sourceTree = "<group>"; };
+		36B5A61B21173EBA008D8E5D /* SaveTrackCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveTrackCell.swift; sourceTree = "<group>"; };
+		36B5A61E2117BA60008D8E5D /* TrackList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TrackList.storyboard; sourceTree = "<group>"; };
 		36C45E411DCE2D3500E87710 /* GeoTrackKitExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GeoTrackKitExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		36C45E441DCE2D3500E87710 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		36C45E491DCE2D3500E87710 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -151,6 +159,7 @@
 			children = (
 				36A7C6C62100B0980073407A /* EventLogAppender.swift */,
 				36A7C6CF2103ECB40073407A /* ConsoleLogAppender.swift */,
+				3665F7D421176FA200B58BBA /* TrackFileService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -158,6 +167,7 @@
 		36A7C6D52104C7480073407A /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				36B5A61D2117BA2D008D8E5D /* TrackList */,
 				36D099B3210B64D900C8C841 /* TrackImport */,
 				36A7C6D72104C7480073407A /* TrackConsole */,
 				36A7C6D82104C7480073407A /* ReferenceTrack */,
@@ -182,6 +192,7 @@
 				36A7C6E42104CC690073407A /* TrackOverviewTableViewController.swift */,
 				36A7C6DE2104CC0D0073407A /* LegSwitchCell.swift */,
 				36A7C6DF2104CC0D0073407A /* TrackMapViewController.swift */,
+				36B5A61B21173EBA008D8E5D /* SaveTrackCell.swift */,
 			);
 			path = ReferenceTrack;
 			sourceTree = "<group>";
@@ -193,6 +204,15 @@
 				36A7C6E82104D8870073407A /* LiveTrackingViewController.swift */,
 			);
 			path = LiveTracking;
+			sourceTree = "<group>";
+		};
+		36B5A61D2117BA2D008D8E5D /* TrackList */ = {
+			isa = PBXGroup;
+			children = (
+				36B5A61E2117BA60008D8E5D /* TrackList.storyboard */,
+				36682DFE2117BC0C0076A6A8 /* TrackListTableViewController.swift */,
+			);
+			path = TrackList;
 			sourceTree = "<group>";
 		};
 		36C45E381DCE2D3500E87710 = {
@@ -400,6 +420,7 @@
 				36A7C6DB2104CBF30073407A /* TrackConsole.storyboard in Resources */,
 				36C45E4F1DCE2D3500E87710 /* LaunchScreen.storyboard in Resources */,
 				36E3C43D1F4A0817005738DB /* reference-track-1.json in Resources */,
+				36B5A61F2117BA60008D8E5D /* TrackList.storyboard in Resources */,
 				36A7C6E72104CD120073407A /* TrackView.storyboard in Resources */,
 				36C45E4C1DCE2D3500E87710 /* Assets.xcassets in Resources */,
 				36D099B5210B64E200C8C841 /* TrackImport.storyboard in Resources */,
@@ -496,12 +517,15 @@
 			files = (
 				36A7C6E02104CC0D0073407A /* LegSwitchCell.swift in Sources */,
 				36A7C6E52104CC690073407A /* TrackOverviewTableViewController.swift in Sources */,
+				3665F7D521176FA200B58BBA /* TrackFileService.swift in Sources */,
 				36A7C6E12104CC0D0073407A /* TrackMapViewController.swift in Sources */,
 				36A7C6DD2104CBFE0073407A /* TrackConsoleViewController.swift in Sources */,
+				36682DFF2117BC0C0076A6A8 /* TrackListTableViewController.swift in Sources */,
 				36D099B7210B6A2C00C8C841 /* TrackImportTableViewController.swift in Sources */,
 				36A7C6E92104D8870073407A /* LiveTrackingViewController.swift in Sources */,
 				36C45E451DCE2D3500E87710 /* AppDelegate.swift in Sources */,
 				36A7C6C72100B0980073407A /* EventLogAppender.swift in Sources */,
+				36B5A61C21173EBA008D8E5D /* SaveTrackCell.swift in Sources */,
 				36A7C6D02103ECB40073407A /* ConsoleLogAppender.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
