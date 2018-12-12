@@ -1,12 +1,10 @@
 
 fastlane_version "1.83.0"
-
 default_platform :ios
 
 platform :ios do
   scheme = "GeoTrackKitExample"
   workspace = "GeoTrackKitExample/GeoTrackKitExample.xcworkspace"
-  podspec_name = "GeoTrackKit.podspec"
 
   desc "Runs all the tests"
   lane :test do
@@ -17,6 +15,7 @@ platform :ios do
 
   desc "Current Version"
   lane :version do
+    podspec_name = "GeoTrackKit.podspec"
     version = version_get_podspec(path: podspec_name)
     UI.important "Current Version: #{version}"
   end
@@ -37,6 +36,7 @@ platform :ios do
   end
 
   def release(type)
+    podspec_name = "GeoTrackKit.podspec"
     pod_lib_lint
     version = version_bump_podspec(path: podspec_name, bump_type: type)
     git_add(path: podspec_name)
