@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="MKo-pQ-XZ6">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Live Tracking View Controller-->
+        <scene sceneID="tKr-l8-hIX">
+            <objects>
+                <viewController storyboardIdentifier="LiveTrackView" id="MKo-pQ-XZ6" customClass="LiveTrackingViewController" customModule="GeoTrackKitExample" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="raw-S7-kTm">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="hybrid" showsUserLocation="YES" showsScale="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gev-ov-hTt" customClass="GeoTrackMap" customModule="GeoTrackKit">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                            </mapView>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="096-lh-ZDZ">
+                                <rect key="frame" x="0.0" y="667" width="375" height="0.0"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" id="KoT-O1-bcQ"/>
+                                </constraints>
+                                <connections>
+                                    <segue destination="3Og-pV-VhC" kind="embed" id="qBe-6v-tBZ"/>
+                                </connections>
+                            </containerView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="gev-ov-hTt" firstAttribute="leading" secondItem="aMm-tk-WmY" secondAttribute="leading" id="46Z-er-6Uf"/>
+                            <constraint firstItem="096-lh-ZDZ" firstAttribute="top" secondItem="gev-ov-hTt" secondAttribute="bottom" id="ISf-hO-mN8"/>
+                            <constraint firstItem="gev-ov-hTt" firstAttribute="trailing" secondItem="aMm-tk-WmY" secondAttribute="trailing" id="PHD-LN-1f5"/>
+                            <constraint firstItem="096-lh-ZDZ" firstAttribute="trailing" secondItem="aMm-tk-WmY" secondAttribute="trailing" id="Pdo-zx-Ag9"/>
+                            <constraint firstItem="096-lh-ZDZ" firstAttribute="bottom" secondItem="aMm-tk-WmY" secondAttribute="bottom" id="j0J-E8-iTf"/>
+                            <constraint firstItem="gev-ov-hTt" firstAttribute="top" secondItem="aMm-tk-WmY" secondAttribute="top" id="lkv-or-eB3"/>
+                            <constraint firstItem="096-lh-ZDZ" firstAttribute="leading" secondItem="aMm-tk-WmY" secondAttribute="leading" id="qKW-Wi-42J"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="aMm-tk-WmY"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="" image="map-location" id="wb3-oF-Cjh"/>
+                    <connections>
+                        <outlet property="liveMapView" destination="gev-ov-hTt" id="g8y-Ic-exs"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="e5W-TS-hXc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="788" y="-161"/>
+        </scene>
+        <!--Table View Controller-->
+        <scene sceneID="JnQ-ia-5wV">
+            <objects>
+                <tableViewController id="3Og-pV-VhC" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="oad-Ev-DlB">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="0.0"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <connections>
+                            <outlet property="dataSource" destination="3Og-pV-VhC" id="wEB-Z9-xcn"/>
+                            <outlet property="delegate" destination="3Og-pV-VhC" id="776-Te-IPl"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="awp-XJ-Scr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="788" y="703"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="map-location" width="42" height="42"/>
+    </resources>
+</document>

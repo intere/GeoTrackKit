@@ -1,238 +1,79 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="vAS-br-Oxf">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="xmy-us-EB5">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Navigation Controller-->
-        <scene sceneID="cC7-aP-Db7">
+        <!--Tab Bar Controller-->
+        <scene sceneID="Etq-sn-q9n">
             <objects>
-                <navigationController id="vAS-br-Oxf" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="2zA-sH-ubp">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                <tabBarController id="xmy-us-EB5" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="VvA-3l-LrO">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="EEu-Yz-OB7"/>
+                        <segue destination="tBK-oR-W6E" kind="relationship" relationship="viewControllers" id="0g8-hp-Ff4"/>
+                        <segue destination="OVK-Q8-tUv" kind="relationship" relationship="viewControllers" id="H0b-r1-kbD"/>
+                        <segue destination="OaI-S6-tDf" kind="relationship" relationship="viewControllers" id="dcO-FC-dRU"/>
+                        <segue destination="j5O-Cr-Gkr" kind="relationship" relationship="viewControllers" id="Gxm-EH-npj"/>
                     </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="V0g-9X-vRk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oUu-qc-X2x" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-838" y="124"/>
+            <point key="canvasLocation" x="-932" y="-1409"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="tne-QT-ifu">
+        <!--TrackMapViewController-->
+        <scene sceneID="9hM-Gc-zrp">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="GeoTrackKitExample" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
-                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LOs-mN-l14">
-                                <rect key="frame" x="139" y="28" width="97" height="30"/>
-                                <state key="normal" title="Start Tracking"/>
-                                <connections>
-                                    <action selector="clickedTrackButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="YjZ-Ek-ECX"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Altitude: 10,123 ft / 3231 m" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rZ7-JS-I5I">
-                                <rect key="frame" x="16" y="71" width="343" height="21"/>
-                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lat/Lon:: 12.32, 124.75" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8tl-pZ-V1I">
-                                <rect key="frame" x="16" y="100" width="343" height="21"/>
-                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="hAcc/vAcc: 10.05, 17.52" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wtR-9c-Ec2">
-                                <rect key="frame" x="16" y="129" width="343" height="21"/>
-                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Points: 12,623" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hzb-aq-lg6">
-                                <rect key="frame" x="16" y="187" width="343" height="21"/>
-                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="GMH-Fy-HbR">
-                                <rect key="frame" x="0.0" y="216" width="375" height="443"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <string key="text">Event Log goes here.  Event Log goes here.  Event Log goes here.  Event Log goes here.  Event Log goes here.  Event Log goes here.  Event Log goes here.  Event Log goes here.  Event Log goes here.  Event Log goes here.  Event Log goes here.  Event Log goes here.  Event Log goes here.  </string>
-                                <color key="textColor" red="0.46666666870000001" green="0.76470589639999997" blue="0.26666668059999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Speed: 55mph / 80kmph" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3iD-Vg-2Sp">
-                                <rect key="frame" x="16" y="158" width="343" height="21"/>
-                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mzl-9Q-GwQ">
-                                <rect key="frame" x="329" y="28" width="30" height="30"/>
-                                <state key="normal" title="Map"/>
-                                <connections>
-                                    <segue destination="B8m-Nk-0NK" kind="show" id="biC-Rg-7eV"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="hzb-aq-lg6" firstAttribute="top" secondItem="3iD-Vg-2Sp" secondAttribute="bottom" constant="8" id="0uZ-oH-okk"/>
-                            <constraint firstItem="3iD-Vg-2Sp" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="5Je-iB-553"/>
-                            <constraint firstItem="3iD-Vg-2Sp" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="5jt-fS-dM8"/>
-                            <constraint firstItem="rZ7-JS-I5I" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="CAV-CP-K1I"/>
-                            <constraint firstItem="GMH-Fy-HbR" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="DMm-9N-Web"/>
-                            <constraint firstItem="LOs-mN-l14" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="EbN-Fj-IO4"/>
-                            <constraint firstItem="Mzl-9Q-GwQ" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="FLZ-Jg-nN7"/>
-                            <constraint firstItem="hzb-aq-lg6" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="Ldw-CL-TJC"/>
-                            <constraint firstItem="8tl-pZ-V1I" firstAttribute="top" secondItem="rZ7-JS-I5I" secondAttribute="bottom" constant="8" id="Nqe-kR-r1o"/>
-                            <constraint firstItem="hzb-aq-lg6" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="PYA-0U-tVQ"/>
-                            <constraint firstItem="wtR-9c-Ec2" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="Sv1-UV-syp"/>
-                            <constraint firstItem="8tl-pZ-V1I" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="ZBo-y6-vDX"/>
-                            <constraint firstItem="Mzl-9Q-GwQ" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="aI7-s7-oJF"/>
-                            <constraint firstItem="8tl-pZ-V1I" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="aYP-B5-cBE"/>
-                            <constraint firstItem="GMH-Fy-HbR" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailing" id="ad9-ua-hWz"/>
-                            <constraint firstItem="wtR-9c-Ec2" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="bOb-WK-DFe"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="GMH-Fy-HbR" secondAttribute="bottom" constant="8" id="cG1-gw-lge"/>
-                            <constraint firstItem="LOs-mN-l14" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="ifC-WH-13F"/>
-                            <constraint firstItem="GMH-Fy-HbR" firstAttribute="top" secondItem="hzb-aq-lg6" secondAttribute="bottom" constant="8" id="kBK-0M-gTa"/>
-                            <constraint firstItem="wtR-9c-Ec2" firstAttribute="top" secondItem="8tl-pZ-V1I" secondAttribute="bottom" constant="8" id="oTK-bp-eEF"/>
-                            <constraint firstItem="3iD-Vg-2Sp" firstAttribute="top" secondItem="wtR-9c-Ec2" secondAttribute="bottom" constant="8" id="tvK-9d-x6s"/>
-                            <constraint firstItem="rZ7-JS-I5I" firstAttribute="top" secondItem="LOs-mN-l14" secondAttribute="bottom" constant="13" id="uVt-r3-50u"/>
-                            <constraint firstItem="rZ7-JS-I5I" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="vFV-0a-CYU"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" id="9X8-SX-TVu"/>
-                    <connections>
-                        <outlet property="accuracyLabel" destination="wtR-9c-Ec2" id="IPd-v2-iSX"/>
-                        <outlet property="altitudeLabel" destination="rZ7-JS-I5I" id="jb0-ji-g16"/>
-                        <outlet property="button" destination="LOs-mN-l14" id="piC-G3-eAt"/>
-                        <outlet property="eventLog" destination="GMH-Fy-HbR" id="Pou-8l-VeR"/>
-                        <outlet property="locationLabel" destination="8tl-pZ-V1I" id="aok-C4-aMH"/>
-                        <outlet property="pointsLabel" destination="hzb-aq-lg6" id="Lib-2r-bgD"/>
-                        <outlet property="speedLabel" destination="3iD-Vg-2Sp" id="eT9-LI-pSd"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <viewControllerPlaceholder storyboardName="TrackView" referencedIdentifier="TrackMapViewController" id="OaI-S6-tDf" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="" image="map-location" id="u9j-ex-vh6"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="K2p-gH-Vvj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="116" y="123.68815592203899"/>
+            <point key="canvasLocation" x="-197" y="-1332"/>
         </scene>
-        <!--Track Map View Controller-->
-        <scene sceneID="Coz-0y-VjG">
+        <!--TrackImport-->
+        <scene sceneID="9lZ-bp-zgW">
             <objects>
-                <viewController id="B8m-Nk-0NK" customClass="TrackMapViewController" customModule="GeoTrackKitExample" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="oFI-HB-CCF"/>
-                        <viewControllerLayoutGuide type="bottom" id="Osg-eL-Prt"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="y0f-YD-ipn">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="hybrid" translatesAutoresizingMaskIntoConstraints="NO" id="Pic-Ey-D0e" customClass="GeoTrackMap" customModule="GeoTrackKit">
-                                <rect key="frame" x="0.0" y="28" width="375" height="300"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="300" id="hvp-LM-gV1"/>
-                                </constraints>
-                            </mapView>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qkh-Kn-k7p">
-                                <rect key="frame" x="0.0" y="328" width="375" height="339"/>
-                                <connections>
-                                    <segue destination="LLl-ZV-RZR" kind="embed" id="CKh-wL-EgL"/>
-                                </connections>
-                            </containerView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="Pic-Ey-D0e" firstAttribute="top" secondItem="oFI-HB-CCF" secondAttribute="bottom" constant="8" id="0gV-p4-cGK"/>
-                            <constraint firstItem="Pic-Ey-D0e" firstAttribute="leading" secondItem="y0f-YD-ipn" secondAttribute="leading" id="GEo-Db-mqu"/>
-                            <constraint firstItem="qkh-Kn-k7p" firstAttribute="leading" secondItem="y0f-YD-ipn" secondAttribute="leading" id="Mh9-d7-hky"/>
-                            <constraint firstAttribute="trailing" secondItem="Pic-Ey-D0e" secondAttribute="trailing" id="SPj-Xn-vDj"/>
-                            <constraint firstItem="qkh-Kn-k7p" firstAttribute="top" secondItem="Pic-Ey-D0e" secondAttribute="bottom" id="a9C-7A-xOQ"/>
-                            <constraint firstAttribute="trailing" secondItem="qkh-Kn-k7p" secondAttribute="trailing" id="aKZ-WO-tH4"/>
-                            <constraint firstItem="Osg-eL-Prt" firstAttribute="top" secondItem="qkh-Kn-k7p" secondAttribute="bottom" id="icT-nP-b4I"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" id="Bh2-03-9cp"/>
-                    <connections>
-                        <outlet property="legContainerView" destination="qkh-Kn-k7p" id="gTQ-ze-50G"/>
-                        <outlet property="mapView" destination="Pic-Ey-D0e" id="L9U-UF-sfj"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="lqA-RS-PtU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewControllerPlaceholder storyboardName="TrackImport" id="j5O-Cr-Gkr" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="84P-L1-4Zl"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="F5Y-gl-5gM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="957.60000000000002" y="123.68815592203899"/>
+            <point key="canvasLocation" x="-257" y="-1258"/>
         </scene>
-        <!--Track Overview Table View Controller-->
-        <scene sceneID="mWE-4m-JB6">
+        <!--LiveTrackView-->
+        <scene sceneID="NfS-Us-370">
             <objects>
-                <tableViewController id="LLl-ZV-RZR" customClass="TrackOverviewTableViewController" customModule="GeoTrackKitExample" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsMultipleSelection="YES" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="e9f-NX-TqQ">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="339"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="LegSwitchCell" rowHeight="60" id="nYJ-8N-gqT" customClass="LegSwitchCell" customModule="GeoTrackKitExample" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="375" height="60"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="nYJ-8N-gqT" id="uDD-QK-TzM">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="59.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aRp-un-fY3">
-                                            <rect key="frame" x="8" y="14" width="51" height="31"/>
-                                            <connections>
-                                                <action selector="didToggleSwitch:" destination="nYJ-8N-gqT" eventType="valueChanged" id="vhZ-Yr-ZZi"/>
-                                            </connections>
-                                        </switch>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZbD-SD-28g">
-                                            <rect key="frame" x="65" y="16" width="310" height="27.5"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstAttribute="bottomMargin" secondItem="ZbD-SD-28g" secondAttribute="bottom" constant="8" id="7OR-oN-2ZC"/>
-                                        <constraint firstItem="ZbD-SD-28g" firstAttribute="leading" secondItem="aRp-un-fY3" secondAttribute="trailing" constant="8" id="8Zw-Fa-0Ys"/>
-                                        <constraint firstItem="ZbD-SD-28g" firstAttribute="top" secondItem="uDD-QK-TzM" secondAttribute="topMargin" constant="8" id="Egf-hG-5EE"/>
-                                        <constraint firstItem="aRp-un-fY3" firstAttribute="centerY" secondItem="uDD-QK-TzM" secondAttribute="centerY" id="I4B-Ch-PUs"/>
-                                        <constraint firstItem="ZbD-SD-28g" firstAttribute="leading" secondItem="aRp-un-fY3" secondAttribute="trailing" constant="8" id="OXy-vY-Nzb"/>
-                                        <constraint firstItem="ZbD-SD-28g" firstAttribute="trailing" secondItem="uDD-QK-TzM" secondAttribute="trailingMargin" constant="8" id="dQd-dn-oJx"/>
-                                        <constraint firstItem="aRp-un-fY3" firstAttribute="leading" secondItem="uDD-QK-TzM" secondAttribute="leadingMargin" id="h9D-GL-tNt"/>
-                                    </constraints>
-                                </tableViewCellContentView>
-                                <connections>
-                                    <outlet property="label" destination="ZbD-SD-28g" id="1bO-bv-9RB"/>
-                                    <outlet property="toggleSwitch" destination="aRp-un-fY3" id="cFT-5W-kmJ"/>
-                                </connections>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="LLl-ZV-RZR" id="lwu-4C-KW2"/>
-                            <outlet property="delegate" destination="LLl-ZV-RZR" id="nw0-R2-dph"/>
-                        </connections>
-                    </tableView>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ZXQ-4h-k7v" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewControllerPlaceholder storyboardName="LiveTrackingView" referencedIdentifier="LiveTrackView" id="OVK-Q8-tUv" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="" image="location-on-map" id="0ZO-eF-Uhq"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Avb-ui-oOP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="957.60000000000002" y="721.88905547226398"/>
+            <point key="canvasLocation" x="-247" y="-1418"/>
+        </scene>
+        <!--TrackConsole-->
+        <scene sceneID="0QX-aq-1Os">
+            <objects>
+                <viewControllerPlaceholder storyboardName="TrackConsole" id="tBK-oR-W6E" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="" image="icon" id="f5X-hp-qdm"/>
+                    <navigationItem key="navigationItem" id="Ww7-xq-O5M"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8CA-54-B4d" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-249" y="-1509"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="icon" width="42" height="42"/>
+        <image name="location-on-map" width="42" height="42"/>
+        <image name="map-location" width="42" height="42"/>
+    </resources>
 </document>

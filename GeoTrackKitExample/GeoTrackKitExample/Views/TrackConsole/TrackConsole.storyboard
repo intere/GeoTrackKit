@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Track Console View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="TrackConsoleViewController" customModule="GeoTrackKitExample" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LOs-mN-l14">
+                                <rect key="frame" x="139" y="28" width="97" height="30"/>
+                                <state key="normal" title="Start Tracking"/>
+                                <connections>
+                                    <action selector="clickedTrackButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="YjZ-Ek-ECX"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Altitude: 10,123 ft / 3231 m" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rZ7-JS-I5I">
+                                <rect key="frame" x="16" y="71" width="343" height="20.5"/>
+                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lat/Lon:: 12.32, 124.75" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8tl-pZ-V1I">
+                                <rect key="frame" x="16" y="99.5" width="343" height="20.5"/>
+                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="hAcc/vAcc: 10.05, 17.52" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wtR-9c-Ec2">
+                                <rect key="frame" x="16" y="128" width="343" height="20.5"/>
+                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Points: 12,623" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hzb-aq-lg6">
+                                <rect key="frame" x="16" y="185" width="343" height="20.5"/>
+                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="GMH-Fy-HbR">
+                                <rect key="frame" x="0.0" y="213.5" width="375" height="445.5"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <string key="text">Event Log goes here.  Event Log goes here.  Event Log goes here.  Event Log goes here.  Event Log goes here.  Event Log goes here.  Event Log goes here.  Event Log goes here.  Event Log goes here.  Event Log goes here.  Event Log goes here.  Event Log goes here.  Event Log goes here.  </string>
+                                <color key="textColor" red="0.46666666870000001" green="0.76470589639999997" blue="0.26666668059999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Speed: 55mph / 80kmph" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3iD-Vg-2Sp">
+                                <rect key="frame" x="16" y="156.5" width="343" height="20.5"/>
+                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="hzb-aq-lg6" firstAttribute="top" secondItem="3iD-Vg-2Sp" secondAttribute="bottom" constant="8" id="0uZ-oH-okk"/>
+                            <constraint firstItem="3iD-Vg-2Sp" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="5Je-iB-553"/>
+                            <constraint firstItem="3iD-Vg-2Sp" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="5jt-fS-dM8"/>
+                            <constraint firstItem="rZ7-JS-I5I" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="CAV-CP-K1I"/>
+                            <constraint firstItem="GMH-Fy-HbR" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="DMm-9N-Web"/>
+                            <constraint firstItem="LOs-mN-l14" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="EbN-Fj-IO4"/>
+                            <constraint firstItem="hzb-aq-lg6" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="Ldw-CL-TJC"/>
+                            <constraint firstItem="8tl-pZ-V1I" firstAttribute="top" secondItem="rZ7-JS-I5I" secondAttribute="bottom" constant="8" id="Nqe-kR-r1o"/>
+                            <constraint firstItem="hzb-aq-lg6" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="PYA-0U-tVQ"/>
+                            <constraint firstItem="wtR-9c-Ec2" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="Sv1-UV-syp"/>
+                            <constraint firstItem="8tl-pZ-V1I" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="ZBo-y6-vDX"/>
+                            <constraint firstItem="8tl-pZ-V1I" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="aYP-B5-cBE"/>
+                            <constraint firstItem="GMH-Fy-HbR" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailing" id="ad9-ua-hWz"/>
+                            <constraint firstItem="wtR-9c-Ec2" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="bOb-WK-DFe"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="GMH-Fy-HbR" secondAttribute="bottom" constant="8" id="cG1-gw-lge"/>
+                            <constraint firstItem="LOs-mN-l14" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="ifC-WH-13F"/>
+                            <constraint firstItem="GMH-Fy-HbR" firstAttribute="top" secondItem="hzb-aq-lg6" secondAttribute="bottom" constant="8" id="kBK-0M-gTa"/>
+                            <constraint firstItem="wtR-9c-Ec2" firstAttribute="top" secondItem="8tl-pZ-V1I" secondAttribute="bottom" constant="8" id="oTK-bp-eEF"/>
+                            <constraint firstItem="3iD-Vg-2Sp" firstAttribute="top" secondItem="wtR-9c-Ec2" secondAttribute="bottom" constant="8" id="tvK-9d-x6s"/>
+                            <constraint firstItem="rZ7-JS-I5I" firstAttribute="top" secondItem="LOs-mN-l14" secondAttribute="bottom" constant="13" id="uVt-r3-50u"/>
+                            <constraint firstItem="rZ7-JS-I5I" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="vFV-0a-CYU"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="" image="icon" id="YPK-ig-b3n"/>
+                    <navigationItem key="navigationItem" id="9X8-SX-TVu"/>
+                    <connections>
+                        <outlet property="accuracyLabel" destination="wtR-9c-Ec2" id="IPd-v2-iSX"/>
+                        <outlet property="altitudeLabel" destination="rZ7-JS-I5I" id="jb0-ji-g16"/>
+                        <outlet property="button" destination="LOs-mN-l14" id="piC-G3-eAt"/>
+                        <outlet property="eventLog" destination="GMH-Fy-HbR" id="Pou-8l-VeR"/>
+                        <outlet property="locationLabel" destination="8tl-pZ-V1I" id="aok-C4-aMH"/>
+                        <outlet property="pointsLabel" destination="hzb-aq-lg6" id="Lib-2r-bgD"/>
+                        <outlet property="speedLabel" destination="3iD-Vg-2Sp" id="eT9-LI-pSd"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1055.2" y="123.68815592203899"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="icon" width="42" height="42"/>
+    </resources>
+</document>

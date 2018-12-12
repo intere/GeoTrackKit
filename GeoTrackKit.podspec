@@ -4,7 +4,7 @@
 
 Pod::Spec.new do |s|
   s.name      = 'GeoTrackKit'
-  s.version   = '0.2.0'
+  s.version   = '0.4.2'
   s.summary   = 'Geo Tracking and statistics for iOS'
   s.description = <<-DESC
 A Geo Location Tracking and statistic calculation library for iOS.  It also provides rendering location tracks over a map for you.
@@ -30,15 +30,21 @@ The above copyright notice and this permission notice shall be included in all c
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
     LICENSE
   }
-  s.source_files = 'GeoTrackKit/*.swift',
-    'GeoTrackKit/Extension/*.swift',
-    'GeoTrackKit/Map/*.swift',
-    'GeoTrackKit/Map/UIModels/*.swift',
-    'GeoTrackKit/Models/*.swift',
-    'GeoTrackKit/Models/Analyze/*.swift',
-    'GeoTrackKit/*.h'
 
   s.platform = :ios, '9.0'
-  s.swift_version = '4.1'
+  s.swift_version = '4.2'
+  s.default_subspecs = 'Core'
+
+  # Core Tracking functionality + Apple Maps rendering
+  s.subspec 'Core' do |ss|
+    ss.source_files = 'GeoTrackKit/Core/**/*.{swift,h,m}'
+  end
+
+  # HealthKit subspec, provides the ability to read tracks from Workouts
+  s.subspec 'HealthKit' do |ss|
+    ss.ios.deployment_target = '11.0'
+    ss.source_files = 'GeoTrackKit/HealthKit/**/*.{swift,h,m}'
+    ss.dependency 'GeoTrackKit/Core'
+  end
 
 end

@@ -7,262 +7,379 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3013DD4B9B989D0616D1E9755069A244 /* GeoTrackKit-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = A17EA98D31B60A0A7B420E2BCE37FD52 /* GeoTrackKit-dummy.m */; };
-		34037EE1868CD589CF9688698B67D9F3 /* GeoTrackEventLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA2A5D4CF0569FFCB24C43B147F9F22 /* GeoTrackEventLog.swift */; };
-		3C4938CD6D6AE8335F8D252C50F558C2 /* GeoTrackKit-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 68C7F861BAC1DB30B5B52FE47606FE08 /* GeoTrackKit-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		4024D1ED119717E8288E64AF8CC01673 /* CLLocationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B85076E7257D1BD7F48095608A84C009 /* CLLocationExtension.swift */; };
-		42471E240B164F8D2B7AA61936C0E686 /* GeoTrackEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EB37F10FD385A2614CE97849770CC3C /* GeoTrackEvent.swift */; };
-		44C54C8D35CA04D4C6ECE9D1BD794503 /* GeoTrackConsoleAppender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26CB0068B6EF1B79CFA432C887235379 /* GeoTrackConsoleAppender.swift */; };
-		516732EDBA9AB99428047D8E8025D17B /* UIGeoTrack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5639218BC17BBF260C5CA5FE94D5036B /* UIGeoTrack.swift */; };
-		5B96AE43646F44BCC2E7BF394F8CD751 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CFCEA8AB143E7AC4962B18BCE9C391E /* DateExtension.swift */; };
-		72CEDAFA1500D7FAE5D6B2EF3E7D1F1F /* Pods-GeoTrackKitExampleTests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = C5A04C84C5C1455273889A2E9D7ED64E /* Pods-GeoTrackKitExampleTests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		79DD40548FCC18FAC7C96B3D520AEE93 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A16F4CFC63FAC439D7A04994F579A03 /* Foundation.framework */; };
-		83DFEE1763EA87DCF99856F13CA61F15 /* GeoTrackManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85BD5B8DB5D1962AA382BE73271278BB /* GeoTrackManager.swift */; };
-		86FD113A75EC9A5FF2EAF6D7966D18F9 /* GeoTrack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35DD704AC42A2F7FDDA288C54A3A0BF7 /* GeoTrack.swift */; };
-		8C5EC6C675474FB47637B3156610BA08 /* GeoTrackLocationEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DC9B8AA3A1945DF300A93E674978AD8 /* GeoTrackLocationEvent.swift */; };
-		8FFBD27FB102780BB4C42411EE011BE2 /* GeoTrackService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC3B4F49EF601A9614116D25CD7F96F /* GeoTrackService.swift */; };
-		9C6320D0A3DF5CC1165A4F7D6A3DD42E /* GeoTrackAnalyzer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5EDDCDD401BBADA2F04D798EFBC6463 /* GeoTrackAnalyzer.swift */; };
-		A3C370BD0AEDC5E046A6DD8936EEEF0D /* LoggingFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA60A344D184A4561E6D2018BDACEE04 /* LoggingFunctions.swift */; };
-		AF0D71D4000056CE3F84D3631E390A56 /* Pods-GeoTrackKitExample-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = D8487DF676406564F795C4F5A9181015 /* Pods-GeoTrackKitExample-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		BEA0BEB10D165535FEC0A96B397551EC /* GeoTrackMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 469FE3ECF4DEED21312FD611276BAA98 /* GeoTrackMap.swift */; };
-		C1131AEB382C1A6965D5E101916A64AD /* GeoTrackState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BFFA01AC2A868087B5F023365551AD9 /* GeoTrackState.swift */; };
-		C40F24D77EC2BCC3570D2A5338547BFD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A16F4CFC63FAC439D7A04994F579A03 /* Foundation.framework */; };
-		C43FD3C9F41B9A56ECF56AB17193A8E5 /* Leg.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCAC38C099E9673704BF87395CCBF9B /* Leg.swift */; };
-		CBA8B1855AC34AE9BABAF00120353BD2 /* Pods-GeoTrackKitExample-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 2829797D6D1DEC21487DF701E3441478 /* Pods-GeoTrackKitExample-dummy.m */; };
-		D9A4DBB00E4DC35006A850A613F9CD91 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A16F4CFC63FAC439D7A04994F579A03 /* Foundation.framework */; };
-		E8CA2D206AB46BD8A7E3176D5CE5F4AE /* ZoomDefining.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5911BC605DA2104AA3B40645E13CABCE /* ZoomDefining.swift */; };
-		EBF72A543CDFFA8191A443E18B9C194F /* DefaultMapZoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF69E70AAF5E9B756F58BBA8CCA15B50 /* DefaultMapZoom.swift */; };
-		F9DB91C6D735C5DD75FAEA35A671C227 /* Pods-GeoTrackKitExampleTests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AD109C468E49F3F25589ECCD9E62E9C /* Pods-GeoTrackKitExampleTests-dummy.m */; };
+		06D4A6D56DCE2E3229A01E9599A4D4EE /* Pods-GeoTrackKitExampleTests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = C5A04C84C5C1455273889A2E9D7ED64E /* Pods-GeoTrackKitExampleTests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1A8691A3A3736C46C195F2BD3FBC1351 /* GeoTrackEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FE0BCE6FACFCCB8384AD17AF16CCF46 /* GeoTrackEvent.swift */; };
+		1F165B3A7C62EAB9AB4E4A7F437272A8 /* Pods-GeoTrackKitExample-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 2829797D6D1DEC21487DF701E3441478 /* Pods-GeoTrackKitExample-dummy.m */; };
+		2BC4976B5A6BC44E0E5C380ECE6CEA44 /* GeoTrack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43D490F146CC161CEC5ED5314B1A41FE /* GeoTrack.swift */; };
+		2C7CAD17AEB336369B54D20343644676 /* Pods-GeoTrackKitExample-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = D8487DF676406564F795C4F5A9181015 /* Pods-GeoTrackKitExample-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3F6573228EF4BDEBCD3AD5F89C249B5E /* GeoTrackAnalyzer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90AE1FEEE14748E311DA33149B6220DE /* GeoTrackAnalyzer.swift */; };
+		4494170015BD308698DE403015B0D5BF /* DefaultMapZoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65168C456FE1622C9DF92F78671BC3D6 /* DefaultMapZoom.swift */; };
+		45627C2BF022971053B5144F048DA89F /* GeoTrackManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3BD092C3DF91447ABBE25C6F4E8D5BF /* GeoTrackManager.swift */; };
+		57247A0B5811565F3D736915FA511C2C /* GeoTrack+Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 453C1C03A0EB23C3BDC28375C3CFE158 /* GeoTrack+Utilities.swift */; };
+		63CC0175B5F16850737654AA6B52049E /* LoggingFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9792A828DD0DD4BF73DF27B1A269F19A /* LoggingFunctions.swift */; };
+		719AD21DEBDA689FF76385BD02C35AEB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A16F4CFC63FAC439D7A04994F579A03 /* Foundation.framework */; };
+		71B912EC731764BA0DDAB0CF345307C8 /* GeoTrackLocationEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164B54AC7CECA23ED947E5FC597E816E /* GeoTrackLocationEvent.swift */; };
+		73B52CC40FE365A0FEAFBEEE77F06018 /* GeoTrackKitErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F8951C7C9D42CEA14D5E5F767BC308 /* GeoTrackKitErrors.swift */; };
+		82CB52ECCBFA4FCEABCA6600459B9889 /* Leg.swift in Sources */ = {isa = PBXBuildFile; fileRef = E896DECFDB5C08DF1D0359D3740DE4DF /* Leg.swift */; };
+		876809303D049BD6E9D2871D7126EC44 /* GeoTrackMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2C0765795AB28F092DD71B2D982BEF /* GeoTrackMap.swift */; };
+		89C7655773A87F350D08A9E1620BFA92 /* GeoTrackKit-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = E260AE14E20ABB6D7BB2DB173B744D4C /* GeoTrackKit-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8A12DE786AB17C9735117CA967097440 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A16F4CFC63FAC439D7A04994F579A03 /* Foundation.framework */; };
+		8DE39EDF5853A24915661631269AF860 /* ActivityService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF76AE4825BCD996862B66FB9F019E48 /* ActivityService.swift */; };
+		9B333720FB36CCD82EDD399A75B68E3A /* CLLocationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D99BCF863A0C3A3555E3B48359730E0 /* CLLocationExtension.swift */; };
+		AB18FD30B961E1035BFC8EA2E0AF32CC /* UIGeoTrack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 007A43E1BB1B53244BD44123AAC3B5AF /* UIGeoTrack.swift */; };
+		B1920850E38567B97AB6B5ACD016D5CF /* GeoTrackState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A632B08A8F2EA58383F1E9AFFAC24C7 /* GeoTrackState.swift */; };
+		B5540A07B5279BB415AFB1110956DC30 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D9F2CDA5B5378B44CE4C5D01D0BA4F /* DateExtension.swift */; };
+		B69FB64824B98D103EC00258FEC8094D /* GeoTrackService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7FAFC5B5050798387395310FD0B80F /* GeoTrackService.swift */; };
+		C45268FAEB8B939BAC5BB54599D8E072 /* GeoTrackEventLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AAFE2DDD081F9EEB2570B67DB3C3E4E /* GeoTrackEventLog.swift */; };
+		CCC5524B6D13DDB16521D4E096D7E939 /* NumberExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D2AC43BA38EB92D445AD103FF2994C /* NumberExtensions.swift */; };
+		DA4DEFC9C7FF871BDBBA6E46E37C948C /* Pods-GeoTrackKitExampleTests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AD109C468E49F3F25589ECCD9E62E9C /* Pods-GeoTrackKitExampleTests-dummy.m */; };
+		EFE0A9905FF9C508AE980F438835DD85 /* GeoTrackKit-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = F765D252E6DA777FC05EDAFD6FE22229 /* GeoTrackKit-dummy.m */; };
+		F99C7EA6A40402E12AF5E4F75803299B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A16F4CFC63FAC439D7A04994F579A03 /* Foundation.framework */; };
+		FF034FD117E0D511466A075ECEE0E288 /* ZoomDefining.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3DFB8280CD89E862C6840CA41AA0951 /* ZoomDefining.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		1CAFEC72989FE658716C9F7904ED5259 /* PBXContainerItemProxy */ = {
+		C0D614F836F9D0BBC6CFC757B12CBFB9 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = E746658ECA37985B0156B8C26A452C6E;
+			remoteGlobalIDString = 7B3B0A7AC0B017469EF6A114A90A4715;
 			remoteInfo = "Pods-GeoTrackKitExample";
 		};
-		58B28A2799289AA65D8C86DB58EE2D8D /* PBXContainerItemProxy */ = {
+		C1C6D1CFF223717ED1517481BAFDF918 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 07A7BA7E24EA8DE7BCF1A244F5A1A2D4;
+			remoteGlobalIDString = E65B1BAB10F40A9BC78B80AFB0D9AC55;
 			remoteInfo = GeoTrackKit;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		00316D85F54492400B66CA9FA4EF5D72 /* gh.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = gh.png; path = docs/img/gh.png; sourceTree = "<group>"; };
-		0822B5E250E52E924BF991F1B0EAA12D /* GeoTrackLogAppender.html */ = {isa = PBXFileReference; includeInIndex = 1; name = GeoTrackLogAppender.html; path = docs/Protocols/GeoTrackLogAppender.html; sourceTree = "<group>"; };
+		007A43E1BB1B53244BD44123AAC3B5AF /* UIGeoTrack.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = UIGeoTrack.swift; sourceTree = "<group>"; };
+		00B83369F6754F4F27A414ADF675B09C /* Stat.html */ = {isa = PBXFileReference; includeInIndex = 1; name = Stat.html; path = docs/Classes/Stat.html; sourceTree = "<group>"; };
 		08266C21B77FAC5C88D130EB333D1E65 /* Pods_GeoTrackKitExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_GeoTrackKitExample.framework; path = "Pods-GeoTrackKitExample.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
-		08A9EF8D93D380F06571AF648D97DA21 /* index.html */ = {isa = PBXFileReference; includeInIndex = 1; name = index.html; path = docs/index.html; sourceTree = "<group>"; };
-		09818ACAB42A8B4284C00F61414F89F9 /* jazzy.js */ = {isa = PBXFileReference; includeInIndex = 1; name = jazzy.js; path = docs/js/jazzy.js; sourceTree = "<group>"; };
-		0A626493AA28AE69F1484B5C022681F8 /* docSet.dsidx */ = {isa = PBXFileReference; includeInIndex = 1; name = docSet.dsidx; path = docs/docsets/GeoTrackKit.docset/Contents/Resources/docSet.dsidx; sourceTree = "<group>"; };
 		0AD109C468E49F3F25589ECCD9E62E9C /* Pods-GeoTrackKitExampleTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-GeoTrackKitExampleTests-dummy.m"; sourceTree = "<group>"; };
-		0FE072A4AFF0519A6EE2EFB71EAFE82B /* highlight.css */ = {isa = PBXFileReference; includeInIndex = 1; name = highlight.css; path = docs/docsets/GeoTrackKit.docset/Contents/Resources/Documents/css/highlight.css; sourceTree = "<group>"; };
-		151DEC7947C4E90E7FFC2BBCD87D360D /* GeoTrack.html */ = {isa = PBXFileReference; includeInIndex = 1; name = GeoTrack.html; path = docs/docsets/GeoTrackKit.docset/Contents/Resources/Documents/Classes/GeoTrack.html; sourceTree = "<group>"; };
-		176ADEA9866477472983F54C70995DB4 /* GeoTrackKit.tgz */ = {isa = PBXFileReference; includeInIndex = 1; name = GeoTrackKit.tgz; path = docs/docsets/GeoTrackKit.tgz; sourceTree = "<group>"; };
-		1773E29D3BAC462E658D5D51A35DB6C4 /* GeoTrackManager.html */ = {isa = PBXFileReference; includeInIndex = 1; name = GeoTrackManager.html; path = docs/docsets/GeoTrackKit.docset/Contents/Resources/Documents/Classes/GeoTrackManager.html; sourceTree = "<group>"; };
-		190CA6521E8A8C5AC2EF50149FD088B9 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		19FACC7E2964047664C3654E17194DB6 /* carat.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = carat.png; path = docs/img/carat.png; sourceTree = "<group>"; };
-		1A3490DF678B552F3458949E28E2586F /* undocumented.json */ = {isa = PBXFileReference; includeInIndex = 1; name = undocumented.json; path = docs/undocumented.json; sourceTree = "<group>"; };
-		1BD66038F022944105F9C2B9A21A9691 /* jquery.min.js */ = {isa = PBXFileReference; includeInIndex = 1; name = jquery.min.js; path = docs/docsets/GeoTrackKit.docset/Contents/Resources/Documents/js/jquery.min.js; sourceTree = "<group>"; };
-		1F78AF05F123B2CF15B451679EBD183C /* jquery.min.js */ = {isa = PBXFileReference; includeInIndex = 1; name = jquery.min.js; path = docs/js/jquery.min.js; sourceTree = "<group>"; };
-		1FEE5ADC6714232063D798141196E027 /* GeoTrackAnalyzer.html */ = {isa = PBXFileReference; includeInIndex = 1; name = GeoTrackAnalyzer.html; path = docs/Classes/GeoTrackAnalyzer.html; sourceTree = "<group>"; };
-		22721DF15C35F3C20EA4BF1B63EC193B /* EventType.html */ = {isa = PBXFileReference; includeInIndex = 1; name = EventType.html; path = docs/Classes/GeoTrackLocationEvent/EventType.html; sourceTree = "<group>"; };
-		22BAB273A61A65091067943ADD5122EB /* jazzy.css */ = {isa = PBXFileReference; includeInIndex = 1; name = jazzy.css; path = docs/docsets/GeoTrackKit.docset/Contents/Resources/Documents/css/jazzy.css; sourceTree = "<group>"; };
-		25C6F896B13D96F74A6C7440DFAE161A /* GeoTrackState.html */ = {isa = PBXFileReference; includeInIndex = 1; name = GeoTrackState.html; path = docs/docsets/GeoTrackKit.docset/Contents/Resources/Documents/Enums/GeoTrackState.html; sourceTree = "<group>"; };
-		26CB0068B6EF1B79CFA432C887235379 /* GeoTrackConsoleAppender.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GeoTrackConsoleAppender.swift; path = GeoTrackKit/GeoTrackConsoleAppender.swift; sourceTree = "<group>"; };
+		0CBEEA72FD7270BBCDF77DFF6B0C1E84 /* GeoTrackAnalyzer.html */ = {isa = PBXFileReference; includeInIndex = 1; name = GeoTrackAnalyzer.html; path = docs/Classes/GeoTrackAnalyzer.html; sourceTree = "<group>"; };
+		0EABD45A6E07EE24923A72AEC7436236 /* jquery.min.js */ = {isa = PBXFileReference; includeInIndex = 1; name = jquery.min.js; path = docs/docsets/GeoTrackKit.docset/Contents/Resources/Documents/js/jquery.min.js; sourceTree = "<group>"; };
+		10414EBC251EA03BE2B1A19C86B4EFBE /* GeoTrack.html */ = {isa = PBXFileReference; includeInIndex = 1; name = GeoTrack.html; path = docs/Classes/GeoTrack.html; sourceTree = "<group>"; };
+		133A0A130E41767B8AEAF57E1B06FF33 /* Level.html */ = {isa = PBXFileReference; includeInIndex = 1; name = Level.html; path = docs/Classes/GeoTrackEvent/Level.html; sourceTree = "<group>"; };
+		13B4AD005C30D8EBBFE0702641B0FF2F /* GeoTrackMap.html */ = {isa = PBXFileReference; includeInIndex = 1; name = GeoTrackMap.html; path = docs/Classes/GeoTrackMap.html; sourceTree = "<group>"; };
+		164B54AC7CECA23ED947E5FC597E816E /* GeoTrackLocationEvent.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = GeoTrackLocationEvent.swift; sourceTree = "<group>"; };
+		16CB8EB8E8CB7D92A44D5043332A0064 /* Name.html */ = {isa = PBXFileReference; includeInIndex = 1; name = Name.html; path = docs/Extensions/Notification/Name.html; sourceTree = "<group>"; };
+		18C25C1C4EFCD3FFA808152BBFF2D06E /* GeoTrackKit-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "GeoTrackKit-prefix.pch"; sourceTree = "<group>"; };
+		1F2EF76A686D3FD6934B89183D833E0C /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
+		1F864374224668D46CCE8AF5267F8D9E /* GeoTrackConsoleAppender.html */ = {isa = PBXFileReference; includeInIndex = 1; name = GeoTrackConsoleAppender.html; path = docs/docsets/GeoTrackKit.docset/Contents/Resources/Documents/Classes/GeoTrackConsoleAppender.html; sourceTree = "<group>"; };
+		22F8951C7C9D42CEA14D5E5F767BC308 /* GeoTrackKitErrors.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GeoTrackKitErrors.swift; path = GeoTrackKit/Core/GeoTrackKitErrors.swift; sourceTree = "<group>"; };
+		23E858B65D0D51965B0EF4A0E2FF5E9F /* TrackStat.html */ = {isa = PBXFileReference; includeInIndex = 1; name = TrackStat.html; path = docs/Classes/TrackStat.html; sourceTree = "<group>"; };
 		2829797D6D1DEC21487DF701E3441478 /* Pods-GeoTrackKitExample-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-GeoTrackKitExample-dummy.m"; sourceTree = "<group>"; };
-		2A28300512935589BD93999165B9221B /* GeoTrackManager.html */ = {isa = PBXFileReference; includeInIndex = 1; name = GeoTrackManager.html; path = docs/Classes/GeoTrackManager.html; sourceTree = "<group>"; };
-		2CC3B4F49EF601A9614116D25CD7F96F /* GeoTrackService.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GeoTrackService.swift; path = GeoTrackKit/GeoTrackService.swift; sourceTree = "<group>"; };
-		2DC9B8AA3A1945DF300A93E674978AD8 /* GeoTrackLocationEvent.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = GeoTrackLocationEvent.swift; sourceTree = "<group>"; };
+		2AE1D43F02B251A3843AC045B9CD5395 /* Name.html */ = {isa = PBXFileReference; includeInIndex = 1; name = Name.html; path = docs/docsets/GeoTrackKit.docset/Contents/Resources/Documents/Extensions/Notification/Name.html; sourceTree = "<group>"; };
+		2D54717776CFE79F9B6E724378661719 /* GeoTrackLocationEvent.html */ = {isa = PBXFileReference; includeInIndex = 1; name = GeoTrackLocationEvent.html; path = docs/Classes/GeoTrackLocationEvent.html; sourceTree = "<group>"; };
 		2F33AAE22298066939852ED11416561E /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		2F7779EE5D6C0281DEFE448B8CB94783 /* LocationTrackingPrompt.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = LocationTrackingPrompt.png; path = docs/docsets/GeoTrackKit.docset/Contents/Resources/Documents/screenshots/LocationTrackingPrompt.png; sourceTree = "<group>"; };
-		2FA2A5D4CF0569FFCB24C43B147F9F22 /* GeoTrackEventLog.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GeoTrackEventLog.swift; path = GeoTrackKit/GeoTrackEventLog.swift; sourceTree = "<group>"; };
+		30B54C841750590D28AD5C471208E4FE /* Classes.html */ = {isa = PBXFileReference; includeInIndex = 1; name = Classes.html; path = docs/docsets/GeoTrackKit.docset/Contents/Resources/Documents/Classes.html; sourceTree = "<group>"; };
 		3126119ED9E1208A62F6E28E378D62DA /* Pods-GeoTrackKitExampleTests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-GeoTrackKitExampleTests-frameworks.sh"; sourceTree = "<group>"; };
-		32801B06D9D216312FDE89D3BF8596C6 /* index.html */ = {isa = PBXFileReference; includeInIndex = 1; name = index.html; path = docs/docsets/GeoTrackKit.docset/Contents/Resources/Documents/index.html; sourceTree = "<group>"; };
-		34C9AFDBC6656139839B980988E2635C /* GeoTrackState.html */ = {isa = PBXFileReference; includeInIndex = 1; name = GeoTrackState.html; path = docs/Enums/GeoTrackState.html; sourceTree = "<group>"; };
-		35DD704AC42A2F7FDDA288C54A3A0BF7 /* GeoTrack.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = GeoTrack.swift; sourceTree = "<group>"; };
-		3622CDC13820F695E49B81ACFD533CBF /* Enums.html */ = {isa = PBXFileReference; includeInIndex = 1; name = Enums.html; path = docs/Enums.html; sourceTree = "<group>"; };
-		395740EF55ABA01B86A566E555254FFA /* Typealiases.html */ = {isa = PBXFileReference; includeInIndex = 1; name = Typealiases.html; path = docs/Typealiases.html; sourceTree = "<group>"; };
-		425D188FE0477ED5F55E622BDCF2B5B4 /* GeoTrackLocationEvent.html */ = {isa = PBXFileReference; includeInIndex = 1; name = GeoTrackLocationEvent.html; path = docs/Classes/GeoTrackLocationEvent.html; sourceTree = "<group>"; };
-		425FC17A58A01FE668DB3CF7DF67EF50 /* Usage.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = Usage.png; path = docs/docsets/GeoTrackKit.docset/Contents/Resources/Documents/screenshots/Usage.png; sourceTree = "<group>"; };
-		462F0CECA0D570B9F1DD43D38D9CE096 /* TrackStat.html */ = {isa = PBXFileReference; includeInIndex = 1; name = TrackStat.html; path = docs/Classes/TrackStat.html; sourceTree = "<group>"; };
-		469FE3ECF4DEED21312FD611276BAA98 /* GeoTrackMap.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = GeoTrackMap.swift; sourceTree = "<group>"; };
-		4909D5DBA2E64305AC98525FA703608B /* UIGeoTrack.html */ = {isa = PBXFileReference; includeInIndex = 1; name = UIGeoTrack.html; path = docs/Classes/UIGeoTrack.html; sourceTree = "<group>"; };
-		4A7CA4C90810CADACA8322A6D473F4A8 /* GeoTrackKit.html */ = {isa = PBXFileReference; includeInIndex = 1; name = GeoTrackKit.html; path = docs/docsets/GeoTrackKit.docset/Contents/Resources/Documents/Extensions/Notification/GeoTrackKit.html; sourceTree = "<group>"; };
-		4DAA8F2FA483400F5C983A3EFC37D41A /* Level.html */ = {isa = PBXFileReference; includeInIndex = 1; name = Level.html; path = docs/Classes/GeoTrackEvent/Level.html; sourceTree = "<group>"; };
-		4EF7D7DFFDDD458BD7424362B279B4E0 /* highlight.css */ = {isa = PBXFileReference; includeInIndex = 1; name = highlight.css; path = docs/css/highlight.css; sourceTree = "<group>"; };
-		52188732C52698BDE2529455C77CE9F1 /* GeoTrackKitClasses.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = GeoTrackKitClasses.png; path = docs/docsets/GeoTrackKit.docset/Contents/Resources/Documents/screenshots/GeoTrackKitClasses.png; sourceTree = "<group>"; };
-		54F70DF817121B2D76DD7602EB1155C4 /* Stat.html */ = {isa = PBXFileReference; includeInIndex = 1; name = Stat.html; path = docs/docsets/GeoTrackKit.docset/Contents/Resources/Documents/Classes/Stat.html; sourceTree = "<group>"; };
-		5639218BC17BBF260C5CA5FE94D5036B /* UIGeoTrack.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = UIGeoTrack.swift; sourceTree = "<group>"; };
-		5650D4B1C7368EAB013FACD6ECAAB35F /* dash.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = dash.png; path = docs/docsets/GeoTrackKit.docset/Contents/Resources/Documents/img/dash.png; sourceTree = "<group>"; };
-		5911BC605DA2104AA3B40645E13CABCE /* ZoomDefining.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ZoomDefining.swift; sourceTree = "<group>"; };
+		32773E974A2CED025C4E59999E3F3155 /* GeoTrackLocationEvent.html */ = {isa = PBXFileReference; includeInIndex = 1; name = GeoTrackLocationEvent.html; path = docs/docsets/GeoTrackKit.docset/Contents/Resources/Documents/Classes/GeoTrackLocationEvent.html; sourceTree = "<group>"; };
+		333AA9301F91534142F4F1CC89069216 /* ZoomDefining.html */ = {isa = PBXFileReference; includeInIndex = 1; name = ZoomDefining.html; path = docs/Protocols/ZoomDefining.html; sourceTree = "<group>"; };
+		37426868A5ADAE0B30BE8363BA49CDB4 /* Direction.html */ = {isa = PBXFileReference; includeInIndex = 1; name = Direction.html; path = docs/Enums/Direction.html; sourceTree = "<group>"; };
+		3823E97D3AC4ECF9D1E248E9BFC1DC64 /* Date.html */ = {isa = PBXFileReference; includeInIndex = 1; name = Date.html; path = docs/docsets/GeoTrackKit.docset/Contents/Resources/Documents/Extensions/Date.html; sourceTree = "<group>"; };
+		389390652111FD36B5E32F0F204D50B2 /* GeoTrackKit.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = GeoTrackKit.modulemap; sourceTree = "<group>"; };
+		3E10E03562AD85C5F7A23CF3679FEE1C /* undocumented.json */ = {isa = PBXFileReference; includeInIndex = 1; name = undocumented.json; path = docs/undocumented.json; sourceTree = "<group>"; };
+		3E45F2B5D3566C09ED782F18B0411413 /* search.json */ = {isa = PBXFileReference; includeInIndex = 1; name = search.json; path = docs/search.json; sourceTree = "<group>"; };
+		3F37E90A265C6D1FE97A3B0FB18CFBC2 /* Direction.html */ = {isa = PBXFileReference; includeInIndex = 1; name = Direction.html; path = docs/docsets/GeoTrackKit.docset/Contents/Resources/Documents/Enums/Direction.html; sourceTree = "<group>"; };
+		3FA5E618085D3B427B3DC591F2A60455 /* EventType.html */ = {isa = PBXFileReference; includeInIndex = 1; name = EventType.html; path = docs/Classes/GeoTrackLocationEvent/EventType.html; sourceTree = "<group>"; };
+		4304DDF6174D52487F46F14246B030A5 /* Classes.html */ = {isa = PBXFileReference; includeInIndex = 1; name = Classes.html; path = docs/Classes.html; sourceTree = "<group>"; };
+		434E8451EE3ED897F18C0E9717FE04D6 /* GeoTrackManager.html */ = {isa = PBXFileReference; includeInIndex = 1; name = GeoTrackManager.html; path = docs/Classes/GeoTrackManager.html; sourceTree = "<group>"; };
+		43D490F146CC161CEC5ED5314B1A41FE /* GeoTrack.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = GeoTrack.swift; sourceTree = "<group>"; };
+		453C1C03A0EB23C3BDC28375C3CFE158 /* GeoTrack+Utilities.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "GeoTrack+Utilities.swift"; sourceTree = "<group>"; };
+		467BB0FAE9FB1E49FF0EE0351F6CFED4 /* jazzy.js */ = {isa = PBXFileReference; includeInIndex = 1; name = jazzy.js; path = docs/docsets/GeoTrackKit.docset/Contents/Resources/Documents/js/jazzy.js; sourceTree = "<group>"; };
+		4863B45DB7F0C66FC91695E082941A91 /* jazzy.css */ = {isa = PBXFileReference; includeInIndex = 1; name = jazzy.css; path = docs/docsets/GeoTrackKit.docset/Contents/Resources/Documents/css/jazzy.css; sourceTree = "<group>"; };
+		4C152D253300DEFF82754FC1921DB883 /* UIGeoTrack.html */ = {isa = PBXFileReference; includeInIndex = 1; name = UIGeoTrack.html; path = docs/docsets/GeoTrackKit.docset/Contents/Resources/Documents/Classes/UIGeoTrack.html; sourceTree = "<group>"; };
+		4E7FAFC5B5050798387395310FD0B80F /* GeoTrackService.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GeoTrackService.swift; path = GeoTrackKit/Core/GeoTrackService.swift; sourceTree = "<group>"; };
+		50797779D7FFA68D3B6EDB71FE22C331 /* ZoomDefining.html */ = {isa = PBXFileReference; includeInIndex = 1; name = ZoomDefining.html; path = docs/docsets/GeoTrackKit.docset/Contents/Resources/Documents/Protocols/ZoomDefining.html; sourceTree = "<group>"; };
+		57374C9D415E993CCB6046906C6C357E /* GeoTrackManager.html */ = {isa = PBXFileReference; includeInIndex = 1; name = GeoTrackManager.html; path = docs/docsets/GeoTrackKit.docset/Contents/Resources/Documents/Classes/GeoTrackManager.html; sourceTree = "<group>"; };
+		58C79605E50BECDFEB4B500600B7A617 /* Leg.html */ = {isa = PBXFileReference; includeInIndex = 1; name = Leg.html; path = docs/docsets/GeoTrackKit.docset/Contents/Resources/Documents/Classes/Leg.html; sourceTree = "<group>"; };
 		59DEEA346498F0AF5C7ED52F84D99351 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5A16F4CFC63FAC439D7A04994F579A03 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		5A7B5DC2787C33B5D23B2C30A89BA15B /* dash.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = dash.png; path = docs/img/dash.png; sourceTree = "<group>"; };
-		5AB6BA72694F7B008292722FCE4A5871 /* Notification.html */ = {isa = PBXFileReference; includeInIndex = 1; name = Notification.html; path = docs/Extensions/Notification.html; sourceTree = "<group>"; };
-		5C2639A6FAC6A1ABAAFF2E9F66B1C153 /* jazzy.js */ = {isa = PBXFileReference; includeInIndex = 1; name = jazzy.js; path = docs/docsets/GeoTrackKit.docset/Contents/Resources/Documents/js/jazzy.js; sourceTree = "<group>"; };
-		5C57DDC7C837074AB8139A0A380FC89B /* carat.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = carat.png; path = docs/docsets/GeoTrackKit.docset/Contents/Resources/Documents/img/carat.png; sourceTree = "<group>"; };
-		5CBA47C11BFD127E421F32557CFFD033 /* search.json */ = {isa = PBXFileReference; includeInIndex = 1; name = search.json; path = docs/search.json; sourceTree = "<group>"; };
-		5F49724897794B24EB5CB62017AD699F /* Extensions.html */ = {isa = PBXFileReference; includeInIndex = 1; name = Extensions.html; path = docs/Extensions.html; sourceTree = "<group>"; };
-		60F30EF0CE12634A6960AE079CCDD266 /* CLLocation.html */ = {isa = PBXFileReference; includeInIndex = 1; name = CLLocation.html; path = docs/docsets/GeoTrackKit.docset/Contents/Resources/Documents/Extensions/CLLocation.html; sourceTree = "<group>"; };
+		5B2B0A025DDADB1E072C3D11863867DB /* gh.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = gh.png; path = docs/docsets/GeoTrackKit.docset/Contents/Resources/Documents/img/gh.png; sourceTree = "<group>"; };
+		5BD70AD402119FC8045D66214ED24282 /* Extensions.html */ = {isa = PBXFileReference; includeInIndex = 1; name = Extensions.html; path = docs/docsets/GeoTrackKit.docset/Contents/Resources/Documents/Extensions.html; sourceTree = "<group>"; };
+		5C92FB639CB40F20B81BDE5853998C20 /* Protocols.html */ = {isa = PBXFileReference; includeInIndex = 1; name = Protocols.html; path = docs/Protocols.html; sourceTree = "<group>"; };
+		5D49D662EBF4B3F35AADD4F9AC389DD3 /* GeoMapping.html */ = {isa = PBXFileReference; includeInIndex = 1; name = GeoMapping.html; path = docs/Extensions/Notification/Name/GeoMapping.html; sourceTree = "<group>"; };
+		5D99BCF863A0C3A3555E3B48359730E0 /* CLLocationExtension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CLLocationExtension.swift; sourceTree = "<group>"; };
 		61D994B3EA64364B2C7131056079EC0C /* Pods-GeoTrackKitExampleTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-GeoTrackKitExampleTests-acknowledgements.plist"; sourceTree = "<group>"; };
-		67EAE892D71B98107F7211928F35B28B /* GeoTrackKit.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = GeoTrackKit.xcconfig; sourceTree = "<group>"; };
-		6818075EE74D86FF423B972E04F39351 /* GeoTrackService.html */ = {isa = PBXFileReference; includeInIndex = 1; name = GeoTrackService.html; path = docs/Protocols/GeoTrackService.html; sourceTree = "<group>"; };
-		68C7F861BAC1DB30B5B52FE47606FE08 /* GeoTrackKit-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "GeoTrackKit-umbrella.h"; sourceTree = "<group>"; };
-		699F40DD7C868797271CBE481F1DB34C /* Mapping.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = Mapping.png; path = docs/docsets/GeoTrackKit.docset/Contents/Resources/Documents/screenshots/Mapping.png; sourceTree = "<group>"; };
-		6A1CC167C56C105C1C3FF0385A7859F9 /* Typealiases.html */ = {isa = PBXFileReference; includeInIndex = 1; name = Typealiases.html; path = docs/docsets/GeoTrackKit.docset/Contents/Resources/Documents/Typealiases.html; sourceTree = "<group>"; };
-		6AED118654396BA6EF7B619BA668E434 /* GeoTrackConsoleAppender.html */ = {isa = PBXFileReference; includeInIndex = 1; name = GeoTrackConsoleAppender.html; path = docs/Classes/GeoTrackConsoleAppender.html; sourceTree = "<group>"; };
-		6B4CCDF2525DC60679B6A2D2B3960EEA /* GeoTrackEventLog.html */ = {isa = PBXFileReference; includeInIndex = 1; name = GeoTrackEventLog.html; path = docs/docsets/GeoTrackKit.docset/Contents/Resources/Documents/Classes/GeoTrackEventLog.html; sourceTree = "<group>"; };
-		72D3751FCC6D7B652CA0D7176E29CDE1 /* badge.svg */ = {isa = PBXFileReference; includeInIndex = 1; name = badge.svg; path = docs/docsets/GeoTrackKit.docset/Contents/Resources/Documents/badge.svg; sourceTree = "<group>"; };
-		73635E0D6500642C85C3E0026A91064A /* GeoTrackEvent.html */ = {isa = PBXFileReference; includeInIndex = 1; name = GeoTrackEvent.html; path = docs/docsets/GeoTrackKit.docset/Contents/Resources/Documents/Classes/GeoTrackEvent.html; sourceTree = "<group>"; };
+		620E18D8C3F1818B3410D3EFF549B558 /* CLLocation.html */ = {isa = PBXFileReference; includeInIndex = 1; name = CLLocation.html; path = docs/Extensions/CLLocation.html; sourceTree = "<group>"; };
+		65168C456FE1622C9DF92F78671BC3D6 /* DefaultMapZoom.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DefaultMapZoom.swift; sourceTree = "<group>"; };
+		65B89F2F11E8A82075A52223AF23C097 /* Functions.html */ = {isa = PBXFileReference; includeInIndex = 1; name = Functions.html; path = docs/docsets/GeoTrackKit.docset/Contents/Resources/Documents/Functions.html; sourceTree = "<group>"; };
+		66CABDA2695FF23AF0473DCDEC27EB48 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = Info.plist; path = docs/docsets/GeoTrackKit.docset/Contents/Info.plist; sourceTree = "<group>"; };
+		6BEC83CCDD857CAC648E0A411C287AC8 /* GeoTrackLogAppender.html */ = {isa = PBXFileReference; includeInIndex = 1; name = GeoTrackLogAppender.html; path = docs/Protocols/GeoTrackLogAppender.html; sourceTree = "<group>"; };
+		6E33B16B99B4AA30B6FE86B4DEDA28C4 /* Protocols.html */ = {isa = PBXFileReference; includeInIndex = 1; name = Protocols.html; path = docs/docsets/GeoTrackKit.docset/Contents/Resources/Documents/Protocols.html; sourceTree = "<group>"; };
+		6E9C3E0D22D749D1DD2A04B4FF1B3315 /* Stat.html */ = {isa = PBXFileReference; includeInIndex = 1; name = Stat.html; path = docs/docsets/GeoTrackKit.docset/Contents/Resources/Documents/Classes/Stat.html; sourceTree = "<group>"; };
+		73878A9E1883E15DDD19866E1F8A6382 /* Typealiases.html */ = {isa = PBXFileReference; includeInIndex = 1; name = Typealiases.html; path = docs/docsets/GeoTrackKit.docset/Contents/Resources/Documents/Typealiases.html; sourceTree = "<group>"; };
 		73B9ABC003B3D4EA1DE260789B4A7DA7 /* Pods-GeoTrackKitExampleTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-GeoTrackKitExampleTests.release.xcconfig"; sourceTree = "<group>"; };
 		7434F8F7C75DD7E3F7EE22D6B5408024 /* Pods-GeoTrackKitExample-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-GeoTrackKitExample-acknowledgements.plist"; sourceTree = "<group>"; };
 		749497A9828FCBBC17034E4625532C89 /* Pods_GeoTrackKitExampleTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_GeoTrackKitExampleTests.framework; path = "Pods-GeoTrackKitExampleTests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
-		76181692AAAB7690AEE15C38178DAD71 /* GeoTrackEventLog.html */ = {isa = PBXFileReference; includeInIndex = 1; name = GeoTrackEventLog.html; path = docs/Classes/GeoTrackEventLog.html; sourceTree = "<group>"; };
-		7696F4DEECD138C314D732A2B54DE3D4 /* GeoTrackEvent.html */ = {isa = PBXFileReference; includeInIndex = 1; name = GeoTrackEvent.html; path = docs/Classes/GeoTrackEvent.html; sourceTree = "<group>"; };
-		774B39B30E84CD6380432BF1805E70BB /* Classes.html */ = {isa = PBXFileReference; includeInIndex = 1; name = Classes.html; path = docs/Classes.html; sourceTree = "<group>"; };
-		794816BD1CE27F468E03E0256E12CB51 /* GeoTrackKit-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "GeoTrackKit-prefix.pch"; sourceTree = "<group>"; };
-		7A70436E32E5C09330ECCB75B03A1C0A /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
+		7A2C0765795AB28F092DD71B2D982BEF /* GeoTrackMap.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = GeoTrackMap.swift; sourceTree = "<group>"; };
+		7AEF1F2FAB182723F54DF09CFDE160AF /* carat.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = carat.png; path = docs/img/carat.png; sourceTree = "<group>"; };
 		7B64FF72DBF7BE18E7422F336B8CA943 /* Pods-GeoTrackKitExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-GeoTrackKitExample.debug.xcconfig"; sourceTree = "<group>"; };
-		7BFFA01AC2A868087B5F023365551AD9 /* GeoTrackState.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GeoTrackState.swift; path = GeoTrackKit/GeoTrackState.swift; sourceTree = "<group>"; };
-		7CFCEA8AB143E7AC4962B18BCE9C391E /* DateExtension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
-		7D52C6D1CF9DAF9E1F5821531A83B9AF /* ZoomDefining.html */ = {isa = PBXFileReference; includeInIndex = 1; name = ZoomDefining.html; path = docs/Protocols/ZoomDefining.html; sourceTree = "<group>"; };
-		7DDBAC9861993802E2FFED5B4F2BDE70 /* GeoTrackKit.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = GeoTrackKit.modulemap; sourceTree = "<group>"; };
-		83B50FB349D11B64D25E63566BF1B6F5 /* Leg.html */ = {isa = PBXFileReference; includeInIndex = 1; name = Leg.html; path = docs/docsets/GeoTrackKit.docset/Contents/Resources/Documents/Classes/Leg.html; sourceTree = "<group>"; };
-		846639CF7C83B4F4D36E6CC3B5B142C2 /* GeoTrackLogAppender.html */ = {isa = PBXFileReference; includeInIndex = 1; name = GeoTrackLogAppender.html; path = docs/docsets/GeoTrackKit.docset/Contents/Resources/Documents/Protocols/GeoTrackLogAppender.html; sourceTree = "<group>"; };
-		85BD5B8DB5D1962AA382BE73271278BB /* GeoTrackManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GeoTrackManager.swift; path = GeoTrackKit/GeoTrackManager.swift; sourceTree = "<group>"; };
+		80D20C09E5860A09E57B7DE1F2837902 /* docSet.dsidx */ = {isa = PBXFileReference; includeInIndex = 1; name = docSet.dsidx; path = docs/docsets/GeoTrackKit.docset/Contents/Resources/docSet.dsidx; sourceTree = "<group>"; };
+		8119914960A2D3DE0E6121248DFFAA9B /* GeoMapping.html */ = {isa = PBXFileReference; includeInIndex = 1; name = GeoMapping.html; path = docs/docsets/GeoTrackKit.docset/Contents/Resources/Documents/Extensions/Notification/Name/GeoMapping.html; sourceTree = "<group>"; };
+		85CF26B9CC5A970CD825DC5FFAEB62C1 /* GeoTrack.html */ = {isa = PBXFileReference; includeInIndex = 1; name = GeoTrack.html; path = docs/docsets/GeoTrackKit.docset/Contents/Resources/Documents/Classes/GeoTrack.html; sourceTree = "<group>"; };
 		876DAD1BFF7C00617033265627C951B9 /* Pods-GeoTrackKitExample-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-GeoTrackKitExample-frameworks.sh"; sourceTree = "<group>"; };
-		877EFC0A0A0821C498D06FB05627D642 /* GeoMapping.html */ = {isa = PBXFileReference; includeInIndex = 1; name = GeoMapping.html; path = docs/Extensions/Notification/GeoMapping.html; sourceTree = "<group>"; };
-		8C1EA3E277CB44AC629DF08B1C4B1D0F /* Level.html */ = {isa = PBXFileReference; includeInIndex = 1; name = Level.html; path = docs/docsets/GeoTrackKit.docset/Contents/Resources/Documents/Classes/GeoTrackEvent/Level.html; sourceTree = "<group>"; };
-		907739DFCF230BCC6AE5475883AB6FFF /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = Info.plist; path = docs/docsets/GeoTrackKit.docset/Contents/Info.plist; sourceTree = "<group>"; };
-		913E3CA1BB283719E747DED9F11A63CB /* UIGeoTrack.html */ = {isa = PBXFileReference; includeInIndex = 1; name = UIGeoTrack.html; path = docs/docsets/GeoTrackKit.docset/Contents/Resources/Documents/Classes/UIGeoTrack.html; sourceTree = "<group>"; };
+		8A632B08A8F2EA58383F1E9AFFAC24C7 /* GeoTrackState.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GeoTrackState.swift; path = GeoTrackKit/Core/GeoTrackState.swift; sourceTree = "<group>"; };
+		8A87888F562ED6056F9D73968D5D93A6 /* GeoTrackEvent.html */ = {isa = PBXFileReference; includeInIndex = 1; name = GeoTrackEvent.html; path = docs/Classes/GeoTrackEvent.html; sourceTree = "<group>"; };
+		8AAFE2DDD081F9EEB2570B67DB3C3E4E /* GeoTrackEventLog.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GeoTrackEventLog.swift; path = GeoTrackKit/Core/GeoTrackEventLog.swift; sourceTree = "<group>"; };
+		8FE0BCE6FACFCCB8384AD17AF16CCF46 /* GeoTrackEvent.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GeoTrackEvent.swift; path = GeoTrackKit/Core/GeoTrackEvent.swift; sourceTree = "<group>"; };
+		90AE1FEEE14748E311DA33149B6220DE /* GeoTrackAnalyzer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GeoTrackAnalyzer.swift; path = GeoTrackKit/Core/GeoTrackAnalyzer.swift; sourceTree = "<group>"; };
 		91EEE491B45C18C9EDC825C70E12B209 /* Pods-GeoTrackKitExample.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-GeoTrackKitExample.modulemap"; sourceTree = "<group>"; };
+		92C27E7C5B03948096D6715BE98B3C7E /* highlight.css */ = {isa = PBXFileReference; includeInIndex = 1; name = highlight.css; path = docs/css/highlight.css; sourceTree = "<group>"; };
 		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		95BF045D5BABF03ABBAEECDC640AACBB /* DefaultMapZoom.html */ = {isa = PBXFileReference; includeInIndex = 1; name = DefaultMapZoom.html; path = docs/Classes/DefaultMapZoom.html; sourceTree = "<group>"; };
-		98BEC3369EFD04685E9E6A2AD93C5A95 /* Enums.html */ = {isa = PBXFileReference; includeInIndex = 1; name = Enums.html; path = docs/docsets/GeoTrackKit.docset/Contents/Resources/Documents/Enums.html; sourceTree = "<group>"; };
-		99D907AA6F266CF8F3811AA97927E68F /* GeoTrackKit.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; path = GeoTrackKit.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		9D18538A0D58EDA448A0F9C4336C9A05 /* GeoTrackAnalyzer.html */ = {isa = PBXFileReference; includeInIndex = 1; name = GeoTrackAnalyzer.html; path = docs/docsets/GeoTrackKit.docset/Contents/Resources/Documents/Classes/GeoTrackAnalyzer.html; sourceTree = "<group>"; };
+		946787E76C40BC832138054E20AD69B8 /* GeoTrackEvent.html */ = {isa = PBXFileReference; includeInIndex = 1; name = GeoTrackEvent.html; path = docs/docsets/GeoTrackKit.docset/Contents/Resources/Documents/Classes/GeoTrackEvent.html; sourceTree = "<group>"; };
+		9520AC346BDAD0D65CFDDE577F12F16A /* GeoTrackService.html */ = {isa = PBXFileReference; includeInIndex = 1; name = GeoTrackService.html; path = docs/docsets/GeoTrackKit.docset/Contents/Resources/Documents/Protocols/GeoTrackService.html; sourceTree = "<group>"; };
+		964E8EC3256E8E80F7F72A68CDF21AA5 /* GeoTrackKit.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = GeoTrackKit.xcconfig; sourceTree = "<group>"; };
+		9792A828DD0DD4BF73DF27B1A269F19A /* LoggingFunctions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LoggingFunctions.swift; path = GeoTrackKit/Core/LoggingFunctions.swift; sourceTree = "<group>"; };
+		99C3EF8327BD27648F7E26C313217F39 /* Enums.html */ = {isa = PBXFileReference; includeInIndex = 1; name = Enums.html; path = docs/Enums.html; sourceTree = "<group>"; };
+		9D16E286B22DB059E70E75954770610D /* Level.html */ = {isa = PBXFileReference; includeInIndex = 1; name = Level.html; path = docs/docsets/GeoTrackKit.docset/Contents/Resources/Documents/Classes/GeoTrackEvent/Level.html; sourceTree = "<group>"; };
 		9DDD4365E822BA790ED77BDA5A657FDD /* Pods-GeoTrackKitExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-GeoTrackKitExample.release.xcconfig"; sourceTree = "<group>"; };
-		9EB37F10FD385A2614CE97849770CC3C /* GeoTrackEvent.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GeoTrackEvent.swift; path = GeoTrackKit/GeoTrackEvent.swift; sourceTree = "<group>"; };
-		9FB289DAE0C0A8DDFEC431F4F40D2AA1 /* Date.html */ = {isa = PBXFileReference; includeInIndex = 1; name = Date.html; path = docs/docsets/GeoTrackKit.docset/Contents/Resources/Documents/Extensions/Date.html; sourceTree = "<group>"; };
-		A17EA98D31B60A0A7B420E2BCE37FD52 /* GeoTrackKit-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "GeoTrackKit-dummy.m"; sourceTree = "<group>"; };
-		A3E10650CE7B0B85D59847EA0D4BEAE0 /* search.json */ = {isa = PBXFileReference; includeInIndex = 1; name = search.json; path = docs/docsets/GeoTrackKit.docset/Contents/Resources/Documents/search.json; sourceTree = "<group>"; };
-		A5BA85B57E4E4A7810887E65397BE990 /* jazzy.css */ = {isa = PBXFileReference; includeInIndex = 1; name = jazzy.css; path = docs/css/jazzy.css; sourceTree = "<group>"; };
+		9F5ED8F6A4F5B33BC25A982BADBE0970 /* dash.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = dash.png; path = docs/docsets/GeoTrackKit.docset/Contents/Resources/Documents/img/dash.png; sourceTree = "<group>"; };
+		A2347A90F3D328EC7BE030C4CA395E43 /* TrackStat.html */ = {isa = PBXFileReference; includeInIndex = 1; name = TrackStat.html; path = docs/docsets/GeoTrackKit.docset/Contents/Resources/Documents/Classes/TrackStat.html; sourceTree = "<group>"; };
+		A4C604CF2BE9E009AF8E6AC7649E45DD /* Notification.html */ = {isa = PBXFileReference; includeInIndex = 1; name = Notification.html; path = docs/Extensions/Notification.html; sourceTree = "<group>"; };
 		A74DCC49B5EE019AB07F7041F9A2E724 /* GeoTrackKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = GeoTrackKit.framework; path = GeoTrackKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		A99CC3766EECAB66721457A90914C013 /* DefaultMapZoom.html */ = {isa = PBXFileReference; includeInIndex = 1; name = DefaultMapZoom.html; path = docs/docsets/GeoTrackKit.docset/Contents/Resources/Documents/Classes/DefaultMapZoom.html; sourceTree = "<group>"; };
-		B04FC9474EE6A4DEB2E8D9838D4F9E32 /* Protocols.html */ = {isa = PBXFileReference; includeInIndex = 1; name = Protocols.html; path = docs/Protocols.html; sourceTree = "<group>"; };
+		A9329C2B594CA6A2D6048A5CC1F73BB0 /* badge.svg */ = {isa = PBXFileReference; includeInIndex = 1; name = badge.svg; path = docs/badge.svg; sourceTree = "<group>"; };
+		A9960F2480CE9D391E9228646A80FA4A /* dash.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = dash.png; path = docs/img/dash.png; sourceTree = "<group>"; };
+		A9A55DCA9A71A2F1A40DE64DE2FD39ED /* DefaultMapZoom.html */ = {isa = PBXFileReference; includeInIndex = 1; name = DefaultMapZoom.html; path = docs/Classes/DefaultMapZoom.html; sourceTree = "<group>"; };
+		AA05C8A0805E32E3A53A83C1B8B0FCD5 /* index.html */ = {isa = PBXFileReference; includeInIndex = 1; name = index.html; path = docs/docsets/GeoTrackKit.docset/Contents/Resources/Documents/index.html; sourceTree = "<group>"; };
+		AAE121E0D1379722833F6CDDC26C2736 /* GeoTrackAnalyzer.html */ = {isa = PBXFileReference; includeInIndex = 1; name = GeoTrackAnalyzer.html; path = docs/docsets/GeoTrackKit.docset/Contents/Resources/Documents/Classes/GeoTrackAnalyzer.html; sourceTree = "<group>"; };
+		AB406651FF102CACE38473E11A39D921 /* GeoTrackKit.html */ = {isa = PBXFileReference; includeInIndex = 1; name = GeoTrackKit.html; path = docs/Extensions/Notification/Name/GeoTrackKit.html; sourceTree = "<group>"; };
+		AF5AEAA11E60CF49172155CACC5D61E2 /* carat.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = carat.png; path = docs/docsets/GeoTrackKit.docset/Contents/Resources/Documents/img/carat.png; sourceTree = "<group>"; };
+		AF62287D31720E86B075F84324A367C7 /* Notification.html */ = {isa = PBXFileReference; includeInIndex = 1; name = Notification.html; path = docs/docsets/GeoTrackKit.docset/Contents/Resources/Documents/Extensions/Notification.html; sourceTree = "<group>"; };
 		B1375BB80CE1BB9E3AC22FBA003F2D10 /* Pods-GeoTrackKitExampleTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-GeoTrackKitExampleTests.modulemap"; sourceTree = "<group>"; };
-		B15F698F5E955DB3AD835A16D4C4CF29 /* GeoTrackService.html */ = {isa = PBXFileReference; includeInIndex = 1; name = GeoTrackService.html; path = docs/docsets/GeoTrackKit.docset/Contents/Resources/Documents/Protocols/GeoTrackService.html; sourceTree = "<group>"; };
-		B2C5318A3402E790832F804B514C7E79 /* GeoMapping.html */ = {isa = PBXFileReference; includeInIndex = 1; name = GeoMapping.html; path = docs/docsets/GeoTrackKit.docset/Contents/Resources/Documents/Extensions/Notification/GeoMapping.html; sourceTree = "<group>"; };
-		B36A1D03D476B1918A97CA6B58DE7629 /* gh.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = gh.png; path = docs/docsets/GeoTrackKit.docset/Contents/Resources/Documents/img/gh.png; sourceTree = "<group>"; };
-		B3A1D98E849B90CCAA966D5E327A6DED /* Date.html */ = {isa = PBXFileReference; includeInIndex = 1; name = Date.html; path = docs/Extensions/Date.html; sourceTree = "<group>"; };
+		B3453E175602FA496320752708914B06 /* GeoTrackEventLog.html */ = {isa = PBXFileReference; includeInIndex = 1; name = GeoTrackEventLog.html; path = docs/Classes/GeoTrackEventLog.html; sourceTree = "<group>"; };
+		B357F75DA9874165A5779C568C2B52BA /* GeoTrackKit.html */ = {isa = PBXFileReference; includeInIndex = 1; name = GeoTrackKit.html; path = docs/docsets/GeoTrackKit.docset/Contents/Resources/Documents/Extensions/Notification/Name/GeoTrackKit.html; sourceTree = "<group>"; };
+		B393D5DF180068E6074B4AAA760D21BA /* EventType.html */ = {isa = PBXFileReference; includeInIndex = 1; name = EventType.html; path = docs/docsets/GeoTrackKit.docset/Contents/Resources/Documents/Classes/GeoTrackLocationEvent/EventType.html; sourceTree = "<group>"; };
+		B3F03FB16A8F548465FD6A8AE2913F81 /* GeoTrackConsoleAppender.html */ = {isa = PBXFileReference; includeInIndex = 1; name = GeoTrackConsoleAppender.html; path = docs/Classes/GeoTrackConsoleAppender.html; sourceTree = "<group>"; };
+		B459E1AF84DE7480512B57273DCA2DD1 /* Typealiases.html */ = {isa = PBXFileReference; includeInIndex = 1; name = Typealiases.html; path = docs/Typealiases.html; sourceTree = "<group>"; };
 		B5E8AEE12CD6FB4CA4C035C76ECFF326 /* Pods-GeoTrackKitExampleTests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-GeoTrackKitExampleTests-resources.sh"; sourceTree = "<group>"; };
-		B63B205470BA3E64A0C4C4AFBE9EFB2B /* Notification.html */ = {isa = PBXFileReference; includeInIndex = 1; name = Notification.html; path = docs/docsets/GeoTrackKit.docset/Contents/Resources/Documents/Extensions/Notification.html; sourceTree = "<group>"; };
-		B85076E7257D1BD7F48095608A84C009 /* CLLocationExtension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CLLocationExtension.swift; sourceTree = "<group>"; };
-		BB901BE18B00CAA39C81DA5145C2F731 /* CLLocation.html */ = {isa = PBXFileReference; includeInIndex = 1; name = CLLocation.html; path = docs/Extensions/CLLocation.html; sourceTree = "<group>"; };
-		BBBE268F7AF63A5DC79F3B6DE9189B9B /* badge.svg */ = {isa = PBXFileReference; includeInIndex = 1; name = badge.svg; path = docs/badge.svg; sourceTree = "<group>"; };
-		BF69E70AAF5E9B756F58BBA8CCA15B50 /* DefaultMapZoom.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DefaultMapZoom.swift; sourceTree = "<group>"; };
-		BFCAC38C099E9673704BF87395CCBF9B /* Leg.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Leg.swift; sourceTree = "<group>"; };
-		C138FBE8E47D09E0A012FF4859DED28B /* Extensions.html */ = {isa = PBXFileReference; includeInIndex = 1; name = Extensions.html; path = docs/docsets/GeoTrackKit.docset/Contents/Resources/Documents/Extensions.html; sourceTree = "<group>"; };
-		C149A39CA5633AC5044F12148FA29E02 /* GeoTrackMap.html */ = {isa = PBXFileReference; includeInIndex = 1; name = GeoTrackMap.html; path = docs/docsets/GeoTrackKit.docset/Contents/Resources/Documents/Classes/GeoTrackMap.html; sourceTree = "<group>"; };
+		B7524E9D28DF916D2377C77905614EFB /* GeoTrackService.html */ = {isa = PBXFileReference; includeInIndex = 1; name = GeoTrackService.html; path = docs/Protocols/GeoTrackService.html; sourceTree = "<group>"; };
+		B97069181FEAE4C35B6418AF26764F9B /* GeoTrackEventLog.html */ = {isa = PBXFileReference; includeInIndex = 1; name = GeoTrackEventLog.html; path = docs/docsets/GeoTrackKit.docset/Contents/Resources/Documents/Classes/GeoTrackEventLog.html; sourceTree = "<group>"; };
+		B9A13C427A0465120E25FB1E1C1E0C82 /* jazzy.css */ = {isa = PBXFileReference; includeInIndex = 1; name = jazzy.css; path = docs/css/jazzy.css; sourceTree = "<group>"; };
+		BB05B9E8B1F20EB0BEBE1B04621C1CE9 /* DefaultMapZoom.html */ = {isa = PBXFileReference; includeInIndex = 1; name = DefaultMapZoom.html; path = docs/docsets/GeoTrackKit.docset/Contents/Resources/Documents/Classes/DefaultMapZoom.html; sourceTree = "<group>"; };
+		BC478510F4786AD5956C7DD079FBC782 /* GeoTrackKit.tgz */ = {isa = PBXFileReference; includeInIndex = 1; name = GeoTrackKit.tgz; path = docs/docsets/GeoTrackKit.tgz; sourceTree = "<group>"; };
+		BD0FE28E32477741AB8A9FAFCEB77883 /* GeoTrackKit.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; path = GeoTrackKit.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		BF01EEDD35D1A0F76F63D00BEBA9C01B /* search.json */ = {isa = PBXFileReference; includeInIndex = 1; name = search.json; path = docs/docsets/GeoTrackKit.docset/Contents/Resources/Documents/search.json; sourceTree = "<group>"; };
 		C5A04C84C5C1455273889A2E9D7ED64E /* Pods-GeoTrackKitExampleTests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-GeoTrackKitExampleTests-umbrella.h"; sourceTree = "<group>"; };
-		C6DDF16AF00E97F1F4D2D0B75C66A5D9 /* GeoTrackKit.html */ = {isa = PBXFileReference; includeInIndex = 1; name = GeoTrackKit.html; path = docs/Extensions/Notification/GeoTrackKit.html; sourceTree = "<group>"; };
-		D091104D9E74E2AE07EE280E120D9AD5 /* Classes.html */ = {isa = PBXFileReference; includeInIndex = 1; name = Classes.html; path = docs/docsets/GeoTrackKit.docset/Contents/Resources/Documents/Classes.html; sourceTree = "<group>"; };
-		D3BEA21900DC68F03CD90EF364F5A827 /* Direction.html */ = {isa = PBXFileReference; includeInIndex = 1; name = Direction.html; path = docs/Enums/Direction.html; sourceTree = "<group>"; };
-		D46F6949A2BDD1E4C97DDE3B9B4B23DE /* GeoTrackConsoleAppender.html */ = {isa = PBXFileReference; includeInIndex = 1; name = GeoTrackConsoleAppender.html; path = docs/docsets/GeoTrackKit.docset/Contents/Resources/Documents/Classes/GeoTrackConsoleAppender.html; sourceTree = "<group>"; };
-		D5EDDCDD401BBADA2F04D798EFBC6463 /* GeoTrackAnalyzer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GeoTrackAnalyzer.swift; path = GeoTrackKit/GeoTrackAnalyzer.swift; sourceTree = "<group>"; };
-		D60FEA057FBD19A96EAAD1752321E9D3 /* TrackStat.html */ = {isa = PBXFileReference; includeInIndex = 1; name = TrackStat.html; path = docs/docsets/GeoTrackKit.docset/Contents/Resources/Documents/Classes/TrackStat.html; sourceTree = "<group>"; };
+		C6780DC93EAD69743A4F43EA34E020EF /* CLLocation.html */ = {isa = PBXFileReference; includeInIndex = 1; name = CLLocation.html; path = docs/docsets/GeoTrackKit.docset/Contents/Resources/Documents/Extensions/CLLocation.html; sourceTree = "<group>"; };
+		C9AB018064A2E763B082804F296B2A70 /* gh.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = gh.png; path = docs/img/gh.png; sourceTree = "<group>"; };
+		CC6C6E1AA54A5F7E7FC5B1E75DBB2866 /* Enums.html */ = {isa = PBXFileReference; includeInIndex = 1; name = Enums.html; path = docs/docsets/GeoTrackKit.docset/Contents/Resources/Documents/Enums.html; sourceTree = "<group>"; };
+		CE25F7347C99B24D07A5D82D12F74CFE /* highlight.css */ = {isa = PBXFileReference; includeInIndex = 1; name = highlight.css; path = docs/docsets/GeoTrackKit.docset/Contents/Resources/Documents/css/highlight.css; sourceTree = "<group>"; };
+		CFA352A19E610D0E28FECE566F984072 /* GeoTrackState.html */ = {isa = PBXFileReference; includeInIndex = 1; name = GeoTrackState.html; path = docs/Enums/GeoTrackState.html; sourceTree = "<group>"; };
+		D330CFEB53F2179CAEB8D67D8D0F7706 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
 		D8487DF676406564F795C4F5A9181015 /* Pods-GeoTrackKitExample-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-GeoTrackKitExample-umbrella.h"; sourceTree = "<group>"; };
-		DA044AE4CF1B30AC62522729C816B05A /* GeoTrackMap.html */ = {isa = PBXFileReference; includeInIndex = 1; name = GeoTrackMap.html; path = docs/Classes/GeoTrackMap.html; sourceTree = "<group>"; };
-		DD843DDBAD25EA77EA367B2485118186 /* Protocols.html */ = {isa = PBXFileReference; includeInIndex = 1; name = Protocols.html; path = docs/docsets/GeoTrackKit.docset/Contents/Resources/Documents/Protocols.html; sourceTree = "<group>"; };
-		E04037E8470EDD3F95C00A372E7442EC /* ZoomDefining.html */ = {isa = PBXFileReference; includeInIndex = 1; name = ZoomDefining.html; path = docs/docsets/GeoTrackKit.docset/Contents/Resources/Documents/Protocols/ZoomDefining.html; sourceTree = "<group>"; };
+		E047134734D6A7D06D41DBB8FA105450 /* Functions.html */ = {isa = PBXFileReference; includeInIndex = 1; name = Functions.html; path = docs/Functions.html; sourceTree = "<group>"; };
+		E07F2D33B19644CD9A226DDA833E6B80 /* GeoTrackMap.html */ = {isa = PBXFileReference; includeInIndex = 1; name = GeoTrackMap.html; path = docs/docsets/GeoTrackKit.docset/Contents/Resources/Documents/Classes/GeoTrackMap.html; sourceTree = "<group>"; };
+		E210A496B2BB251D1FB9702739A6DA89 /* index.html */ = {isa = PBXFileReference; includeInIndex = 1; name = index.html; path = docs/index.html; sourceTree = "<group>"; };
+		E260AE14E20ABB6D7BB2DB173B744D4C /* GeoTrackKit-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "GeoTrackKit-umbrella.h"; sourceTree = "<group>"; };
+		E2A5BA71F50C01AF92700DFAB32ED285 /* UIGeoTrack.html */ = {isa = PBXFileReference; includeInIndex = 1; name = UIGeoTrack.html; path = docs/Classes/UIGeoTrack.html; sourceTree = "<group>"; };
+		E2E3EA76E9E432D3471856E5D4C5364E /* GeoTrackState.html */ = {isa = PBXFileReference; includeInIndex = 1; name = GeoTrackState.html; path = docs/docsets/GeoTrackKit.docset/Contents/Resources/Documents/Enums/GeoTrackState.html; sourceTree = "<group>"; };
+		E31BF4421215A2599087137AA3055204 /* Date.html */ = {isa = PBXFileReference; includeInIndex = 1; name = Date.html; path = docs/Extensions/Date.html; sourceTree = "<group>"; };
+		E3BD092C3DF91447ABBE25C6F4E8D5BF /* GeoTrackManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GeoTrackManager.swift; path = GeoTrackKit/Core/GeoTrackManager.swift; sourceTree = "<group>"; };
+		E3EAD8C65F420D50A42567224F7F6F55 /* jquery.min.js */ = {isa = PBXFileReference; includeInIndex = 1; name = jquery.min.js; path = docs/js/jquery.min.js; sourceTree = "<group>"; };
 		E5FBC32CBE64E36B2C49A67BDAE31C67 /* Pods-GeoTrackKitExampleTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-GeoTrackKitExampleTests.debug.xcconfig"; sourceTree = "<group>"; };
 		E88E5F4CEE10DCB133FCA08367C9866F /* Pods-GeoTrackKitExample-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-GeoTrackKitExample-resources.sh"; sourceTree = "<group>"; };
-		E9C8662671996605B1AF94FA404A7C59 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
-		EA60A344D184A4561E6D2018BDACEE04 /* LoggingFunctions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LoggingFunctions.swift; path = GeoTrackKit/LoggingFunctions.swift; sourceTree = "<group>"; };
-		EB48CB7A1F73FB77EEB1CF02DF0BF8FD /* Stat.html */ = {isa = PBXFileReference; includeInIndex = 1; name = Stat.html; path = docs/Classes/Stat.html; sourceTree = "<group>"; };
-		ECF20FDEB4B8942C8E365FCB13B12BC1 /* Leg.html */ = {isa = PBXFileReference; includeInIndex = 1; name = Leg.html; path = docs/Classes/Leg.html; sourceTree = "<group>"; };
-		F0DB3B4DC24172F741991256F7A096CF /* Direction.html */ = {isa = PBXFileReference; includeInIndex = 1; name = Direction.html; path = docs/docsets/GeoTrackKit.docset/Contents/Resources/Documents/Enums/Direction.html; sourceTree = "<group>"; };
-		F36C37F131612A139AD03BA324367814 /* GeoTrack.html */ = {isa = PBXFileReference; includeInIndex = 1; name = GeoTrack.html; path = docs/Classes/GeoTrack.html; sourceTree = "<group>"; };
-		F4F59246AEC414C81834F5A99DE7E089 /* undocumented.json */ = {isa = PBXFileReference; includeInIndex = 1; name = undocumented.json; path = docs/docsets/GeoTrackKit.docset/Contents/Resources/Documents/undocumented.json; sourceTree = "<group>"; };
+		E896DECFDB5C08DF1D0359D3740DE4DF /* Leg.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Leg.swift; sourceTree = "<group>"; };
+		EF1C47C8367C6F8FE5B3335C5471A454 /* Extensions.html */ = {isa = PBXFileReference; includeInIndex = 1; name = Extensions.html; path = docs/Extensions.html; sourceTree = "<group>"; };
+		EF76AE4825BCD996862B66FB9F019E48 /* ActivityService.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ActivityService.swift; path = GeoTrackKit/HealthKit/ActivityService.swift; sourceTree = "<group>"; };
+		F3DFB8280CD89E862C6840CA41AA0951 /* ZoomDefining.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ZoomDefining.swift; sourceTree = "<group>"; };
 		F5A61B7B19946F3969B60ED3C2BE5334 /* Pods-GeoTrackKitExample-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-GeoTrackKitExample-acknowledgements.markdown"; sourceTree = "<group>"; };
+		F5D2AC43BA38EB92D445AD103FF2994C /* NumberExtensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = NumberExtensions.swift; sourceTree = "<group>"; };
 		F5EEEE304C78B3777B2B756E981E4319 /* Pods-GeoTrackKitExampleTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-GeoTrackKitExampleTests-acknowledgements.markdown"; sourceTree = "<group>"; };
-		F789EDEC3546CA97AF0CF4AB88557735 /* EventType.html */ = {isa = PBXFileReference; includeInIndex = 1; name = EventType.html; path = docs/docsets/GeoTrackKit.docset/Contents/Resources/Documents/Classes/GeoTrackLocationEvent/EventType.html; sourceTree = "<group>"; };
-		F8365C543541A59C35B7E23D17AB5556 /* GeoTrackLocationEvent.html */ = {isa = PBXFileReference; includeInIndex = 1; name = GeoTrackLocationEvent.html; path = docs/docsets/GeoTrackKit.docset/Contents/Resources/Documents/Classes/GeoTrackLocationEvent.html; sourceTree = "<group>"; };
+		F6D9F2CDA5B5378B44CE4C5D01D0BA4F /* DateExtension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
+		F765D252E6DA777FC05EDAFD6FE22229 /* GeoTrackKit-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "GeoTrackKit-dummy.m"; sourceTree = "<group>"; };
+		F920A8C471AB22D0E21104035DFEC8CB /* jazzy.js */ = {isa = PBXFileReference; includeInIndex = 1; name = jazzy.js; path = docs/js/jazzy.js; sourceTree = "<group>"; };
+		FDF8EF39E3A29F6CEAA71A5858650564 /* GeoTrackLogAppender.html */ = {isa = PBXFileReference; includeInIndex = 1; name = GeoTrackLogAppender.html; path = docs/docsets/GeoTrackKit.docset/Contents/Resources/Documents/Protocols/GeoTrackLogAppender.html; sourceTree = "<group>"; };
+		FE649C2FA72948C5FCDACD93D1F7D09A /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FF57C4E0DD1E8B2FD04C29AFAFEC31AB /* Leg.html */ = {isa = PBXFileReference; includeInIndex = 1; name = Leg.html; path = docs/Classes/Leg.html; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		051156207F05704476AE12215F22172E /* Frameworks */ = {
+		3AB37733E7E658E1FF90F915BE18F00E /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C40F24D77EC2BCC3570D2A5338547BFD /* Foundation.framework in Frameworks */,
+				719AD21DEBDA689FF76385BD02C35AEB /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B6B5BAE9D5B217D5FF63A3DE257137D2 /* Frameworks */ = {
+		516307C6DE4D6C7C01E6A5A1FC7D55E3 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D9A4DBB00E4DC35006A850A613F9CD91 /* Foundation.framework in Frameworks */,
+				F99C7EA6A40402E12AF5E4F75803299B /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D0CE9BB404263AE15BFA3D344BF49673 /* Frameworks */ = {
+		EE3D8DEB02BFD255874A4146A6FE9EFC /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				79DD40548FCC18FAC7C96B3D520AEE93 /* Foundation.framework in Frameworks */,
+				8A12DE786AB17C9735117CA967097440 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		388F9F47A88F665E686764B80C8274EF /* Models */ = {
+		06CBB11BD0528A06EC9F7C72DB551F6E /* Pod */ = {
 			isa = PBXGroup;
 			children = (
-				35DD704AC42A2F7FDDA288C54A3A0BF7 /* GeoTrack.swift */,
-				2DC9B8AA3A1945DF300A93E674978AD8 /* GeoTrackLocationEvent.swift */,
-				BED40BAD0E20995BC4FCA69310D96B5F /* Analyze */,
+				A9329C2B594CA6A2D6048A5CC1F73BB0 /* badge.svg */,
+				AF5AEAA11E60CF49172155CACC5D61E2 /* carat.png */,
+				7AEF1F2FAB182723F54DF09CFDE160AF /* carat.png */,
+				4304DDF6174D52487F46F14246B030A5 /* Classes.html */,
+				30B54C841750590D28AD5C471208E4FE /* Classes.html */,
+				C6780DC93EAD69743A4F43EA34E020EF /* CLLocation.html */,
+				620E18D8C3F1818B3410D3EFF549B558 /* CLLocation.html */,
+				9F5ED8F6A4F5B33BC25A982BADBE0970 /* dash.png */,
+				A9960F2480CE9D391E9228646A80FA4A /* dash.png */,
+				3823E97D3AC4ECF9D1E248E9BFC1DC64 /* Date.html */,
+				E31BF4421215A2599087137AA3055204 /* Date.html */,
+				BB05B9E8B1F20EB0BEBE1B04621C1CE9 /* DefaultMapZoom.html */,
+				A9A55DCA9A71A2F1A40DE64DE2FD39ED /* DefaultMapZoom.html */,
+				3F37E90A265C6D1FE97A3B0FB18CFBC2 /* Direction.html */,
+				37426868A5ADAE0B30BE8363BA49CDB4 /* Direction.html */,
+				80D20C09E5860A09E57B7DE1F2837902 /* docSet.dsidx */,
+				CC6C6E1AA54A5F7E7FC5B1E75DBB2866 /* Enums.html */,
+				99C3EF8327BD27648F7E26C313217F39 /* Enums.html */,
+				B393D5DF180068E6074B4AAA760D21BA /* EventType.html */,
+				3FA5E618085D3B427B3DC591F2A60455 /* EventType.html */,
+				5BD70AD402119FC8045D66214ED24282 /* Extensions.html */,
+				EF1C47C8367C6F8FE5B3335C5471A454 /* Extensions.html */,
+				65B89F2F11E8A82075A52223AF23C097 /* Functions.html */,
+				E047134734D6A7D06D41DBB8FA105450 /* Functions.html */,
+				5D49D662EBF4B3F35AADD4F9AC389DD3 /* GeoMapping.html */,
+				8119914960A2D3DE0E6121248DFFAA9B /* GeoMapping.html */,
+				10414EBC251EA03BE2B1A19C86B4EFBE /* GeoTrack.html */,
+				85CF26B9CC5A970CD825DC5FFAEB62C1 /* GeoTrack.html */,
+				AAE121E0D1379722833F6CDDC26C2736 /* GeoTrackAnalyzer.html */,
+				0CBEEA72FD7270BBCDF77DFF6B0C1E84 /* GeoTrackAnalyzer.html */,
+				1F864374224668D46CCE8AF5267F8D9E /* GeoTrackConsoleAppender.html */,
+				B3F03FB16A8F548465FD6A8AE2913F81 /* GeoTrackConsoleAppender.html */,
+				946787E76C40BC832138054E20AD69B8 /* GeoTrackEvent.html */,
+				8A87888F562ED6056F9D73968D5D93A6 /* GeoTrackEvent.html */,
+				B3453E175602FA496320752708914B06 /* GeoTrackEventLog.html */,
+				B97069181FEAE4C35B6418AF26764F9B /* GeoTrackEventLog.html */,
+				AB406651FF102CACE38473E11A39D921 /* GeoTrackKit.html */,
+				B357F75DA9874165A5779C568C2B52BA /* GeoTrackKit.html */,
+				BD0FE28E32477741AB8A9FAFCEB77883 /* GeoTrackKit.podspec */,
+				BC478510F4786AD5956C7DD079FBC782 /* GeoTrackKit.tgz */,
+				2D54717776CFE79F9B6E724378661719 /* GeoTrackLocationEvent.html */,
+				32773E974A2CED025C4E59999E3F3155 /* GeoTrackLocationEvent.html */,
+				FDF8EF39E3A29F6CEAA71A5858650564 /* GeoTrackLogAppender.html */,
+				6BEC83CCDD857CAC648E0A411C287AC8 /* GeoTrackLogAppender.html */,
+				57374C9D415E993CCB6046906C6C357E /* GeoTrackManager.html */,
+				434E8451EE3ED897F18C0E9717FE04D6 /* GeoTrackManager.html */,
+				E07F2D33B19644CD9A226DDA833E6B80 /* GeoTrackMap.html */,
+				13B4AD005C30D8EBBFE0702641B0FF2F /* GeoTrackMap.html */,
+				B7524E9D28DF916D2377C77905614EFB /* GeoTrackService.html */,
+				9520AC346BDAD0D65CFDDE577F12F16A /* GeoTrackService.html */,
+				CFA352A19E610D0E28FECE566F984072 /* GeoTrackState.html */,
+				E2E3EA76E9E432D3471856E5D4C5364E /* GeoTrackState.html */,
+				C9AB018064A2E763B082804F296B2A70 /* gh.png */,
+				5B2B0A025DDADB1E072C3D11863867DB /* gh.png */,
+				92C27E7C5B03948096D6715BE98B3C7E /* highlight.css */,
+				CE25F7347C99B24D07A5D82D12F74CFE /* highlight.css */,
+				E210A496B2BB251D1FB9702739A6DA89 /* index.html */,
+				AA05C8A0805E32E3A53A83C1B8B0FCD5 /* index.html */,
+				66CABDA2695FF23AF0473DCDEC27EB48 /* Info.plist */,
+				4863B45DB7F0C66FC91695E082941A91 /* jazzy.css */,
+				B9A13C427A0465120E25FB1E1C1E0C82 /* jazzy.css */,
+				467BB0FAE9FB1E49FF0EE0351F6CFED4 /* jazzy.js */,
+				F920A8C471AB22D0E21104035DFEC8CB /* jazzy.js */,
+				0EABD45A6E07EE24923A72AEC7436236 /* jquery.min.js */,
+				E3EAD8C65F420D50A42567224F7F6F55 /* jquery.min.js */,
+				58C79605E50BECDFEB4B500600B7A617 /* Leg.html */,
+				FF57C4E0DD1E8B2FD04C29AFAFEC31AB /* Leg.html */,
+				9D16E286B22DB059E70E75954770610D /* Level.html */,
+				133A0A130E41767B8AEAF57E1B06FF33 /* Level.html */,
+				D330CFEB53F2179CAEB8D67D8D0F7706 /* LICENSE */,
+				16CB8EB8E8CB7D92A44D5043332A0064 /* Name.html */,
+				2AE1D43F02B251A3843AC045B9CD5395 /* Name.html */,
+				AF62287D31720E86B075F84324A367C7 /* Notification.html */,
+				A4C604CF2BE9E009AF8E6AC7649E45DD /* Notification.html */,
+				6E33B16B99B4AA30B6FE86B4DEDA28C4 /* Protocols.html */,
+				5C92FB639CB40F20B81BDE5853998C20 /* Protocols.html */,
+				1F2EF76A686D3FD6934B89183D833E0C /* README.md */,
+				3E45F2B5D3566C09ED782F18B0411413 /* search.json */,
+				BF01EEDD35D1A0F76F63D00BEBA9C01B /* search.json */,
+				00B83369F6754F4F27A414ADF675B09C /* Stat.html */,
+				6E9C3E0D22D749D1DD2A04B4FF1B3315 /* Stat.html */,
+				23E858B65D0D51965B0EF4A0E2FF5E9F /* TrackStat.html */,
+				A2347A90F3D328EC7BE030C4CA395E43 /* TrackStat.html */,
+				73878A9E1883E15DDD19866E1F8A6382 /* Typealiases.html */,
+				B459E1AF84DE7480512B57273DCA2DD1 /* Typealiases.html */,
+				4C152D253300DEFF82754FC1921DB883 /* UIGeoTrack.html */,
+				E2A5BA71F50C01AF92700DFAB32ED285 /* UIGeoTrack.html */,
+				3E10E03562AD85C5F7A23CF3679FEE1C /* undocumented.json */,
+				333AA9301F91534142F4F1CC89069216 /* ZoomDefining.html */,
+				50797779D7FFA68D3B6EDB71FE22C331 /* ZoomDefining.html */,
 			);
-			name = Models;
-			path = GeoTrackKit/Models;
+			name = Pod;
 			sourceTree = "<group>";
 		};
-		4FC2F1FC3093B9C90ABF8F7B764C7FB3 /* GeoTrackKit */ = {
+		26194CAB8BBA4A1EBFB500965DCA6DF0 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				D5EDDCDD401BBADA2F04D798EFBC6463 /* GeoTrackAnalyzer.swift */,
-				26CB0068B6EF1B79CFA432C887235379 /* GeoTrackConsoleAppender.swift */,
-				9EB37F10FD385A2614CE97849770CC3C /* GeoTrackEvent.swift */,
-				2FA2A5D4CF0569FFCB24C43B147F9F22 /* GeoTrackEventLog.swift */,
-				85BD5B8DB5D1962AA382BE73271278BB /* GeoTrackManager.swift */,
-				2CC3B4F49EF601A9614116D25CD7F96F /* GeoTrackService.swift */,
-				7BFFA01AC2A868087B5F023365551AD9 /* GeoTrackState.swift */,
-				EA60A344D184A4561E6D2018BDACEE04 /* LoggingFunctions.swift */,
-				5D0B4F1D46A42B17155D7E419F4CE3E8 /* Extension */,
-				621308E4477A3E19D8967FD128D97D27 /* Map */,
-				388F9F47A88F665E686764B80C8274EF /* Models */,
-				63AB2C060A02045FD2A99CAB38425F71 /* Pod */,
-				E7D2494DAAD2103127DEB476F285DE89 /* Support Files */,
+				43D490F146CC161CEC5ED5314B1A41FE /* GeoTrack.swift */,
+				453C1C03A0EB23C3BDC28375C3CFE158 /* GeoTrack+Utilities.swift */,
+				164B54AC7CECA23ED947E5FC597E816E /* GeoTrackLocationEvent.swift */,
+				5297B7C8FB6AAECF172E31D246D61D56 /* Analyze */,
+			);
+			name = Models;
+			path = GeoTrackKit/Core/Models;
+			sourceTree = "<group>";
+		};
+		372491D3B8EA24A7803F7B9321D93B10 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				5D99BCF863A0C3A3555E3B48359730E0 /* CLLocationExtension.swift */,
+				F6D9F2CDA5B5378B44CE4C5D01D0BA4F /* DateExtension.swift */,
+				F5D2AC43BA38EB92D445AD103FF2994C /* NumberExtensions.swift */,
+			);
+			name = Extension;
+			path = GeoTrackKit/Core/Extension;
+			sourceTree = "<group>";
+		};
+		43D2B4E00469A80433994278DADBE4E0 /* GeoTrackKit */ = {
+			isa = PBXGroup;
+			children = (
+				A4F8B8519E521AE7B2EABE21C56F6AC5 /* Core */,
+				B0497775B72737BED2B49BAB1A001910 /* HealthKit */,
+				06CBB11BD0528A06EC9F7C72DB551F6E /* Pod */,
+				4F3D239FD6F4E9D7FE45DA868B01DEF7 /* Support Files */,
 			);
 			name = GeoTrackKit;
 			path = ../..;
 			sourceTree = "<group>";
 		};
-		5D0B4F1D46A42B17155D7E419F4CE3E8 /* Extension */ = {
+		4F3D239FD6F4E9D7FE45DA868B01DEF7 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				B85076E7257D1BD7F48095608A84C009 /* CLLocationExtension.swift */,
-				7CFCEA8AB143E7AC4962B18BCE9C391E /* DateExtension.swift */,
+				389390652111FD36B5E32F0F204D50B2 /* GeoTrackKit.modulemap */,
+				964E8EC3256E8E80F7F72A68CDF21AA5 /* GeoTrackKit.xcconfig */,
+				F765D252E6DA777FC05EDAFD6FE22229 /* GeoTrackKit-dummy.m */,
+				18C25C1C4EFCD3FFA808152BBFF2D06E /* GeoTrackKit-prefix.pch */,
+				E260AE14E20ABB6D7BB2DB173B744D4C /* GeoTrackKit-umbrella.h */,
+				FE649C2FA72948C5FCDACD93D1F7D09A /* Info.plist */,
 			);
-			name = Extension;
-			path = GeoTrackKit/Extension;
+			name = "Support Files";
+			path = "GeoTrackKitExample/Pods/Target Support Files/GeoTrackKit";
+			sourceTree = "<group>";
+		};
+		5297B7C8FB6AAECF172E31D246D61D56 /* Analyze */ = {
+			isa = PBXGroup;
+			children = (
+				E896DECFDB5C08DF1D0359D3740DE4DF /* Leg.swift */,
+			);
+			name = Analyze;
+			path = Analyze;
 			sourceTree = "<group>";
 		};
 		5E0D919E635D23B70123790B8308F8EF /* iOS */ = {
@@ -271,117 +388,6 @@
 				5A16F4CFC63FAC439D7A04994F579A03 /* Foundation.framework */,
 			);
 			name = iOS;
-			sourceTree = "<group>";
-		};
-		621308E4477A3E19D8967FD128D97D27 /* Map */ = {
-			isa = PBXGroup;
-			children = (
-				BF69E70AAF5E9B756F58BBA8CCA15B50 /* DefaultMapZoom.swift */,
-				469FE3ECF4DEED21312FD611276BAA98 /* GeoTrackMap.swift */,
-				5911BC605DA2104AA3B40645E13CABCE /* ZoomDefining.swift */,
-				E1396FF98ACEFDA5738D93C8EA5CBAA7 /* UIModels */,
-			);
-			name = Map;
-			path = GeoTrackKit/Map;
-			sourceTree = "<group>";
-		};
-		63AB2C060A02045FD2A99CAB38425F71 /* Pod */ = {
-			isa = PBXGroup;
-			children = (
-				BBBE268F7AF63A5DC79F3B6DE9189B9B /* badge.svg */,
-				72D3751FCC6D7B652CA0D7176E29CDE1 /* badge.svg */,
-				5C57DDC7C837074AB8139A0A380FC89B /* carat.png */,
-				19FACC7E2964047664C3654E17194DB6 /* carat.png */,
-				D091104D9E74E2AE07EE280E120D9AD5 /* Classes.html */,
-				774B39B30E84CD6380432BF1805E70BB /* Classes.html */,
-				BB901BE18B00CAA39C81DA5145C2F731 /* CLLocation.html */,
-				60F30EF0CE12634A6960AE079CCDD266 /* CLLocation.html */,
-				5A7B5DC2787C33B5D23B2C30A89BA15B /* dash.png */,
-				5650D4B1C7368EAB013FACD6ECAAB35F /* dash.png */,
-				B3A1D98E849B90CCAA966D5E327A6DED /* Date.html */,
-				9FB289DAE0C0A8DDFEC431F4F40D2AA1 /* Date.html */,
-				95BF045D5BABF03ABBAEECDC640AACBB /* DefaultMapZoom.html */,
-				A99CC3766EECAB66721457A90914C013 /* DefaultMapZoom.html */,
-				F0DB3B4DC24172F741991256F7A096CF /* Direction.html */,
-				D3BEA21900DC68F03CD90EF364F5A827 /* Direction.html */,
-				0A626493AA28AE69F1484B5C022681F8 /* docSet.dsidx */,
-				3622CDC13820F695E49B81ACFD533CBF /* Enums.html */,
-				98BEC3369EFD04685E9E6A2AD93C5A95 /* Enums.html */,
-				22721DF15C35F3C20EA4BF1B63EC193B /* EventType.html */,
-				F789EDEC3546CA97AF0CF4AB88557735 /* EventType.html */,
-				C138FBE8E47D09E0A012FF4859DED28B /* Extensions.html */,
-				5F49724897794B24EB5CB62017AD699F /* Extensions.html */,
-				877EFC0A0A0821C498D06FB05627D642 /* GeoMapping.html */,
-				B2C5318A3402E790832F804B514C7E79 /* GeoMapping.html */,
-				151DEC7947C4E90E7FFC2BBCD87D360D /* GeoTrack.html */,
-				F36C37F131612A139AD03BA324367814 /* GeoTrack.html */,
-				1FEE5ADC6714232063D798141196E027 /* GeoTrackAnalyzer.html */,
-				9D18538A0D58EDA448A0F9C4336C9A05 /* GeoTrackAnalyzer.html */,
-				6AED118654396BA6EF7B619BA668E434 /* GeoTrackConsoleAppender.html */,
-				D46F6949A2BDD1E4C97DDE3B9B4B23DE /* GeoTrackConsoleAppender.html */,
-				73635E0D6500642C85C3E0026A91064A /* GeoTrackEvent.html */,
-				7696F4DEECD138C314D732A2B54DE3D4 /* GeoTrackEvent.html */,
-				76181692AAAB7690AEE15C38178DAD71 /* GeoTrackEventLog.html */,
-				6B4CCDF2525DC60679B6A2D2B3960EEA /* GeoTrackEventLog.html */,
-				C6DDF16AF00E97F1F4D2D0B75C66A5D9 /* GeoTrackKit.html */,
-				4A7CA4C90810CADACA8322A6D473F4A8 /* GeoTrackKit.html */,
-				99D907AA6F266CF8F3811AA97927E68F /* GeoTrackKit.podspec */,
-				176ADEA9866477472983F54C70995DB4 /* GeoTrackKit.tgz */,
-				52188732C52698BDE2529455C77CE9F1 /* GeoTrackKitClasses.png */,
-				425D188FE0477ED5F55E622BDCF2B5B4 /* GeoTrackLocationEvent.html */,
-				F8365C543541A59C35B7E23D17AB5556 /* GeoTrackLocationEvent.html */,
-				846639CF7C83B4F4D36E6CC3B5B142C2 /* GeoTrackLogAppender.html */,
-				0822B5E250E52E924BF991F1B0EAA12D /* GeoTrackLogAppender.html */,
-				2A28300512935589BD93999165B9221B /* GeoTrackManager.html */,
-				1773E29D3BAC462E658D5D51A35DB6C4 /* GeoTrackManager.html */,
-				DA044AE4CF1B30AC62522729C816B05A /* GeoTrackMap.html */,
-				C149A39CA5633AC5044F12148FA29E02 /* GeoTrackMap.html */,
-				B15F698F5E955DB3AD835A16D4C4CF29 /* GeoTrackService.html */,
-				6818075EE74D86FF423B972E04F39351 /* GeoTrackService.html */,
-				25C6F896B13D96F74A6C7440DFAE161A /* GeoTrackState.html */,
-				34C9AFDBC6656139839B980988E2635C /* GeoTrackState.html */,
-				B36A1D03D476B1918A97CA6B58DE7629 /* gh.png */,
-				00316D85F54492400B66CA9FA4EF5D72 /* gh.png */,
-				4EF7D7DFFDDD458BD7424362B279B4E0 /* highlight.css */,
-				0FE072A4AFF0519A6EE2EFB71EAFE82B /* highlight.css */,
-				08A9EF8D93D380F06571AF648D97DA21 /* index.html */,
-				32801B06D9D216312FDE89D3BF8596C6 /* index.html */,
-				907739DFCF230BCC6AE5475883AB6FFF /* Info.plist */,
-				A5BA85B57E4E4A7810887E65397BE990 /* jazzy.css */,
-				22BAB273A61A65091067943ADD5122EB /* jazzy.css */,
-				5C2639A6FAC6A1ABAAFF2E9F66B1C153 /* jazzy.js */,
-				09818ACAB42A8B4284C00F61414F89F9 /* jazzy.js */,
-				1F78AF05F123B2CF15B451679EBD183C /* jquery.min.js */,
-				1BD66038F022944105F9C2B9A21A9691 /* jquery.min.js */,
-				83B50FB349D11B64D25E63566BF1B6F5 /* Leg.html */,
-				ECF20FDEB4B8942C8E365FCB13B12BC1 /* Leg.html */,
-				8C1EA3E277CB44AC629DF08B1C4B1D0F /* Level.html */,
-				4DAA8F2FA483400F5C983A3EFC37D41A /* Level.html */,
-				E9C8662671996605B1AF94FA404A7C59 /* LICENSE */,
-				2F7779EE5D6C0281DEFE448B8CB94783 /* LocationTrackingPrompt.png */,
-				699F40DD7C868797271CBE481F1DB34C /* Mapping.png */,
-				B63B205470BA3E64A0C4C4AFBE9EFB2B /* Notification.html */,
-				5AB6BA72694F7B008292722FCE4A5871 /* Notification.html */,
-				DD843DDBAD25EA77EA367B2485118186 /* Protocols.html */,
-				B04FC9474EE6A4DEB2E8D9838D4F9E32 /* Protocols.html */,
-				7A70436E32E5C09330ECCB75B03A1C0A /* README.md */,
-				5CBA47C11BFD127E421F32557CFFD033 /* search.json */,
-				A3E10650CE7B0B85D59847EA0D4BEAE0 /* search.json */,
-				54F70DF817121B2D76DD7602EB1155C4 /* Stat.html */,
-				EB48CB7A1F73FB77EEB1CF02DF0BF8FD /* Stat.html */,
-				462F0CECA0D570B9F1DD43D38D9CE096 /* TrackStat.html */,
-				D60FEA057FBD19A96EAAD1752321E9D3 /* TrackStat.html */,
-				6A1CC167C56C105C1C3FF0385A7859F9 /* Typealiases.html */,
-				395740EF55ABA01B86A566E555254FFA /* Typealiases.html */,
-				4909D5DBA2E64305AC98525FA703608B /* UIGeoTrack.html */,
-				913E3CA1BB283719E747DED9F11A63CB /* UIGeoTrack.html */,
-				F4F59246AEC414C81834F5A99DE7E089 /* undocumented.json */,
-				1A3490DF678B552F3458949E28E2586F /* undocumented.json */,
-				425FC17A58A01FE668DB3CF7DF67EF50 /* Usage.png */,
-				E04037E8470EDD3F95C00A372E7442EC /* ZoomDefining.html */,
-				7D52C6D1CF9DAF9E1F5821531A83B9AF /* ZoomDefining.html */,
-			);
-			name = Pod;
 			sourceTree = "<group>";
 		};
 		7779C068C3FCCCA3AA16F5DD4A18D156 /* Pods-GeoTrackKitExampleTests */ = {
@@ -406,11 +412,23 @@
 			isa = PBXGroup;
 			children = (
 				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
-				A94D82C19B590AA3D0707A448AA29CD1 /* Development Pods */,
+				B0BD10772385D740820F5A1E736BC6C1 /* Development Pods */,
 				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
 				D722FD01015A9FB70FD69A71455B4B20 /* Products */,
 				96962AD7B88E705590BE96BE65977FA8 /* Targets Support Files */,
 			);
+			sourceTree = "<group>";
+		};
+		921313935A280F3E51FF664798FFAF1E /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				65168C456FE1622C9DF92F78671BC3D6 /* DefaultMapZoom.swift */,
+				7A2C0765795AB28F092DD71B2D982BEF /* GeoTrackMap.swift */,
+				F3DFB8280CD89E862C6840CA41AA0951 /* ZoomDefining.swift */,
+				B68579B3D6AF6F741F0A0A3E08F2BCA0 /* UIModels */,
+			);
+			name = Map;
+			path = GeoTrackKit/Core/Map;
 			sourceTree = "<group>";
 		};
 		96962AD7B88E705590BE96BE65977FA8 /* Targets Support Files */ = {
@@ -440,12 +458,47 @@
 			path = "Target Support Files/Pods-GeoTrackKitExample";
 			sourceTree = "<group>";
 		};
-		A94D82C19B590AA3D0707A448AA29CD1 /* Development Pods */ = {
+		A4F8B8519E521AE7B2EABE21C56F6AC5 /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				4FC2F1FC3093B9C90ABF8F7B764C7FB3 /* GeoTrackKit */,
+				90AE1FEEE14748E311DA33149B6220DE /* GeoTrackAnalyzer.swift */,
+				8FE0BCE6FACFCCB8384AD17AF16CCF46 /* GeoTrackEvent.swift */,
+				8AAFE2DDD081F9EEB2570B67DB3C3E4E /* GeoTrackEventLog.swift */,
+				22F8951C7C9D42CEA14D5E5F767BC308 /* GeoTrackKitErrors.swift */,
+				E3BD092C3DF91447ABBE25C6F4E8D5BF /* GeoTrackManager.swift */,
+				4E7FAFC5B5050798387395310FD0B80F /* GeoTrackService.swift */,
+				8A632B08A8F2EA58383F1E9AFFAC24C7 /* GeoTrackState.swift */,
+				9792A828DD0DD4BF73DF27B1A269F19A /* LoggingFunctions.swift */,
+				372491D3B8EA24A7803F7B9321D93B10 /* Extension */,
+				921313935A280F3E51FF664798FFAF1E /* Map */,
+				26194CAB8BBA4A1EBFB500965DCA6DF0 /* Models */,
+			);
+			name = Core;
+			sourceTree = "<group>";
+		};
+		B0497775B72737BED2B49BAB1A001910 /* HealthKit */ = {
+			isa = PBXGroup;
+			children = (
+				EF76AE4825BCD996862B66FB9F019E48 /* ActivityService.swift */,
+			);
+			name = HealthKit;
+			sourceTree = "<group>";
+		};
+		B0BD10772385D740820F5A1E736BC6C1 /* Development Pods */ = {
+			isa = PBXGroup;
+			children = (
+				43D2B4E00469A80433994278DADBE4E0 /* GeoTrackKit */,
 			);
 			name = "Development Pods";
+			sourceTree = "<group>";
+		};
+		B68579B3D6AF6F741F0A0A3E08F2BCA0 /* UIModels */ = {
+			isa = PBXGroup;
+			children = (
+				007A43E1BB1B53244BD44123AAC3B5AF /* UIGeoTrack.swift */,
+			);
+			name = UIModels;
+			path = UIModels;
 			sourceTree = "<group>";
 		};
 		BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */ = {
@@ -454,15 +507,6 @@
 				5E0D919E635D23B70123790B8308F8EF /* iOS */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		BED40BAD0E20995BC4FCA69310D96B5F /* Analyze */ = {
-			isa = PBXGroup;
-			children = (
-				BFCAC38C099E9673704BF87395CCBF9B /* Leg.swift */,
-			);
-			name = Analyze;
-			path = Analyze;
 			sourceTree = "<group>";
 		};
 		D722FD01015A9FB70FD69A71455B4B20 /* Products */ = {
@@ -475,66 +519,82 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		E1396FF98ACEFDA5738D93C8EA5CBAA7 /* UIModels */ = {
-			isa = PBXGroup;
-			children = (
-				5639218BC17BBF260C5CA5FE94D5036B /* UIGeoTrack.swift */,
-			);
-			name = UIModels;
-			path = UIModels;
-			sourceTree = "<group>";
-		};
-		E7D2494DAAD2103127DEB476F285DE89 /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				7DDBAC9861993802E2FFED5B4F2BDE70 /* GeoTrackKit.modulemap */,
-				67EAE892D71B98107F7211928F35B28B /* GeoTrackKit.xcconfig */,
-				A17EA98D31B60A0A7B420E2BCE37FD52 /* GeoTrackKit-dummy.m */,
-				794816BD1CE27F468E03E0256E12CB51 /* GeoTrackKit-prefix.pch */,
-				68C7F861BAC1DB30B5B52FE47606FE08 /* GeoTrackKit-umbrella.h */,
-				190CA6521E8A8C5AC2EF50149FD088B9 /* Info.plist */,
-			);
-			name = "Support Files";
-			path = "GeoTrackKitExample/Pods/Target Support Files/GeoTrackKit";
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		3DE7211C109E7410B859440ED2E041A6 /* Headers */ = {
+		297F9C761ADD6B5B68D716685ACCB79E /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				72CEDAFA1500D7FAE5D6B2EF3E7D1F1F /* Pods-GeoTrackKitExampleTests-umbrella.h in Headers */,
+				89C7655773A87F350D08A9E1620BFA92 /* GeoTrackKit-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		5981FFD67B08AC809201A45FB396E813 /* Headers */ = {
+		6868B586DA1F854DB2D71986E9F34227 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3C4938CD6D6AE8335F8D252C50F558C2 /* GeoTrackKit-umbrella.h in Headers */,
+				06D4A6D56DCE2E3229A01E9599A4D4EE /* Pods-GeoTrackKitExampleTests-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		E76F94AE0731B9CC1B1CF6B79DF2EFCC /* Headers */ = {
+		EB43AEE93E422F3980816654121F113B /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AF0D71D4000056CE3F84D3631E390A56 /* Pods-GeoTrackKitExample-umbrella.h in Headers */,
+				2C7CAD17AEB336369B54D20343644676 /* Pods-GeoTrackKitExample-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		07A7BA7E24EA8DE7BCF1A244F5A1A2D4 /* GeoTrackKit */ = {
+		7B3B0A7AC0B017469EF6A114A90A4715 /* Pods-GeoTrackKitExample */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 1926892B2AF0DBFE4A76DA0D9A29CA4A /* Build configuration list for PBXNativeTarget "GeoTrackKit" */;
+			buildConfigurationList = 29F3B3C58FC092E2DC7843E9BB0F39ED /* Build configuration list for PBXNativeTarget "Pods-GeoTrackKitExample" */;
 			buildPhases = (
-				904F1FAE6A66E8D65EA819C658995D9F /* Sources */,
-				B6B5BAE9D5B217D5FF63A3DE257137D2 /* Frameworks */,
-				5981FFD67B08AC809201A45FB396E813 /* Headers */,
+				EB43AEE93E422F3980816654121F113B /* Headers */,
+				32B39A375311F9B02AAA464E430437CF /* Sources */,
+				EE3D8DEB02BFD255874A4146A6FE9EFC /* Frameworks */,
+				F4FF7A3F4683EC129079979D89FFFBDA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				96FF6988F64DBC20D96207F19B26FA9A /* PBXTargetDependency */,
+			);
+			name = "Pods-GeoTrackKitExample";
+			productName = "Pods-GeoTrackKitExample";
+			productReference = 08266C21B77FAC5C88D130EB333D1E65 /* Pods_GeoTrackKitExample.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		A15198A034D2A91110B26252FF7B5A29 /* Pods-GeoTrackKitExampleTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 76848A92C5E0F1F29C85EDD17EF75F80 /* Build configuration list for PBXNativeTarget "Pods-GeoTrackKitExampleTests" */;
+			buildPhases = (
+				6868B586DA1F854DB2D71986E9F34227 /* Headers */,
+				3A0DCD4DC21D09E9B2D3FBD758444CD6 /* Sources */,
+				3AB37733E7E658E1FF90F915BE18F00E /* Frameworks */,
+				276ACB94861F940AB8A665360B3A06C6 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2B172144B6D18DE447698EA89F8C63BA /* PBXTargetDependency */,
+			);
+			name = "Pods-GeoTrackKitExampleTests";
+			productName = "Pods-GeoTrackKitExampleTests";
+			productReference = 749497A9828FCBBC17034E4625532C89 /* Pods_GeoTrackKitExampleTests.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		E65B1BAB10F40A9BC78B80AFB0D9AC55 /* GeoTrackKit */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 347082AF01C0A0821F618668BA727E04 /* Build configuration list for PBXNativeTarget "GeoTrackKit" */;
+			buildPhases = (
+				297F9C761ADD6B5B68D716685ACCB79E /* Headers */,
+				935DEAC1E128546E60402AE0FAC03D43 /* Sources */,
+				516307C6DE4D6C7C01E6A5A1FC7D55E3 /* Frameworks */,
+				47C63238E51A3E400452F607E7DA708A /* Resources */,
 			);
 			buildRules = (
 			);
@@ -543,42 +603,6 @@
 			name = GeoTrackKit;
 			productName = GeoTrackKit;
 			productReference = A74DCC49B5EE019AB07F7041F9A2E724 /* GeoTrackKit.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		AC20B4F4C0FD801B0E17C216B9C13A4A /* Pods-GeoTrackKitExampleTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 1FB3A5DC8A3884FD2E51196827CB6F1F /* Build configuration list for PBXNativeTarget "Pods-GeoTrackKitExampleTests" */;
-			buildPhases = (
-				D5BD8FC49CE9A7603D3527299ADF0E59 /* Sources */,
-				051156207F05704476AE12215F22172E /* Frameworks */,
-				3DE7211C109E7410B859440ED2E041A6 /* Headers */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				BD643426AC0B4D27CDF58FC744DF9A84 /* PBXTargetDependency */,
-			);
-			name = "Pods-GeoTrackKitExampleTests";
-			productName = "Pods-GeoTrackKitExampleTests";
-			productReference = 749497A9828FCBBC17034E4625532C89 /* Pods_GeoTrackKitExampleTests.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		E746658ECA37985B0156B8C26A452C6E /* Pods-GeoTrackKitExample */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 75674849A83C074A3AA99B7BFE602A50 /* Build configuration list for PBXNativeTarget "Pods-GeoTrackKitExample" */;
-			buildPhases = (
-				6F1CDB49E7790FF0CA7A39D3CC51568F /* Sources */,
-				D0CE9BB404263AE15BFA3D344BF49673 /* Frameworks */,
-				E76F94AE0731B9CC1B1CF6B79DF2EFCC /* Headers */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				1895D26D19C6831E1F4A042D3C88ABA8 /* PBXTargetDependency */,
-			);
-			name = "Pods-GeoTrackKitExample";
-			productName = "Pods-GeoTrackKitExample";
-			productReference = 08266C21B77FAC5C88D130EB333D1E65 /* Pods_GeoTrackKitExample.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -602,74 +626,243 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				07A7BA7E24EA8DE7BCF1A244F5A1A2D4 /* GeoTrackKit */,
-				E746658ECA37985B0156B8C26A452C6E /* Pods-GeoTrackKitExample */,
-				AC20B4F4C0FD801B0E17C216B9C13A4A /* Pods-GeoTrackKitExampleTests */,
+				E65B1BAB10F40A9BC78B80AFB0D9AC55 /* GeoTrackKit */,
+				7B3B0A7AC0B017469EF6A114A90A4715 /* Pods-GeoTrackKitExample */,
+				A15198A034D2A91110B26252FF7B5A29 /* Pods-GeoTrackKitExampleTests */,
 			);
 		};
 /* End PBXProject section */
 
+/* Begin PBXResourcesBuildPhase section */
+		276ACB94861F940AB8A665360B3A06C6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		47C63238E51A3E400452F607E7DA708A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F4FF7A3F4683EC129079979D89FFFBDA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
-		6F1CDB49E7790FF0CA7A39D3CC51568F /* Sources */ = {
+		32B39A375311F9B02AAA464E430437CF /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CBA8B1855AC34AE9BABAF00120353BD2 /* Pods-GeoTrackKitExample-dummy.m in Sources */,
+				1F165B3A7C62EAB9AB4E4A7F437272A8 /* Pods-GeoTrackKitExample-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		904F1FAE6A66E8D65EA819C658995D9F /* Sources */ = {
+		3A0DCD4DC21D09E9B2D3FBD758444CD6 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4024D1ED119717E8288E64AF8CC01673 /* CLLocationExtension.swift in Sources */,
-				5B96AE43646F44BCC2E7BF394F8CD751 /* DateExtension.swift in Sources */,
-				EBF72A543CDFFA8191A443E18B9C194F /* DefaultMapZoom.swift in Sources */,
-				86FD113A75EC9A5FF2EAF6D7966D18F9 /* GeoTrack.swift in Sources */,
-				9C6320D0A3DF5CC1165A4F7D6A3DD42E /* GeoTrackAnalyzer.swift in Sources */,
-				44C54C8D35CA04D4C6ECE9D1BD794503 /* GeoTrackConsoleAppender.swift in Sources */,
-				42471E240B164F8D2B7AA61936C0E686 /* GeoTrackEvent.swift in Sources */,
-				34037EE1868CD589CF9688698B67D9F3 /* GeoTrackEventLog.swift in Sources */,
-				3013DD4B9B989D0616D1E9755069A244 /* GeoTrackKit-dummy.m in Sources */,
-				8C5EC6C675474FB47637B3156610BA08 /* GeoTrackLocationEvent.swift in Sources */,
-				83DFEE1763EA87DCF99856F13CA61F15 /* GeoTrackManager.swift in Sources */,
-				BEA0BEB10D165535FEC0A96B397551EC /* GeoTrackMap.swift in Sources */,
-				8FFBD27FB102780BB4C42411EE011BE2 /* GeoTrackService.swift in Sources */,
-				C1131AEB382C1A6965D5E101916A64AD /* GeoTrackState.swift in Sources */,
-				C43FD3C9F41B9A56ECF56AB17193A8E5 /* Leg.swift in Sources */,
-				A3C370BD0AEDC5E046A6DD8936EEEF0D /* LoggingFunctions.swift in Sources */,
-				516732EDBA9AB99428047D8E8025D17B /* UIGeoTrack.swift in Sources */,
-				E8CA2D206AB46BD8A7E3176D5CE5F4AE /* ZoomDefining.swift in Sources */,
+				DA4DEFC9C7FF871BDBBA6E46E37C948C /* Pods-GeoTrackKitExampleTests-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D5BD8FC49CE9A7603D3527299ADF0E59 /* Sources */ = {
+		935DEAC1E128546E60402AE0FAC03D43 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F9DB91C6D735C5DD75FAEA35A671C227 /* Pods-GeoTrackKitExampleTests-dummy.m in Sources */,
+				8DE39EDF5853A24915661631269AF860 /* ActivityService.swift in Sources */,
+				9B333720FB36CCD82EDD399A75B68E3A /* CLLocationExtension.swift in Sources */,
+				B5540A07B5279BB415AFB1110956DC30 /* DateExtension.swift in Sources */,
+				4494170015BD308698DE403015B0D5BF /* DefaultMapZoom.swift in Sources */,
+				57247A0B5811565F3D736915FA511C2C /* GeoTrack+Utilities.swift in Sources */,
+				2BC4976B5A6BC44E0E5C380ECE6CEA44 /* GeoTrack.swift in Sources */,
+				3F6573228EF4BDEBCD3AD5F89C249B5E /* GeoTrackAnalyzer.swift in Sources */,
+				1A8691A3A3736C46C195F2BD3FBC1351 /* GeoTrackEvent.swift in Sources */,
+				C45268FAEB8B939BAC5BB54599D8E072 /* GeoTrackEventLog.swift in Sources */,
+				EFE0A9905FF9C508AE980F438835DD85 /* GeoTrackKit-dummy.m in Sources */,
+				73B52CC40FE365A0FEAFBEEE77F06018 /* GeoTrackKitErrors.swift in Sources */,
+				71B912EC731764BA0DDAB0CF345307C8 /* GeoTrackLocationEvent.swift in Sources */,
+				45627C2BF022971053B5144F048DA89F /* GeoTrackManager.swift in Sources */,
+				876809303D049BD6E9D2871D7126EC44 /* GeoTrackMap.swift in Sources */,
+				B69FB64824B98D103EC00258FEC8094D /* GeoTrackService.swift in Sources */,
+				B1920850E38567B97AB6B5ACD016D5CF /* GeoTrackState.swift in Sources */,
+				82CB52ECCBFA4FCEABCA6600459B9889 /* Leg.swift in Sources */,
+				63CC0175B5F16850737654AA6B52049E /* LoggingFunctions.swift in Sources */,
+				CCC5524B6D13DDB16521D4E096D7E939 /* NumberExtensions.swift in Sources */,
+				AB18FD30B961E1035BFC8EA2E0AF32CC /* UIGeoTrack.swift in Sources */,
+				FF034FD117E0D511466A075ECEE0E288 /* ZoomDefining.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		1895D26D19C6831E1F4A042D3C88ABA8 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = GeoTrackKit;
-			target = 07A7BA7E24EA8DE7BCF1A244F5A1A2D4 /* GeoTrackKit */;
-			targetProxy = 58B28A2799289AA65D8C86DB58EE2D8D /* PBXContainerItemProxy */;
-		};
-		BD643426AC0B4D27CDF58FC744DF9A84 /* PBXTargetDependency */ = {
+		2B172144B6D18DE447698EA89F8C63BA /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "Pods-GeoTrackKitExample";
-			target = E746658ECA37985B0156B8C26A452C6E /* Pods-GeoTrackKitExample */;
-			targetProxy = 1CAFEC72989FE658716C9F7904ED5259 /* PBXContainerItemProxy */;
+			target = 7B3B0A7AC0B017469EF6A114A90A4715 /* Pods-GeoTrackKitExample */;
+			targetProxy = C0D614F836F9D0BBC6CFC757B12CBFB9 /* PBXContainerItemProxy */;
+		};
+		96FF6988F64DBC20D96207F19B26FA9A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = GeoTrackKit;
+			target = E65B1BAB10F40A9BC78B80AFB0D9AC55 /* GeoTrackKit */;
+			targetProxy = C1C6D1CFF223717ED1517481BAFDF918 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		199D972A13F2B4C56847F7A89CCA83BC /* Debug */ = {
+		27403755C6C67C714CA9408B18CE0EE5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7B64FF72DBF7BE18E7422F336B8CA943 /* Pods-GeoTrackKitExample.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-GeoTrackKitExample/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-GeoTrackKitExample/Pods-GeoTrackKitExample.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		3185AB2B459FB32803B102A1BD55BD7A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E5FBC32CBE64E36B2C49A67BDAE31C67 /* Pods-GeoTrackKitExampleTests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-GeoTrackKitExampleTests/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-GeoTrackKitExampleTests/Pods-GeoTrackKitExampleTests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		54B05E8B01D1ED8F7769F86F63714238 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 73B9ABC003B3D4EA1DE260789B4A7DA7 /* Pods-GeoTrackKitExampleTests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-GeoTrackKitExampleTests/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-GeoTrackKitExampleTests/Pods-GeoTrackKitExampleTests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		74AD872B5DBA4432EAB0A1FB8E54FB9C /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9DDD4365E822BA790ED77BDA5A657FDD /* Pods-GeoTrackKitExample.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-GeoTrackKitExample/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-GeoTrackKitExample/Pods-GeoTrackKitExample.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		8C3D32AC054F4DBEE82EB2FD6A303D73 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -722,8 +915,9 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				MTL_ENABLE_DEBUG_INFO = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRIP_INSTALLED_PRODUCT = NO;
@@ -732,114 +926,11 @@
 			};
 			name = Debug;
 		};
-		63F5689ADF0E4D93773658A0B1D140A6 /* Debug */ = {
+		B42FBC283820327EC0CE7044689A436A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7B64FF72DBF7BE18E7422F336B8CA943 /* Pods-GeoTrackKitExample.debug.xcconfig */;
+			baseConfigurationReference = 964E8EC3256E8E80F7F72A68CDF21AA5 /* GeoTrackKit.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-GeoTrackKitExample/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-GeoTrackKitExample/Pods-GeoTrackKitExample.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		96377D5ED371D3DE08C32CA5F3DF8573 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9DDD4365E822BA790ED77BDA5A657FDD /* Pods-GeoTrackKitExample.release.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-GeoTrackKitExample/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-GeoTrackKitExample/Pods-GeoTrackKitExample.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		985AC7BA156EB1B3BBE0D8248B08CC93 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 73B9ABC003B3D4EA1DE260789B4A7DA7 /* Pods-GeoTrackKitExampleTests.release.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-GeoTrackKitExampleTests/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-GeoTrackKitExampleTests/Pods-GeoTrackKitExampleTests.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		A2B99869436E52043C0A80466B5CB81A /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 67EAE892D71B98107F7211928F35B28B /* GeoTrackKit.xcconfig */;
-			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -852,7 +943,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/GeoTrackKit/GeoTrackKit-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/GeoTrackKit/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/GeoTrackKit/GeoTrackKit.modulemap";
 				PRODUCT_MODULE_NAME = GeoTrackKit;
@@ -860,40 +951,9 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.1;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		DF967D979AD295923E5199BD54CE78EA /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 67EAE892D71B98107F7211928F35B28B /* GeoTrackKit.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/GeoTrackKit/GeoTrackKit-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/GeoTrackKit/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/GeoTrackKit/GeoTrackKit.modulemap";
-				PRODUCT_MODULE_NAME = GeoTrackKit;
-				PRODUCT_NAME = GeoTrackKit;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 4.1;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -901,40 +961,7 @@
 			};
 			name = Release;
 		};
-		EA7B5761A7DADDAB3B9A383A19D7C0DC /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = E5FBC32CBE64E36B2C49A67BDAE31C67 /* Pods-GeoTrackKitExampleTests.debug.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-GeoTrackKitExampleTests/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-GeoTrackKitExampleTests/Pods-GeoTrackKitExampleTests.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		FDB2FC4A1E5891381CD9D922145497F1 /* Release */ = {
+		B751CA5B597BFC35A6C0287C65F9E2E1 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -984,31 +1011,56 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRIP_INSTALLED_PRODUCT = NO;
 				SYMROOT = "${SRCROOT}/../build";
 			};
 			name = Release;
 		};
+		DB6093020CAE261ACD9EF04DD5117812 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 964E8EC3256E8E80F7F72A68CDF21AA5 /* GeoTrackKit.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/GeoTrackKit/GeoTrackKit-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/GeoTrackKit/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/GeoTrackKit/GeoTrackKit.modulemap";
+				PRODUCT_MODULE_NAME = GeoTrackKit;
+				PRODUCT_NAME = GeoTrackKit;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		1926892B2AF0DBFE4A76DA0D9A29CA4A /* Build configuration list for PBXNativeTarget "GeoTrackKit" */ = {
+		29F3B3C58FC092E2DC7843E9BB0F39ED /* Build configuration list for PBXNativeTarget "Pods-GeoTrackKitExample" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				A2B99869436E52043C0A80466B5CB81A /* Debug */,
-				DF967D979AD295923E5199BD54CE78EA /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		1FB3A5DC8A3884FD2E51196827CB6F1F /* Build configuration list for PBXNativeTarget "Pods-GeoTrackKitExampleTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				EA7B5761A7DADDAB3B9A383A19D7C0DC /* Debug */,
-				985AC7BA156EB1B3BBE0D8248B08CC93 /* Release */,
+				27403755C6C67C714CA9408B18CE0EE5 /* Debug */,
+				74AD872B5DBA4432EAB0A1FB8E54FB9C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1016,17 +1068,26 @@
 		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				199D972A13F2B4C56847F7A89CCA83BC /* Debug */,
-				FDB2FC4A1E5891381CD9D922145497F1 /* Release */,
+				8C3D32AC054F4DBEE82EB2FD6A303D73 /* Debug */,
+				B751CA5B597BFC35A6C0287C65F9E2E1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		75674849A83C074A3AA99B7BFE602A50 /* Build configuration list for PBXNativeTarget "Pods-GeoTrackKitExample" */ = {
+		347082AF01C0A0821F618668BA727E04 /* Build configuration list for PBXNativeTarget "GeoTrackKit" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				63F5689ADF0E4D93773658A0B1D140A6 /* Debug */,
-				96377D5ED371D3DE08C32CA5F3DF8573 /* Release */,
+				DB6093020CAE261ACD9EF04DD5117812 /* Debug */,
+				B42FBC283820327EC0CE7044689A436A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		76848A92C5E0F1F29C85EDD17EF75F80 /* Build configuration list for PBXNativeTarget "Pods-GeoTrackKitExampleTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3185AB2B459FB32803B102A1BD55BD7A /* Debug */,
+				54B05E8B01D1ED8F7769F86F63714238 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
