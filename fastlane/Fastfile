@@ -10,10 +10,16 @@ platform :ios do
 
   desc "Runs all the tests"
   lane :test do
+    pod_lib_lint
     clear_derived_data
     scan(scheme: scheme, workspace: workspace)
   end
 
+  desc "Current Version"
+  lane :version do
+    version = version_get_podspec(path: podspec_name)
+    UI.important "Current Version: #{version}"
+  end
 
   desc "Release a new version with a patch bump_type"
   lane :patch do
@@ -32,11 +38,9 @@ platform :ios do
 
   def release(type)
     pod_lib_lint
-    version = version_bump_podspec(path: podspec_name,
-                                   bump_type: type)
+    version = version_bump_podspec(path: podspec_name, bump_type: type)
     git_add(path: podspec_name)
-    git_commit(path: [podspec_name],
-               message: "#{version} release")
+    git_commit(path: [podspec_name], message: "#{version} release")
     add_git_tag(tag: "#{version}")
     push_to_git_remote
     pod_push
