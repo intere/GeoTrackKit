@@ -80,6 +80,27 @@ public extension GeoTrackAnalyzer {
         self.stats = TrackStat.summarize(from: legs)
     }
 
+    /// Assuming you've already run calculate, you can split this track into an array
+    /// of smaller tracks, each of which represents a leg.
+    ///
+    /// - Returns: An array of GeoTracks (each of which represents a leg)
+    func splitIntoLegs() -> [GeoTrack]? {
+        guard stats != nil else {
+            return nil
+        }
+        var legTracks = [GeoTrack]()
+
+        for legIndex in 0..<legs.count {
+            let leg = legs[legIndex]
+            let points = Array(track.points[leg.index...leg.endIndex])
+            let name = "Leg \(legIndex+1) - \(leg.direction.rawValue)"
+
+            legTracks.append(GeoTrack(points: points, name: name, description: ""))
+        }
+
+        return legTracks
+    }
+
 }
 
 // MARK: - Stat extensions
