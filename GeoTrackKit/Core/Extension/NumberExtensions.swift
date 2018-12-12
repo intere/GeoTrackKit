@@ -33,11 +33,11 @@ public extension Double {
 
 public extension CGRect {
 
-    init(x1: Double, y1: Double, x2: Double, y2: Double) {
-        let startX = min(x1, x2)
-        let startY = min(y1, y2)
-        let width = abs(x1 - x2)
-        let height = abs(y1 - y2)
+    init(x1 point1X: Double, y1 point1Y: Double, x2 point2X: Double, y2 point2Y: Double) {
+        let startX = min(point1X, point2X)
+        let startY = min(point1Y, point2Y)
+        let width = abs(point1X - point2X)
+        let height = abs(point1Y - point2Y)
 
         self.init(x: startX, y: startY, width: width, height: height)
     }

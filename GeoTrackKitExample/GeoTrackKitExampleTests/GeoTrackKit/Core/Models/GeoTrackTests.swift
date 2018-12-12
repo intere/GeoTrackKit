@@ -15,6 +15,46 @@ class GeoTrackTests: XCTestCase {
     var secondTrack = TrackReader(filename: "reference-track-2").track  //  6,443 points (berthoud pass)
     var thirdTrack = TrackReader(filename: "reference-track-3").track   // 11,702 points (berthoud pass)
 
+}
+
+// MARK: - endsAdjacent
+
+extension GeoTrackTests {
+
+    func testEndsNotAdjacent() {
+        guard let firstTrack = firstTrack, let secondTrack = secondTrack else {
+            return XCTFail("Failed to get the two tracks")
+        }
+
+        self.measure {
+            XCTAssertFalse(firstTrack.endsAdjacent(with: secondTrack))
+        }
+    }
+
+    func testEndsAdjacent() {
+        guard let track = secondTrack else {
+            return XCTFail("No track")
+        }
+        let analyzer = GeoTrackAnalyzer(track: track)
+        analyzer.calculate()
+        guard let legs = analyzer.splitIntoLegs() else {
+            return XCTFail("Failed to split the track into its legs")
+        }
+        XCTAssertEqual(4, legs.count, "Wrong number of legs")
+
+        let first = legs[0]
+        let second = legs[1]
+
+        self.measure {
+            XCTAssertTrue(first.endsAdjacent(with: second))
+        }
+    }
+
+}
+
+// MARK: - Intersects
+
+extension GeoTrackTests {
 
     func testIntersectingShortTrack() {
         guard let track = secondTrack else {

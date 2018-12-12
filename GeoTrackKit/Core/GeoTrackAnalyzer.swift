@@ -94,7 +94,7 @@ public extension GeoTrackAnalyzer {
             let leg = legs[legIndex]
             let points = Array(track.points[leg.index...leg.endIndex])
             let name = "Leg \(legIndex+1) - \(leg.direction.rawValue)"
-            
+
             legTracks.append(GeoTrack(points: points, name: name, description: ""))
         }
 

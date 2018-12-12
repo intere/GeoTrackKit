@@ -38,6 +38,31 @@ public extension GeoTrack {
         return false
     }
 
+    /// Tells you if this track butts up against another track.  Note: This only
+    /// checks the first and last points of the two tracks
+    ///
+    /// - Parameters:
+    ///   - another: The track to check a connection with.
+    ///   - distance: The distance threshold in meters (defaults to 5 meters)
+    /// - Returns: True if the ends of the two trails connect, false if not.
+    func endsAdjacent(with another: GeoTrack, threshold distance: CLLocationDistance = 5) -> Bool {
+        guard let firstPoint = points.first, let lastPoint = points.last,
+            let anotherFirst = another.points.first, let anotherLast = another.points.last else {
+                return false
+        }
+
+        if firstPoint.distance(from: anotherFirst) <= distance ||
+            firstPoint.distance(from: anotherLast) <= distance {
+            return true
+        }
+        if lastPoint.distance(from: anotherFirst) <= distance ||
+            lastPoint.distance(from: anotherLast) <= distance {
+            return true
+        }
+
+        return false
+    }
+
 }
 
 // MARK: - Throwaway
