@@ -6,11 +6,40 @@ default_platform :ios
 platform :ios do
   scheme = "GeoTrackKitExample"
   workspace = "GeoTrackKitExample/GeoTrackKitExample.xcworkspace"
+  podspec_name = "GeoTrackKit.podspec"
 
   desc "Runs all the tests"
   lane :test do
     clear_derived_data
     scan(scheme: scheme, workspace: workspace)
+  end
+
+
+  desc "Release a new version with a patch bump_type"
+  lane :patch do
+    release("patch") # we could use __method__.to_s instead of duplicating the name
+  end
+
+  desc "Release a new version with a minor bump_type"
+  lane :minor do
+    release("minor")
+  end
+
+  desc "Release a new version with a major bump_type"
+  lane :major do
+    release("major")
+  end
+
+  def release(type)
+    pod_lib_lint
+    version = version_bump_podspec(path: podspec_name,
+                                   bump_type: type)
+    git_add(path: podspec_name)
+    git_commit(path: [podspec_name],
+               message: "#{version} release")
+    add_git_tag(tag: "#{version}")
+    push_to_git_remote
+    pod_push
   end
 
 end
