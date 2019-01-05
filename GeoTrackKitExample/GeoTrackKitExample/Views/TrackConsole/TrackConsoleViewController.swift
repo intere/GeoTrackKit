@@ -43,6 +43,7 @@ extension TrackConsoleViewController {
 
     @objc
     func locationDidUpdate(_ notification: NSNotification) {
+        assert(Thread.isMainThread)
         DispatchQueue.main.async {
             self.updateLabels()
         }
@@ -58,18 +59,41 @@ fileprivate extension TrackConsoleViewController {
         if GeoTrackManager.shared.isTracking {
             GeoTrackManager.shared.stopTracking()
         } else {
-            GeoTrackManager.shared.startTracking()
+            do {
+                try GeoTrackManager.shared.startTracking(type: .whileInUse)
+            } catch {
+                if error is NotAuthorizedError {
+                    showUnauthorizedDialog()
+                } else {
+                    print("ERROR: \(error.localizedDescription)")
+                }
+            }
         }
-        updateButtonText()
+        updateTrackButtonText()
         updateLabels()
     }
 
-    func updateButtonText() {
-        button.setTitle(GeoTrackManager.shared.isTracking ? "Stop Tracking" : "Start Tracking", for: .normal)
+    /// Shows a dialog to the user that states we don't have location tracking access and lets them open up the settings.
+    func showUnauthorizedDialog() {
+        let dialog = UIAlertController(title: "Error", message: "Access to location services is not available.  If you wish to track, you'll need to open the settings to address this.", preferredStyle: .alert)
+
+        dialog.addAction(UIAlertAction(title: "Open Settings", style: .default) { _ in
+            dialog.dismiss(animated: true)
+            GeoTrackManager.shared.openSettings()
+        })
+        dialog.addAction(UIAlertAction(title: "Cancel", style: .cancel) { _ in
+            dialog.dismiss(animated: true)
+        })
+
+        present(dialog, animated: true, completion: nil)
+    }
+
+    func updateTrackButtonText() {
+        button.setTitle(GeoTrackManager.shared.trackingText, for: .normal)
     }
 
     func updateLabels() {
-        updateButtonText()
+        updateTrackButtonText()
         let track = GeoTrackManager.shared.track
         updatePointCount(track: track)
         updateEventLog(track: track)
@@ -163,26 +187,14 @@ fileprivate extension TrackConsoleViewController {
 
 }
 
-// MARK: - Unit Conversions
+extension GeoTrackService {
 
-extension CLLocationSpeed {
-
-    /// Converts "meters per second" to "miles per hour".
-    var metersPerSecondToMilesPerHour: Double {
-        return self * 2.23694
-    }
-
-    /// Converts "meters per second" to "kilometers per hour"
-    var metersPerSecondToKilometersPerHour: Double {
-        return self * 3.6
-    }
-}
-
-extension CLLocationDistance {
-
-    /// Converts meters to feet
-    var metersToFeet: Double {
-        return self * 3.28084
+    /// Gets you the appropriate button text based on whether or not we're tracking
+    var trackingText: String {
+        if isTracking {
+            return "Stop Tracking"
+        }
+        return "Start Tracking"
     }
 
 }
