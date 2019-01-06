@@ -20,11 +20,8 @@ public class GeoTrackManager: NSObject {
     public static let shared: GeoTrackService = GeoTrackManager()
 
     // GeoTrackService stuff
-    internal var trackingState: GeoTrackState = .notTracking {
-        didSet {
-            print("Tracking State set to: \(trackingState)")
-        }
-    }
+    internal var trackingState: GeoTrackState = .notTracking
+
     /// Your app's name
     internal var appName: String = "No Application Name"
 
@@ -130,7 +127,6 @@ extension GeoTrackManager: CLLocationManagerDelegate {
     ///   - manager: The source of the event.
     ///   - locations: The location updates that happened.
     public func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        print("didUpdateLocations")
         if trackingState == .awaitingFix {
             trackingState = .tracking
         }

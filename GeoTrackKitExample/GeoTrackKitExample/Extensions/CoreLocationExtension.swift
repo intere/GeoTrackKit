@@ -8,8 +8,6 @@
 
 import CoreLocation
 
-
-
 // MARK: - Unit Conversions
 
 extension CLLocationSpeed {

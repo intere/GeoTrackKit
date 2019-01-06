@@ -43,10 +43,7 @@ extension TrackConsoleViewController {
 
     @objc
     func locationDidUpdate(_ notification: NSNotification) {
-        assert(Thread.isMainThread)
-        DispatchQueue.main.async {
-            self.updateLabels()
-        }
+        self.updateLabels()
     }
 
 }
