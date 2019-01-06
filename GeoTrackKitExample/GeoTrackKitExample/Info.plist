@@ -26,8 +26,6 @@
 	<string>Access to your workout data is required to import tracks from activities that have an associated geo track.</string>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
 	<string>We use location services to create tracks for you. We only use location services when you explicitly ask us to.</string>
-	<key>NSLocationAlwaysUsageDescription</key>
-	<string>We use location services to create tracks for you. We only use location services when you explicitly ask us to.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>We use location services to create tracks for you. We only use location services when you explicitly ask us to.</string>
 	<key>UIBackgroundModes</key>

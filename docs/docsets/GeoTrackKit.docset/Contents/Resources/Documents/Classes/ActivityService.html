@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>ActivityService Class Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a name="//apple_ref/swift/Class/ActivityService" class="dashAnchor"></a>
+    <a title="ActivityService Class Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="../index.html">GeoTrackKit Docs</a> (93% documented)</p>
+        <p class="header-right"><a href="https://github.com/intere/GeoTrackKit"><img src="../img/gh.png"/>View on GitHub</a></p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../index.html">GeoTrackKit Reference</a>
+        <img id="carat" src="../img/carat.png" />
+        ActivityService Class Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="../Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Classes/ActivityService.html">ActivityService</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/DefaultMapZoom.html">DefaultMapZoom</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/GeoTrack.html">GeoTrack</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/GeoTrackAnalyzer.html">GeoTrackAnalyzer</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/GeoTrackEvent.html">GeoTrackEvent</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/GeoTrackEvent/Level.html">– Level</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/GeoTrackEventLog.html">GeoTrackEventLog</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/GeoTrackLocationEvent.html">GeoTrackLocationEvent</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/GeoTrackLocationEvent/EventType.html">– EventType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/GeoTrackManager.html">GeoTrackManager</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/GeoTrackMap.html">GeoTrackMap</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Leg.html">Leg</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes.html#/s:11GeoTrackKit18NotAuthorizedErrorC">NotAuthorizedError</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Stat.html">Stat</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/TrackStat.html">TrackStat</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/UIGeoTrack.html">UIGeoTrack</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Enums.html">Enumerations</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Enums/Direction.html">Direction</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/GeoTrackKitError.html">GeoTrackKitError</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/GeoTrackState.html">GeoTrackState</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/TrackingType.html">TrackingType</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Extensions.html">Extensions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Extensions/CGRect.html">CGRect</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/CLLocation.html">CLLocation</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/CLLocationCoordinate2D.html">CLLocationCoordinate2D</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/Date.html">Date</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/Double.html">Double</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/Notification.html">Notification</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/Notification/Name.html">– Name</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Functions.html">Functions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:11GeoTrackKit7GTDebug7messageySS_tF">GTDebug(message:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:11GeoTrackKit7GTError7messageySS_tF">GTError(message:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:11GeoTrackKit6GTInfo7messageySS_tF">GTInfo(message:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:11GeoTrackKit7GTTrace7messageySS_tF">GTTrace(message:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:11GeoTrackKit6GTWarn7messageySS_tF">GTWarn(message:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:11GeoTrackKit4elogyySSF">elog(_:)</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Protocols/GeoTrackLogAppender.html">GeoTrackLogAppender</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/GeoTrackService.html">GeoTrackService</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/ZoomDefining.html">ZoomDefining</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Typealiases.html">Type Aliases</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:11GeoTrackKit21AuthorizationCallbacka">AuthorizationCallback</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:11GeoTrackKit0aB12AuthCallbacka">GeoTrackAuthCallback</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:11GeoTrackKit19RouteSampleCallbacka">RouteSampleCallback</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:11GeoTrackKit0B8Callbacka">TrackCallback</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:11GeoTrackKit15WorkoutCallbacka">WorkoutCallback</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>ActivityService</h1>
+              <div class="declaration">
+                <div class="language">
+                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">ActivityService</span></code></pre>
+
+                </div>
+              </div>
+            <p>A service that will get you workout activities, with a specific focus on those workouts that have associated
+routes (think: associated Geospatial data, aka Tracks).</p>
+
+<p>The Apple Class hierarchies that we&rsquo;re working with here are:</p>
+<pre class="highlight swift"><code><span class="kt">HKWorkout</span>  <span class="o">--</span> <span class="n">has</span> <span class="mi">0</span> <span class="n">or</span> <span class="n">more</span> <span class="o">--&gt;</span> <span class="kt">HKWorkoutRoute</span>
+<span class="kt">HKWorkoutRoute</span> <span class="o">--</span> <span class="n">has</span> <span class="mi">0</span> <span class="n">or</span> <span class="n">more</span> <span class="o">-&gt;</span> <span class="kt">CLLocation</span>
+</code></pre>
+
+<p><code>HKWorkoutRoute</code> is a <code>HKSeriesSample</code></p>
+
+<p>A typical workflow goes like this:</p>
+
+<ol>
+<li>Ensure we are authorized: <code>ActivityService.shared.authorize { //...</code></li>
+<li>Query for the workouts: <code>ActivityService.shared.queryWorkouts { //...</code></li>
+<li>Filter down to workouts that have Routes: <code>ActivityService.shared.queryRoute(from: workout) { // ...</code></li>
+<li>Get the Track (Route) for a workout: <code>ActivityService.shared.queryTrack(from: workout) { // ...</code></li>
+</ol>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11GeoTrackKit15ActivityServiceC6sharedACvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/shared" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11GeoTrackKit15ActivityServiceC6sharedACvpZ">shared</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Shared (singleton) instance of the <code>ActivityService</code></p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">shared</span><span class="p">:</span> <span class="kt">ActivityService</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11GeoTrackKit15ActivityServiceC21isHealthDataAvailableSbvp"></a>
+                    <a name="//apple_ref/swift/Property/isHealthDataAvailable" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11GeoTrackKit15ActivityServiceC21isHealthDataAvailableSbvp">isHealthDataAvailable</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Is health data avaialble?</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">isHealthDataAvailable</span><span class="p">:</span> <span class="kt">Bool</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Authorization%20API"></a>
+                <a name="//apple_ref/swift/Section/Authorization API" class="dashAnchor"></a>
+                <a href="#/Authorization%20API">
+                  <h3 class="section-name">Authorization API</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11GeoTrackKit15ActivityServiceC9authorizeyyySb_s5Error_pSgtcF"></a>
+                    <a name="//apple_ref/swift/Method/authorize(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11GeoTrackKit15ActivityServiceC9authorizeyyySb_s5Error_pSgtcF">authorize(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Request authorization for health kit data.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">authorize</span><span class="p">(</span><span class="n">_</span> <span class="nv">callback</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="kt"><a href="../Typealiases.html#/s:11GeoTrackKit21AuthorizationCallbacka">AuthorizationCallback</a></span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>callback</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>the callback that will hand back a boolean (indicating success or failure)
+and an optional Error object.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Workout%20Queries"></a>
+                <a name="//apple_ref/swift/Section/Workout Queries" class="dashAnchor"></a>
+                <a href="#/Workout%20Queries">
+                  <h3 class="section-name">Workout Queries</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11GeoTrackKit15ActivityServiceC13queryWorkouts15minimumDistance_ySd_ySaySo9HKWorkoutCGSg_s5Error_pSgtctF"></a>
+                    <a name="//apple_ref/swift/Method/queryWorkouts(minimumDistance:_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11GeoTrackKit15ActivityServiceC13queryWorkouts15minimumDistance_ySd_ySaySo9HKWorkoutCGSg_s5Error_pSgtctF">queryWorkouts(minimumDistance:_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Queries HealthKit to get all of your workouts</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">queryWorkouts</span><span class="p">(</span><span class="nv">minimumDistance</span><span class="p">:</span> <span class="kt">Double</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span> <span class="n">_</span> <span class="nv">callback</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="kt"><a href="../Typealiases.html#/s:11GeoTrackKit15WorkoutCallbacka">WorkoutCallback</a></span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>minimumDistance</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The minimum distance (in meters) that a workout must be to show up in your query results (defults to 100)</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>callback</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The block to handle the result (whether it&rsquo;s success or failure)</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11GeoTrackKit15ActivityServiceC10queryRoute4from8callbackySo9HKWorkoutC_ySaySo14HKSeriesSampleCGSg_s5Error_pSgtctF"></a>
+                    <a name="//apple_ref/swift/Method/queryRoute(from:callback:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11GeoTrackKit15ActivityServiceC10queryRoute4from8callbackySo9HKWorkoutC_ySaySo14HKSeriesSampleCGSg_s5Error_pSgtctF">queryRoute(from:callback:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Queries to see if there is a <code>HKWorkoutRoute</code> related to the provided workout.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">queryRoute</span><span class="p">(</span><span class="n">from</span> <span class="nv">workout</span><span class="p">:</span> <span class="kt">HKWorkout</span><span class="p">,</span> <span class="nv">callback</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="kt"><a href="../Typealiases.html#/s:11GeoTrackKit19RouteSampleCallbacka">RouteSampleCallback</a></span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>workout</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The workout to query.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>callback</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The callback that will tell you if there is a sample (Route) or not.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11GeoTrackKit15ActivityServiceC05queryB04from8callbackySo9HKWorkoutC_ySaySo10CLLocationCGSg_s5Error_pSgtctF"></a>
+                    <a name="//apple_ref/swift/Method/queryTrack(from:callback:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11GeoTrackKit15ActivityServiceC05queryB04from8callbackySo9HKWorkoutC_ySaySo10CLLocationCGSg_s5Error_pSgtctF">queryTrack(from:callback:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Queries for the points related to a workout.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">queryTrack</span><span class="p">(</span><span class="n">from</span> <span class="nv">workout</span><span class="p">:</span> <span class="kt">HKWorkout</span><span class="p">,</span> <span class="nv">callback</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="kt"><a href="../Typealiases.html#/s:11GeoTrackKit0B8Callbacka">TrackCallback</a></span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>workout</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The workout you want to query for a track from.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>callback</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>A callback that will either give you track points (an array of CLLocation) or an error.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Implementation"></a>
+                <a name="//apple_ref/swift/Section/Implementation" class="dashAnchor"></a>
+                <a href="#/Implementation">
+                  <h3 class="section-name">Implementation</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11GeoTrackKit15ActivityServiceC11queryPoints5route8callbackySo14HKWorkoutRouteC_ySaySo10CLLocationCGSg_s5Error_pSgtctF"></a>
+                    <a name="//apple_ref/swift/Method/queryPoints(route:callback:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11GeoTrackKit15ActivityServiceC11queryPoints5route8callbackySo14HKWorkoutRouteC_ySaySo10CLLocationCGSg_s5Error_pSgtctF">queryPoints(route:callback:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">queryPoints</span><span class="p">(</span><span class="nv">route</span><span class="p">:</span> <span class="kt">HKWorkoutRoute</span><span class="p">,</span> <span class="nv">callback</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="kt"><a href="../Typealiases.html#/s:11GeoTrackKit0B8Callbacka">TrackCallback</a></span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>© 2016-2017 <a class="link" href="http://intere.github.io" target="_blank" rel="external">Eric Internicola</a></p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.4</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>

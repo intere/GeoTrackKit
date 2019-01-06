@@ -1,66 +1,367 @@
 {
   "warnings": [
     {
-      "file": "/Users/einternicola/code/personal/GeoTrackKit/GeoTrackKit/Extension/CLLocationExtension.swift",
+      "file": "/Users/einternicola/code/personal/GeoTrackKit/GeoTrackKit/Core/Extension/CLLocationExtension.swift",
       "line": 13,
       "symbol": "CLLocation.string",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/einternicola/code/personal/GeoTrackKit/GeoTrackKit/GeoTrackManager.swift",
-      "line": 19,
+      "file": "/Users/einternicola/code/personal/GeoTrackKit/GeoTrackKit/Core/Extension/CLLocationExtension.swift",
+      "line": 13,
+      "symbol": "CLLocation.string",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/code/personal/GeoTrackKit/GeoTrackKit/Core/Extension/CLLocationExtension.swift",
+      "line": 13,
+      "symbol": "CLLocation.string",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/code/personal/GeoTrackKit/GeoTrackKit/Core/Extension/NumberExtensions.swift",
+      "line": 36,
+      "symbol": "CGRect.init(x1:y1:x2:y2:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/code/personal/GeoTrackKit/GeoTrackKit/Core/Extension/NumberExtensions.swift",
+      "line": 36,
+      "symbol": "CGRect.init(x1:y1:x2:y2:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/code/personal/GeoTrackKit/GeoTrackKit/Core/Extension/NumberExtensions.swift",
+      "line": 36,
+      "symbol": "CGRect.init(x1:y1:x2:y2:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/code/personal/GeoTrackKit/GeoTrackKit/Core/GeoTrackKitErrors.swift",
+      "line": 10,
+      "symbol": "GeoTrackKitError.healthDataNotAvailable",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/code/personal/GeoTrackKit/GeoTrackKit/Core/GeoTrackKitErrors.swift",
+      "line": 10,
+      "symbol": "GeoTrackKitError.healthDataNotAvailable",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/code/personal/GeoTrackKit/GeoTrackKit/Core/GeoTrackKitErrors.swift",
+      "line": 10,
+      "symbol": "GeoTrackKitError.healthDataNotAvailable",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/code/personal/GeoTrackKit/GeoTrackKit/Core/GeoTrackKitErrors.swift",
+      "line": 11,
+      "symbol": "GeoTrackKitError.iOS11Required",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/code/personal/GeoTrackKit/GeoTrackKit/Core/GeoTrackKitErrors.swift",
+      "line": 11,
+      "symbol": "GeoTrackKitError.iOS11Required",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/code/personal/GeoTrackKit/GeoTrackKit/Core/GeoTrackKitErrors.swift",
+      "line": 11,
+      "symbol": "GeoTrackKitError.iOS11Required",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/code/personal/GeoTrackKit/GeoTrackKit/Core/GeoTrackKitErrors.swift",
+      "line": 12,
+      "symbol": "GeoTrackKitError.authNoErrorButUnsuccessful",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/code/personal/GeoTrackKit/GeoTrackKit/Core/GeoTrackKitErrors.swift",
+      "line": 12,
+      "symbol": "GeoTrackKitError.authNoErrorButUnsuccessful",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/code/personal/GeoTrackKit/GeoTrackKit/Core/GeoTrackKitErrors.swift",
+      "line": 12,
+      "symbol": "GeoTrackKitError.authNoErrorButUnsuccessful",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/code/personal/GeoTrackKit/GeoTrackKit/Core/GeoTrackKitErrors.swift",
+      "line": 13,
+      "symbol": "GeoTrackKitError.workoutWithoutRoutes",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/code/personal/GeoTrackKit/GeoTrackKit/Core/GeoTrackKitErrors.swift",
+      "line": 13,
+      "symbol": "GeoTrackKitError.workoutWithoutRoutes",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/code/personal/GeoTrackKit/GeoTrackKit/Core/GeoTrackKitErrors.swift",
+      "line": 13,
+      "symbol": "GeoTrackKitError.workoutWithoutRoutes",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/code/personal/GeoTrackKit/GeoTrackKit/Core/GeoTrackKitErrors.swift",
+      "line": 14,
+      "symbol": "GeoTrackKitError.sampleMissingPoints",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/code/personal/GeoTrackKit/GeoTrackKit/Core/GeoTrackKitErrors.swift",
+      "line": 14,
+      "symbol": "GeoTrackKitError.sampleMissingPoints",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/code/personal/GeoTrackKit/GeoTrackKit/Core/GeoTrackKitErrors.swift",
+      "line": 14,
+      "symbol": "GeoTrackKitError.sampleMissingPoints",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/code/personal/GeoTrackKit/GeoTrackKit/Core/GeoTrackManager.swift",
+      "line": 20,
       "symbol": "GeoTrackManager.shared",
       "symbol_kind": "source.lang.swift.decl.var.static",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/einternicola/code/personal/GeoTrackKit/GeoTrackKit/GeoTrackManager.swift",
-      "line": 22,
+      "file": "/Users/einternicola/code/personal/GeoTrackKit/GeoTrackKit/Core/GeoTrackManager.swift",
+      "line": 20,
+      "symbol": "GeoTrackManager.shared",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/code/personal/GeoTrackKit/GeoTrackKit/Core/GeoTrackManager.swift",
+      "line": 20,
+      "symbol": "GeoTrackManager.shared",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/code/personal/GeoTrackKit/GeoTrackKit/Core/GeoTrackManager.swift",
+      "line": 23,
       "symbol": "GeoTrackManager.trackingState",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/einternicola/code/personal/GeoTrackKit/GeoTrackKit/GeoTrackManager.swift",
-      "line": 27,
+      "file": "/Users/einternicola/code/personal/GeoTrackKit/GeoTrackKit/Core/GeoTrackManager.swift",
+      "line": 23,
+      "symbol": "GeoTrackManager.trackingState",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/code/personal/GeoTrackKit/GeoTrackKit/Core/GeoTrackManager.swift",
+      "line": 23,
+      "symbol": "GeoTrackManager.trackingState",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/code/personal/GeoTrackKit/GeoTrackKit/Core/GeoTrackManager.swift",
+      "line": 29,
       "symbol": "GeoTrackManager.locationManager",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/einternicola/code/personal/GeoTrackKit/GeoTrackKit/Map/GeoTrackMap.swift",
+      "file": "/Users/einternicola/code/personal/GeoTrackKit/GeoTrackKit/Core/GeoTrackManager.swift",
+      "line": 29,
+      "symbol": "GeoTrackManager.locationManager",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/code/personal/GeoTrackKit/GeoTrackKit/Core/GeoTrackManager.swift",
+      "line": 29,
+      "symbol": "GeoTrackManager.locationManager",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/code/personal/GeoTrackKit/GeoTrackKit/Core/GeoTrackService.swift",
+      "line": 18,
+      "symbol": "TrackingType.whileInUse",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/code/personal/GeoTrackKit/GeoTrackKit/Core/GeoTrackService.swift",
+      "line": 18,
+      "symbol": "TrackingType.whileInUse",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/code/personal/GeoTrackKit/GeoTrackKit/Core/GeoTrackService.swift",
+      "line": 18,
+      "symbol": "TrackingType.whileInUse",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/code/personal/GeoTrackKit/GeoTrackKit/Core/GeoTrackService.swift",
+      "line": 19,
+      "symbol": "TrackingType.always",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/code/personal/GeoTrackKit/GeoTrackKit/Core/GeoTrackService.swift",
+      "line": 19,
+      "symbol": "TrackingType.always",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/code/personal/GeoTrackKit/GeoTrackKit/Core/GeoTrackService.swift",
+      "line": 19,
+      "symbol": "TrackingType.always",
+      "symbol_kind": "source.lang.swift.decl.enumelement",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/code/personal/GeoTrackKit/GeoTrackKit/Core/Map/GeoTrackMap.swift",
       "line": 35,
       "symbol": "GeoTrackMap.init(coder:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/einternicola/code/personal/GeoTrackKit/GeoTrackKit/Map/GeoTrackMap.swift",
+      "file": "/Users/einternicola/code/personal/GeoTrackKit/GeoTrackKit/Core/Map/GeoTrackMap.swift",
+      "line": 35,
+      "symbol": "GeoTrackMap.init(coder:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/code/personal/GeoTrackKit/GeoTrackKit/Core/Map/GeoTrackMap.swift",
+      "line": 35,
+      "symbol": "GeoTrackMap.init(coder:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/code/personal/GeoTrackKit/GeoTrackKit/Core/Map/GeoTrackMap.swift",
       "line": 41,
       "symbol": "GeoTrackMap.init(frame:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/einternicola/code/personal/GeoTrackKit/GeoTrackKit/Models/Analyze/Leg.swift",
-      "line": 27,
+      "file": "/Users/einternicola/code/personal/GeoTrackKit/GeoTrackKit/Core/Map/GeoTrackMap.swift",
+      "line": 41,
+      "symbol": "GeoTrackMap.init(frame:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/code/personal/GeoTrackKit/GeoTrackKit/Core/Map/GeoTrackMap.swift",
+      "line": 41,
+      "symbol": "GeoTrackMap.init(frame:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/code/personal/GeoTrackKit/GeoTrackKit/Core/Models/Analyze/Leg.swift",
+      "line": 26,
       "symbol": "Stat.direction",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/einternicola/code/personal/GeoTrackKit/GeoTrackKit/Models/GeoTrack.swift",
-      "line": 245,
+      "file": "/Users/einternicola/code/personal/GeoTrackKit/GeoTrackKit/Core/Models/Analyze/Leg.swift",
+      "line": 26,
+      "symbol": "Stat.direction",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/code/personal/GeoTrackKit/GeoTrackKit/Core/Models/Analyze/Leg.swift",
+      "line": 26,
+      "symbol": "Stat.direction",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/code/personal/GeoTrackKit/GeoTrackKit/Core/Models/GeoTrack.swift",
+      "line": 257,
       "symbol": "elog(_:)",
       "symbol_kind": "source.lang.swift.decl.function.free",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/einternicola/code/personal/GeoTrackKit/GeoTrackKit/Models/GeoTrackLocationEvent.swift",
+      "file": "/Users/einternicola/code/personal/GeoTrackKit/GeoTrackKit/Core/Models/GeoTrack.swift",
+      "line": 257,
+      "symbol": "elog(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.free",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/code/personal/GeoTrackKit/GeoTrackKit/Core/Models/GeoTrack.swift",
+      "line": 257,
+      "symbol": "elog(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.free",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/code/personal/GeoTrackKit/GeoTrackKit/Core/Models/GeoTrackLocationEvent.swift",
       "line": 14,
       "symbol": "GeoTrackLocationEvent.EventType",
       "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/code/personal/GeoTrackKit/GeoTrackKit/Core/Models/GeoTrackLocationEvent.swift",
+      "line": 14,
+      "symbol": "GeoTrackLocationEvent.EventType",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/code/personal/GeoTrackKit/GeoTrackKit/Core/Models/GeoTrackLocationEvent.swift",
+      "line": 14,
+      "symbol": "GeoTrackLocationEvent.EventType",
+      "symbol_kind": "source.lang.swift.decl.enum",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/einternicola/code/personal/GeoTrackKit/GeoTrackKit/HealthKit/ActivityService.swift",
+      "line": 207,
+      "symbol": "ActivityService.queryPoints(route:callback:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     }
   ],

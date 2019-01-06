@@ -9,10 +9,11 @@
 import Foundation
 import CoreLocation
 
+
 /// This class is responsible for managing (and brokering) everything related to tracking for you.
 /// ### Sample Usage:
 /// ```
-/// GeoTrackManager.shared.startTracking()
+/// GeoTrackManager.shared.startTracking(type: .whileInUse)
 ///
 /// ```
 public class GeoTrackManager: NSObject {
@@ -20,6 +21,7 @@ public class GeoTrackManager: NSObject {
 
     // GeoTrackService stuff
     internal var trackingState: GeoTrackState = .notTracking
+
     /// Your app's name
     internal var appName: String = "No Application Name"
 
@@ -29,6 +31,7 @@ public class GeoTrackManager: NSObject {
     fileprivate(set) public var lastPoint: CLLocation?
     /// Are we authorized for location tracking?
     fileprivate(set) public var authorized: Bool = false
+
     /// The Track
     fileprivate(set) public var track: GeoTrack?
 
@@ -62,7 +65,7 @@ extension GeoTrackManager: GeoTrackService {
     }
 
     /// Attempts to start tracking (if we're not already).
-    public func startTracking() {
+    public func startTracking(type: TrackingType) throws {
         GTInfo(message: "User requested Start Tracking")
         guard trackingState == .notTracking else {
             GTWarn(message: "We're already tracking or awaiting a fix")
@@ -70,8 +73,7 @@ extension GeoTrackManager: GeoTrackService {
         }
 
         initializeLocationManager()
-        beginLocationUpdates()
-        trackingState = .awaitingFix
+        try beginLocationUpdates(type: type)
     }
 
     /// Stops tracking
@@ -93,11 +95,11 @@ extension GeoTrackManager: CLLocationManagerDelegate {
     ///   - manager: The source of the notification.
     ///   - status: The status change.
     public func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-
         switch status {
         case .authorizedAlways, .authorizedWhenInUse:
             GTDebug(message: "Authorization has been updated, starting location updates")
             locationManager?.startUpdatingLocation()
+            trackingState = .awaitingFix
             authorized = true
 
         case .denied:
@@ -235,8 +237,8 @@ fileprivate extension GeoTrackManager {
         self.locationManager = locationManager
     }
 
-    /// Handles requesting always authorization from location services
-    func beginLocationUpdates() {
+    /// Handles requesting authorization from location services
+    func beginLocationUpdates(type: TrackingType) throws {
         guard let locationManager = locationManager else {
             return
         }
@@ -247,10 +249,32 @@ fileprivate extension GeoTrackManager {
         }
         track?.startTracking()
 
-        if !authorized {
-            locationManager.requestAlwaysAuthorization()
-        } else {
+        switch CLLocationManager.authorizationStatus() {
+        case .authorizedAlways:
             locationManager.startUpdatingLocation()
+            trackingState = .awaitingFix
+
+        case .authorizedWhenInUse:
+            switch type {
+            case .always:
+                locationManager.requestAlwaysAuthorization()
+
+            case .whileInUse:
+                locationManager.startUpdatingLocation()
+                trackingState = .awaitingFix
+            }
+
+        case .denied, .restricted:
+            throw NotAuthorizedError()
+
+        case .notDetermined:
+            switch type {
+            case .always:
+                locationManager.requestAlwaysAuthorization()
+
+            case .whileInUse:
+                locationManager.requestWhenInUseAuthorization()
+            }
         }
     }
 

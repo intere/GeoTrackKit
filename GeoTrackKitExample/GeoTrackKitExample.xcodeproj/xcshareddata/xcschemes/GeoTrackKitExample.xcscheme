@@ -32,7 +32,7 @@
       <CodeCoverageTargets>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "9F2AE4413CE29DF93F43571A3285F9BA"
+            BlueprintIdentifier = "E65B1BAB10F40A9BC78B80AFB0D9AC55"
             BuildableName = "GeoTrackKit.framework"
             BlueprintName = "GeoTrackKit"
             ReferencedContainer = "container:Pods/Pods.xcodeproj">
