@@ -59,7 +59,7 @@ pod 'GeoTrackKit'
 
 ```
 // This will either start tracking, or prompt the user for access to track their location
-GeoTrackManager.shared.startTracking()
+GeoTrackManager.shared.startTracking(type: .whileInUse)
 ```
 <img src="https://github.com/intere/GeoTrackKit/raw/develop/screenshots/GeoTrackKit-Tracking.gif" title="Tracking Example">
 
@@ -78,7 +78,8 @@ I've built a couple of variations of Geo Tracking applications, but I wanted to 
 <img src="https://github.com/intere/GeoTrackKit/raw/develop/screenshots/GeoTrackKitClasses.png" title="Key GeoTrackKit Classes">
 
 ## Documentation
-See the generated documentation in the [`docs`](https://intere.github.io/GeoTrackKit/docs/) folder
+See the generated API Documentation in the [`docs`](https://intere.github.io/GeoTrackKit/docs/) folder
+See the [GeoTrackKit Wiki](https://github.com/intere/GeoTrackKit/wiki)
 
 
 ## Credits / Attribution
