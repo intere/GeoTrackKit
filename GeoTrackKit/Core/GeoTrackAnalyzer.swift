@@ -8,10 +8,18 @@
 
 import CoreLocation
 
-/// This class is used to generate statistics about your track.  Please note, this is a trivial implementation for ascent / descent detection.  This implementation does not (currently) do any sort of noise reduction or utilize the vertical accuracy of the data to remove potentially erronious points.  It might make sense (down the roade) to abstract a protocol from this and have multiple implementations to choose from that perform noise reduction or some sort of statistical smoothing to clean up the data for accuracy.
+/// This class is used to generate statistics about your track.  Please note,
+/// this is a trivial implementation for ascent / descent detection.  This
+/// implementation does not (currently) do any sort of noise reduction or utilize
+/// the vertical accuracy of the data to remove potentially erronious points.
+/// It might make sense (down the roade) to abstract a protocol from this and
+/// have multiple implementations to choose from that perform noise reduction
+/// or some sort of statistical smoothing to clean up the data for accuracy.
 public class GeoTrackAnalyzer {
 
-    /// The sensitivity of the "track" detection (in meters).  If you set this too high, it won't detect "runs" properly, if you set it too low, it will detect more "runs" than you actually have done
+    /// The sensitivity of the "track" detection (in meters).  If you set this
+    /// too high, it won't detect "runs" properly, if you set it too low, it
+    /// will detect more "runs" than you actually have done
     public static var altitudeSensitivity: CLLocationDistance = 25
 
     /// The track that we're calculating the statistics from
@@ -23,7 +31,9 @@ public class GeoTrackAnalyzer {
     /// The [mutable] legs of the track (ascents and descents)
     fileprivate(set) public var legs = [Leg]()
 
-    /// Initializes this Track Analyzer with a track.  You must still call `calculate()` to generate the statistics.  This isn't done on construction for performance reasons.
+    /// Initializes this Track Analyzer with a track.  You must still call
+    /// `calculate()` to generate the statistics.  This isn't done on
+    /// construction for performance reasons.
     ///
     /// - Parameter track: The track to initialize with
     public init(track: GeoTrack) {
@@ -36,12 +46,13 @@ public class GeoTrackAnalyzer {
 
 public extension GeoTrackAnalyzer {
 
+    @discardableResult
     /// Calculates the statistics from the data set.  It will populate the legs and the stats.
-    func calculate() {
+    func calculate() -> GeoTrackAnalyzer {
         let points = track.points
         guard points.count > 0 else {
             GTWarn(message: "No points to calculate statistics from")
-            return
+            return self
         }
 
         var direction = Direction.unknown
@@ -71,13 +82,10 @@ public extension GeoTrackAnalyzer {
 
         legs = collapse(relatives: legs)
 
-        print("Start,End,Direction,Altitude")
-        for rPt in legs {
-            print("\(rPt.index), \(rPt.endIndex), \(rPt.direction), \(rPt.stat.string)")
-        }
-
         self.legs = legs
-        self.stats = TrackStat.summarize(from: legs)
+        stats = TrackStat.summarize(from: legs)
+
+        return self
     }
 
     /// Assuming you've already run calculate, you can split this track into an array
