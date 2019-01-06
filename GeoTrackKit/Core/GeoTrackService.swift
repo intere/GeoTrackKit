@@ -62,7 +62,11 @@ public extension GeoTrackService {
             return
         }
 
-        UIApplication.shared.open(systemSettingsUrl, options: [:], completionHandler: nil)
+        if #available(iOS 10, *) {
+            UIApplication.shared.open(systemSettingsUrl, options: [:], completionHandler: nil)
+        } else {
+            UIApplication.shared.openURL(systemSettingsUrl)
+        }
     }
 
 }
