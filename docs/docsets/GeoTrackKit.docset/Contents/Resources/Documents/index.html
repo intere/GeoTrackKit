@@ -13,7 +13,7 @@
     <a title="GeoTrackKit  Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="index.html">GeoTrackKit Docs</a> (96% documented)</p>
+        <p><a href="index.html">GeoTrackKit Docs</a> (93% documented)</p>
         <p class="header-right"><a href="https://github.com/intere/GeoTrackKit"><img src="img/gh.png"/>View on GitHub</a></p>
       </div>
     </header>
@@ -31,6 +31,9 @@
             <a href="Classes.html">Classes</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
+                <a href="Classes/ActivityService.html">ActivityService</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="Classes/DefaultMapZoom.html">DefaultMapZoom</a>
               </li>
               <li class="nav-group-task">
@@ -38,9 +41,6 @@
               </li>
               <li class="nav-group-task">
                 <a href="Classes/GeoTrackAnalyzer.html">GeoTrackAnalyzer</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Classes/GeoTrackConsoleAppender.html">GeoTrackConsoleAppender</a>
               </li>
               <li class="nav-group-task">
                 <a href="Classes/GeoTrackEvent.html">GeoTrackEvent</a>
@@ -67,6 +67,9 @@
                 <a href="Classes/Leg.html">Leg</a>
               </li>
               <li class="nav-group-task">
+                <a href="Classes.html#/s:11GeoTrackKit18NotAuthorizedErrorC">NotAuthorizedError</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="Classes/Stat.html">Stat</a>
               </li>
               <li class="nav-group-task">
@@ -84,7 +87,13 @@
                 <a href="Enums/Direction.html">Direction</a>
               </li>
               <li class="nav-group-task">
+                <a href="Enums/GeoTrackKitError.html">GeoTrackKitError</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="Enums/GeoTrackState.html">GeoTrackState</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Enums/TrackingType.html">TrackingType</a>
               </li>
             </ul>
           </li>
@@ -92,10 +101,19 @@
             <a href="Extensions.html">Extensions</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
+                <a href="Extensions/CGRect.html">CGRect</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="Extensions/CLLocation.html">CLLocation</a>
               </li>
               <li class="nav-group-task">
+                <a href="Extensions/CLLocationCoordinate2D.html">CLLocationCoordinate2D</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="Extensions/Date.html">Date</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Extensions/Double.html">Double</a>
               </li>
               <li class="nav-group-task">
                 <a href="Extensions/Notification.html">Notification</a>
@@ -109,22 +127,22 @@
             <a href="Functions.html">Functions</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a href="Functions.html#/s:11GeoTrackKit7GTDebugySS7message_tF">GTDebug(message:)</a>
+                <a href="Functions.html#/s:11GeoTrackKit7GTDebug7messageySS_tF">GTDebug(message:)</a>
               </li>
               <li class="nav-group-task">
-                <a href="Functions.html#/s:11GeoTrackKit7GTErrorySS7message_tF">GTError(message:)</a>
+                <a href="Functions.html#/s:11GeoTrackKit7GTError7messageySS_tF">GTError(message:)</a>
               </li>
               <li class="nav-group-task">
-                <a href="Functions.html#/s:11GeoTrackKit6GTInfoySS7message_tF">GTInfo(message:)</a>
+                <a href="Functions.html#/s:11GeoTrackKit6GTInfo7messageySS_tF">GTInfo(message:)</a>
               </li>
               <li class="nav-group-task">
-                <a href="Functions.html#/s:11GeoTrackKit7GTTraceySS7message_tF">GTTrace(message:)</a>
+                <a href="Functions.html#/s:11GeoTrackKit7GTTrace7messageySS_tF">GTTrace(message:)</a>
               </li>
               <li class="nav-group-task">
-                <a href="Functions.html#/s:11GeoTrackKit6GTWarnySS7message_tF">GTWarn(message:)</a>
+                <a href="Functions.html#/s:11GeoTrackKit6GTWarn7messageySS_tF">GTWarn(message:)</a>
               </li>
               <li class="nav-group-task">
-                <a href="Functions.html#/s:11GeoTrackKit4elogySSF">elog(_:)</a>
+                <a href="Functions.html#/s:11GeoTrackKit4elogyySSF">elog(_:)</a>
               </li>
             </ul>
           </li>
@@ -146,7 +164,19 @@
             <a href="Typealiases.html">Type Aliases</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
+                <a href="Typealiases.html#/s:11GeoTrackKit21AuthorizationCallbacka">AuthorizationCallback</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="Typealiases.html#/s:11GeoTrackKit0aB12AuthCallbacka">GeoTrackAuthCallback</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Typealiases.html#/s:11GeoTrackKit19RouteSampleCallbacka">RouteSampleCallback</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Typealiases.html#/s:11GeoTrackKit0B8Callbacka">TrackCallback</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Typealiases.html#/s:11GeoTrackKit15WorkoutCallbacka">WorkoutCallback</a>
               </li>
             </ul>
           </li>
@@ -165,6 +195,12 @@
 <li>Handles track creation</li>
 <li>Handles track analyzing (for ascents, descents and other stats)</li>
 <li>Custom MKMapKit control for plotting your tracks on a map</li>
+<li>Pull tracks in from HealthKit (Activity App)
+
+<ul>
+<li><code>NOTE:</code> This is an iOS 11+ only feature and requires a physical device to test</li>
+<li>This capability is in a subspec: <code>HealthKit</code></li>
+</ul></li>
 <li>Example App to demonstrate capabilities</li>
 </ul>
 <h2 id='project-status' class='heading'>Project Status</h2>
@@ -187,6 +223,16 @@
 <li>[ ] Performance Tests</li>
 <li>[x] SwiftLint Integration</li>
 <li>[ ] 90% Code Coverage</li>
+<li>[x] Pull tracks from HealthKit (Workouts)</li>
+</ul>
+<h3 id='example-app' class='heading'>Example App</h3>
+
+<p>TODO:</p>
+
+<ul>
+<li>[ ] Save tracks to disk</li>
+<li>[ ] Provide a track list</li>
+<li>[x] Pull tracks in from HealthKit</li>
 </ul>
 <h3 id='installation' class='heading'>Installation</h3>
 <h2 id='installation-instructions' class='heading'>Installation Instructions</h2>
@@ -197,7 +243,7 @@
 </code></pre>
 
 <p>Directly from Cocoapods:</p>
-<pre class="highlight ruby"><code><span class="n">pod</span> <span class="s1">'GeoTrackKit'</span><span class="p">,</span> <span class="s1">'0.2.0'</span>
+<pre class="highlight ruby"><code><span class="n">pod</span> <span class="s1">'GeoTrackKit'</span>
 </code></pre>
 <h2 id='example-usage' class='heading'>Example Usage</h2>
 <pre class="highlight plaintext"><code>// This will either start tracking, or prompt the user for access to track their location
@@ -208,10 +254,10 @@ GeoTrackManager.shared.startTracking()
 
 <p>This library also includes a map control that will map the GeoTrack:</p>
 
-<p><img src="https://github.com/intere/GeoTrackKit/raw/develop/screenshots/GeoTrackKit-MapView.gif" title="Map View"></p>
+<p><img src="https://user-images.githubusercontent.com/2284832/43367309-19f759ce-9308-11e8-974a-8823f3aade66.gif" title="Map View"></p>
 <h2 id='inspiration' class='heading'>Inspiration</h2>
 
-<p>I&rsquo;ve built a couple of variations of Geo Tracking applications, but I wanted to build a library for the community that I can share and get feedback and build a better product.</p>
+<p>I&rsquo;ve built a couple of variations of Geo Tracking applications, but I wanted to build a library for the community that I can share and get feedback and build better products.</p>
 <h2 id='created-and-maintained-by' class='heading'>Created and maintained by</h2>
 
 <p><a href="http://intere.github.io">Eric Internicola</a></p>
@@ -221,12 +267,36 @@ GeoTrackManager.shared.startTracking()
 <h2 id='documentation' class='heading'>Documentation</h2>
 
 <p>See the generated documentation in the <a href="https://intere.github.io/GeoTrackKit/docs/"><code>docs</code></a> folder</p>
+<h2 id='credits-attribution' class='heading'>Credits / Attribution</h2>
+
+<ul>
+<li><a href="https://www.flaticon.com/free-icon/world-location_52177#term=globe&page=1&position=68">Example App Icon</a>
+
+<ul>
+<li><div>Icons made by <a href="http://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon"><a href="http://www.flaticon.com">www.flaticon.com</a></a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div></li>
+</ul></li>
+<li><a href="https://www.flaticon.com/free-icon/terminal-server-session_523#term=terminal&page=1&position=60">Terminal icon</a>
+
+<ul>
+<li><div>Icons made by <a href="http://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon"><a href="http://www.flaticon.com">www.flaticon.com</a></a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div></li>
+</ul></li>
+<li><a href="https://www.flaticon.com/free-icon/location-on-map_106165#term=gps&page=1&position=33">Location on map icon</a>
+
+<ul>
+<li><div>Icons made by <a href="http://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon"><a href="http://www.flaticon.com">www.flaticon.com</a></a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div></li>
+</ul></li>
+<li><a href="https://www.flaticon.com/free-icon/map-location_149985#term=gps&page=1&position=24">Map Location free icon</a>
+
+<ul>
+<li><div>Icons made by <a href="https://www.flaticon.com/authors/smashicons" title="Smashicons">Smashicons</a> from <a href="https://www.flaticon.com/" title="Flaticon"><a href="http://www.flaticon.com">www.flaticon.com</a></a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div></li>
+</ul></li>
+</ul>
 
           </section>
         </section>
         <section id="footer">
           <p>© 2016-2017 <a class="link" href="http://intere.github.io" target="_blank" rel="external">Eric Internicola</a></p>
-          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.3</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.4</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>
     </div>

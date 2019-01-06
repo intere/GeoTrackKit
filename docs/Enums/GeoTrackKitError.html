@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>GeoTrackEventLog Class Reference</title>
+    <title>GeoTrackKitError Enumeration Reference</title>
     <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
     <meta charset='utf-8'>
@@ -10,8 +10,8 @@
     
   </head>
   <body>
-    <a name="//apple_ref/swift/Class/GeoTrackEventLog" class="dashAnchor"></a>
-    <a title="GeoTrackEventLog Class Reference"></a>
+    <a name="//apple_ref/swift/Enum/GeoTrackKitError" class="dashAnchor"></a>
+    <a title="GeoTrackKitError Enumeration Reference"></a>
     <header>
       <div class="content-wrapper">
         <p><a href="../index.html">GeoTrackKit Docs</a> (93% documented)</p>
@@ -22,7 +22,7 @@
       <p id="breadcrumbs">
         <a href="../index.html">GeoTrackKit Reference</a>
         <img id="carat" src="../img/carat.png" />
-        GeoTrackEventLog Class Reference
+        GeoTrackKitError Enumeration Reference
       </p>
     </div>
     <div class="content-wrapper">
@@ -186,14 +186,14 @@
       <article class="main-content">
         <section>
           <section class="section">
-            <h1>GeoTrackEventLog</h1>
+            <h1>GeoTrackKitError</h1>
               <div class="declaration">
                 <div class="language">
-                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">GeoTrackEventLog</span></code></pre>
+                  <pre class="highlight swift"><code><span class="kd">enum</span> <span class="kt">GeoTrackKitError</span> <span class="p">:</span> <span class="kt">LocalizedError</span></code></pre>
 
                 </div>
               </div>
-            <p>The Event Log for GeoTrackKit</p>
+            <p>A group of some errors that GeoTrackKit provides</p>
 
           </section>
           <section class="section task-group-section">
@@ -202,9 +202,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:11GeoTrackKit0aB8EventLogC6sharedACvpZ"></a>
-                    <a name="//apple_ref/swift/Variable/shared" class="dashAnchor"></a>
-                    <a class="token" href="#/s:11GeoTrackKit0aB8EventLogC6sharedACvpZ">shared</a>
+                    <a name="/s:11GeoTrackKit0abC5ErrorO22healthDataNotAvailableyA2CmF"></a>
+                    <a name="//apple_ref/swift/Element/healthDataNotAvailable" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11GeoTrackKit0abC5ErrorO22healthDataNotAvailableyA2CmF">healthDataNotAvailable</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -212,14 +212,14 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Singleton instance</p>
+                        <p>Undocumented</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">shared</span><span class="p">:</span> <span class="kt">GeoTrackEventLog</span></code></pre>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">healthDataNotAvailable</span></code></pre>
 
                         </div>
                       </div>
@@ -229,9 +229,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:11GeoTrackKit0aB8EventLogC9appendersSayAA0abE8Appender_pGvp"></a>
-                    <a name="//apple_ref/swift/Property/appenders" class="dashAnchor"></a>
-                    <a class="token" href="#/s:11GeoTrackKit0aB8EventLogC9appendersSayAA0abE8Appender_pGvp">appenders</a>
+                    <a name="/s:11GeoTrackKit0abC5ErrorO13iOS11RequiredyA2CmF"></a>
+                    <a name="//apple_ref/swift/Element/iOS11Required" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11GeoTrackKit0abC5ErrorO13iOS11RequiredyA2CmF">iOS11Required</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -239,73 +239,16 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>The Appenders</p>
+                        <p>Undocumented</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="nf">fileprivate</span><span class="p">(</span><span class="k">set</span><span class="p">)</span> <span class="kd">public</span> <span class="k">var</span> <span class="nv">appenders</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Protocols/GeoTrackLogAppender.html">GeoTrackLogAppender</a></span><span class="p">]</span></code></pre>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">iOS11Required</span></code></pre>
 
                         </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <div class="task-name-container">
-                <a name="/API"></a>
-                <a name="//apple_ref/swift/Section/API" class="dashAnchor"></a>
-                <a href="#/API">
-                  <h3 class="section-name">API</h3>
-                </a>
-              </div>
-              <ul>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:11GeoTrackKit0aB8EventLogC3log5eventyAA0abD0C_tF"></a>
-                    <a name="//apple_ref/swift/Method/log(event:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:11GeoTrackKit0aB8EventLogC3log5eventyAA0abD0C_tF">log(event:)</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Logs an event</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">log</span><span class="p">(</span><span class="n">event</span> <span class="nv">someEvent</span><span class="p">:</span> <span class="kt"><a href="../Classes/GeoTrackEvent.html">GeoTrackEvent</a></span><span class="p">)</span></code></pre>
-
-                        </div>
-                      </div>
-                      <div>
-                        <h4>Parameters</h4>
-                        <table class="graybox">
-                          <tbody>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>someEvent</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>The event to add to the log</p>
-                                </div>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
                       </div>
                     </section>
                   </div>
@@ -313,9 +256,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:11GeoTrackKit0aB8EventLogC3add8appenderyAA0abE8Appender_p_tF"></a>
-                    <a name="//apple_ref/swift/Method/add(appender:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:11GeoTrackKit0aB8EventLogC3add8appenderyAA0abE8Appender_p_tF">add(appender:)</a>
+                    <a name="/s:11GeoTrackKit0abC5ErrorO06authNoD15ButUnsuccessfulyA2CmF"></a>
+                    <a name="//apple_ref/swift/Element/authNoErrorButUnsuccessful" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11GeoTrackKit0abC5ErrorO06authNoD15ButUnsuccessfulyA2CmF">authNoErrorButUnsuccessful</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -323,35 +266,16 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Adds an appender to the list of appenders</p>
+                        <p>Undocumented</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">add</span><span class="p">(</span><span class="nv">appender</span><span class="p">:</span> <span class="kt"><a href="../Protocols/GeoTrackLogAppender.html">GeoTrackLogAppender</a></span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">authNoErrorButUnsuccessful</span></code></pre>
 
                         </div>
-                      </div>
-                      <div>
-                        <h4>Parameters</h4>
-                        <table class="graybox">
-                          <tbody>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>appender</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>The appender to be added.</p>
-                                </div>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
                       </div>
                     </section>
                   </div>
@@ -359,9 +283,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:11GeoTrackKit0aB8EventLogC6remove8appenderyAA0abE8Appender_p_tF"></a>
-                    <a name="//apple_ref/swift/Method/remove(appender:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:11GeoTrackKit0aB8EventLogC6remove8appenderyAA0abE8Appender_p_tF">remove(appender:)</a>
+                    <a name="/s:11GeoTrackKit0abC5ErrorO20workoutWithoutRoutesyA2CmF"></a>
+                    <a name="//apple_ref/swift/Element/workoutWithoutRoutes" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11GeoTrackKit0abC5ErrorO20workoutWithoutRoutesyA2CmF">workoutWithoutRoutes</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -369,35 +293,16 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Removes an appender from the appender list.</p>
+                        <p>Undocumented</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">remove</span><span class="p">(</span><span class="nv">appender</span><span class="p">:</span> <span class="kt"><a href="../Protocols/GeoTrackLogAppender.html">GeoTrackLogAppender</a></span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">workoutWithoutRoutes</span></code></pre>
 
                         </div>
-                      </div>
-                      <div>
-                        <h4>Parameters</h4>
-                        <table class="graybox">
-                          <tbody>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>appender</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>The appender to be removed.</p>
-                                </div>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
                       </div>
                     </section>
                   </div>
@@ -405,9 +310,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:11GeoTrackKit0aB8EventLogC18removeAllAppendersyyF"></a>
-                    <a name="//apple_ref/swift/Method/removeAllAppenders()" class="dashAnchor"></a>
-                    <a class="token" href="#/s:11GeoTrackKit0aB8EventLogC18removeAllAppendersyyF">removeAllAppenders()</a>
+                    <a name="/s:11GeoTrackKit0abC5ErrorO19sampleMissingPointsyA2CmF"></a>
+                    <a name="//apple_ref/swift/Element/sampleMissingPoints" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11GeoTrackKit0abC5ErrorO19sampleMissingPointsyA2CmF">sampleMissingPoints</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -415,37 +320,26 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Removes all of the appenders that we have loaded</p>
+                        <p>Undocumented</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">removeAllAppenders</span><span class="p">()</span></code></pre>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">sampleMissingPoints</span></code></pre>
 
                         </div>
                       </div>
                     </section>
                   </div>
                 </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <div class="task-name-container">
-                <a name="/Helpers"></a>
-                <a name="//apple_ref/swift/Section/Helpers" class="dashAnchor"></a>
-                <a href="#/Helpers">
-                  <h3 class="section-name">Helpers</h3>
-                </a>
-              </div>
-              <ul>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:11GeoTrackKit0aB8EventLogC3add5eventyAA0abD0C_tF"></a>
-                    <a name="//apple_ref/swift/Method/add(event:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:11GeoTrackKit0aB8EventLogC3add5eventyAA0abD0C_tF">add(event:)</a>
+                    <a name="/s:11GeoTrackKit0abC5ErrorO16errorDescriptionSSSgvp"></a>
+                    <a name="//apple_ref/swift/Property/errorDescription" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11GeoTrackKit0abC5ErrorO16errorDescriptionSSSgvp">errorDescription</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -453,35 +347,43 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Adds an event to the event log and notifies the appenders.</p>
+                        <p>A description of the error</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">add</span><span class="p">(</span><span class="nv">event</span><span class="p">:</span> <span class="kt"><a href="../Classes/GeoTrackEvent.html">GeoTrackEvent</a></span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">errorDescription</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
 
                         </div>
                       </div>
-                      <div>
-                        <h4>Parameters</h4>
-                        <table class="graybox">
-                          <tbody>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>event</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>The event that occurred</p>
-                                </div>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11GeoTrackKit0abC5ErrorO24humanReadableDescriptionSSvp"></a>
+                    <a name="//apple_ref/swift/Property/humanReadableDescription" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11GeoTrackKit0abC5ErrorO24humanReadableDescriptionSSvp">humanReadableDescription</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The human readable description for the error.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">humanReadableDescription</span><span class="p">:</span> <span class="kt">String</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
                       </div>
                     </section>
                   </div>

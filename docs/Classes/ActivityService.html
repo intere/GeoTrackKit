@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>GeoTrackEventLog Class Reference</title>
+    <title>ActivityService Class Reference</title>
     <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
     <meta charset='utf-8'>
@@ -10,8 +10,8 @@
     
   </head>
   <body>
-    <a name="//apple_ref/swift/Class/GeoTrackEventLog" class="dashAnchor"></a>
-    <a title="GeoTrackEventLog Class Reference"></a>
+    <a name="//apple_ref/swift/Class/ActivityService" class="dashAnchor"></a>
+    <a title="ActivityService Class Reference"></a>
     <header>
       <div class="content-wrapper">
         <p><a href="../index.html">GeoTrackKit Docs</a> (93% documented)</p>
@@ -22,7 +22,7 @@
       <p id="breadcrumbs">
         <a href="../index.html">GeoTrackKit Reference</a>
         <img id="carat" src="../img/carat.png" />
-        GeoTrackEventLog Class Reference
+        ActivityService Class Reference
       </p>
     </div>
     <div class="content-wrapper">
@@ -186,14 +186,31 @@
       <article class="main-content">
         <section>
           <section class="section">
-            <h1>GeoTrackEventLog</h1>
+            <h1>ActivityService</h1>
               <div class="declaration">
                 <div class="language">
-                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">GeoTrackEventLog</span></code></pre>
+                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">ActivityService</span></code></pre>
 
                 </div>
               </div>
-            <p>The Event Log for GeoTrackKit</p>
+            <p>A service that will get you workout activities, with a specific focus on those workouts that have associated
+routes (think: associated Geospatial data, aka Tracks).</p>
+
+<p>The Apple Class hierarchies that we&rsquo;re working with here are:</p>
+<pre class="highlight swift"><code><span class="kt">HKWorkout</span>  <span class="o">--</span> <span class="n">has</span> <span class="mi">0</span> <span class="n">or</span> <span class="n">more</span> <span class="o">--&gt;</span> <span class="kt">HKWorkoutRoute</span>
+<span class="kt">HKWorkoutRoute</span> <span class="o">--</span> <span class="n">has</span> <span class="mi">0</span> <span class="n">or</span> <span class="n">more</span> <span class="o">-&gt;</span> <span class="kt">CLLocation</span>
+</code></pre>
+
+<p><code>HKWorkoutRoute</code> is a <code>HKSeriesSample</code></p>
+
+<p>A typical workflow goes like this:</p>
+
+<ol>
+<li>Ensure we are authorized: <code>ActivityService.shared.authorize { //...</code></li>
+<li>Query for the workouts: <code>ActivityService.shared.queryWorkouts { //...</code></li>
+<li>Filter down to workouts that have Routes: <code>ActivityService.shared.queryRoute(from: workout) { // ...</code></li>
+<li>Get the Track (Route) for a workout: <code>ActivityService.shared.queryTrack(from: workout) { // ...</code></li>
+</ol>
 
           </section>
           <section class="section task-group-section">
@@ -202,9 +219,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:11GeoTrackKit0aB8EventLogC6sharedACvpZ"></a>
+                    <a name="/s:11GeoTrackKit15ActivityServiceC6sharedACvpZ"></a>
                     <a name="//apple_ref/swift/Variable/shared" class="dashAnchor"></a>
-                    <a class="token" href="#/s:11GeoTrackKit0aB8EventLogC6sharedACvpZ">shared</a>
+                    <a class="token" href="#/s:11GeoTrackKit15ActivityServiceC6sharedACvpZ">shared</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -212,14 +229,14 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Singleton instance</p>
+                        <p>Shared (singleton) instance of the <code>ActivityService</code></p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">shared</span><span class="p">:</span> <span class="kt">GeoTrackEventLog</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">shared</span><span class="p">:</span> <span class="kt">ActivityService</span></code></pre>
 
                         </div>
                       </div>
@@ -229,9 +246,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:11GeoTrackKit0aB8EventLogC9appendersSayAA0abE8Appender_pGvp"></a>
-                    <a name="//apple_ref/swift/Property/appenders" class="dashAnchor"></a>
-                    <a class="token" href="#/s:11GeoTrackKit0aB8EventLogC9appendersSayAA0abE8Appender_pGvp">appenders</a>
+                    <a name="/s:11GeoTrackKit15ActivityServiceC21isHealthDataAvailableSbvp"></a>
+                    <a name="//apple_ref/swift/Property/isHealthDataAvailable" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11GeoTrackKit15ActivityServiceC21isHealthDataAvailableSbvp">isHealthDataAvailable</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -239,190 +256,14 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>The Appenders</p>
+                        <p>Is health data avaialble?</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="nf">fileprivate</span><span class="p">(</span><span class="k">set</span><span class="p">)</span> <span class="kd">public</span> <span class="k">var</span> <span class="nv">appenders</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Protocols/GeoTrackLogAppender.html">GeoTrackLogAppender</a></span><span class="p">]</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <div class="task-name-container">
-                <a name="/API"></a>
-                <a name="//apple_ref/swift/Section/API" class="dashAnchor"></a>
-                <a href="#/API">
-                  <h3 class="section-name">API</h3>
-                </a>
-              </div>
-              <ul>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:11GeoTrackKit0aB8EventLogC3log5eventyAA0abD0C_tF"></a>
-                    <a name="//apple_ref/swift/Method/log(event:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:11GeoTrackKit0aB8EventLogC3log5eventyAA0abD0C_tF">log(event:)</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Logs an event</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">log</span><span class="p">(</span><span class="n">event</span> <span class="nv">someEvent</span><span class="p">:</span> <span class="kt"><a href="../Classes/GeoTrackEvent.html">GeoTrackEvent</a></span><span class="p">)</span></code></pre>
-
-                        </div>
-                      </div>
-                      <div>
-                        <h4>Parameters</h4>
-                        <table class="graybox">
-                          <tbody>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>someEvent</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>The event to add to the log</p>
-                                </div>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:11GeoTrackKit0aB8EventLogC3add8appenderyAA0abE8Appender_p_tF"></a>
-                    <a name="//apple_ref/swift/Method/add(appender:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:11GeoTrackKit0aB8EventLogC3add8appenderyAA0abE8Appender_p_tF">add(appender:)</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Adds an appender to the list of appenders</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">add</span><span class="p">(</span><span class="nv">appender</span><span class="p">:</span> <span class="kt"><a href="../Protocols/GeoTrackLogAppender.html">GeoTrackLogAppender</a></span><span class="p">)</span></code></pre>
-
-                        </div>
-                      </div>
-                      <div>
-                        <h4>Parameters</h4>
-                        <table class="graybox">
-                          <tbody>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>appender</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>The appender to be added.</p>
-                                </div>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:11GeoTrackKit0aB8EventLogC6remove8appenderyAA0abE8Appender_p_tF"></a>
-                    <a name="//apple_ref/swift/Method/remove(appender:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:11GeoTrackKit0aB8EventLogC6remove8appenderyAA0abE8Appender_p_tF">remove(appender:)</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Removes an appender from the appender list.</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">remove</span><span class="p">(</span><span class="nv">appender</span><span class="p">:</span> <span class="kt"><a href="../Protocols/GeoTrackLogAppender.html">GeoTrackLogAppender</a></span><span class="p">)</span></code></pre>
-
-                        </div>
-                      </div>
-                      <div>
-                        <h4>Parameters</h4>
-                        <table class="graybox">
-                          <tbody>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>appender</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>The appender to be removed.</p>
-                                </div>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:11GeoTrackKit0aB8EventLogC18removeAllAppendersyyF"></a>
-                    <a name="//apple_ref/swift/Method/removeAllAppenders()" class="dashAnchor"></a>
-                    <a class="token" href="#/s:11GeoTrackKit0aB8EventLogC18removeAllAppendersyyF">removeAllAppenders()</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Removes all of the appenders that we have loaded</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">removeAllAppenders</span><span class="p">()</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">isHealthDataAvailable</span><span class="p">:</span> <span class="kt">Bool</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
 
                         </div>
                       </div>
@@ -433,19 +274,19 @@
             </div>
             <div class="task-group">
               <div class="task-name-container">
-                <a name="/Helpers"></a>
-                <a name="//apple_ref/swift/Section/Helpers" class="dashAnchor"></a>
-                <a href="#/Helpers">
-                  <h3 class="section-name">Helpers</h3>
+                <a name="/Authorization%20API"></a>
+                <a name="//apple_ref/swift/Section/Authorization API" class="dashAnchor"></a>
+                <a href="#/Authorization%20API">
+                  <h3 class="section-name">Authorization API</h3>
                 </a>
               </div>
               <ul>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:11GeoTrackKit0aB8EventLogC3add5eventyAA0abD0C_tF"></a>
-                    <a name="//apple_ref/swift/Method/add(event:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:11GeoTrackKit0aB8EventLogC3add5eventyAA0abD0C_tF">add(event:)</a>
+                    <a name="/s:11GeoTrackKit15ActivityServiceC9authorizeyyySb_s5Error_pSgtcF"></a>
+                    <a name="//apple_ref/swift/Method/authorize(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11GeoTrackKit15ActivityServiceC9authorizeyyySb_s5Error_pSgtcF">authorize(_:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -453,14 +294,14 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Adds an event to the event log and notifies the appenders.</p>
+                        <p>Request authorization for health kit data.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">add</span><span class="p">(</span><span class="nv">event</span><span class="p">:</span> <span class="kt"><a href="../Classes/GeoTrackEvent.html">GeoTrackEvent</a></span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">authorize</span><span class="p">(</span><span class="n">_</span> <span class="nv">callback</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="kt"><a href="../Typealiases.html#/s:11GeoTrackKit21AuthorizationCallbacka">AuthorizationCallback</a></span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -471,17 +312,241 @@
                             <tr>
                               <td>
                                 <code>
-                                <em>event</em>
+                                <em>callback</em>
                                 </code>
                               </td>
                               <td>
                                 <div>
-                                  <p>The event that occurred</p>
+                                  <p>the callback that will hand back a boolean (indicating success or failure)
+and an optional Error object.</p>
                                 </div>
                               </td>
                             </tr>
                           </tbody>
                         </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Workout%20Queries"></a>
+                <a name="//apple_ref/swift/Section/Workout Queries" class="dashAnchor"></a>
+                <a href="#/Workout%20Queries">
+                  <h3 class="section-name">Workout Queries</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11GeoTrackKit15ActivityServiceC13queryWorkouts15minimumDistance_ySd_ySaySo9HKWorkoutCGSg_s5Error_pSgtctF"></a>
+                    <a name="//apple_ref/swift/Method/queryWorkouts(minimumDistance:_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11GeoTrackKit15ActivityServiceC13queryWorkouts15minimumDistance_ySd_ySaySo9HKWorkoutCGSg_s5Error_pSgtctF">queryWorkouts(minimumDistance:_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Queries HealthKit to get all of your workouts</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">queryWorkouts</span><span class="p">(</span><span class="nv">minimumDistance</span><span class="p">:</span> <span class="kt">Double</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span> <span class="n">_</span> <span class="nv">callback</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="kt"><a href="../Typealiases.html#/s:11GeoTrackKit15WorkoutCallbacka">WorkoutCallback</a></span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>minimumDistance</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The minimum distance (in meters) that a workout must be to show up in your query results (defults to 100)</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>callback</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The block to handle the result (whether it&rsquo;s success or failure)</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11GeoTrackKit15ActivityServiceC10queryRoute4from8callbackySo9HKWorkoutC_ySaySo14HKSeriesSampleCGSg_s5Error_pSgtctF"></a>
+                    <a name="//apple_ref/swift/Method/queryRoute(from:callback:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11GeoTrackKit15ActivityServiceC10queryRoute4from8callbackySo9HKWorkoutC_ySaySo14HKSeriesSampleCGSg_s5Error_pSgtctF">queryRoute(from:callback:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Queries to see if there is a <code>HKWorkoutRoute</code> related to the provided workout.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">queryRoute</span><span class="p">(</span><span class="n">from</span> <span class="nv">workout</span><span class="p">:</span> <span class="kt">HKWorkout</span><span class="p">,</span> <span class="nv">callback</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="kt"><a href="../Typealiases.html#/s:11GeoTrackKit19RouteSampleCallbacka">RouteSampleCallback</a></span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>workout</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The workout to query.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>callback</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The callback that will tell you if there is a sample (Route) or not.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11GeoTrackKit15ActivityServiceC05queryB04from8callbackySo9HKWorkoutC_ySaySo10CLLocationCGSg_s5Error_pSgtctF"></a>
+                    <a name="//apple_ref/swift/Method/queryTrack(from:callback:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11GeoTrackKit15ActivityServiceC05queryB04from8callbackySo9HKWorkoutC_ySaySo10CLLocationCGSg_s5Error_pSgtctF">queryTrack(from:callback:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Queries for the points related to a workout.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">queryTrack</span><span class="p">(</span><span class="n">from</span> <span class="nv">workout</span><span class="p">:</span> <span class="kt">HKWorkout</span><span class="p">,</span> <span class="nv">callback</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="kt"><a href="../Typealiases.html#/s:11GeoTrackKit0B8Callbacka">TrackCallback</a></span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>workout</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The workout you want to query for a track from.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>callback</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>A callback that will either give you track points (an array of CLLocation) or an error.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Implementation"></a>
+                <a name="//apple_ref/swift/Section/Implementation" class="dashAnchor"></a>
+                <a href="#/Implementation">
+                  <h3 class="section-name">Implementation</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:11GeoTrackKit15ActivityServiceC11queryPoints5route8callbackySo14HKWorkoutRouteC_ySaySo10CLLocationCGSg_s5Error_pSgtctF"></a>
+                    <a name="//apple_ref/swift/Method/queryPoints(route:callback:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11GeoTrackKit15ActivityServiceC11queryPoints5route8callbackySo14HKWorkoutRouteC_ySaySo10CLLocationCGSg_s5Error_pSgtctF">queryPoints(route:callback:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">queryPoints</span><span class="p">(</span><span class="nv">route</span><span class="p">:</span> <span class="kt">HKWorkoutRoute</span><span class="p">,</span> <span class="nv">callback</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="kt"><a href="../Typealiases.html#/s:11GeoTrackKit0B8Callbacka">TrackCallback</a></span><span class="p">)</span></code></pre>
+
+                        </div>
                       </div>
                     </section>
                   </div>

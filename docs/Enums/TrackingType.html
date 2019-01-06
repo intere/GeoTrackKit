@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Direction Enumeration Reference</title>
+    <title>TrackingType Enumeration Reference</title>
     <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
     <meta charset='utf-8'>
@@ -10,8 +10,8 @@
     
   </head>
   <body>
-    <a name="//apple_ref/swift/Enum/Direction" class="dashAnchor"></a>
-    <a title="Direction Enumeration Reference"></a>
+    <a name="//apple_ref/swift/Enum/TrackingType" class="dashAnchor"></a>
+    <a title="TrackingType Enumeration Reference"></a>
     <header>
       <div class="content-wrapper">
         <p><a href="../index.html">GeoTrackKit Docs</a> (93% documented)</p>
@@ -22,7 +22,7 @@
       <p id="breadcrumbs">
         <a href="../index.html">GeoTrackKit Reference</a>
         <img id="carat" src="../img/carat.png" />
-        Direction Enumeration Reference
+        TrackingType Enumeration Reference
       </p>
     </div>
     <div class="content-wrapper">
@@ -186,19 +186,18 @@
       <article class="main-content">
         <section>
           <section class="section">
-            <h1>Direction</h1>
+            <h1>TrackingType</h1>
               <div class="declaration">
                 <div class="language">
-                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">Direction</span> <span class="p">:</span> <span class="kt">String</span></code></pre>
+                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">TrackingType</span></code></pre>
 
                 </div>
               </div>
-            <p>The direction that we&rsquo;re going</p>
+            <p>The type of authorization we want to request if we don&rsquo;t yet have permission:</p>
 
 <ul>
-<li>unknown: Unknown direction (e.g. the first point</li>
-<li>upward: The upward direction</li>
-<li>downward: The downward direction</li>
+<li>whileInUse: We only want to track when the app is in use.</li>
+<li>always: We want to be able to track, even when the app is not in use.</li>
 </ul>
 
           </section>
@@ -208,9 +207,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:11GeoTrackKit9DirectionO7unknownyA2CmF"></a>
-                    <a name="//apple_ref/swift/Element/unknown" class="dashAnchor"></a>
-                    <a class="token" href="#/s:11GeoTrackKit9DirectionO7unknownyA2CmF">unknown</a>
+                    <a name="/s:11GeoTrackKit12TrackingTypeO10whileInUseyA2CmF"></a>
+                    <a name="//apple_ref/swift/Element/whileInUse" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11GeoTrackKit12TrackingTypeO10whileInUseyA2CmF">whileInUse</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -218,14 +217,14 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Unknown direction</p>
+                        <p>Undocumented</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">unknown</span></code></pre>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">whileInUse</span></code></pre>
 
                         </div>
                       </div>
@@ -235,9 +234,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:11GeoTrackKit9DirectionO6upwardyA2CmF"></a>
-                    <a name="//apple_ref/swift/Element/upward" class="dashAnchor"></a>
-                    <a class="token" href="#/s:11GeoTrackKit9DirectionO6upwardyA2CmF">upward</a>
+                    <a name="/s:11GeoTrackKit12TrackingTypeO6alwaysyA2CmF"></a>
+                    <a name="//apple_ref/swift/Element/always" class="dashAnchor"></a>
+                    <a class="token" href="#/s:11GeoTrackKit12TrackingTypeO6alwaysyA2CmF">always</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -245,41 +244,14 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Upward direction (ascent)</p>
+                        <p>Undocumented</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">upward</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:11GeoTrackKit9DirectionO8downwardyA2CmF"></a>
-                    <a name="//apple_ref/swift/Element/downward" class="dashAnchor"></a>
-                    <a class="token" href="#/s:11GeoTrackKit9DirectionO8downwardyA2CmF">downward</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>Downward direction (descent)</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">downward</span></code></pre>
+                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">always</span></code></pre>
 
                         </div>
                       </div>

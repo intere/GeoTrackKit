@@ -13,7 +13,7 @@ import CoreLocation
 /// This class is responsible for managing (and brokering) everything related to tracking for you.
 /// ### Sample Usage:
 /// ```
-/// GeoTrackManager.shared.startTracking()
+/// GeoTrackManager.shared.startTracking(type: .whileInUse)
 ///
 /// ```
 public class GeoTrackManager: NSObject {
