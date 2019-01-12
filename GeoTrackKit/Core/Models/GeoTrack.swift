@@ -91,7 +91,7 @@ public extension GeoTrack {
 
 public extension GeoTrack {
 
-    /// Converts this track into an Xcode satisfying GPX
+    /// Creates a string that is a GPX file that Xcode can use for simulating location
     var xcodeGpx: String {
         var result = """
 <?xml version="1.0"?>
