@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="cse-if-UgT">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="cse-if-UgT">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -19,13 +19,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="hybrid" translatesAutoresizingMaskIntoConstraints="NO" id="egO-IS-oa8" customClass="GeoTrackMap" customModule="GeoTrackKit">
-                                <rect key="frame" x="0.0" y="8" width="375" height="400"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="400"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="400" id="JIZ-6W-ZA3"/>
                                 </constraints>
                             </mapView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j3W-b1-aMI">
-                                <rect key="frame" x="0.0" y="408" width="375" height="195"/>
+                                <rect key="frame" x="0.0" y="400" width="375" height="203"/>
                                 <connections>
                                     <segue destination="Kom-qy-mum" kind="embed" id="c3y-gj-OWQ"/>
                                 </connections>
@@ -38,7 +38,7 @@
                             <constraint firstItem="egO-IS-oa8" firstAttribute="leading" secondItem="mo8-EK-DS1" secondAttribute="leading" id="GXe-gS-9L5"/>
                             <constraint firstItem="j3W-b1-aMI" firstAttribute="top" secondItem="egO-IS-oa8" secondAttribute="bottom" id="XXx-KW-So4"/>
                             <constraint firstItem="j3W-b1-aMI" firstAttribute="leading" secondItem="mo8-EK-DS1" secondAttribute="leading" id="bpm-T6-axO"/>
-                            <constraint firstItem="egO-IS-oa8" firstAttribute="top" secondItem="mo8-EK-DS1" secondAttribute="top" constant="8" id="qN7-UG-1HQ"/>
+                            <constraint firstItem="egO-IS-oa8" firstAttribute="top" secondItem="mo8-EK-DS1" secondAttribute="top" id="qN7-UG-1HQ"/>
                             <constraint firstItem="mo8-EK-DS1" firstAttribute="trailing" secondItem="j3W-b1-aMI" secondAttribute="trailing" id="qQC-f2-bA9"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="mo8-EK-DS1"/>
@@ -66,7 +66,7 @@
             <objects>
                 <tableViewController id="Kom-qy-mum" customClass="TrackOverviewTableViewController" customModule="GeoTrackKitExample" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsMultipleSelection="YES" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="G5G-Aw-OMU">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="195"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="203"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
