@@ -87,6 +87,30 @@ public extension GeoTrack {
 
 }
 
+// MARK: - GPX API
+
+public extension GeoTrack {
+
+    /// Converts this track into an Xcode satisfying GPX
+    var xcodeGpx: String {
+        var result = """
+<?xml version="1.0"?>
+<gpx version="1.1" creator="Xcode">
+
+"""
+        for point in points {
+            result += """
+            <wpt lat="\(point.coordinate.latitude)" lon="\(point.coordinate.longitude)"><ele>\(point.altitude)</ele><time>\(point.timestamp.iso8601Date)</time></wpt>\n
+            """
+        }
+
+        result += "\n</gpx>"
+
+        return result
+    }
+
+}
+
 // MARK: - API(Events)
 
 public extension GeoTrack {

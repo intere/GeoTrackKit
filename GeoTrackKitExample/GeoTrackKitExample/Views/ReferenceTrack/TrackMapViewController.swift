@@ -137,7 +137,8 @@ private extension TrackMapViewController {
             let fileName = model.track.name.replacingOccurrences(of: "/", with: "-").replacingOccurrences(of: ":", with: "_")
             let fileUrl = documentsFolder.appendingPathComponent("\(fileName).gpx")
 
-            guard let gpxString = gpxString, let data = gpxString.data(using: .utf8) else {
+            let gpxString = model.track.xcodeGpx
+            guard let data = gpxString.data(using: .utf8) else {
                 return nil
             }
 
@@ -156,29 +157,6 @@ private extension TrackMapViewController {
         }
 
         return nil
-    }
-
-    /// A String that contains the GPX File.
-    var gpxString: String? {
-        guard let model = model else {
-            return nil
-        }
-
-        var result = """
-<?xml version="1.0"?>
-<gpx version="1.1" creator="Xcode">
-
-"""
-
-        for point in model.track.points {
-            result += """
-<wpt lat="\(point.coordinate.latitude)" lon="\(point.coordinate.longitude)"><ele>\(point.altitude)</ele><time>\(point.timestamp.iso8601Date)</time></wpt>\n
-"""
-        }
-
-        result += "\n</gpx>"
-
-        return result
     }
 
     /// Shows a action sheet with a set of sharing options.
@@ -257,18 +235,6 @@ private extension TrackMapViewController {
         let track = GeoTrack(json: jsonMap)
 
         return track
-    }
-
-}
-
-extension Date {
-
-    /// Converts this date to an iso8601 string.
-    var iso8601Date: String {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss'Z'"
-
-        return formatter.string(from: self)
     }
 
 }
