@@ -43,15 +43,59 @@ class TrackMapViewController: UIViewController {
         modelUpdated()
     }
 
-    @IBAction
-    func tappedShare(_ source: Any) {
-        guard let trackWrittenToJsonFile = trackWrittenToJsonFile else {
-            return
-        }
-        let activityVC = UIActivityViewController(activityItems: [trackWrittenToJsonFile], applicationActivities: nil)
-        present(activityVC, animated: true, completion: nil)
+    /// Loads this view from a storyboard.
+    ///
+    /// - Returns: A new TrackMapViewController.
+    class func loadFromStoryboard(useDemoTrack: Bool = false) -> TrackMapViewController {
+        // swiftlint:disable:next force_cast
+        let trackVC = UIStoryboard(name: "TrackView", bundle: nil).instantiateViewController(withIdentifier: "TrackMapViewController") as! TrackMapViewController
+        trackVC.useDemoTrack = useDemoTrack
+        return trackVC
     }
 
+}
+
+// MARK: - User Actions
+
+extension TrackMapViewController {
+
+    @IBAction
+    func tappedShare(_ source: Any) {
+        showShareOptions()
+    }
+
+}
+
+// MARK: - Listeners
+
+extension TrackMapViewController {
+
+    @objc
+    func legVisiblityChanged(_ notification: NSNotification) {
+        mapView.renderTrack()
+    }
+
+}
+
+// MARK: - Navigation
+
+extension TrackMapViewController {
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let destinationVC = segue.destination as? TrackOverviewTableViewController else {
+            return
+        }
+        tableVC = destinationVC
+        tableVC?.model = model
+    }
+
+}
+
+// MARK: - Implementation
+
+private extension TrackMapViewController {
+
+    /// Writes the track to a JSON file and gives you back the URL
     var trackWrittenToJsonFile: URL? {
         guard let model = model else {
             return nil
@@ -82,16 +126,97 @@ class TrackMapViewController: UIViewController {
         return nil
     }
 
-    /// Loads this view from a storyboard.
-    ///
-    /// - Returns: A new TrackMapViewController.
-    class func loadFromStoryboard(useDemoTrack: Bool = false) -> TrackMapViewController {
-        // swiftlint:disable:next force_cast
-        let trackVC = UIStoryboard(name: "TrackView", bundle: nil).instantiateViewController(withIdentifier: "TrackMapViewController") as! TrackMapViewController
-        trackVC.useDemoTrack = useDemoTrack
-        return trackVC
+    /// Writes the track to a GPX file and gives you back the URL
+    var trackWrittenToGpxFile: URL? {
+        guard let model = model else {
+            return nil
+        }
+
+        do {
+            let documentsFolder = try FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
+            let fileName = model.track.name.replacingOccurrences(of: "/", with: "-").replacingOccurrences(of: ":", with: "_")
+            let fileUrl = documentsFolder.appendingPathComponent("\(fileName).gpx")
+
+            let gpxString = model.track.xcodeGpx
+            guard let data = gpxString.data(using: .utf8) else {
+                return nil
+            }
+
+            do {
+                try data.write(to: fileUrl, options: [])
+            } catch {
+                print(error)
+                assertionFailure(error.localizedDescription)
+                return nil
+            }
+            return fileUrl
+        } catch {
+            print("ERROR trying to serialize to JSON: \(error.localizedDescription)")
+            print("\(error)")
+            assertionFailure(error.localizedDescription)
+        }
+
+        return nil
     }
 
+    /// Shows a action sheet with a set of sharing options.
+    func showShareOptions() {
+        let dialog = UIAlertController(title: "Share", message: "How would you like to share?", preferredStyle: .actionSheet)
+
+        dialog.addAction(UIAlertAction(title: "JSON", style: .default) { [weak self] _ in
+            self?.shareJsonFile()
+            dialog.dismiss(animated: true)
+        })
+        dialog.addAction(UIAlertAction(title: "GPX", style: .default) { [weak self] _ in
+            self?.shareGPX()
+            dialog.dismiss(animated: true)
+        })
+        dialog.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+
+        present(dialog, animated: true)
+    }
+
+    /// Shares the track as a GPX file
+    func shareGPX() {
+        guard let trackWrittenToGpxFile = trackWrittenToGpxFile else {
+            return
+        }
+        let activityVC = UIActivityViewController(activityItems: [trackWrittenToGpxFile], applicationActivities: nil)
+        present(activityVC, animated: true, completion: nil)
+    }
+
+    /// Shares the track as a JSON file
+    func shareJsonFile() {
+        guard let trackWrittenToJsonFile = trackWrittenToJsonFile else {
+            return
+        }
+        let activityVC = UIActivityViewController(activityItems: [trackWrittenToJsonFile], applicationActivities: nil)
+        present(activityVC, animated: true, completion: nil)
+    }
+
+    /// Updates the view when the model is updated
+    func modelUpdated() {
+        assert(Thread.isMainThread)
+
+        model?.toggleAll(visibility: legVisibleByDefault)
+        guard mapView != nil else {
+            return
+        }
+        mapView.model = model
+        tableVC?.model = model
+
+        if !useDemoTrack {
+            title = model?.track.name
+        }
+    }
+
+    /// Attempts to load the provided file / type from the Bundle that this VC is in,
+    /// deserialize it into a GeoTrack and return it to you.
+    ///
+    /// - Parameters:
+    ///   - filename: the name of the file
+    ///   - type: the type of the file (extension)
+    /// - Returns: A GeoTrack if it could be read / deserialized without issue.
     static func loadFromBundle(filename: String, type: String) -> GeoTrack? {
         guard let path = Bundle(for: TrackMapViewController.self).path(forResource: filename, ofType: type) else {
             assertionFailure("Couldn't load file: \(filename).\(type)")
@@ -110,43 +235,6 @@ class TrackMapViewController: UIViewController {
         let track = GeoTrack(json: jsonMap)
 
         return track
-    }
-
-    private func modelUpdated() {
-        model?.toggleAll(visibility: legVisibleByDefault)
-        guard mapView != nil else {
-            return
-        }
-        mapView.model = model
-        tableVC?.model = model
-
-        if !useDemoTrack {
-            title = model?.track.name
-        }
-    }
-}
-
-// MARK: - Listeners
-
-extension TrackMapViewController {
-
-    @objc
-    func legVisiblityChanged(_ notification: NSNotification) {
-        mapView.renderTrack()
-    }
-
-}
-
-// MARK: - Navigation
-
-extension TrackMapViewController {
-
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let destinationVC = segue.destination as? TrackOverviewTableViewController else {
-            return
-        }
-        tableVC = destinationVC
-        tableVC?.model = model
     }
 
 }
