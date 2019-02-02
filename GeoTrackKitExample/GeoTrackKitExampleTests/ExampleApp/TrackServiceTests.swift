@@ -12,8 +12,6 @@ import XCTest
 
 class TrackServiceTests: XCTestCase {
 
-    var exampleTrack = TrackReader(filename: "reference-track-1").track
-
     override func setUp() {
         super.setUp()
     }
@@ -23,7 +21,17 @@ class TrackServiceTests: XCTestCase {
     }
 
     struct TestConstants {
-        static let trackNameWithDate = "2017-01-18_13-18-10.track"
+        static let exampleTrack = TrackReader(filename: "reference-track-1").track
+        static let trackNameWithDate: String = {
+            guard let date = TestConstants.exampleTrack?.startTime else {
+                return "2017-01-18_13-18-10.track"
+            }
+
+            let formatter = DateFormatter()
+            formatter.dateFormat = "yyyy-MM-dd_HH-mm-ss"
+
+            return formatter.string(from: date) + ".track"
+        }()
         static let testTrackName = "Test Track Name"
     }
 
@@ -34,7 +42,7 @@ class TrackServiceTests: XCTestCase {
 extension TrackServiceTests {
 
     func testTrackNameFirstTrackWithDate() {
-        guard let exampleTrack = exampleTrack else {
+        guard let exampleTrack = TestConstants.exampleTrack else {
             return XCTFail("Failed to load example track")
         }
         exampleTrack.name = ""
@@ -45,7 +53,7 @@ extension TrackServiceTests {
     }
 
     func testTrackNameFirstTrackWithName() {
-        guard let exampleTrack = exampleTrack else {
+        guard let exampleTrack = TestConstants.exampleTrack else {
             return XCTFail("Failed to load example track")
         }
         exampleTrack.name = TestConstants.testTrackName
@@ -62,7 +70,7 @@ extension TrackServiceTests {
 extension TrackServiceTests {
 
     func testSaveTrackFirstTrackWithDate() {
-        guard let exampleTrack = exampleTrack else {
+        guard let exampleTrack = TestConstants.exampleTrack else {
             return XCTFail("Failed to load example track")
         }
         exampleTrack.name = ""
@@ -92,7 +100,7 @@ extension TrackServiceTests {
     }
 
     func testSaveTrackFirstTrackWithName() {
-        guard let exampleTrack = exampleTrack else {
+        guard let exampleTrack = TestConstants.exampleTrack else {
             return XCTFail("Failed to load example track")
         }
         exampleTrack.name = TestConstants.testTrackName
