@@ -22,7 +22,18 @@ class TrackServiceTests: XCTestCase {
         super.tearDown()
     }
 
-    func testSaveFirstTrackWithDate() {
+    struct TestConstants {
+        static let trackNameWithDate = "2017-01-18_13-18-10.track"
+        static let testTrackName = "Test Track Name"
+    }
+
+}
+
+// MARK: - Track Name
+
+extension TrackServiceTests {
+
+    func testTrackNameFirstTrackWithDate() {
         guard let exampleTrack = exampleTrack else {
             return XCTFail("Failed to load example track")
         }
@@ -30,18 +41,94 @@ class TrackServiceTests: XCTestCase {
         guard let trackName = TrackService.shared.trackName(for: exampleTrack) else {
             return XCTFail("Failed to get a valid name for the track")
         }
-        XCTAssertEqual("2017-01-18_13-18-10.track", trackName)
+        XCTAssertEqual(TestConstants.trackNameWithDate, trackName)
     }
 
-    func testSaveFirstTrackWithName() {
+    func testTrackNameFirstTrackWithName() {
         guard let exampleTrack = exampleTrack else {
             return XCTFail("Failed to load example track")
         }
-        exampleTrack.name = "Winter Park 2017-01-18"
+        exampleTrack.name = TestConstants.testTrackName
         guard let trackName = TrackService.shared.trackName(for: exampleTrack) else {
             return XCTFail("Failed to get a valid name for the track")
         }
-        XCTAssertEqual("Winter Park 2017-01-18.track", trackName)
+        XCTAssertEqual(TestConstants.testTrackName + ".track", trackName)
+    }
+
+}
+
+// MARK: - Save Tracks
+
+extension TrackServiceTests {
+
+    func testSaveTrackFirstTrackWithDate() {
+        guard let exampleTrack = exampleTrack else {
+            return XCTFail("Failed to load example track")
+        }
+        exampleTrack.name = ""
+
+        TrackService.shared.save(track: exampleTrack)
+
+        guard let trackFiles = TrackService.shared.trackFiles else {
+            return XCTFail("Failed to get track files, see logging output")
+        }
+
+        XCTAssertNotEqual(0, trackFiles.count, "There are no tracks")
+
+        XCTAssertTrue(trackFiles.contains(where: { url -> Bool in
+            url.absoluteString.hasSuffix(TestConstants.trackNameWithDate)
+        }))
+
+        trackFiles.forEach { url in
+            guard url.absoluteString.hasSuffix(TestConstants.trackNameWithDate) else {
+                return
+            }
+            do {
+                try FileManager.default.removeItem(at: url)
+            } catch {
+                XCTFail("Failed to delete test file: \(error.localizedDescription)")
+            }
+        }
+    }
+
+    func testSaveTrackFirstTrackWithName() {
+        guard let exampleTrack = exampleTrack else {
+            return XCTFail("Failed to load example track")
+        }
+        exampleTrack.name = TestConstants.testTrackName
+
+        TrackService.shared.save(track: exampleTrack)
+
+        guard let trackFiles = TrackService.shared.trackFiles else {
+            return XCTFail("Failed to get track files, see logging output")
+        }
+
+        XCTAssertNotEqual(0, trackFiles.count, "There are no tracks")
+
+        XCTAssertTrue(trackFiles.contains(where: { url -> Bool in
+            return url.absoluteString.hasSuffix(urlEscape(string: TestConstants.testTrackName) + ".track")
+        }))
+
+        trackFiles.forEach { url in
+            guard url.absoluteString.hasSuffix(urlEscape(string: TestConstants.testTrackName) + ".track") else {
+                return
+            }
+            do {
+                try FileManager.default.removeItem(at: url)
+            } catch {
+                XCTFail("Failed to delete test file: \(error.localizedDescription)")
+            }
+        }
+    }
+
+}
+
+// MARK: - Implementation
+
+extension TrackServiceTests {
+
+    func urlEscape(string: String) -> String {
+        return string.replacingOccurrences(of: " ", with: "%20")
     }
 
 }
