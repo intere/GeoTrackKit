@@ -70,21 +70,6 @@ class TrackListTableViewController: UITableViewController {
         updateTrackList()
     }
 
-//    override func performSegue(withIdentifier identifier: String, sender: Any?) {
-//        super.performSegue(withIdentifier: identifier, sender: sender)
-//    }
-//
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        super.prepare(for: segue, sender: sender)
-//
-//        guard let destination = segue.destination as? TrackMapViewController,
-//            let sender = sender as? TrackCell, let trackUrl = sender.track else {
-//            return
-//        }
-//
-//        destination.model = load(trackUrl: trackUrl)
-//    }
-
 }
 
 // MARK: - Implementation
