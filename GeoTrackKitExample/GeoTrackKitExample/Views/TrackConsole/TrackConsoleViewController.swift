@@ -55,6 +55,9 @@ fileprivate extension TrackConsoleViewController {
     func handleTrackingClick() {
         if GeoTrackManager.shared.isTracking {
             GeoTrackManager.shared.stopTracking()
+            if let track = GeoTrackManager.shared.track {
+                TrackService.shared.save(track: track)
+            }
         } else {
             do {
                 try GeoTrackManager.shared.startTracking(type: .whileInUse)

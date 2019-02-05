@@ -11,6 +11,8 @@
 		1B2451A1B46FD1E813C13A25 /* Pods_GeoTrackKitExampleTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6E72B23B9554498B66030FE /* Pods_GeoTrackKitExampleTests.framework */; };
 		3604FC77217150AB00B46BAA /* GeoTrackStatisticsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3604FC76217150AB00B46BAA /* GeoTrackStatisticsTests.swift */; };
 		36302DB9210E17B400834A1D /* GeoTrackKitErrorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36302DB8210E17B400834A1D /* GeoTrackKitErrorTests.swift */; };
+		366B1C672209271E003C19F8 /* TrackList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 366B1C662209271E003C19F8 /* TrackList.storyboard */; };
+		366B1C69220927F4003C19F8 /* TrackListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 366B1C68220927F4003C19F8 /* TrackListTableViewController.swift */; };
 		366B652D21963A7D00BA5EB7 /* reference-track-2.json in Resources */ = {isa = PBXBuildFile; fileRef = 366B652C21963A7D00BA5EB7 /* reference-track-2.json */; };
 		366B653021963AEE00BA5EB7 /* GeoTrackTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 366B652F21963AEE00BA5EB7 /* GeoTrackTests.swift */; };
 		366B6532219650CF00BA5EB7 /* reference-track-3.json in Resources */ = {isa = PBXBuildFile; fileRef = 366B6531219650CF00BA5EB7 /* reference-track-3.json */; };
@@ -37,6 +39,8 @@
 		36D099B7210B6A2C00C8C841 /* TrackImportTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36D099B6210B6A2C00C8C841 /* TrackImportTableViewController.swift */; };
 		36E1E3461DEB3D0D00CFC7BC /* GeoTrackLocationEventTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36E1E3451DEB3D0D00CFC7BC /* GeoTrackLocationEventTests.swift */; };
 		36E3C43D1F4A0817005738DB /* reference-track-1.json in Resources */ = {isa = PBXBuildFile; fileRef = 368A87AD1E6332C1003D115A /* reference-track-1.json */; };
+		36EA9BF322060337003C79E8 /* TrackService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36EA9BF222060337003C79E8 /* TrackService.swift */; };
+		36EA9BF622061B90003C79E8 /* TrackServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36EA9BF522061B90003C79E8 /* TrackServiceTests.swift */; };
 		36F5A73421E0308900A3DB21 /* CoreLocationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36F5A73321E0308900A3DB21 /* CoreLocationExtension.swift */; };
 		93090E201DF822D9004F56FB /* GeoTrackEventLogTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93090E1F1DF822D9004F56FB /* GeoTrackEventLogTests.swift */; };
 		93090E231DF82520004F56FB /* MockAppender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93090E221DF82520004F56FB /* MockAppender.swift */; };
@@ -56,6 +60,8 @@
 /* Begin PBXFileReference section */
 		3604FC76217150AB00B46BAA /* GeoTrackStatisticsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeoTrackStatisticsTests.swift; sourceTree = "<group>"; };
 		36302DB8210E17B400834A1D /* GeoTrackKitErrorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeoTrackKitErrorTests.swift; sourceTree = "<group>"; };
+		366B1C662209271E003C19F8 /* TrackList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TrackList.storyboard; sourceTree = "<group>"; };
+		366B1C68220927F4003C19F8 /* TrackListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackListTableViewController.swift; sourceTree = "<group>"; };
 		366B652C21963A7D00BA5EB7 /* reference-track-2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "reference-track-2.json"; sourceTree = "<group>"; };
 		366B652F21963AEE00BA5EB7 /* GeoTrackTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeoTrackTests.swift; sourceTree = "<group>"; };
 		366B6531219650CF00BA5EB7 /* reference-track-3.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "reference-track-3.json"; sourceTree = "<group>"; };
@@ -86,6 +92,8 @@
 		36D099B4210B64E200C8C841 /* TrackImport.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TrackImport.storyboard; sourceTree = "<group>"; };
 		36D099B6210B6A2C00C8C841 /* TrackImportTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackImportTableViewController.swift; sourceTree = "<group>"; };
 		36E1E3451DEB3D0D00CFC7BC /* GeoTrackLocationEventTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeoTrackLocationEventTests.swift; sourceTree = "<group>"; };
+		36EA9BF222060337003C79E8 /* TrackService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackService.swift; sourceTree = "<group>"; };
+		36EA9BF522061B90003C79E8 /* TrackServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackServiceTests.swift; sourceTree = "<group>"; };
 		36F5A73321E0308900A3DB21 /* CoreLocationExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreLocationExtension.swift; sourceTree = "<group>"; };
 		51B54550121FF2A0DC20134F /* Pods-GeoTrackKitExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GeoTrackKitExample.release.xcconfig"; path = "Pods/Target Support Files/Pods-GeoTrackKitExample/Pods-GeoTrackKitExample.release.xcconfig"; sourceTree = "<group>"; };
 		8992FE79B7159E02B95D4ABA /* Pods-GeoTrackKitExampleTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GeoTrackKitExampleTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GeoTrackKitExampleTests/Pods-GeoTrackKitExampleTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -139,6 +147,15 @@
 			path = Core;
 			sourceTree = "<group>";
 		};
+		366B1C652209039A003C19F8 /* TrackList */ = {
+			isa = PBXGroup;
+			children = (
+				366B1C662209271E003C19F8 /* TrackList.storyboard */,
+				366B1C68220927F4003C19F8 /* TrackListTableViewController.swift */,
+			);
+			path = TrackList;
+			sourceTree = "<group>";
+		};
 		366B652E21963ADA00BA5EB7 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -170,6 +187,7 @@
 			children = (
 				36A7C6C62100B0980073407A /* EventLogAppender.swift */,
 				36A7C6CF2103ECB40073407A /* ConsoleLogAppender.swift */,
+				36EA9BF222060337003C79E8 /* TrackService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -177,6 +195,7 @@
 		36A7C6D52104C7480073407A /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				366B1C652209039A003C19F8 /* TrackList */,
 				36D099B3210B64D900C8C841 /* TrackImport */,
 				36A7C6D72104C7480073407A /* TrackConsole */,
 				36A7C6D82104C7480073407A /* ReferenceTrack */,
@@ -253,6 +272,7 @@
 		36C45E581DCE2D3500E87710 /* GeoTrackKitExampleTests */ = {
 			isa = PBXGroup;
 			children = (
+				36EA9BF422061B60003C79E8 /* ExampleApp */,
 				93EEFC031E6DAD0300090CE7 /* GeoTrackKit */,
 				368A87AF1E6332D8003D115A /* Utilities */,
 				368A87AC1E6332B7003D115A /* Resources */,
@@ -273,6 +293,14 @@
 				36D099B6210B6A2C00C8C841 /* TrackImportTableViewController.swift */,
 			);
 			path = TrackImport;
+			sourceTree = "<group>";
+		};
+		36EA9BF422061B60003C79E8 /* ExampleApp */ = {
+			isa = PBXGroup;
+			children = (
+				36EA9BF522061B90003C79E8 /* TrackServiceTests.swift */,
+			);
+			path = ExampleApp;
 			sourceTree = "<group>";
 		};
 		36F5A73221E0306A00A3DB21 /* Extensions */ = {
@@ -428,6 +456,7 @@
 				36A7C6DB2104CBF30073407A /* TrackConsole.storyboard in Resources */,
 				36C45E4F1DCE2D3500E87710 /* LaunchScreen.storyboard in Resources */,
 				36E3C43D1F4A0817005738DB /* reference-track-1.json in Resources */,
+				366B1C672209271E003C19F8 /* TrackList.storyboard in Resources */,
 				36A7C6E72104CD120073407A /* TrackView.storyboard in Resources */,
 				36C45E4C1DCE2D3500E87710 /* Assets.xcassets in Resources */,
 				36D099B5210B64E200C8C841 /* TrackImport.storyboard in Resources */,
@@ -529,8 +558,10 @@
 				36A7C6E12104CC0D0073407A /* TrackMapViewController.swift in Sources */,
 				36A7C6DD2104CBFE0073407A /* TrackConsoleViewController.swift in Sources */,
 				36D099B7210B6A2C00C8C841 /* TrackImportTableViewController.swift in Sources */,
+				366B1C69220927F4003C19F8 /* TrackListTableViewController.swift in Sources */,
 				36F5A73421E0308900A3DB21 /* CoreLocationExtension.swift in Sources */,
 				36A7C6E92104D8870073407A /* LiveTrackingViewController.swift in Sources */,
+				36EA9BF322060337003C79E8 /* TrackService.swift in Sources */,
 				36C45E451DCE2D3500E87710 /* AppDelegate.swift in Sources */,
 				36A7C6C72100B0980073407A /* EventLogAppender.swift in Sources */,
 				36A7C6D02103ECB40073407A /* ConsoleLogAppender.swift in Sources */,
@@ -551,6 +582,7 @@
 				366B653021963AEE00BA5EB7 /* GeoTrackTests.swift in Sources */,
 				368A87B71E636FCE003D115A /* GeoTrackAnalyzerTests.swift in Sources */,
 				93EEFC071E6DAD1900090CE7 /* UIGeoTrackTest.swift in Sources */,
+				36EA9BF622061B90003C79E8 /* TrackServiceTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
