@@ -44,9 +44,9 @@
                                 <blurEffect style="light"/>
                             </visualEffectView>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="PD7-aT-kTn" customClass="GeoTrackMap" customModule="GeoTrackKit">
-                                <rect key="frame" x="8" y="559" width="359" height="100"/>
+                                <rect key="frame" x="8" y="509" width="359" height="150"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="100" id="eRG-Hw-gCg"/>
+                                    <constraint firstAttribute="height" constant="150" id="eRG-Hw-gCg"/>
                                 </constraints>
                             </mapView>
                         </subviews>

@@ -24,6 +24,7 @@ class ARCLViewController: UIViewController {
     var displayDebugging = true
     var adjustNorthByTappingSidesOfScreen = true
     var updateInfoLabelTimer: Timer?
+    var nodes = [LocationNode]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,7 +34,9 @@ class ARCLViewController: UIViewController {
         if let track = track {
             mapView.model = UIGeoTrack(with: track)
             mapView.showsUserLocation = true
+            mapView.showPoints = true
         }
+        NotificationCenter.default.addObserver(self, selector: #selector(selectedAnnotationPoint(_:)), name: Notification.Name.GeoTrackKit.selectedAnnotationPoint, object: nil)
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -64,19 +67,24 @@ class ARCLViewController: UIViewController {
             print("right side of the screen")
             sceneView.moveSceneHeadingClockwise()
         }
-//        } else {
-//            let hits = sceneView.hitTest(location, options: nil)
-//            if let balloon = hits.first?.node as? LocationNode {
-//                guard let currentLocation = sceneView.currentLocation() else {
-//                    return
-//                }
-//                let distance = balloon.location.distance(from: currentLocation)
-//                print("Tapped a balloon: \(distance) meters")
-//                select(node: balloon)
-//            }
-//        }
     }
 
+}
+
+// MARK: - Notification Handlers
+
+extension ARCLViewController {
+
+    @objc
+    func selectedAnnotationPoint(_ notification: NSNotification) {
+        guard let annotation = notification.object as? PointAnnotation else {
+            return assertionFailure("no object, or wrong object type")
+        }
+        for node in nodes where node.location.coordinate.latitude == annotation.coordinate.latitude && node.location.coordinate.longitude == annotation.coordinate.longitude {
+            select(node: node)
+            break
+        }
+    }
 
 }
 
@@ -110,6 +118,25 @@ extension ARCLViewController: SceneLocationViewDelegate {
 
 extension ARCLViewController {
 
+    func select(node: LocationNode) {
+        let deselectedMaterial = SCNMaterial()
+        deselectedMaterial.diffuse.contents = UIColor.red
+
+        let selectedMaterial = SCNMaterial()
+        selectedMaterial.diffuse.contents = UIColor.blue
+
+        sceneView.scene.rootNode.childNodes.forEach { parentNode in
+            parentNode.childNodes.filter({ $0 is LocationNode }).forEach { childNode in
+                guard childNode != node else {
+                    self.selectedNode = node
+                    node.geometry?.materials = [selectedMaterial]
+                    return
+                }
+                childNode.geometry?.materials = [deselectedMaterial]
+            }
+        }
+    }
+
     func configureARCL() {
         sceneView.showAxesNode = true
         sceneView.locationDelegate = self
@@ -134,13 +161,14 @@ extension ARCLViewController {
             return
         }
 
-        if let trailData = buildTrailData() {
-            trailData.forEach { pointNode in
+        if let trackPointObjects = buildTrailData() {
+            trackPointObjects.forEach { pointNode in
                 if let location = pointNode.location {
                     print("Adding trail point: \(pointNode), \(pointNode.locationConfirmed), \(location)")
                 }
                 sceneView.addLocationNodeWithConfirmedLocation(locationNode: pointNode)
             }
+            self.nodes = trackPointObjects
         }
     }
 
