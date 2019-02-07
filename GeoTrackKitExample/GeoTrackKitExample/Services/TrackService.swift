@@ -86,7 +86,9 @@ extension TrackService {
             let allFiles = try FileManager.default.contentsOfDirectory(at: documentsFolder, includingPropertiesForKeys: nil, options: .skipsHiddenFiles)
             return allFiles.filter { fileUrl in
                 return fileUrl.absoluteString.lowercased().hasSuffix(fileExtension.lowercased())
-            }
+                }.sorted { (first, second) -> Bool in
+                    return first.absoluteString > second.absoluteString
+                }
         } catch {
             print("ERROR: \(error.localizedDescription)")
             return nil
