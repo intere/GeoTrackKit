@@ -35,8 +35,8 @@ This project is currently a work in progress.
 ### Example App
 
 TODO:
-- [ ] Save tracks to disk
-- [ ] Provide a track list
+- [x] Save tracks to disk
+- [x] Provide a track list
 - [x] Pull tracks in from HealthKit
 
 ### Installation
