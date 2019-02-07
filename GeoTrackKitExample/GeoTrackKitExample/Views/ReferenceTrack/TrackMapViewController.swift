@@ -52,12 +52,16 @@ class TrackMapViewController: UIViewController {
         trackVC.useDemoTrack = useDemoTrack
         return trackVC
     }
-
 }
 
 // MARK: - User Actions
 
 extension TrackMapViewController {
+
+    @IBAction
+    func tappedAR(_ source: Any) {
+        showAR()
+    }
 
     @IBAction
     func tappedShare(_ source: Any) {
@@ -174,6 +178,14 @@ private extension TrackMapViewController {
         dialog.addAction(UIAlertAction(title: "Cancel", style: .cancel))
 
         present(dialog, animated: true)
+    }
+
+    func showAR() {
+        guard let arVC = UIStoryboard(name: "ARCL", bundle: nil).instantiateInitialViewController() as? ARCLViewController else {
+            return assertionFailure("Failed to create ARVC")
+        }
+        arVC.track = model?.track
+        navigationController?.pushViewController(arVC, animated: true)
     }
 
     /// Shares the track as a GPX file

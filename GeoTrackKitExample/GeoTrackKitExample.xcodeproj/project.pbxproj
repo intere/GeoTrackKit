@@ -17,6 +17,8 @@
 		366B653021963AEE00BA5EB7 /* GeoTrackTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 366B652F21963AEE00BA5EB7 /* GeoTrackTests.swift */; };
 		366B6532219650CF00BA5EB7 /* reference-track-3.json in Resources */ = {isa = PBXBuildFile; fileRef = 366B6531219650CF00BA5EB7 /* reference-track-3.json */; };
 		366CE43C1DFCAC360090BD42 /* GeoTrackSerializationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 366CE43B1DFCAC360090BD42 /* GeoTrackSerializationTests.swift */; };
+		3677FFF9220C679A0036DA27 /* ARCLViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3677FFF8220C679A0036DA27 /* ARCLViewController.swift */; };
+		3677FFFB220C68C10036DA27 /* ARCL.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3677FFFA220C68C10036DA27 /* ARCL.storyboard */; };
 		368A87AE1E6332C1003D115A /* reference-track-1.json in Resources */ = {isa = PBXBuildFile; fileRef = 368A87AD1E6332C1003D115A /* reference-track-1.json */; };
 		368A87B11E63332E003D115A /* TrackReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 368A87B01E63332E003D115A /* TrackReader.swift */; };
 		368A87B71E636FCE003D115A /* GeoTrackAnalyzerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 368A87B61E636FCE003D115A /* GeoTrackAnalyzerTests.swift */; };
@@ -66,6 +68,8 @@
 		366B652F21963AEE00BA5EB7 /* GeoTrackTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeoTrackTests.swift; sourceTree = "<group>"; };
 		366B6531219650CF00BA5EB7 /* reference-track-3.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "reference-track-3.json"; sourceTree = "<group>"; };
 		366CE43B1DFCAC360090BD42 /* GeoTrackSerializationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeoTrackSerializationTests.swift; sourceTree = "<group>"; };
+		3677FFF8220C679A0036DA27 /* ARCLViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARCLViewController.swift; sourceTree = "<group>"; };
+		3677FFFA220C68C10036DA27 /* ARCL.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ARCL.storyboard; sourceTree = "<group>"; };
 		368A87AD1E6332C1003D115A /* reference-track-1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "reference-track-1.json"; sourceTree = "<group>"; };
 		368A87B01E63332E003D115A /* TrackReader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackReader.swift; sourceTree = "<group>"; };
 		368A87B61E636FCE003D115A /* GeoTrackAnalyzerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeoTrackAnalyzerTests.swift; sourceTree = "<group>"; };
@@ -164,6 +168,15 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		3677FFF7220C67770036DA27 /* ARCL */ = {
+			isa = PBXGroup;
+			children = (
+				3677FFF8220C679A0036DA27 /* ARCLViewController.swift */,
+				3677FFFA220C68C10036DA27 /* ARCL.storyboard */,
+			);
+			path = ARCL;
+			sourceTree = "<group>";
+		};
 		368A87AC1E6332B7003D115A /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -195,6 +208,7 @@
 		36A7C6D52104C7480073407A /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				3677FFF7220C67770036DA27 /* ARCL */,
 				366B1C652209039A003C19F8 /* TrackList */,
 				36D099B3210B64D900C8C841 /* TrackImport */,
 				36A7C6D72104C7480073407A /* TrackConsole */,
@@ -457,6 +471,7 @@
 				36C45E4F1DCE2D3500E87710 /* LaunchScreen.storyboard in Resources */,
 				36E3C43D1F4A0817005738DB /* reference-track-1.json in Resources */,
 				366B1C672209271E003C19F8 /* TrackList.storyboard in Resources */,
+				3677FFFB220C68C10036DA27 /* ARCL.storyboard in Resources */,
 				36A7C6E72104CD120073407A /* TrackView.storyboard in Resources */,
 				36C45E4C1DCE2D3500E87710 /* Assets.xcassets in Resources */,
 				36D099B5210B64E200C8C841 /* TrackImport.storyboard in Resources */,
@@ -485,10 +500,12 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-GeoTrackKitExample/Pods-GeoTrackKitExample-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/ARCL/ARCL.framework",
 				"${BUILT_PRODUCTS_DIR}/GeoTrackKit/GeoTrackKit.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ARCL.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GeoTrackKit.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -564,6 +581,7 @@
 				36EA9BF322060337003C79E8 /* TrackService.swift in Sources */,
 				36C45E451DCE2D3500E87710 /* AppDelegate.swift in Sources */,
 				36A7C6C72100B0980073407A /* EventLogAppender.swift in Sources */,
+				3677FFF9220C679A0036DA27 /* ARCLViewController.swift in Sources */,
 				36A7C6D02103ECB40073407A /* ConsoleLogAppender.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
