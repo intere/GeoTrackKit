@@ -19,7 +19,6 @@ class TrackService {
         return documentFiles(withExtension: ".track")
     }
 
-
     /// Saves the provided track to the user's documents folder.
     ///
     /// - Parameter track: the track to be saved.
@@ -53,6 +52,23 @@ class TrackService {
             return false
         }
     }
+
+    /// Renames the provided fileUrl to the provided string (and adds a `.track`
+    /// suffix if necessary)
+    ///
+    /// - Parameters:
+    ///   - url: The File URL to be renamed.
+    ///   - to: The name of the file to rename to.
+    func rename(fileUrl url: URL, to newName: String) {
+        let name = newName.lowercased().hasSuffix(".track") ? newName : newName + ".track"
+        let newFile = URL(fileURLWithPath: name, relativeTo: url.deletingLastPathComponent())
+
+        do {
+            try FileManager.default.moveItem(at: url, to: newFile)
+        } catch {
+            print("ERROR trying to move file from \(url.lastPathComponent) to \(newFile.lastPathComponent)")
+        }
+    }
 }
 
 // MARK: - Implementation
@@ -82,7 +98,7 @@ extension TrackService {
     }
 
     /// Gives you back all of the files that match the provided extension (ends with,
-    /// case-insensitive).
+    /// case-insensitive).  The files are sorted by their creation date, descending.
     ///
     /// - Parameter fileExtension: The file extension that you want files for.
     /// - Returns: The list of files matching your extension, or in the case of an
@@ -93,10 +109,27 @@ extension TrackService {
         }
 
         do {
-            let allFiles = try FileManager.default.contentsOfDirectory(at: documentsFolder, includingPropertiesForKeys: nil, options: .skipsHiddenFiles)
-            return allFiles.filter { fileUrl in
-                return fileUrl.absoluteString.lowercased().hasSuffix(fileExtension.lowercased())
+            let properties: [URLResourceKey] = [.localizedNameKey, .creationDateKey,
+                                                .contentModificationDateKey, .localizedTypeDescriptionKey]
+            let allFiles = try FileManager.default.contentsOfDirectory(at: documentsFolder, includingPropertiesForKeys: properties, options: [.skipsHiddenFiles])
+
+            var urlDictionary = [URL: Date]()
+
+            for url in allFiles {
+                guard let dict = try? url.resourceValues(forKeys: Set(properties)),
+                    let creationDate = dict.creationDate else {
+                        continue
+                }
+                guard url.absoluteString.lowercased().hasSuffix(fileExtension.lowercased()) else {
+                    continue
+                }
+                urlDictionary[url] = creationDate
             }
+
+            return urlDictionary.sorted(by: { (first, second) -> Bool in
+                return first.value > second.value
+            }).map({ $0.key })
+
         } catch {
             print("ERROR: \(error.localizedDescription)")
             return nil
