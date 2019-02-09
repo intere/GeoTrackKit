@@ -83,12 +83,27 @@ extension TrackService {
         }
 
         do {
-            let allFiles = try FileManager.default.contentsOfDirectory(at: documentsFolder, includingPropertiesForKeys: nil, options: .skipsHiddenFiles)
-            return allFiles.filter { fileUrl in
-                return fileUrl.absoluteString.lowercased().hasSuffix(fileExtension.lowercased())
-                }.sorted { (first, second) -> Bool in
-                    return first.absoluteString > second.absoluteString
+            let properties: [URLResourceKey] = [.localizedNameKey, .creationDateKey,
+                                                .contentModificationDateKey, .localizedTypeDescriptionKey]
+            let allFiles = try FileManager.default.contentsOfDirectory(at: documentsFolder, includingPropertiesForKeys: properties, options: [.skipsHiddenFiles])
+
+            var urlDictionary = [URL: Date]()
+
+            for url in allFiles {
+                guard let dict = try? url.resourceValues(forKeys: Set(properties)),
+                    let creationDate = dict.creationDate else {
+                        continue
                 }
+                guard url.absoluteString.lowercased().hasSuffix(fileExtension.lowercased()) else {
+                    continue
+                }
+                urlDictionary[url] = creationDate
+            }
+
+            return urlDictionary.sorted(by: { (first, second) -> Bool in
+                return first.value.timeIntervalSinceNow > second.value.timeIntervalSinceNow
+            }).map({ $0.key })
+
         } catch {
             print("ERROR: \(error.localizedDescription)")
             return nil
