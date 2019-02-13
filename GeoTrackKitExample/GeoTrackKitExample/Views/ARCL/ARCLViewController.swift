@@ -182,8 +182,17 @@ extension ARCLViewController {
 
         var nodes = [LocationNode]()
 
-        track.points.forEach { point in
-            let node = ArrowLocationNode.build(fromLocation: point)
+        for index in 0..<track.points.count {
+            let point = track.points[index]
+            let node: LocationNode
+
+            if index == 0 {
+                node = EndpointLocationNode.build(fromLocation: point, isStart: true)
+            } else if index == track.points.count - 1 {
+                node = EndpointLocationNode.build(fromLocation: point, isStart: false)
+            } else {
+                node = ArrowLocationNode.build(fromLocation: point)
+            }
             nodes.append(node)
         }
 

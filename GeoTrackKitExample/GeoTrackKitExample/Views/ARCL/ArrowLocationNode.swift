@@ -42,21 +42,23 @@ class ArrowLocationNode: LocationNode {
 
 extension ArrowLocationNode {
 
+    /// Renders the node as selected
     func showSelected() {
         guard let arrow = childNodes.filter({ $0.name == "arrow" }).first else {
             return
         }
         for childNode in arrow.childNodes {
-            childNode.geometry?.materials = [Constants.selectedMaterial]
+            childNode.geometry?.materials = [Constants.selectedMaterial, Constants.metalness, Constants.roughness]
         }
     }
 
+    /// Renders the node as deselected
     func showDeselected() {
         guard let arrow = childNodes.filter({ $0.name == "arrow" }).first else {
             return
         }
         for childNode in arrow.childNodes {
-            childNode.geometry?.materials = [Constants.deselectedMaterial]
+            childNode.geometry?.materials = [Constants.deselectedMaterial, Constants.metalness, Constants.roughness]
         }
     }
 
@@ -67,17 +69,32 @@ extension ArrowLocationNode {
 private extension ArrowLocationNode {
 
     struct Constants {
-        static let deselectedMaterial = SCNMaterial(fromColor: .red)
-        static let selectedMaterial = SCNMaterial(fromColor: .blue)
+        static let deselectedMaterial = SCNMaterial.diffuse(fromColor: .red)
+        static let selectedMaterial = SCNMaterial.diffuse(fromColor: .blue)
+        static let metalness = SCNMaterial.metalness(fromFloat: 0.5)
+        static let roughness = SCNMaterial.roughness(fromFloat: 0.5)
     }
 
 }
 
 extension SCNMaterial {
 
-    convenience init(fromColor color: UIColor) {
-        self.init()
-        diffuse.contents = color
+    class func diffuse(fromColor color: UIColor) -> SCNMaterial {
+        let material = SCNMaterial()
+        material.diffuse.contents = color
+        return material
+    }
+
+    class func metalness(fromFloat value: Float) -> SCNMaterial {
+        let material = SCNMaterial()
+        material.metalness.contents = value
+        return material
+    }
+
+    class func roughness(fromFloat value: Float) -> SCNMaterial {
+        let material = SCNMaterial()
+        material.roughness.contents = value
+        return material
     }
 
 }
