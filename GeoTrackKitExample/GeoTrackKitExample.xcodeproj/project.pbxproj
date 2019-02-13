@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0E1E09A3899897CDAE589A5B /* Pods_GeoTrackKitExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A51639AB7B6B4BAEF27C313 /* Pods_GeoTrackKitExample.framework */; };
 		1B2451A1B46FD1E813C13A25 /* Pods_GeoTrackKitExampleTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6E72B23B9554498B66030FE /* Pods_GeoTrackKitExampleTests.framework */; };
+		3604F20C2213B04400D2EFA7 /* example.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 3604F20B2213B04400D2EFA7 /* example.scnassets */; };
 		3604FC77217150AB00B46BAA /* GeoTrackStatisticsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3604FC76217150AB00B46BAA /* GeoTrackStatisticsTests.swift */; };
 		36302DB9210E17B400834A1D /* GeoTrackKitErrorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36302DB8210E17B400834A1D /* GeoTrackKitErrorTests.swift */; };
 		366B1C672209271E003C19F8 /* TrackList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 366B1C662209271E003C19F8 /* TrackList.storyboard */; };
@@ -60,6 +61,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3604F20B2213B04400D2EFA7 /* example.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = example.scnassets; sourceTree = "<group>"; };
 		3604FC76217150AB00B46BAA /* GeoTrackStatisticsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeoTrackStatisticsTests.swift; sourceTree = "<group>"; };
 		36302DB8210E17B400834A1D /* GeoTrackKitErrorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeoTrackKitErrorTests.swift; sourceTree = "<group>"; };
 		366B1C662209271E003C19F8 /* TrackList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TrackList.storyboard; sourceTree = "<group>"; };
@@ -274,6 +276,7 @@
 				36C45E501DCE2D3500E87710 /* Info.plist */,
 				36C45E441DCE2D3500E87710 /* AppDelegate.swift */,
 				36C45E4B1DCE2D3500E87710 /* Assets.xcassets */,
+				3604F20B2213B04400D2EFA7 /* example.scnassets */,
 				36F5A73221E0306A00A3DB21 /* Extensions */,
 				36C45E4D1DCE2D3500E87710 /* LaunchScreen.storyboard */,
 				36C45E481DCE2D3500E87710 /* Main.storyboard */,
@@ -473,6 +476,7 @@
 				366B1C672209271E003C19F8 /* TrackList.storyboard in Resources */,
 				3677FFFB220C68C10036DA27 /* ARCL.storyboard in Resources */,
 				36A7C6E72104CD120073407A /* TrackView.storyboard in Resources */,
+				3604F20C2213B04400D2EFA7 /* example.scnassets in Resources */,
 				36C45E4C1DCE2D3500E87710 /* Assets.xcassets in Resources */,
 				36D099B5210B64E200C8C841 /* TrackImport.storyboard in Resources */,
 				36A7C6E32104CC360073407A /* LiveTrackingView.storyboard in Resources */,

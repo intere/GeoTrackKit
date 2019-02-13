@@ -94,11 +94,11 @@ extension ARCLViewController {
 extension ARCLViewController: SceneLocationViewDelegate {
 
     func sceneLocationViewDidAddSceneLocationEstimate(sceneLocationView: SceneLocationView, position: SCNVector3, location: CLLocation) {
-        print("add scene location estimate, position: \(position), location: \(location.coordinate), accuracy: \(location.horizontalAccuracy), date: \(location.timestamp)")
+//        print("add scene location estimate, position: \(position), location: \(location.coordinate), accuracy: \(location.horizontalAccuracy), date: \(location.timestamp)")
     }
 
     func sceneLocationViewDidRemoveSceneLocationEstimate(sceneLocationView: SceneLocationView, position: SCNVector3, location: CLLocation) {
-        print("remove scene location estimate, position: \(position), location: \(location.coordinate), accuracy: \(location.horizontalAccuracy), date: \(location.timestamp)")
+//        print("remove scene location estimate, position: \(position), location: \(location.coordinate), accuracy: \(location.horizontalAccuracy), date: \(location.timestamp)")
     }
 
     func sceneLocationViewDidConfirmLocationOfNode(sceneLocationView: SceneLocationView, node: LocationNode) {
@@ -117,6 +117,17 @@ extension ARCLViewController: SceneLocationViewDelegate {
 // MARK: - Implementation
 
 extension ARCLViewController {
+
+    /// Loads the arrow model from the arrow scene.
+    ///
+    /// - Returns: The arrow node from the arrow scene.
+    func loadArrowModel() -> SCNNode? {
+        guard let scene = SCNScene(named: "example.scnassets/arrow.scn") else {
+            return nil
+        }
+
+        return scene.rootNode.childNodes.filter({ $0.name == "arrow" }).first
+    }
 
     func select(node: LocationNode) {
         let deselectedMaterial = SCNMaterial()
@@ -161,15 +172,17 @@ extension ARCLViewController {
             return
         }
 
-        if let trackPointObjects = buildTrailData() {
-            trackPointObjects.forEach { pointNode in
-                if let location = pointNode.location {
-                    print("Adding trail point: \(pointNode), \(pointNode.locationConfirmed), \(location)")
-                }
-                sceneView.addLocationNodeWithConfirmedLocation(locationNode: pointNode)
-            }
-            self.nodes = trackPointObjects
+        guard let trackPointObjects = buildTrailData() else {
+            return
         }
+
+        trackPointObjects.forEach { pointNode in
+            if let location = pointNode.location {
+                print("Adding trail point: \(pointNode), \(pointNode.locationConfirmed), \(location)")
+            }
+            sceneView.addLocationNodeWithConfirmedLocation(locationNode: pointNode)
+        }
+        self.nodes = trackPointObjects
     }
 
     /// Takes the points from the track and creates an array of `LocationNode` objects (currently a
@@ -185,10 +198,14 @@ extension ARCLViewController {
 
         track.points.forEach { point in
             let node = LocationNode(location: point)
-            let material = SCNMaterial()
-            material.diffuse.contents = UIColor.red
-            node.geometry = SCNSphere(radius: 0.5)
-            node.geometry?.materials = [material]
+            guard let arrow = loadArrowModel() else {
+                return
+            }
+            node.addChildNode(arrow)
+//            let material = SCNMaterial()
+//            material.diffuse.contents = UIColor.red
+//            node.geometry = SCNSphere(radius: 0.5)
+//            node.geometry?.materials = [material]
 
             nodes.append(node)
         }
