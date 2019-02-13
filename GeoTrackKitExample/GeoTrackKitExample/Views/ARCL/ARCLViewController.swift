@@ -21,7 +21,7 @@ class ARCLViewController: UIViewController {
     var track: GeoTrack?
     var selectedNode: LocationNode?
 
-    var displayDebugging = true
+    var displayDebugging = false
     var adjustNorthByTappingSidesOfScreen = true
     var updateInfoLabelTimer: Timer?
     var nodes = [LocationNode]()
@@ -118,32 +118,18 @@ extension ARCLViewController: SceneLocationViewDelegate {
 
 extension ARCLViewController {
 
-    /// Loads the arrow model from the arrow scene.
-    ///
-    /// - Returns: The arrow node from the arrow scene.
-    func loadArrowModel() -> SCNNode? {
-        guard let scene = SCNScene(named: "example.scnassets/arrow.scn") else {
-            return nil
-        }
-
-        return scene.rootNode.childNodes.filter({ $0.name == "arrow" }).first
-    }
-
     func select(node: LocationNode) {
-        let deselectedMaterial = SCNMaterial()
-        deselectedMaterial.diffuse.contents = UIColor.red
-
-        let selectedMaterial = SCNMaterial()
-        selectedMaterial.diffuse.contents = UIColor.blue
-
         sceneView.scene.rootNode.childNodes.forEach { parentNode in
             parentNode.childNodes.filter({ $0 is LocationNode }).forEach { childNode in
-                guard childNode != node else {
-                    self.selectedNode = node
-                    node.geometry?.materials = [selectedMaterial]
+                guard let arrowNode = childNode as? ArrowLocationNode else {
                     return
                 }
-                childNode.geometry?.materials = [deselectedMaterial]
+                guard arrowNode != node else {
+                    self.selectedNode = node
+                    arrowNode.showSelected()
+                    return
+                }
+                arrowNode.showDeselected()
             }
         }
     }
@@ -197,16 +183,7 @@ extension ARCLViewController {
         var nodes = [LocationNode]()
 
         track.points.forEach { point in
-            let node = LocationNode(location: point)
-            guard let arrow = loadArrowModel() else {
-                return
-            }
-            node.addChildNode(arrow)
-//            let material = SCNMaterial()
-//            material.diffuse.contents = UIColor.red
-//            node.geometry = SCNSphere(radius: 0.5)
-//            node.geometry?.materials = [material]
-
+            let node = ArrowLocationNode.build(fromLocation: point)
             nodes.append(node)
         }
 
