@@ -6,7 +6,9 @@
 //  Copyright © 2019 Eric Internicola. All rights reserved.
 //
 
+
 import ARCL
+import ARKit
 import CoreLocation
 import GeoTrackKit
 import SceneKit
@@ -121,11 +123,20 @@ extension ARCLViewController {
     func select(node: LocationNode) {
         sceneView.scene.rootNode.childNodes.forEach { parentNode in
             parentNode.childNodes.filter({ $0 is LocationNode }).forEach { childNode in
-                guard let arrowNode = childNode as? ArrowLocationNode else {
+                guard let locationNode = childNode as? LocationNode else {
+                    return
+                }
+
+                defer {
+                    if node == locationNode {
+                        self.selectedNode = locationNode
+                    }
+                }
+
+                guard let arrowNode = locationNode as? ArrowLocationNode else {
                     return
                 }
                 guard arrowNode != node else {
-                    self.selectedNode = node
                     arrowNode.showSelected()
                     return
                 }
@@ -169,6 +180,20 @@ extension ARCLViewController {
             sceneView.addLocationNodeWithConfirmedLocation(locationNode: pointNode)
         }
         self.nodes = trackPointObjects
+        makeArrowsPoint()
+    }
+
+    func makeArrowsPoint() {
+        var last: LocationNode?
+
+        nodes.forEach { node in
+            defer {
+                last = node
+            }
+            if let last = last {
+                (last as? ArrowLocationNode)?.look(at: node)
+            }
+        }
     }
 
     /// Takes the points from the track and creates an array of `LocationNode` objects (currently a
@@ -233,6 +258,8 @@ extension ARCLViewController {
         }
 
         infoLabel.text = text
+
+        makeArrowsPoint()
     }
 
 }

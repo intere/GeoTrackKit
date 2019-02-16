@@ -42,6 +42,10 @@ class ArrowLocationNode: LocationNode {
 
 extension ArrowLocationNode {
 
+    func look(at node: LocationNode) {
+        look(at: node.position, up: SCNVector3.yAxisUp, localFront: SCNVector3.yAxisUp)
+    }
+
     /// Renders the node as selected
     func showSelected() {
         guard let arrow = childNodes.filter({ $0.name == "arrow" }).first else {
@@ -95,6 +99,39 @@ extension SCNMaterial {
         let material = SCNMaterial()
         material.roughness.contents = value
         return material
+    }
+
+}
+
+// MARK: - Math Extensions
+
+extension SCNVector3 {
+
+    static let yAxisUp = SCNVector3(0, 1, 0)
+
+}
+
+
+extension Int {
+
+    var radians: CGFloat {
+        return CGFloat(self) * .pi / 180
+    }
+
+}
+
+extension Float {
+
+    var radians: Float {
+        return self * .pi / 180
+    }
+}
+
+
+extension CGFloat {
+
+    var float: Float {
+        return Float(self)
     }
 
 }
