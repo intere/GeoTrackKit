@@ -96,11 +96,11 @@ extension ARCLViewController {
 extension ARCLViewController: SceneLocationViewDelegate {
 
     func sceneLocationViewDidAddSceneLocationEstimate(sceneLocationView: SceneLocationView, position: SCNVector3, location: CLLocation) {
-//        print("add scene location estimate, position: \(position), location: \(location.coordinate), accuracy: \(location.horizontalAccuracy), date: \(location.timestamp)")
+
     }
 
     func sceneLocationViewDidRemoveSceneLocationEstimate(sceneLocationView: SceneLocationView, position: SCNVector3, location: CLLocation) {
-//        print("remove scene location estimate, position: \(position), location: \(location.coordinate), accuracy: \(location.horizontalAccuracy), date: \(location.timestamp)")
+
     }
 
     func sceneLocationViewDidConfirmLocationOfNode(sceneLocationView: SceneLocationView, node: LocationNode) {
@@ -120,35 +120,32 @@ extension ARCLViewController: SceneLocationViewDelegate {
 
 extension ARCLViewController {
 
+    /// Handles selecting the provided node (and deselecting all others).
+    ///
+    /// - Parameter node: The node to be selected.
     func select(node: LocationNode) {
+        // 1. Keep track of the selectedNode (for distance computation)
+        selectedNode = node
+
+        // 2. Iterate through all of the children in the scene's rootNode
         sceneView.scene.rootNode.childNodes.forEach { parentNode in
-            parentNode.childNodes.filter({ $0 is LocationNode }).forEach { childNode in
-                guard let locationNode = childNode as? LocationNode else {
-                    return
-                }
-
-                defer {
-                    if node == locationNode {
-                        self.selectedNode = locationNode
-                    }
-                }
-
-                guard let arrowNode = locationNode as? ArrowLocationNode else {
-                    return
-                }
-                guard arrowNode != node else {
+            // 3. Iterate on all grandchildren (of the rootNode) that are ArrowLocationNode objects
+            parentNode.childNodes.compactMap({ $0 as? ArrowLocationNode }).forEach { arrowNode in
+                // 4. Select / Deselect the node, depending on whether or not it's the newly selected node.
+                if arrowNode == node {
                     arrowNode.showSelected()
-                    return
+                } else {
+                    arrowNode.showDeselected()
                 }
-                arrowNode.showDeselected()
             }
         }
     }
 
+    /// Configures the ARCL scene
     func configureARCL() {
         sceneView.showAxesNode = true
         sceneView.locationDelegate = self
-        //        sceneView.locationEstimateMethod = .coreLocationDataOnly
+        sceneView.locationEstimateMethod = .mostRelevantEstimate
 
         if displayDebugging {
             sceneView.showFeaturePoints = true
@@ -180,10 +177,12 @@ extension ARCLViewController {
             sceneView.addLocationNodeWithConfirmedLocation(locationNode: pointNode)
         }
         self.nodes = trackPointObjects
-        makeArrowsPoint()
+        makeArrowsPointToNextPoint()
     }
 
-    func makeArrowsPoint() {
+    /// Iterates through all of the points and if it's an arrow; makes it
+    /// point to the next point in the track.
+    func makeArrowsPointToNextPoint() {
         var last: LocationNode?
 
         nodes.forEach { node in
@@ -196,8 +195,8 @@ extension ARCLViewController {
         }
     }
 
-    /// Takes the points from the track and creates an array of `LocationNode` objects (currently a
-    /// half-meter red ball) and hands those back to you.
+    /// Takes the points from the track and creates an array of `LocationNode` objects.
+    /// and hands those back to you.
     ///
     /// - Returns: An arry of location nodes if there are trail points.
     func buildTrailData() -> [LocationNode]? {
@@ -225,6 +224,7 @@ extension ARCLViewController {
     }
 
     @objc
+    /// Updates the info label and forces the arrows to point to their next point.
     func updateInfoLabel() {
         var text = ""
         guard let location = sceneView.currentLocation() else {
@@ -259,7 +259,7 @@ extension ARCLViewController {
 
         infoLabel.text = text
 
-        makeArrowsPoint()
+        makeArrowsPointToNextPoint()
     }
 
 }

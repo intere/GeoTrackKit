@@ -13,6 +13,10 @@ import UIKit
 
 class ArrowLocationNode: LocationNode {
 
+    /// Factory creation function, responsible for building the `ArrowLocationNode`.
+    ///
+    /// - Parameter location: The location that the node is to be positioned at (real world point).
+    /// - Returns: An ArrowLocationNode at the specified position.
     class func build(fromLocation location: CLLocation?) -> ArrowLocationNode {
         let node = ArrowLocationNode(location: location)
         guard let arrow = node.loadArrowModel() else {
@@ -24,24 +28,15 @@ class ArrowLocationNode: LocationNode {
 
         return node
     }
-
-
-    /// Loads the arrow model from the arrow scene.
-    ///
-    /// - Returns: The arrow node from the arrow scene.
-    func loadArrowModel() -> SCNNode? {
-        guard let scene = SCNScene(named: "example.scnassets/arrow.scn") else {
-            return nil
-        }
-
-        return scene.rootNode.childNodes.filter({ $0.name == "arrow" }).first
-    }
 }
 
 // MARK: - API
 
 extension ArrowLocationNode {
 
+    /// Performs a rotation of this node to point at the provided node.
+    ///
+    /// - Parameter node: The node that this node should be pointing at.
     func look(at node: LocationNode) {
         look(at: node.position, up: SCNVector3.yAxisUp, localFront: SCNVector3.yAxisUp)
     }
@@ -77,6 +72,17 @@ private extension ArrowLocationNode {
         static let selectedMaterial = SCNMaterial.diffuse(fromColor: .blue)
         static let metalness = SCNMaterial.metalness(fromFloat: 0.5)
         static let roughness = SCNMaterial.roughness(fromFloat: 0.5)
+    }
+
+    /// Loads the arrow model from the arrow scene.
+    ///
+    /// - Returns: The arrow node from the arrow scene.
+    func loadArrowModel() -> SCNNode? {
+        guard let scene = SCNScene(named: "example.scnassets/arrow.scn") else {
+            return nil
+        }
+
+        return scene.rootNode.childNodes.filter({ $0.name == "arrow" }).first
     }
 
 }
