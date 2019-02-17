@@ -27,6 +27,14 @@ class TrackMapViewController: UIViewController {
 
     var tableVC: TrackOverviewTableViewController?
 
+    /// Gives you back a track that contains only points with a horizontal accuracy that's less than 10 meters
+    var cleanedTrack: GeoTrack? {
+        guard let track = model?.track else {
+            return nil
+        }
+        return GeoTrack(points: track.points.filter({ $0.horizontalAccuracy < 10 }), name: track.name, description: track.description)
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -40,7 +48,9 @@ class TrackMapViewController: UIViewController {
 
         NotificationCenter.default.addObserver(self, selector: #selector(legVisiblityChanged(_:)), name: Notification.Name.GeoMapping.legVisibilityChanged, object: nil)
 
-        modelUpdated()
+        DispatchQueue.main.async {
+            self.modelUpdated()
+        }
     }
 
     /// Loads this view from a storyboard.
@@ -52,12 +62,16 @@ class TrackMapViewController: UIViewController {
         trackVC.useDemoTrack = useDemoTrack
         return trackVC
     }
-
 }
 
 // MARK: - User Actions
 
 extension TrackMapViewController {
+
+    @IBAction
+    func tappedAR(_ source: Any) {
+        showARViewController()
+    }
 
     @IBAction
     func tappedShare(_ source: Any) {
@@ -174,6 +188,15 @@ private extension TrackMapViewController {
         dialog.addAction(UIAlertAction(title: "Cancel", style: .cancel))
 
         present(dialog, animated: true)
+    }
+
+    /// Creates the AR VC and navigates to it.
+    func showARViewController() {
+        guard let arVC = UIStoryboard(name: "ARCL", bundle: nil).instantiateInitialViewController() as? ARCLViewController else {
+            return assertionFailure("Failed to create ARVC")
+        }
+        arVC.track = cleanedTrack
+        navigationController?.pushViewController(arVC, animated: true)
     }
 
     /// Shares the track as a GPX file

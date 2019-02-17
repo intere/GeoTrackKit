@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		0E1E09A3899897CDAE589A5B /* Pods_GeoTrackKitExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A51639AB7B6B4BAEF27C313 /* Pods_GeoTrackKitExample.framework */; };
 		1B2451A1B46FD1E813C13A25 /* Pods_GeoTrackKitExampleTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6E72B23B9554498B66030FE /* Pods_GeoTrackKitExampleTests.framework */; };
+		3604F20C2213B04400D2EFA7 /* example.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 3604F20B2213B04400D2EFA7 /* example.scnassets */; };
+		3604F20E2214564A00D2EFA7 /* ArrowLocationNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3604F20D2214564A00D2EFA7 /* ArrowLocationNode.swift */; };
+		3604F21022145D2400D2EFA7 /* EndpointLocationNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3604F20F22145D2400D2EFA7 /* EndpointLocationNode.swift */; };
 		3604FC77217150AB00B46BAA /* GeoTrackStatisticsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3604FC76217150AB00B46BAA /* GeoTrackStatisticsTests.swift */; };
 		36302DB9210E17B400834A1D /* GeoTrackKitErrorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36302DB8210E17B400834A1D /* GeoTrackKitErrorTests.swift */; };
 		366B1C672209271E003C19F8 /* TrackList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 366B1C662209271E003C19F8 /* TrackList.storyboard */; };
@@ -17,6 +20,8 @@
 		366B653021963AEE00BA5EB7 /* GeoTrackTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 366B652F21963AEE00BA5EB7 /* GeoTrackTests.swift */; };
 		366B6532219650CF00BA5EB7 /* reference-track-3.json in Resources */ = {isa = PBXBuildFile; fileRef = 366B6531219650CF00BA5EB7 /* reference-track-3.json */; };
 		366CE43C1DFCAC360090BD42 /* GeoTrackSerializationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 366CE43B1DFCAC360090BD42 /* GeoTrackSerializationTests.swift */; };
+		3677FFF9220C679A0036DA27 /* ARCLViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3677FFF8220C679A0036DA27 /* ARCLViewController.swift */; };
+		3677FFFB220C68C10036DA27 /* ARCL.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3677FFFA220C68C10036DA27 /* ARCL.storyboard */; };
 		368A87AE1E6332C1003D115A /* reference-track-1.json in Resources */ = {isa = PBXBuildFile; fileRef = 368A87AD1E6332C1003D115A /* reference-track-1.json */; };
 		368A87B11E63332E003D115A /* TrackReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 368A87B01E63332E003D115A /* TrackReader.swift */; };
 		368A87B71E636FCE003D115A /* GeoTrackAnalyzerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 368A87B61E636FCE003D115A /* GeoTrackAnalyzerTests.swift */; };
@@ -58,6 +63,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3604F20B2213B04400D2EFA7 /* example.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = example.scnassets; sourceTree = "<group>"; };
+		3604F20D2214564A00D2EFA7 /* ArrowLocationNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrowLocationNode.swift; sourceTree = "<group>"; };
+		3604F20F22145D2400D2EFA7 /* EndpointLocationNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndpointLocationNode.swift; sourceTree = "<group>"; };
 		3604FC76217150AB00B46BAA /* GeoTrackStatisticsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeoTrackStatisticsTests.swift; sourceTree = "<group>"; };
 		36302DB8210E17B400834A1D /* GeoTrackKitErrorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeoTrackKitErrorTests.swift; sourceTree = "<group>"; };
 		366B1C662209271E003C19F8 /* TrackList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TrackList.storyboard; sourceTree = "<group>"; };
@@ -66,6 +74,8 @@
 		366B652F21963AEE00BA5EB7 /* GeoTrackTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeoTrackTests.swift; sourceTree = "<group>"; };
 		366B6531219650CF00BA5EB7 /* reference-track-3.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "reference-track-3.json"; sourceTree = "<group>"; };
 		366CE43B1DFCAC360090BD42 /* GeoTrackSerializationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeoTrackSerializationTests.swift; sourceTree = "<group>"; };
+		3677FFF8220C679A0036DA27 /* ARCLViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARCLViewController.swift; sourceTree = "<group>"; };
+		3677FFFA220C68C10036DA27 /* ARCL.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ARCL.storyboard; sourceTree = "<group>"; };
 		368A87AD1E6332C1003D115A /* reference-track-1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "reference-track-1.json"; sourceTree = "<group>"; };
 		368A87B01E63332E003D115A /* TrackReader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackReader.swift; sourceTree = "<group>"; };
 		368A87B61E636FCE003D115A /* GeoTrackAnalyzerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeoTrackAnalyzerTests.swift; sourceTree = "<group>"; };
@@ -164,6 +174,17 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		3677FFF7220C67770036DA27 /* ARCL */ = {
+			isa = PBXGroup;
+			children = (
+				3677FFF8220C679A0036DA27 /* ARCLViewController.swift */,
+				3677FFFA220C68C10036DA27 /* ARCL.storyboard */,
+				3604F20D2214564A00D2EFA7 /* ArrowLocationNode.swift */,
+				3604F20F22145D2400D2EFA7 /* EndpointLocationNode.swift */,
+			);
+			path = ARCL;
+			sourceTree = "<group>";
+		};
 		368A87AC1E6332B7003D115A /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -195,6 +216,7 @@
 		36A7C6D52104C7480073407A /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				3677FFF7220C67770036DA27 /* ARCL */,
 				366B1C652209039A003C19F8 /* TrackList */,
 				36D099B3210B64D900C8C841 /* TrackImport */,
 				36A7C6D72104C7480073407A /* TrackConsole */,
@@ -260,6 +282,7 @@
 				36C45E501DCE2D3500E87710 /* Info.plist */,
 				36C45E441DCE2D3500E87710 /* AppDelegate.swift */,
 				36C45E4B1DCE2D3500E87710 /* Assets.xcassets */,
+				3604F20B2213B04400D2EFA7 /* example.scnassets */,
 				36F5A73221E0306A00A3DB21 /* Extensions */,
 				36C45E4D1DCE2D3500E87710 /* LaunchScreen.storyboard */,
 				36C45E481DCE2D3500E87710 /* Main.storyboard */,
@@ -457,7 +480,9 @@
 				36C45E4F1DCE2D3500E87710 /* LaunchScreen.storyboard in Resources */,
 				36E3C43D1F4A0817005738DB /* reference-track-1.json in Resources */,
 				366B1C672209271E003C19F8 /* TrackList.storyboard in Resources */,
+				3677FFFB220C68C10036DA27 /* ARCL.storyboard in Resources */,
 				36A7C6E72104CD120073407A /* TrackView.storyboard in Resources */,
+				3604F20C2213B04400D2EFA7 /* example.scnassets in Resources */,
 				36C45E4C1DCE2D3500E87710 /* Assets.xcassets in Resources */,
 				36D099B5210B64E200C8C841 /* TrackImport.storyboard in Resources */,
 				36A7C6E32104CC360073407A /* LiveTrackingView.storyboard in Resources */,
@@ -485,10 +510,12 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-GeoTrackKitExample/Pods-GeoTrackKitExample-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/ARCL/ARCL.framework",
 				"${BUILT_PRODUCTS_DIR}/GeoTrackKit/GeoTrackKit.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ARCL.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GeoTrackKit.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -553,17 +580,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3604F21022145D2400D2EFA7 /* EndpointLocationNode.swift in Sources */,
 				36A7C6E02104CC0D0073407A /* LegSwitchCell.swift in Sources */,
 				36A7C6E52104CC690073407A /* TrackOverviewTableViewController.swift in Sources */,
 				36A7C6E12104CC0D0073407A /* TrackMapViewController.swift in Sources */,
 				36A7C6DD2104CBFE0073407A /* TrackConsoleViewController.swift in Sources */,
 				36D099B7210B6A2C00C8C841 /* TrackImportTableViewController.swift in Sources */,
 				366B1C69220927F4003C19F8 /* TrackListTableViewController.swift in Sources */,
+				3604F20E2214564A00D2EFA7 /* ArrowLocationNode.swift in Sources */,
 				36F5A73421E0308900A3DB21 /* CoreLocationExtension.swift in Sources */,
 				36A7C6E92104D8870073407A /* LiveTrackingViewController.swift in Sources */,
 				36EA9BF322060337003C79E8 /* TrackService.swift in Sources */,
 				36C45E451DCE2D3500E87710 /* AppDelegate.swift in Sources */,
 				36A7C6C72100B0980073407A /* EventLogAppender.swift in Sources */,
+				3677FFF9220C679A0036DA27 /* ARCLViewController.swift in Sources */,
 				36A7C6D02103ECB40073407A /* ConsoleLogAppender.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

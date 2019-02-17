@@ -1,18 +1,25 @@
 PODS:
+  - ARCL (1.0.4)
   - GeoTrackKit/Core (0.4.2)
   - GeoTrackKit/HealthKit (0.4.2):
     - GeoTrackKit/Core
 
 DEPENDENCIES:
+  - ARCL
   - GeoTrackKit/HealthKit (from `..`)
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - ARCL
 
 EXTERNAL SOURCES:
   GeoTrackKit:
     :path: ".."
 
 SPEC CHECKSUMS:
+  ARCL: 5fd2b0d7aabf91f15dbc0e8c510b25516b8a755a
   GeoTrackKit: 16113ae65bd458be0255a0d8270a8190ee4397a2
 
-PODFILE CHECKSUM: 6b6b15c8571da71adf29321de0604cdf6ea5756a
+PODFILE CHECKSUM: e0a4cfa4a33435544a2817e2a6b27cbcbca4a1d9
 
 COCOAPODS: 1.5.3

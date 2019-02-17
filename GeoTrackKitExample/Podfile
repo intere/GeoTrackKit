@@ -9,6 +9,9 @@ target 'GeoTrackKitExample' do
   # Pods for GeoTrackKitExample
   pod 'GeoTrackKit', :subspecs => ['HealthKit'], :path => '..'
 
+  # 3rd party pods
+  pod 'ARCL'
+
   target 'GeoTrackKitExampleTests' do
     inherit! :search_paths
   end

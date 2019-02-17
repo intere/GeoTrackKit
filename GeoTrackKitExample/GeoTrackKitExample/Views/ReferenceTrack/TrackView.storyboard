@@ -45,6 +45,11 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="location-on-map" id="kru-Lr-wbc"/>
                     <navigationItem key="navigationItem" id="47H-N1-kVm">
+                        <barButtonItem key="leftBarButtonItem" title="AR" id="Ml1-zX-Vdb">
+                            <connections>
+                                <action selector="tappedAR:" destination="cse-if-UgT" id="FmH-hm-zgy"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="action" id="ULr-uf-YjX">
                             <connections>
                                 <action selector="tappedShare:" destination="cse-if-UgT" id="XOb-VX-9ax"/>
@@ -114,7 +119,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3rU-5I-LKZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="860" y="655"/>
+            <point key="canvasLocation" x="860" y="787"/>
         </scene>
     </scenes>
     <resources>
