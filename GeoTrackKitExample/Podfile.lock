@@ -17,7 +17,7 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   ARCL:
-    :commit: 39ac915ebd6b8eff4a849887024c66e6b7325041
+    :commit: 43c92160d76baf6427b2faa7845f8469be4f41e7
     :git: https://github.com/intere/ARKit-CoreLocation
 
 SPEC CHECKSUMS:

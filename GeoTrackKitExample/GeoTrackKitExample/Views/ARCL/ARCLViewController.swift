@@ -12,6 +12,7 @@ import ARKit
 import CoreLocation
 import GeoTrackKit
 import SceneKit
+import MapKit
 import UIKit
 
 class ARCLViewController: UIViewController {
@@ -170,6 +171,29 @@ extension ARCLViewController {
             return
         }
 
+        let request = MKDirections.Request()
+        request.source = MKMapItem.forCurrentLocation()
+        request.destination = MKMapItem(placemark: MKPlacemark(coordinate: CLLocationCoordinate2D(latitude: 39.9390932, longitude: -105.0150254)))
+        request.requestsAlternateRoutes = false
+
+        let directions = MKDirections(request: request)
+
+        directions.calculate(completionHandler: {(response, error) in
+            if error != nil {
+                return print("Error getting directions")
+            }
+            guard let response = response else {
+                return
+            }
+
+            DispatchQueue.main.async { [weak self] in
+                self?.sceneView.addRoutes(routes: response.routes)
+            }
+        })
+//        renderFloatingArrows()
+    }
+
+    func renderFloatingArrows() {
         guard let trackPointObjects = buildTrailData() else {
             return
         }
