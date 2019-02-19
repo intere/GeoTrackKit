@@ -28,6 +28,10 @@ class ARCLViewController: UIViewController {
     var updateInfoLabelTimer: Timer?
     var nodes = [LocationNode]()
 
+    var currentLocation: CLLocation? {
+        return sceneView.sceneLocationManager.currentLocation
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -144,7 +148,7 @@ extension ARCLViewController {
     /// Configures the ARCL scene
     func configureARCL() {
         sceneView.showAxesNode = true
-        sceneView.locationDelegate = self
+        sceneView.locationViewDelegate = self
         sceneView.locationEstimateMethod = .mostRelevantEstimate
 
         if displayDebugging {
@@ -158,7 +162,7 @@ extension ARCLViewController {
     /// Adds the track points to the scene (waits for the scene to have a real world location)
     ///
     func addTrackPoints() {
-        guard sceneView.currentLocation() != nil else {
+        guard currentLocation != nil else {
             print("Location fix not established yet, trying again shortly")
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [weak self] in
                 self?.addTrackPoints()
@@ -227,7 +231,7 @@ extension ARCLViewController {
     /// Updates the info label and forces the arrows to point to their next point.
     func updateInfoLabel() {
         var text = ""
-        guard let location = sceneView.currentLocation() else {
+        guard let location = currentLocation else {
             infoLabel.text = nil
             return
         }
@@ -237,16 +241,16 @@ extension ARCLViewController {
             let distance = selectedNode.location.distance(from: location)
             text += "Distance: \(String(format: "%.2f", distance)) meters\n"
         }
-        if let position = sceneView.currentScenePosition() {
+        if let position = sceneView.currentScenePosition {
             text += "x: \(String(format: "%.2f", position.x)), y: \(String(format: "%.2f", position.y)), z: \(String(format: "%.2f", position.z))\n"
         }
 
-        if let eulerAngles = sceneView.currentEulerAngles() {
+        if let eulerAngles = sceneView.currentEulerAngles {
             text.append("Euler x: \(String(format: "%.2f", eulerAngles.x)), y: \(String(format: "%.2f", eulerAngles.y)), z: \(String(format: "%.2f", eulerAngles.z))\n")
         }
 
-        if let heading = sceneView.locationManager.heading,
-            let accuracy = sceneView.locationManager.headingAccuracy {
+        if let heading = sceneView.sceneLocationManager.locationManager.heading,
+            let accuracy = sceneView.sceneLocationManager.locationManager.headingAccuracy {
             text.append("Heading: \(heading)º, accuracy: \(Int(round(accuracy)))º\n")
         }
 
