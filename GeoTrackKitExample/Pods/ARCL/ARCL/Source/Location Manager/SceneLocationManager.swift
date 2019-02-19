@@ -32,12 +32,12 @@ protocol SceneLocationManagerDelegate: class {
     func didRemoveSceneLocationEstimate(position: SCNVector3, location: CLLocation)
 }
 
-public final class SceneLocationManager {
+final class SceneLocationManager {
     weak var sceneLocationDelegate: SceneLocationManagerDelegate?
 
     var locationEstimateMethod: LocationEstimateMethod = .mostRelevantEstimate
 
-    public let locationManager = LocationManager()
+    internal let locationManager = LocationManager()
     internal var sceneLocationEstimates = [SceneLocationEstimate]()
 
     internal var updateEstimatesTimer: Timer?
@@ -58,7 +58,7 @@ public final class SceneLocationManager {
         return sortedLocationEstimates.first
     }
 
-    public var currentLocation: CLLocation? {
+    var currentLocation: CLLocation? {
         if locationEstimateMethod == .coreLocationDataOnly { return locationManager.currentLocation }
 
         guard let bestEstimate = bestLocationEstimate,

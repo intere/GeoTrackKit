@@ -66,8 +66,6 @@ public class SceneLocationView: ARSCNView {
         return scene.rootNode.convertPosition(pointOfView.position, to: sceneNode)
     }
 
-    public let sceneLocationManager = SceneLocationManager()
-
     public var currentEulerAngles: SCNVector3? { return pointOfView?.eulerAngles }
 
     public internal(set) var locationNodes = [LocationNode]()
@@ -75,7 +73,7 @@ public class SceneLocationView: ARSCNView {
 
     // MARK: Internal desclarations
     internal var didFetchInitialLocation = false
-
+    internal let sceneLocationManager = SceneLocationManager()
 
     // MARK: Setup
     public convenience init() {
