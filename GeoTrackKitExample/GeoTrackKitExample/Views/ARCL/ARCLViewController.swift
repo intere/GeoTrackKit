@@ -171,6 +171,12 @@ extension ARCLViewController {
             return
         }
 
+        renderDirections()
+//        renderFloatingArrows()
+    }
+
+    /// Renders directions to a specific location.
+    func renderDirections() {
         let request = MKDirections.Request()
         request.source = MKMapItem.forCurrentLocation()
         request.destination = MKMapItem(placemark: MKPlacemark(coordinate: CLLocationCoordinate2D(latitude: 39.9390932, longitude: -105.0150254)))
@@ -190,7 +196,6 @@ extension ARCLViewController {
                 self?.sceneView.addRoutes(routes: response.routes)
             }
         })
-//        renderFloatingArrows()
     }
 
     func renderFloatingArrows() {
