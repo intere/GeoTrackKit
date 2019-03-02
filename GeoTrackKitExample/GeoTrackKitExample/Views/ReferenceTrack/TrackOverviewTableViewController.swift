@@ -34,10 +34,13 @@ class TrackOverviewTableViewController: UITableViewController {
 extension TrackOverviewTableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return 2
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if section == 0 {
+            return 1
+        }
         guard let analyzer = analyzer else {
             return 0
         }
@@ -45,6 +48,15 @@ extension TrackOverviewTableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if indexPath.section == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "TrackOverviewCell", for: indexPath)
+            guard let overviewCell = cell as? TrackOverviewCell else {
+                return cell
+            }
+            overviewCell.analyzer = analyzer
+
+            return overviewCell
+        }
         let cell = tableView.dequeueReusableCell(withIdentifier: "LegSwitchCell", for: indexPath)
 
         guard let model = model, let legCell = cell as? LegSwitchCell else {
@@ -70,7 +82,7 @@ extension Leg {
         result += String(endIndex) + ", "
         result += direction.rawValue + ", "
         result += String(Int(altitude)) + "-" + String(Int(endPoint!.altitude)) + ", "
-        result += String(Int(altitudeChange)) + "m"
+        result += String(Int(altitudeChange.metersToFeet)) + "ft"
 
         return result
     }
