@@ -42,5 +42,3 @@ extension TrackOverviewCell {
     }
 
 }
-
-

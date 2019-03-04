@@ -69,6 +69,48 @@ class TrackService {
             print("ERROR trying to move file from \(url.lastPathComponent) to \(newFile.lastPathComponent)")
         }
     }
+
+    /// Opens the two URLs, reads them as tracks and merges them into a new track.
+    ///
+    /// - Parameters:
+    ///   - first: The URL of the first track.
+    ///   - second: The URL of the second track.
+    /// - Returns: A new GeoTrack that is the result of merging the two tracks.
+    func mergeTracks(_ first: URL, with second: URL) -> GeoTrack? {
+        do {
+            guard let firstTrack = try GeoTrack.readTrackJsonFile(from: first),
+                let secondTrack = try GeoTrack.readTrackJsonFile(from: second) else {
+                    assertionFailure("There was an issue reading one of the tracks")
+                    return nil
+            }
+            return merge(firstTrack, with: secondTrack)
+
+        } catch {
+            assertionFailure("Error reading one of the tracks: \(error.localizedDescription)")
+            return nil
+        }
+    }
+
+    /// Merges the two provided tracks into a new track.
+    ///
+    /// - Parameters:
+    ///   - firstTrack: The first track to be merged.
+    ///   - secondTrack: The second track to be merged.
+    /// - Returns: A new track by combining the two provided tracks.
+    func merge(_ firstTrack: GeoTrack, with secondTrack: GeoTrack) -> GeoTrack? {
+        guard let firstTime = firstTrack.startTime, let secondTime = secondTrack.startTime else {
+            assertionFailure("One of the tracks didn't have a start time")
+            return nil
+        }
+        guard firstTime < secondTime else {
+            return merge(secondTrack, with: firstTrack)
+        }
+
+        var points = firstTrack.points
+        points.append(contentsOf: secondTrack.points)
+
+        return GeoTrack(points: points, name: firstTrack.name, description: firstTrack.description)
+    }
 }
 
 // MARK: - Implementation

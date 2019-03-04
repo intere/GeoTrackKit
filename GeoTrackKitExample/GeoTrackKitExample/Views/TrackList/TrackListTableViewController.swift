@@ -73,6 +73,9 @@ class TrackListTableViewController: UITableViewController {
         return [
             UITableViewRowAction(style: .normal, title: "Rename") { _, indexPath in
                 self.showRename(for: indexPath)
+            },
+            UITableViewRowAction(style: .normal, title: "Merge") { _, indexPath in
+                self.showMerge(for: indexPath)
             }
         ]
     }
@@ -90,6 +93,17 @@ class TrackListTableViewController: UITableViewController {
 // MARK: - Implementation
 
 extension TrackListTableViewController {
+
+    func showMerge(for indexPath: IndexPath) {
+        guard let tracks = tracks, indexPath.row < tracks.count else {
+            return
+        }
+        let track = tracks[indexPath.row]
+
+        let trackDialog = SelectTrackDialog.loadFromStoryboard(selectedTrack: track)
+        let navVC = UINavigationController(rootViewController: trackDialog)
+        present(navVC, animated: true, completion: nil)
+    }
 
     func showRename(for indexPath: IndexPath) {
         guard let tracks = tracks, indexPath.row < tracks.count else {
@@ -120,8 +134,6 @@ extension TrackListTableViewController {
             }
         )
         inputController.addAction(UIAlertAction(title: "Cancel", style: .cancel))
-
-
 
         present(inputController, animated: true, completion: nil)
     }
