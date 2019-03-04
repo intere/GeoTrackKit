@@ -182,7 +182,7 @@ public extension GeoTrack {
     ///
     /// - Parameter map: The map that you want to deserialize into a GeoTrack.
     /// - Returns: A GeoTrack if it could be deserialized.
-    static func fromMap(map: [String: Any]) -> GeoTrack? {
+    class func fromMap(map: [String: Any]) -> GeoTrack? {
         let name = map["name"] as? String ?? ""
         let description = map["description"] as? String ?? ""
         guard let pointMaps = map["points"] as? [[String: Any]] else {
@@ -209,6 +209,25 @@ public extension GeoTrack {
             }
             track.events.append(event)
         }
+
+        return track
+    }
+
+    /// Reads the Track from the provided JSON file and hands you back that track.
+    ///
+    /// - Parameter url: the URL to get the track from.
+    /// - Returns: A GeoTrack that was created from reading the contents of the json track.
+    /// - Throws: If there was a problem.
+    class func readTrackJsonFile(from url: URL) throws -> GeoTrack? {
+        let data = try Data(contentsOf: url)
+        let jsonData = try JSONSerialization.jsonObject(with: data, options: [])
+
+        guard let jsonMap = jsonData as? [String: Any] else {
+            assertionFailure("Invalid data format from track: \(url.absoluteString)")
+            return nil
+        }
+
+        let track = GeoTrack(json: jsonMap)
 
         return track
     }

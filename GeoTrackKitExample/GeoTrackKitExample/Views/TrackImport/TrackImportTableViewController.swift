@@ -16,9 +16,8 @@ class TrackImportTableViewController: UITableViewController {
     /// The workouts that the table will show
     var workouts = [HKWorkout]()
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         loadTracksFromWorkouts()
     }
 
@@ -42,28 +41,31 @@ class TrackImportTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard indexPath.row < workouts.count else {
-            return print("ERROR: either there are no workouts, or your selection is out of bounds")
-        }
-
-        let workout = workouts[indexPath.row]
-
-        ActivityService.shared.queryTrack(from: workout) { (locations, error) in
-            if let error = error {
-                return print("Error getting points: \(error.localizedDescription)")
-            }
-            guard let locations = locations else {
-                return print("Locations came back empty")
+        loadTrack(from: indexPath) { track in
+            guard let track = track else {
+                return assertionFailure("There was an error with the track")
             }
 
             DispatchQueue.main.async { [weak self] in
                 let mapView = TrackMapViewController.loadFromStoryboard()
-                let track = GeoTrack(points: locations, name: workout.tableDescription, description: workout.description)
                 mapView.model = UIGeoTrack(with: track)
                 self?.navigationController?.pushViewController(mapView, animated: true)
             }
         }
+    }
 
+    override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+
+        return [
+            UITableViewRowAction(style: .normal, title: "Import") { _, indexPath in
+                self.loadTrack(from: indexPath) { track in
+                    guard let track = track else {
+                        return assertionFailure("There was an error with the track")
+                    }
+                    TrackService.shared.save(track: track)
+                }
+            }
+        ]
     }
 
 }
@@ -72,8 +74,39 @@ class TrackImportTableViewController: UITableViewController {
 
 extension TrackImportTableViewController {
 
+    typealias TrackCallback = (GeoTrack?) -> Void
+
+    /// Loads a track for the activity at the provided indexPath.
+    ///
+    /// - Parameters:
+    ///   - indexPath: The indexPath that you want the workout track from.
+    ///   - completion: The callback that hands you back the track or nil if there was an issue.
+    func loadTrack(from indexPath: IndexPath, completion: @escaping TrackCallback) {
+        guard indexPath.row < workouts.count else {
+            completion(nil)
+            return
+        }
+
+        let workout = workouts[indexPath.row]
+
+        ActivityService.shared.queryTrack(from: workout) { (locations, error) in
+            if let error = error {
+                completion(nil)
+                return print("Error getting points: \(error.localizedDescription)")
+            }
+            guard let locations = locations else {
+                completion(nil)
+                return print("Locations came back empty")
+            }
+
+            let track = GeoTrack(points: locations, name: workout.tableDescription, description: workout.description)
+            completion(track)
+        }
+    }
+
     /// Loads the tracks from the workouts for you.
     func loadTracksFromWorkouts() {
+        workouts.removeAll()
         ActivityService.shared.authorize { (success, _) in
             guard success else {
                 print("We won't be querying activities, no authorization")

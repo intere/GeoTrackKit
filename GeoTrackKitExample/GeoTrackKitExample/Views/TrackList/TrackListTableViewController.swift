@@ -65,9 +65,27 @@ class TrackListTableViewController: UITableViewController {
         navigationController?.pushViewController(mapVC, animated: true)
     }
 
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+
+    override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        return [
+            UITableViewRowAction(style: .normal, title: "Rename") { _, indexPath in
+                self.showRename(for: indexPath)
+            },
+            UITableViewRowAction(style: .normal, title: "Merge") { _, indexPath in
+                self.showMerge(for: indexPath)
+            }
+        ]
+    }
+
     @IBAction
     func didPullToRefresh(_ source: UIRefreshControl) {
         updateTrackList()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak self] in
+            self?.refreshControl?.endRefreshing()
+        }
     }
 
 }
@@ -75,6 +93,50 @@ class TrackListTableViewController: UITableViewController {
 // MARK: - Implementation
 
 extension TrackListTableViewController {
+
+    func showMerge(for indexPath: IndexPath) {
+        guard let tracks = tracks, indexPath.row < tracks.count else {
+            return
+        }
+        let track = tracks[indexPath.row]
+
+        let trackDialog = SelectTrackDialog.loadFromStoryboard(selectedTrack: track)
+        let navVC = UINavigationController(rootViewController: trackDialog)
+        present(navVC, animated: true, completion: nil)
+    }
+
+    func showRename(for indexPath: IndexPath) {
+        guard let tracks = tracks, indexPath.row < tracks.count else {
+            return
+        }
+        let track = tracks[indexPath.row]
+
+        let inputController = UIAlertController(title: "Rename", message: "Enter the new name for the track file", preferredStyle: .alert)
+
+        inputController.addTextField { textField in
+            textField.text = track.filenameNoExtension
+            textField.autocapitalizationType = .words
+            textField.spellCheckingType = .yes
+            textField.clearButtonMode = .always
+        }
+
+        inputController.addAction(
+            UIAlertAction(title: "OK", style: .default) { _ in
+                guard let textField = inputController.textFields?.first,
+                    let filename = textField.text,
+                    !filename.isEmpty else {
+                    return
+                }
+
+                TrackService.shared.rename(fileUrl: track, to: filename)
+                self.updateTrackList()
+                inputController.dismiss(animated: true, completion: nil)
+            }
+        )
+        inputController.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+
+        present(inputController, animated: true, completion: nil)
+    }
 
     func updateTrackList() {
         tracks = TrackService.shared.trackFiles
@@ -100,7 +162,15 @@ extension TrackListTableViewController {
 class TrackCell: UITableViewCell {
     var track: URL? {
         didSet {
-            textLabel?.text = track?.lastPathComponent.removingPercentEncoding
+            textLabel?.text = track?.filenameNoExtension
         }
     }
+}
+
+extension URL {
+
+    var filenameNoExtension: String? {
+        return lastPathComponent.removingPercentEncoding?.replacingOccurrences(of: ".track", with: "")
+    }
+
 }
