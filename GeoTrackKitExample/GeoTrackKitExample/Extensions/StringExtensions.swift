@@ -10,6 +10,8 @@ import Foundation
 
 extension String {
 
+    /// Takes this string (assumes this is the name of a track) and converts it to a format
+    /// that will save to the filesystem without failing because of using slashes or colons.
     var trackNameToFileSystemName: String {
         return self.replacingOccurrences(of: "/", with: "-")
             .replacingOccurrences(of: ":", with: "_")
