@@ -75,7 +75,7 @@ extension TrackServiceTests {
         }
         exampleTrack.name = ""
 
-        TrackService.shared.save(track: exampleTrack)
+        XCTAssertTrue(TrackService.shared.save(track: exampleTrack), "Failed to save example track")
 
         guard let trackFiles = TrackService.shared.trackFiles else {
             return XCTFail("Failed to get track files, see logging output")
@@ -105,7 +105,7 @@ extension TrackServiceTests {
         }
         exampleTrack.name = TestConstants.testTrackName
 
-        TrackService.shared.save(track: exampleTrack)
+        XCTAssertTrue(TrackService.shared.save(track: exampleTrack), "Failed to save example track")
 
         guard let trackFiles = TrackService.shared.trackFiles else {
             return XCTFail("Failed to get track files, see logging output")

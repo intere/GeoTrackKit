@@ -23,24 +23,34 @@ class TrackService {
     /// Saves the provided track to the user's documents folder.
     ///
     /// - Parameter track: the track to be saved.
-    func save(track: GeoTrack) {
+    func save(track: GeoTrack) -> Bool {
         guard track.points.count > 1 else {
-            return print("ERROR: there must be more than 1 point to save a track")
+            print("ERROR: there must be more than 1 point to save a track")
+            return false
         }
         guard let documentsFolder = documentsFolder else {
-            return print("ERROR: couldn't get the documents folder url")
+            print("ERROR: couldn't get the documents folder url")
+            return false
         }
         guard let trackName = self.trackName(for: track)?.trackNameToFileSystemName else {
-            return print("ERROR: couldn't determine a track name for the track")
+            print("ERROR: couldn't determine a track name for the track")
+            return false
         }
 
-        let filePath = URL(fileURLWithPath: "\(trackName).track", isDirectory: false, relativeTo: documentsFolder)
+        let filePath: URL
+        if trackName.lowercased().hasSuffix(".track") {
+            filePath = URL(fileURLWithPath: trackName, isDirectory: false, relativeTo: documentsFolder)
+        } else {
+            filePath = URL(fileURLWithPath: "\(trackName).track", isDirectory: false, relativeTo: documentsFolder)
+        }
 
         do {
             let data = try JSONSerialization.data(withJSONObject: track.map, options: .prettyPrinted)
             try data.write(to: filePath, options: .atomicWrite)
+            return true
         } catch {
             print("ERROR trying to save track: \(error.localizedDescription)")
+            return false
         }
     }
 }
