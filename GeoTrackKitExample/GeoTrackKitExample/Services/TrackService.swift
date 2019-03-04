@@ -30,11 +30,11 @@ class TrackService {
         guard let documentsFolder = documentsFolder else {
             return print("ERROR: couldn't get the documents folder url")
         }
-        guard let trackName = self.trackName(for: track) else {
+        guard let trackName = self.trackName(for: track)?.trackNameToFileSystemName else {
             return print("ERROR: couldn't determine a track name for the track")
         }
 
-        let filePath = URL(fileURLWithPath: trackName, relativeTo: documentsFolder)
+        let filePath = URL(fileURLWithPath: "\(trackName).track", isDirectory: false, relativeTo: documentsFolder)
 
         do {
             let data = try JSONSerialization.data(withJSONObject: track.map, options: .prettyPrinted)

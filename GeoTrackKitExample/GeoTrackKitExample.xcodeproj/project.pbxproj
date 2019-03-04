@@ -21,6 +21,7 @@
 		368A87AE1E6332C1003D115A /* reference-track-1.json in Resources */ = {isa = PBXBuildFile; fileRef = 368A87AD1E6332C1003D115A /* reference-track-1.json */; };
 		368A87B11E63332E003D115A /* TrackReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 368A87B01E63332E003D115A /* TrackReader.swift */; };
 		368A87B71E636FCE003D115A /* GeoTrackAnalyzerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 368A87B61E636FCE003D115A /* GeoTrackAnalyzerTests.swift */; };
+		368B12C8222D847A00B22C72 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 368B12C7222D847A00B22C72 /* StringExtensions.swift */; };
 		36A7C6C72100B0980073407A /* EventLogAppender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36A7C6C62100B0980073407A /* EventLogAppender.swift */; };
 		36A7C6D02103ECB40073407A /* ConsoleLogAppender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36A7C6CF2103ECB40073407A /* ConsoleLogAppender.swift */; };
 		36A7C6DB2104CBF30073407A /* TrackConsole.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 36A7C6DA2104CBF30073407A /* TrackConsole.storyboard */; };
@@ -71,6 +72,7 @@
 		368A87AD1E6332C1003D115A /* reference-track-1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "reference-track-1.json"; sourceTree = "<group>"; };
 		368A87B01E63332E003D115A /* TrackReader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackReader.swift; sourceTree = "<group>"; };
 		368A87B61E636FCE003D115A /* GeoTrackAnalyzerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeoTrackAnalyzerTests.swift; sourceTree = "<group>"; };
+		368B12C7222D847A00B22C72 /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
 		36A7C6C62100B0980073407A /* EventLogAppender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventLogAppender.swift; sourceTree = "<group>"; };
 		36A7C6CF2103ECB40073407A /* ConsoleLogAppender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsoleLogAppender.swift; sourceTree = "<group>"; };
 		36A7C6DA2104CBF30073407A /* TrackConsole.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TrackConsole.storyboard; sourceTree = "<group>"; };
@@ -310,6 +312,7 @@
 			isa = PBXGroup;
 			children = (
 				36F5A73321E0308900A3DB21 /* CoreLocationExtension.swift */,
+				368B12C7222D847A00B22C72 /* StringExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -566,6 +569,7 @@
 				36A7C6E92104D8870073407A /* LiveTrackingViewController.swift in Sources */,
 				36EA9BF322060337003C79E8 /* TrackService.swift in Sources */,
 				36C45E451DCE2D3500E87710 /* AppDelegate.swift in Sources */,
+				368B12C8222D847A00B22C72 /* StringExtensions.swift in Sources */,
 				36838E93222A094A00F4F714 /* TrackOverviewCell.swift in Sources */,
 				36A7C6C72100B0980073407A /* EventLogAppender.swift in Sources */,
 				36A7C6D02103ECB40073407A /* ConsoleLogAppender.swift in Sources */,
