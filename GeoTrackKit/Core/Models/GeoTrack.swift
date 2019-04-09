@@ -118,14 +118,14 @@ public extension GeoTrack {
     /// Lets you add a custom event.
     ///
     /// - Parameter event: The event to add to the event log.
-    public func add(event: GeoTrackLocationEvent) {
+    func add(event: GeoTrackLocationEvent) {
         events.append(event)
     }
 
     /// Adds a Start Tracking event to the track's event log.
     ///
     /// - Parameter message: Optional message that can be included with the event.
-    public func startTracking(message: String? = nil) {
+    func startTracking(message: String? = nil) {
         let event = GeoTrackLocationEvent.startedTracking(message: message)
         add(event: event)
     }
@@ -133,7 +133,7 @@ public extension GeoTrack {
     /// Adds a Pause Tracking event to the track's event log.
     ///
     /// - Parameter message: Optional message that can be included with the event.
-    public func pauseTracking(message: String? = nil) {
+    func pauseTracking(message: String? = nil) {
         let event = GeoTrackLocationEvent.pausedTracking(message: message)
         add(event: event)
     }
@@ -141,7 +141,7 @@ public extension GeoTrack {
     /// Adds a Stop Tracking event to the track's event log.
     ///
     /// - Parameter message: Optional message that can be included with the event.
-    public func stopTracking(message: String? = nil) {
+    func stopTracking(message: String? = nil) {
         let event = GeoTrackLocationEvent.stoppedTracking(message: message)
         add(event: event)
     }
@@ -149,7 +149,7 @@ public extension GeoTrack {
     /// Adds a custom error message to the track's event log.
     ///
     /// - Parameter message: The error message you want to display
-    public func error(message: String) {
+    func error(message: String) {
         let event = GeoTrackLocationEvent.error(message: message)
         add(event: event)
     }
@@ -157,7 +157,7 @@ public extension GeoTrack {
     /// Adds an error to the track's event log
     ///
     /// - Parameter error: The swift Error type to log the message for.
-    public func error(error: Error) {
+    func error(error: Error) {
         let event = GeoTrackLocationEvent.error(error: error)
         add(event: event)
     }
@@ -169,7 +169,7 @@ public extension GeoTrack {
 public extension GeoTrack {
 
     /// Converts this Grack to a Map so you can serialize it
-    public var map: [String: Any] {
+    var map: [String: Any] {
         return [
             "name": name,
             "description": description,
@@ -182,7 +182,7 @@ public extension GeoTrack {
     ///
     /// - Parameter map: The map that you want to deserialize into a GeoTrack.
     /// - Returns: A GeoTrack if it could be deserialized.
-    static func fromMap(map: [String: Any]) -> GeoTrack? {
+    class func fromMap(map: [String: Any]) -> GeoTrack? {
         let name = map["name"] as? String ?? ""
         let description = map["description"] as? String ?? ""
         guard let pointMaps = map["points"] as? [[String: Any]] else {
@@ -209,6 +209,25 @@ public extension GeoTrack {
             }
             track.events.append(event)
         }
+
+        return track
+    }
+
+    /// Reads the Track from the provided JSON file and hands you back that track.
+    ///
+    /// - Parameter url: the URL to get the track from.
+    /// - Returns: A GeoTrack that was created from reading the contents of the json track.
+    /// - Throws: If there was a problem.
+    class func readTrackJsonFile(from url: URL) throws -> GeoTrack? {
+        let data = try Data(contentsOf: url)
+        let jsonData = try JSONSerialization.jsonObject(with: data, options: [])
+
+        guard let jsonMap = jsonData as? [String: Any] else {
+            assertionFailure("Invalid data format from track: \(url.absoluteString)")
+            return nil
+        }
+
+        let track = GeoTrack(json: jsonMap)
 
         return track
     }

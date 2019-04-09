@@ -19,28 +19,81 @@ class TrackService {
         return documentFiles(withExtension: ".track")
     }
 
+    @discardableResult
     /// Saves the provided track to the user's documents folder.
     ///
     /// - Parameter track: the track to be saved.
-    func save(track: GeoTrack) {
+    func save(track: GeoTrack) -> Bool {
         guard track.points.count > 1 else {
-            return print("ERROR: there must be more than 1 point to save a track")
+            print("ERROR: there must be more than 1 point to save a track")
+            return false
         }
         guard let documentsFolder = documentsFolder else {
-            return print("ERROR: couldn't get the documents folder url")
+            print("ERROR: couldn't get the documents folder url")
+            return false
         }
-        guard let trackName = self.trackName(for: track) else {
-            return print("ERROR: couldn't determine a track name for the track")
+        guard let trackName = self.trackName(for: track)?.trackNameToFileSystemName else {
+            print("ERROR: couldn't determine a track name for the track")
+            return false
         }
 
-        let filePath = URL(fileURLWithPath: trackName, relativeTo: documentsFolder)
+        let filePath: URL
+        if trackName.lowercased().hasSuffix(".track") {
+            filePath = URL(fileURLWithPath: trackName, isDirectory: false, relativeTo: documentsFolder)
+        } else {
+            filePath = URL(fileURLWithPath: "\(trackName).track", isDirectory: false, relativeTo: documentsFolder)
+        }
 
         do {
             let data = try JSONSerialization.data(withJSONObject: track.map, options: .prettyPrinted)
             try data.write(to: filePath, options: .atomicWrite)
+            return true
         } catch {
             print("ERROR trying to save track: \(error.localizedDescription)")
+            return false
         }
+    }
+
+    /// Opens the two URLs, reads them as tracks and merges them into a new track.
+    ///
+    /// - Parameters:
+    ///   - first: The URL of the first track.
+    ///   - second: The URL of the second track.
+    /// - Returns: A new GeoTrack that is the result of merging the two tracks.
+    func mergeTracks(_ first: URL, with second: URL) -> GeoTrack? {
+        do {
+            guard let firstTrack = try GeoTrack.readTrackJsonFile(from: first),
+                let secondTrack = try GeoTrack.readTrackJsonFile(from: second) else {
+                    assertionFailure("There was an issue reading one of the tracks")
+                    return nil
+            }
+            return merge(firstTrack, with: secondTrack)
+
+        } catch {
+            assertionFailure("Error reading one of the tracks: \(error.localizedDescription)")
+            return nil
+        }
+    }
+
+    /// Merges the two provided tracks into a new track.
+    ///
+    /// - Parameters:
+    ///   - firstTrack: The first track to be merged.
+    ///   - secondTrack: The second track to be merged.
+    /// - Returns: A new track by combining the two provided tracks.
+    func merge(_ firstTrack: GeoTrack, with secondTrack: GeoTrack) -> GeoTrack? {
+        guard let firstTime = firstTrack.startTime, let secondTime = secondTrack.startTime else {
+            assertionFailure("One of the tracks didn't have a start time")
+            return nil
+        }
+        guard firstTime < secondTime else {
+            return merge(secondTrack, with: firstTrack)
+        }
+
+        var points = firstTrack.points
+        points.append(contentsOf: secondTrack.points)
+
+        return GeoTrack(points: points, name: firstTrack.name, description: firstTrack.description)
     }
 
     /// Renames the provided fileUrl to the provided string (and adds a `.track`

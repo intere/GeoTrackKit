@@ -37,6 +37,26 @@ class TrackServiceTests: XCTestCase {
 
 }
 
+// MARK: - Track Merging Tests
+
+extension TrackServiceTests {
+
+    func testMergeTracks() {
+        guard let firstTrack = TrackReader(filename: "merge1").track,
+            let secondTrack = TrackReader(filename: "merge2").track else {
+                return XCTFail("Failed to load test tracks")
+        }
+
+        guard let mergedTrack = TrackService.shared.merge(firstTrack, with: secondTrack) else {
+            return XCTFail("Failed to create a merged track")
+        }
+
+        XCTAssertTrue(mergedTrack.points.count > 0)
+        XCTAssertEqual(firstTrack.points.count + secondTrack.points.count, mergedTrack.points.count)
+    }
+
+}
+
 // MARK: - Track Name
 
 extension TrackServiceTests {
@@ -75,7 +95,7 @@ extension TrackServiceTests {
         }
         exampleTrack.name = ""
 
-        TrackService.shared.save(track: exampleTrack)
+        XCTAssertTrue(TrackService.shared.save(track: exampleTrack), "Failed to save example track")
 
         guard let trackFiles = TrackService.shared.trackFiles else {
             return XCTFail("Failed to get track files, see logging output")
@@ -105,7 +125,7 @@ extension TrackServiceTests {
         }
         exampleTrack.name = TestConstants.testTrackName
 
-        TrackService.shared.save(track: exampleTrack)
+        XCTAssertTrue(TrackService.shared.save(track: exampleTrack), "Failed to save example track")
 
         guard let trackFiles = TrackService.shared.trackFiles else {
             return XCTFail("Failed to get track files, see logging output")

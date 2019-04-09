@@ -210,7 +210,7 @@ public class PointAnnotation: NSObject, MKAnnotation {
 
 public extension Notification.Name.GeoTrackKit {
 
-    public static let selectedAnnotationPoint = Notification.Name(rawValue: "com.geotrackkit.user.selected.annotation.point")
+    static let selectedAnnotationPoint = Notification.Name(rawValue: "com.geotrackkit.user.selected.annotation.point")
 
 }
 

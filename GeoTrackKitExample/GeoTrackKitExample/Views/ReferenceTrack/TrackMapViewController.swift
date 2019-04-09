@@ -121,7 +121,7 @@ private extension TrackMapViewController {
                 return nil
             }
             let documentsFolder = try FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
-            let fileName = model.track.name.replacingOccurrences(of: "/", with: "-").replacingOccurrences(of: ":", with: "_")
+            let fileName = model.track.name.trackNameToFileSystemName
             let fileUrl = documentsFolder.appendingPathComponent("\(fileName).json")
             do {
                 try jsonString.write(to: fileUrl, atomically: false, encoding: .utf8)
@@ -148,7 +148,7 @@ private extension TrackMapViewController {
 
         do {
             let documentsFolder = try FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
-            let fileName = model.track.name.replacingOccurrences(of: "/", with: "-").replacingOccurrences(of: ":", with: "_")
+            let fileName = model.track.name.trackNameToFileSystemName
             let fileUrl = documentsFolder.appendingPathComponent("\(fileName).gpx")
 
             let gpxString = model.track.xcodeGpx
