@@ -6,7 +6,9 @@
 //  Copyright © 2017 Eric Internicola. All rights reserved.
 //
 
+import CoreLocation
 import Foundation
+import MapKit
 
 /// A UI Model for a track.  It keeps track of a Track (`GeoTrack`), a Track Analyzer (`GeoTrackAnalyzer`) and a collection of Legs (ascents, descents) that are currently visible
 public class UIGeoTrack {
@@ -33,6 +35,34 @@ public class UIGeoTrack {
 // MARK: - API
 
 public extension UIGeoTrack {
+
+    /// The current set of legs that are visible on the map
+    var legs: [Leg] {
+        return visibleLegs
+    }
+
+    /// The entire set of legs (including those that are hidden)
+    var allLegs: [Leg] {
+        return analyzer.legs
+    }
+
+    /// gets you an array of polylines to draw based on the array of legs
+    var polylines: [MKPolyline] {
+        var polys = [MKPolyline]()
+        let points = track.points
+
+        for leg in legs {
+            var coordinates = [CLLocationCoordinate2D]()
+            for index in leg.index...leg.endIndex {
+                coordinates.append(points[index].coordinate)
+            }
+            let poly = MKPolyline(coordinates: &coordinates, count: coordinates.count)
+            poly.title = leg.direction.rawValue
+            polys.append(poly)
+        }
+
+        return polys
+    }
 
     /// Toggles the visibility of all cells
     ///
@@ -76,22 +106,6 @@ public extension UIGeoTrack {
         NotificationCenter.default.post(name: Notification.Name.GeoMapping.legVisibilityChanged, object: self)
     }
 
-    /// The current set of legs that are visible on the map
-    var legs: [Leg] {
-        return visibleLegs
-    }
-
-    /// The entire set of legs (including those that are hidden)
-    var allLegs: [Leg] {
-        return analyzer.legs
-    }
-
-}
-
-// MARK: - Helpers
-
-fileprivate extension UIGeoTrack {
-
     /// Make all of the legs visible
     func enableAll() {
         visibleLegs.removeAll()
@@ -107,7 +121,7 @@ fileprivate extension UIGeoTrack {
 public extension Notification.Name {
 
     /// A notification that tells us that a visibility of one or more legs has been toggled on the map.
-    public struct GeoMapping {
+    struct GeoMapping {
 
         /// Tells you that a leg's visibility has been toggle on or off and therefore the map should be updated
         public static let legVisibilityChanged = Notification.Name(rawValue: "geo.mapping.leg.visibility.changed")

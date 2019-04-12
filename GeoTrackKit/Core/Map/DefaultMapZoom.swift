@@ -17,6 +17,9 @@ open class DefaultMapZoom: ZoomDefining {
         return true
     }
 
+    /// initializer
+    public init() { }
+
     /// Provides a zoom region for the provided points
     ///
     /// - Parameter points: The points to calculate the zoom region for.

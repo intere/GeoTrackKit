@@ -107,28 +107,3 @@ extension GeoTrackMap: MKMapViewDelegate {
         return renderer
     }
 }
-
-
-// MARK: - converters
-
-fileprivate extension UIGeoTrack {
-
-    /// gets you an array of polylines to draw based on the array of legs
-    var polylines: [MKPolyline] {
-        var polys = [MKPolyline]()
-        let points = track.points
-
-        for leg in legs {
-            var coordinates = [CLLocationCoordinate2D]()
-            for index in leg.index...leg.endIndex {
-                coordinates.append(points[index].coordinate)
-            }
-            let poly = MKPolyline(coordinates: &coordinates, count: coordinates.count)
-            poly.title = leg.direction.rawValue
-            polys.append(poly)
-        }
-
-        return polys
-    }
-
-}
