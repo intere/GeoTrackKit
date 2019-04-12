@@ -62,7 +62,7 @@ class TrackImportTableViewController: UITableViewController {
                     guard let track = track else {
                         return assertionFailure("There was an error with the track")
                     }
-                    TrackService.shared.save(track: track)
+                    assert(TrackService.shared.save(track: track))
                 }
             }
         ]

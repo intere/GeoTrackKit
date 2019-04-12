@@ -56,7 +56,7 @@ fileprivate extension TrackConsoleViewController {
         if GeoTrackManager.shared.isTracking {
             GeoTrackManager.shared.stopTracking()
             if let track = GeoTrackManager.shared.track {
-                TrackService.shared.save(track: track)
+                assert(TrackService.shared.save(track: track))
             }
         } else {
             do {

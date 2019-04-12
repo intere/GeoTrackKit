@@ -65,7 +65,7 @@ class SelectTrackDialog: TrackListTableViewController {
             return assertionFailure("Failed to merge the tracks")
         }
 
-        TrackService.shared.save(track: mergedTrack)
+        assert(TrackService.shared.save(track: mergedTrack))
         cancel(self)
     }
 }

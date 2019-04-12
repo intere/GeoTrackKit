@@ -294,7 +294,7 @@ fileprivate extension GeoTrackManager {
 public extension Notification.Name {
 
     /// GeoTrackKit notification constants
-    public struct GeoTrackKit {
+    struct GeoTrackKit {
         /// Notofication that the location was updated
         public static let didUpdateLocations = Notification.Name(rawValue: "com.geotrackkit.did.update.locations")
 
