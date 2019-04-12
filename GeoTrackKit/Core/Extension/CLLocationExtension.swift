@@ -41,8 +41,46 @@ public extension CLLocationCoordinate2D {
         return CGPoint(x: longitude, y: latitude)
     }
 
-    private struct Constants {
+    struct Constants {
         static let earthRadius = 6378137.0
+    }
+}
+
+public extension CGPoint {
+
+    /// Converts the mercator-y from this point to latitude
+    var latitude: CLLocationDistance {
+        return ((2 * atan(exp(y.double / CLLocationCoordinate2D.Constants.earthRadius))) - .pi / 2).radiansToDegrees
+    }
+
+    /// Converts the mercator-x from this point to longitude
+    var longitude: CLLocationDistance {
+        return (x.double / CLLocationCoordinate2D.Constants.earthRadius).radiansToDegrees
+    }
+
+    var latLonLocation: CLLocationCoordinate2D {
+        return CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+    }
+
+}
+
+public extension CGFloat {
+
+    var double: Double {
+        return Double(self)
+    }
+}
+
+public extension Double {
+
+    /// Assumes this number is in degrees and converts it to radians
+    var degreesToRadians: Double {
+        return self * .pi / 180
+    }
+
+    /// Assumes this number is in radians and converts it to degrees
+    var radiansToDegrees: Double {
+        return self * 180 / .pi
     }
 }
 
@@ -57,28 +95,28 @@ public extension CLLocation {
     static func from(map: [String: Any]) -> CLLocation? {
         guard let lat = map["lat"] as? CLLocationDegrees
             ?? map["latitude"] as? CLLocationDegrees else {
-            elog("We didn't get a valid latitude for a point")
-            return nil
+                elog("We didn't get a valid latitude for a point")
+                return nil
         }
         guard let lon = map["lon"] as? CLLocationDegrees
             ?? map["longitude"] as? CLLocationDegrees else {
-            elog("We didn't get a valid longitude for a point")
-            return nil
+                elog("We didn't get a valid longitude for a point")
+                return nil
         }
         guard let altitude = map["alt"] as? CLLocationDistance
             ?? map["altitude"] as? CLLocationDistance else {
-            elog("We didn't get a valid altitude for a point")
-            return nil
+                elog("We didn't get a valid altitude for a point")
+                return nil
         }
         guard let horizontalAccuracy = map["hAcc"] as? CLLocationAccuracy
             ?? map["horizontalAccuracy"] as? CLLocationAccuracy else {
-            elog("We didn't get a valid horizontal accuracy for a point")
-            return nil
+                elog("We didn't get a valid horizontal accuracy for a point")
+                return nil
         }
         guard let verticalAccuracy = map["vAcc"] as? CLLocationAccuracy
             ?? map["verticalAccuracy"] as? CLLocationAccuracy else {
-            elog("We didn't get a valid vertical accuracy for a point")
-            return nil
+                elog("We didn't get a valid vertical accuracy for a point")
+                return nil
         }
         guard let speed = map["speed"] as? CLLocationSpeed else {
             elog("We didn't get a valid speed for a point")
@@ -86,8 +124,8 @@ public extension CLLocation {
         }
         guard let msse = map["timestamp"] as? Double
             ?? map["time"] as? Double else {
-            elog("We didn't get a valid timestamp for a point")
-            return nil
+                elog("We didn't get a valid timestamp for a point")
+                return nil
         }
 
         let course = map["course"] as? CLLocationDirection ?? 0
