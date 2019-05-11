@@ -152,7 +152,7 @@ fileprivate extension GeoTrackAnalyzer {
         }
 
         // If we haven't added the last one to the collapsed list yet, then do it now:
-        if last != collapsed.last {
+        if !collapsed.isEmpty, last != collapsed.last {
             if last.direction == .unknown {
                 var clast = collapsed.removeLast()
                 clast = clast.combine(with: last, direction: clast.direction)
@@ -160,6 +160,8 @@ fileprivate extension GeoTrackAnalyzer {
             } else {
                 collapsed.append(last)
             }
+        } else {
+            collapsed.append(last)
         }
 
         return collapsed
