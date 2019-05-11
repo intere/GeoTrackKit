@@ -1,29 +1,29 @@
 PODS:
-  - ARCL (1.0.4)
+  - ARCL (1.1.0)
   - GeoTrackKit/Core (0.4.2)
   - GeoTrackKit/HealthKit (0.4.2):
     - GeoTrackKit/Core
 
 DEPENDENCIES:
-  - ARCL (from `https://github.com/intere/ARKit-CoreLocation`, branch `polylines`)
+  - ARCL (from `https://github.com/ProjectDent/ARKit-CoreLocation`, branch `develop`)
   - GeoTrackKit/HealthKit (from `..`)
 
 EXTERNAL SOURCES:
   ARCL:
-    :branch: polylines
-    :git: https://github.com/intere/ARKit-CoreLocation
+    :branch: develop
+    :git: https://github.com/ProjectDent/ARKit-CoreLocation
   GeoTrackKit:
     :path: ".."
 
 CHECKOUT OPTIONS:
   ARCL:
-    :commit: cb7df116e1eaefdc6ab883eaa0646082fa3a00b8
-    :git: https://github.com/intere/ARKit-CoreLocation
+    :commit: ff21f9ecfdf4ffb805bfd3c229959d507220eca5
+    :git: https://github.com/ProjectDent/ARKit-CoreLocation
 
 SPEC CHECKSUMS:
-  ARCL: 051325ae4796bb1e33ce6e8baf4f2c0cccad0c97
+  ARCL: 8b0a375942c575472c3cdbec80262d8400f1ec42
   GeoTrackKit: 16113ae65bd458be0255a0d8270a8190ee4397a2
 
-PODFILE CHECKSUM: 37fb6e60ee9555609294b2ce86c039d43f0dc3e7
+PODFILE CHECKSUM: b0f900ead83f347318c1dd1b2c1c9818799195e3
 
 COCOAPODS: 1.5.3

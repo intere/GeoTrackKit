@@ -17,13 +17,13 @@ public struct LocationTranslation {
 }
 
 public extension CLLocation {
-    convenience init(coordinate: CLLocationCoordinate2D, altitude: CLLocationDistance) {
+    public convenience init(coordinate: CLLocationCoordinate2D, altitude: CLLocationDistance) {
         self.init(coordinate: coordinate, altitude: altitude, horizontalAccuracy: 0, verticalAccuracy: 0, timestamp: Date())
     }
 
     ///Translates distance in meters between two locations.
     ///Returns the result as the distance in latitude and distance in longitude.
-    func translation(toLocation location: CLLocation) -> LocationTranslation {
+    public func translation(toLocation location: CLLocation) -> LocationTranslation {
         let inbetweenLocation = CLLocation(latitude: self.coordinate.latitude, longitude: location.coordinate.longitude)
 
         let distanceLatitude = location.distance(from: inbetweenLocation)
@@ -43,7 +43,7 @@ public extension CLLocation {
                                     altitudeTranslation: altitudeTranslation)
     }
 
-    func translatedLocation(with translation: LocationTranslation) -> CLLocation {
+    public func translatedLocation(with translation: LocationTranslation) -> CLLocation {
         let latitudeCoordinate = self.coordinate.coordinateWithBearing(bearing: 0,
                                                                        distanceMeters: translation.latitudeTranslation)
 

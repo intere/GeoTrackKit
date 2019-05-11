@@ -10,7 +10,7 @@ target 'GeoTrackKitExample' do
   pod 'GeoTrackKit', :subspecs => ['HealthKit'], :path => '..'
 
   # 3rd party pods
-  pod 'ARCL', :git => 'https://github.com/intere/ARKit-CoreLocation', :branch => 'polylines'
+  pod 'ARCL', :git => 'https://github.com/ProjectDent/ARKit-CoreLocation', :branch => 'develop'
 
   target 'GeoTrackKitExampleTests' do
     inherit! :search_paths

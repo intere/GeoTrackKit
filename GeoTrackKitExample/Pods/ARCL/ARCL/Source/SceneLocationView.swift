@@ -13,13 +13,14 @@ import MapKit
 
 //Should conform to delegate here, add in future commit
 @available(iOS 11.0, *)
-public class SceneLocationView: ARSCNView {
+open class SceneLocationView: ARSCNView {
     /// The limit to the scene, in terms of what data is considered reasonably accurate.
     /// Measured in meters.
     static let sceneLimit = 100.0
 
     public weak var locationViewDelegate: SceneLocationViewDelegate?
     public weak var locationEstimateDelegate: SceneLocationViewEstimateDelegate?
+    public weak var locationNodeTouchDelegate: LNTouchDelegate?
 
     public let sceneLocationManager = SceneLocationManager()
 
@@ -100,9 +101,12 @@ public class SceneLocationView: ARSCNView {
         showsStatistics = false
 
         debugOptions = showFeaturePoints ? [ARSCNDebugOptions.showFeaturePoints] : debugOptions
+        
+        let touchGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(sceneLocationViewTouched(sender:)))
+        self.addGestureRecognizer(touchGestureRecognizer)
     }
 
-    override public func layoutSubviews() {
+    override open func layoutSubviews() {
         super.layoutSubviews()
     }
 
@@ -207,6 +211,21 @@ public extension SceneLocationView {
 
         locationNodes.append(locationNode)
         sceneNode?.addChildNode(locationNode)
+    }
+    
+    @objc func sceneLocationViewTouched(sender: UITapGestureRecognizer) {
+        guard let touchedView = sender.view as? SCNView else {
+            return
+        }
+        
+        let coordinates = sender.location(in: touchedView)
+        let hitTest = touchedView.hitTest(coordinates)
+        
+        if !hitTest.isEmpty,
+            let firstHitTest = hitTest.first,
+            let touchedNode = firstHitTest.node as? AnnotationNode {
+            self.locationNodeTouchDelegate?.locationNodeTouched(node: touchedNode)
+        }
     }
 
     func addLocationNodesWithConfirmedLocation(locationNodes: [LocationNode]) {
