@@ -7,28 +7,30 @@
 //
 
 import GeoTrackKit
+import RangeSeekSlider
 import UIKit
 
 class TrackMapViewController: UIViewController {
 
     @IBOutlet var mapView: GeoTrackMap!
     @IBOutlet var legContainerView: UIView!
+    @IBOutlet weak var rangeSlider: RangeSeekSlider!
 
-    var model: UIGeoTrack? {
-        didSet {
-            modelUpdated()
-        }
-    }
+    let updateDebouncer = Debouncer(seconds: 0.3)
+
+    var model: UIGeoTrack?
 
     var useDemoTrack = true
     var legVisibleByDefault: Bool {
-        return !useDemoTrack
+//        return !useDemoTrack
+        return true
     }
 
     var tableVC: TrackOverviewTableViewController?
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        rangeSlider.delegate = self
 
         if useDemoTrack {
             guard let track = TrackMapViewController.loadFromBundle(filename: "reference-track-1", type: "json") else {
@@ -51,6 +53,29 @@ class TrackMapViewController: UIViewController {
         let trackVC = UIStoryboard(name: "TrackView", bundle: nil).instantiateViewController(withIdentifier: "TrackMapViewController") as! TrackMapViewController
         trackVC.useDemoTrack = useDemoTrack
         return trackVC
+    }
+
+}
+
+// MARK: - RangeSeekSliderDelegate
+
+extension TrackMapViewController: RangeSeekSliderDelegate {
+
+    func rangeSeekSlider(_ slider: RangeSeekSlider, didChange minValue: CGFloat, maxValue: CGFloat) {
+        updateDebouncer.debounce { [weak self] in
+            self?.updateMapModel(minValue: Int(minValue), maxValue: Int(maxValue))
+        }
+    }
+
+    func updateMapModel(minValue: Int, maxValue: Int) {
+        guard let model = model else {
+            return
+        }
+        guard minValue < model.track.points.count, maxValue < model.track.points.count else {
+            return assertionFailure("On second thought, let's not go to Camelot, it is a silly place.")
+        }
+        let points = Array(model.track.points[Int(minValue)...Int(maxValue)])
+        mapView.model = UIGeoTrack(with: GeoTrack(points: points, name: model.track.name, description: model.track.description))
     }
 
 }
@@ -97,13 +122,12 @@ private extension TrackMapViewController {
 
     /// Writes the track to a JSON file and gives you back the URL
     var trackWrittenToJsonFile: URL? {
-        guard let model = model else {
+        guard let model = mapView.model else {
             return nil
         }
 
         do {
-            let data = try JSONSerialization.data(withJSONObject: model.track.map, options: .prettyPrinted)
-            guard let jsonString = String(data: data, encoding: .utf8) else {
+            guard let data = jsonTrackData, let jsonString = String(data: data, encoding: .utf8) else {
                 return nil
             }
             let documentsFolder = try FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
@@ -126,9 +150,24 @@ private extension TrackMapViewController {
         return nil
     }
 
+    var jsonTrackData: Data? {
+        guard let model = mapView.model else {
+            return nil
+        }
+
+        do {
+            return try JSONSerialization.data(withJSONObject: model.track.map, options: .prettyPrinted)
+        } catch {
+            print("ERROR trying to serialize to Data: \(error.localizedDescription)")
+            print("\(error)")
+            assertionFailure(error.localizedDescription)
+        }
+        return nil
+    }
+
     /// Writes the track to a GPX file and gives you back the URL
     var trackWrittenToGpxFile: URL? {
-        guard let model = model else {
+        guard let model = mapView.model else {
             return nil
         }
 
@@ -208,6 +247,10 @@ private extension TrackMapViewController {
         if !useDemoTrack {
             title = model?.track.name
         }
+        rangeSlider.minValue = 0
+        rangeSlider.maxValue = CGFloat(model?.track.points.count ?? 1) - 1
+        rangeSlider.selectedMinValue = 0
+        rangeSlider.selectedMaxValue = rangeSlider.maxValue
     }
 
     /// Attempts to load the provided file / type from the Bundle that this VC is in,

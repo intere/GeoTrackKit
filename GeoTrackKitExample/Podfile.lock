@@ -1,18 +1,29 @@
 PODS:
+  - Cartography (3.1.0)
   - GeoTrackKit/Core (0.4.2)
   - GeoTrackKit/HealthKit (0.4.2):
     - GeoTrackKit/Core
+  - RangeSeekSlider (1.8.0)
 
 DEPENDENCIES:
+  - Cartography
   - GeoTrackKit/HealthKit (from `..`)
+  - RangeSeekSlider
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Cartography
+    - RangeSeekSlider
 
 EXTERNAL SOURCES:
   GeoTrackKit:
     :path: ".."
 
 SPEC CHECKSUMS:
+  Cartography: 1988b7578871a56c036e7af17195cb2190edf18c
   GeoTrackKit: 16113ae65bd458be0255a0d8270a8190ee4397a2
+  RangeSeekSlider: 650b11fa1edcb92e1e0ede797669d98622570fb5
 
-PODFILE CHECKSUM: 6b6b15c8571da71adf29321de0604cdf6ea5756a
+PODFILE CHECKSUM: 3d572f1115c9d7ff9680da83b04aa985de98a084
 
 COCOAPODS: 1.5.3

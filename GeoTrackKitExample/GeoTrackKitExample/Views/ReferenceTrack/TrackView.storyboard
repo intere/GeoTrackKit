@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="cse-if-UgT">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="cse-if-UgT">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -25,21 +25,31 @@
                                 </constraints>
                             </mapView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j3W-b1-aMI">
-                                <rect key="frame" x="0.0" y="400" width="375" height="203"/>
+                                <rect key="frame" x="0.0" y="440" width="375" height="163"/>
                                 <connections>
                                     <segue destination="Kom-qy-mum" kind="embed" id="c3y-gj-OWQ"/>
                                 </connections>
                             </containerView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vot-8X-NVg" customClass="RangeSeekSlider" customModule="RangeSeekSlider">
+                                <rect key="frame" x="8" y="400" width="359" height="40"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="Kpt-9m-fhm"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="j3W-b1-aMI" firstAttribute="top" secondItem="Vot-8X-NVg" secondAttribute="bottom" id="0dY-1l-NSJ"/>
+                            <constraint firstItem="Vot-8X-NVg" firstAttribute="leading" secondItem="mo8-EK-DS1" secondAttribute="leading" constant="8" id="0qh-4z-Ghj"/>
                             <constraint firstItem="mo8-EK-DS1" firstAttribute="trailing" secondItem="egO-IS-oa8" secondAttribute="trailing" id="4ss-w2-V3K"/>
                             <constraint firstItem="mo8-EK-DS1" firstAttribute="bottom" secondItem="j3W-b1-aMI" secondAttribute="bottom" id="BBh-kE-aAV"/>
                             <constraint firstItem="egO-IS-oa8" firstAttribute="leading" secondItem="mo8-EK-DS1" secondAttribute="leading" id="GXe-gS-9L5"/>
-                            <constraint firstItem="j3W-b1-aMI" firstAttribute="top" secondItem="egO-IS-oa8" secondAttribute="bottom" id="XXx-KW-So4"/>
                             <constraint firstItem="j3W-b1-aMI" firstAttribute="leading" secondItem="mo8-EK-DS1" secondAttribute="leading" id="bpm-T6-axO"/>
+                            <constraint firstItem="Vot-8X-NVg" firstAttribute="top" secondItem="egO-IS-oa8" secondAttribute="bottom" id="oRp-Ne-YcP"/>
                             <constraint firstItem="egO-IS-oa8" firstAttribute="top" secondItem="mo8-EK-DS1" secondAttribute="top" id="qN7-UG-1HQ"/>
                             <constraint firstItem="mo8-EK-DS1" firstAttribute="trailing" secondItem="j3W-b1-aMI" secondAttribute="trailing" id="qQC-f2-bA9"/>
+                            <constraint firstItem="Vot-8X-NVg" firstAttribute="trailing" secondItem="mo8-EK-DS1" secondAttribute="trailing" constant="-8" id="vOc-zD-GnZ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="mo8-EK-DS1"/>
                     </view>
@@ -55,6 +65,7 @@
                     <connections>
                         <outlet property="legContainerView" destination="j3W-b1-aMI" id="fJ2-sJ-TjM"/>
                         <outlet property="mapView" destination="egO-IS-oa8" id="aI6-Jr-Pkn"/>
+                        <outlet property="rangeSlider" destination="Vot-8X-NVg" id="1Fw-Do-9cm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="k8i-GX-Rz3" userLabel="First Responder" sceneMemberID="firstResponder"/>

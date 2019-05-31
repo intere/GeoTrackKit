@@ -18,6 +18,7 @@
 		366B6532219650CF00BA5EB7 /* reference-track-3.json in Resources */ = {isa = PBXBuildFile; fileRef = 366B6531219650CF00BA5EB7 /* reference-track-3.json */; };
 		366CE43C1DFCAC360090BD42 /* GeoTrackSerializationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 366CE43B1DFCAC360090BD42 /* GeoTrackSerializationTests.swift */; };
 		36838E93222A094A00F4F714 /* TrackOverviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36838E92222A094A00F4F714 /* TrackOverviewCell.swift */; };
+		3685A12922A17F5C00AF04F0 /* Debouncer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3685A12822A17F5C00AF04F0 /* Debouncer.swift */; };
 		368A87AE1E6332C1003D115A /* reference-track-1.json in Resources */ = {isa = PBXBuildFile; fileRef = 368A87AD1E6332C1003D115A /* reference-track-1.json */; };
 		368A87B11E63332E003D115A /* TrackReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 368A87B01E63332E003D115A /* TrackReader.swift */; };
 		368A87B71E636FCE003D115A /* GeoTrackAnalyzerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 368A87B61E636FCE003D115A /* GeoTrackAnalyzerTests.swift */; };
@@ -72,6 +73,7 @@
 		366B6531219650CF00BA5EB7 /* reference-track-3.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "reference-track-3.json"; sourceTree = "<group>"; };
 		366CE43B1DFCAC360090BD42 /* GeoTrackSerializationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeoTrackSerializationTests.swift; sourceTree = "<group>"; };
 		36838E92222A094A00F4F714 /* TrackOverviewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackOverviewCell.swift; sourceTree = "<group>"; };
+		3685A12822A17F5C00AF04F0 /* Debouncer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Debouncer.swift; sourceTree = "<group>"; };
 		368A87AD1E6332C1003D115A /* reference-track-1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "reference-track-1.json"; sourceTree = "<group>"; };
 		368A87B01E63332E003D115A /* TrackReader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackReader.swift; sourceTree = "<group>"; };
 		368A87B61E636FCE003D115A /* GeoTrackAnalyzerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeoTrackAnalyzerTests.swift; sourceTree = "<group>"; };
@@ -175,6 +177,14 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		3685A12722A17F4000AF04F0 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				3685A12822A17F5C00AF04F0 /* Debouncer.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
 		368A87AC1E6332B7003D115A /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -270,6 +280,7 @@
 		36C45E431DCE2D3500E87710 /* GeoTrackKitExample */ = {
 			isa = PBXGroup;
 			children = (
+				3685A12722A17F4000AF04F0 /* Utilities */,
 				36D099AF210B607200C8C841 /* GeoTrackKitExample.entitlements */,
 				36C45E501DCE2D3500E87710 /* Info.plist */,
 				36C45E441DCE2D3500E87710 /* AppDelegate.swift */,
@@ -449,6 +460,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -502,11 +514,15 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-GeoTrackKitExample/Pods-GeoTrackKitExample-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Cartography/Cartography.framework",
 				"${BUILT_PRODUCTS_DIR}/GeoTrackKit/GeoTrackKit.framework",
+				"${BUILT_PRODUCTS_DIR}/RangeSeekSlider/RangeSeekSlider.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Cartography.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GeoTrackKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RangeSeekSlider.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -584,6 +600,7 @@
 				368B12C8222D847A00B22C72 /* StringExtensions.swift in Sources */,
 				36838E93222A094A00F4F714 /* TrackOverviewCell.swift in Sources */,
 				36A7C6C72100B0980073407A /* EventLogAppender.swift in Sources */,
+				3685A12922A17F5C00AF04F0 /* Debouncer.swift in Sources */,
 				36A7C6D02103ECB40073407A /* ConsoleLogAppender.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

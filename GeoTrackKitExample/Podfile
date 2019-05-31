@@ -8,6 +8,8 @@ target 'GeoTrackKitExample' do
 
   # Pods for GeoTrackKitExample
   pod 'GeoTrackKit', :subspecs => ['HealthKit'], :path => '..'
+  pod 'Cartography'
+  pod 'RangeSeekSlider'
 
   target 'GeoTrackKitExampleTests' do
     inherit! :search_paths

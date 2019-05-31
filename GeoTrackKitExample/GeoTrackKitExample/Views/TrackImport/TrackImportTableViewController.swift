@@ -33,6 +33,9 @@ class TrackImportTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        guard indexPath.row < workouts.count else {
+            return cell
+        }
         let workout = workouts[indexPath.row]
 
         cell.textLabel?.text = workout.tableDescription
