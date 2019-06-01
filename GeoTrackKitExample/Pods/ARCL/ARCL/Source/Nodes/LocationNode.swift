@@ -142,4 +142,20 @@ open class LocationNode: SCNNode {
 
         onCompletion()
     }
+
+
+    @available(iOS 11.0, *)
+    /// Performs a rotation of this node to point at the provided node.
+    ///
+    /// - Parameter node: The node that this node should be pointing at.
+    func look(at node: LocationNode) {
+        look(at: node.position, up: SCNVector3.yAxisUp, localFront: SCNVector3.yAxisUp)
+    }
+}
+
+// MARK: - Math Extensions
+public extension SCNVector3 {
+
+    static let yAxisUp = SCNVector3(0, 1, 0)
+
 }

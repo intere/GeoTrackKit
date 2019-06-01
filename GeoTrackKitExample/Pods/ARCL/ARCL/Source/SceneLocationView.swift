@@ -273,9 +273,22 @@ public extension SceneLocationView {
     }
 }
 
+// MARK: - Routes
+
 @available(iOS 11.0, *)
 public extension SceneLocationView {
 
+    /// Adds the arbitrary point directions to the scene.
+    ///
+    /// - Parameter points: The points (with locations) to add directions for.
+    func addRoute(points: [CLLocation]) {
+        polylineNodes.append(PolylineNode(pointsWithElevation: points))
+        showPolylines()
+    }
+
+    /// Adds the directional routes to the AR Scene.
+    ///
+    /// - Parameter routes: The `MKRoute directions` to add.
     func addRoutes(routes: [MKRoute]) {
         guard let altitude = sceneLocationManager.currentLocation?.altitude else {
             return assertionFailure("we don't have an elevation")
@@ -283,15 +296,7 @@ public extension SceneLocationView {
         let polyNodes = routes.map { PolylineNode(polyline: $0.polyline, altitude: altitude - 2.0) }
 
         polylineNodes.append(contentsOf: polyNodes)
-        polyNodes.forEach {
-            $0.locationNodes.forEach {
-                $0.updatePositionAndScale(setup: true,
-                                          scenePosition: currentScenePosition,
-                                          locationManager: sceneLocationManager,
-                                          onCompletion: {})
-                sceneNode?.addChildNode($0)
-            }
-        }
+        showPolylines()
     }
 
     func removeRoutes(routes: [MKRoute]) {
@@ -302,6 +307,32 @@ public extension SceneLocationView {
         }
     }
 }
+
+// MARK: - Implementation
+
+@available(iOS 11.0, *)
+private extension SceneLocationView {
+
+    func showPolylines(lookAtLast: Bool = false) {
+        polylineNodes.forEach { polylineNode in
+            var last: LocationNode?
+            polylineNode.locationNodes.forEach { locationNode in
+                locationNode.updatePositionAndScale(setup: true,
+                                          scenePosition: currentScenePosition,
+                                          locationManager: sceneLocationManager,
+                                          onCompletion: {})
+                sceneNode?.addChildNode(locationNode)
+                if lookAtLast {
+                    last?.look(at: locationNode)
+                    last = locationNode
+                }
+            }
+        }
+    }
+
+}
+
+// MARK: - SceneLocationManagerDelegate
 
 @available(iOS 11.0, *)
 extension SceneLocationView: SceneLocationManagerDelegate {
