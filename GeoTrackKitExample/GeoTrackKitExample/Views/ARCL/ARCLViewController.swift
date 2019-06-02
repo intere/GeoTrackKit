@@ -225,32 +225,33 @@ extension ARCLViewController {
             return assertionFailure("no track")
         }
 
-        var points = track.points.filter({ $0.horizontalAccuracy < 7 })
+        var points = track.points.filter({ $0.horizontalAccuracy < 8 })
         // mutated points
-//        var mutatedPoints = [CLLocation]()
-//        for idx in 0..<points.count {
-//            let elevation = points[0].altitude + CLLocationDistance(idx * 2)
-//            mutatedPoints.append(CLLocation(coordinate: points[idx].coordinate, altitude: elevation))
-//        }
-//        points = mutatedPoints
+        var mutatedPoints = [CLLocation]()
+        for idx in 0..<points.count {
+//            let elevation = points[0].altitude - 2 + CLLocationDistance(idx * 2)
+            let elevation = points[idx].altitude - 2
+            mutatedPoints.append(CLLocation(coordinate: points[idx].coordinate, altitude: elevation))
+        }
+        points = mutatedPoints
 
 
         // raw points
-//        sceneView.addRoute(points: track.points)
-        let directions = DirectionNode.build(from: points)
-        sceneView.addLocationNodesWithConfirmedLocation(locationNodes: directions)
-//        renderSpheres(for: points)
-        var last: DirectionNode?
-        directions.forEach {
-            last?.look(at: $0)
-            last = $0
-        }
-        guard let lastPoint = points.last else {
-            return
-        }
-        let endpoint = EndpointLocationNode(location: lastPoint)
-        sceneView.addLocationNodesWithConfirmedLocation(locationNodes: [endpoint])
-        directions.last?.look(at: endpoint)
+        sceneView.addRoute(points: points)
+//        let directions = DirectionNode.build(from: points)
+//        sceneView.addLocationNodesWithConfirmedLocation(locationNodes: directions)
+////        renderSpheres(for: points)
+//        var last: DirectionNode?
+//        directions.forEach {
+//            last?.look(at: $0)
+//            last = $0
+//        }
+//        guard let lastPoint = points.last else {
+//            return
+//        }
+//        let endpoint = EndpointLocationNode(location: lastPoint)
+//        sceneView.addLocationNodesWithConfirmedLocation(locationNodes: [endpoint])
+//        directions.last?.look(at: endpoint)
 
     }
 
