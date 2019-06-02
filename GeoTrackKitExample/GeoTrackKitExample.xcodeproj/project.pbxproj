@@ -42,6 +42,7 @@
 		36D099B1210B607300C8C841 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36D099B0210B607300C8C841 /* HealthKit.framework */; };
 		36D099B5210B64E200C8C841 /* TrackImport.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 36D099B4210B64E200C8C841 /* TrackImport.storyboard */; };
 		36D099B7210B6A2C00C8C841 /* TrackImportTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36D099B6210B6A2C00C8C841 /* TrackImportTableViewController.swift */; };
+		36D39B3922A429270086C522 /* BearingAndSlopeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36D39B3822A429270086C522 /* BearingAndSlopeTests.swift */; };
 		36E1E3461DEB3D0D00CFC7BC /* GeoTrackLocationEventTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36E1E3451DEB3D0D00CFC7BC /* GeoTrackLocationEventTests.swift */; };
 		36E3C43D1F4A0817005738DB /* reference-track-1.json in Resources */ = {isa = PBXBuildFile; fileRef = 368A87AD1E6332C1003D115A /* reference-track-1.json */; };
 		36EA9BF322060337003C79E8 /* TrackService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36EA9BF222060337003C79E8 /* TrackService.swift */; };
@@ -101,6 +102,7 @@
 		36D099B0210B607300C8C841 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 		36D099B4210B64E200C8C841 /* TrackImport.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TrackImport.storyboard; sourceTree = "<group>"; };
 		36D099B6210B6A2C00C8C841 /* TrackImportTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackImportTableViewController.swift; sourceTree = "<group>"; };
+		36D39B3822A429270086C522 /* BearingAndSlopeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BearingAndSlopeTests.swift; sourceTree = "<group>"; };
 		36E1E3451DEB3D0D00CFC7BC /* GeoTrackLocationEventTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeoTrackLocationEventTests.swift; sourceTree = "<group>"; };
 		36EA9BF222060337003C79E8 /* TrackService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackService.swift; sourceTree = "<group>"; };
 		36EA9BF522061B90003C79E8 /* TrackServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackServiceTests.swift; sourceTree = "<group>"; };
@@ -150,6 +152,7 @@
 		36302DB2210E139100834A1D /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				36D39B3722A429050086C522 /* Extension */,
 				366B652E21963ADA00BA5EB7 /* Models */,
 				36302DB8210E17B400834A1D /* GeoTrackKitErrorTests.swift */,
 				3604FC76217150AB00B46BAA /* GeoTrackStatisticsTests.swift */,
@@ -309,6 +312,14 @@
 			path = TrackImport;
 			sourceTree = "<group>";
 		};
+		36D39B3722A429050086C522 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				36D39B3822A429270086C522 /* BearingAndSlopeTests.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 		36EA9BF422061B60003C79E8 /* ExampleApp */ = {
 			isa = PBXGroup;
 			children = (
@@ -449,6 +460,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -602,6 +614,7 @@
 				366B653021963AEE00BA5EB7 /* GeoTrackTests.swift in Sources */,
 				368A87B71E636FCE003D115A /* GeoTrackAnalyzerTests.swift in Sources */,
 				93EEFC071E6DAD1900090CE7 /* UIGeoTrackTest.swift in Sources */,
+				36D39B3922A429270086C522 /* BearingAndSlopeTests.swift in Sources */,
 				36EA9BF622061B90003C79E8 /* TrackServiceTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

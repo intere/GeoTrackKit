@@ -42,8 +42,53 @@ public extension CLLocationCoordinate2D {
     }
 
     struct Constants {
-        static let earthRadius = 6378137.0
+        static let earthRadius = 6_378_137.0
     }
+}
+
+// MARK: - Bearing / Slope between points
+
+public extension CLLocation {
+
+    convenience init(x: Int, y: Int, altitude: CLLocationDistance = 0) {
+        // swiftlint:disable:previous identifier_name
+        let lon = (Double(x) / CLLocationCoordinate2D.Constants.earthRadius).radiansToDegrees
+        let lat = ((2.0 * atan(exp(Double(y)/CLLocationCoordinate2D.Constants.earthRadius))) - .pi/2).radiansToDegrees
+
+        self.init(coordinate: CLLocationCoordinate2D(latitude: lat, longitude: lon), altitude: altitude, horizontalAccuracy: 0, verticalAccuracy: 0, course: 0, speed: 0, timestamp: Date())
+    }
+
+    /// Computes the bearing between two points (in degrees).
+    ///
+    /// - Parameter anotherPoint: the point you want to compute the bearing between.
+    /// - Returns: The bearing between this poiont and the other point (in degrees).
+    func bearing(between anotherPoint: CLLocation) -> CLLocationDegrees {
+        let lat1 = coordinate.latitude.degreesToRadians
+        let lon1 = coordinate.longitude.degreesToRadians
+
+        let lat2 = anotherPoint.coordinate.latitude.degreesToRadians
+        let lon2 = anotherPoint.coordinate.longitude.degreesToRadians
+
+        let dLon = lon2 - lon1
+
+        let yMeasure = sin(dLon) * cos(lat2)
+        let xMeasure = cos(lat1) * sin(lat2) - sin(lat1) * cos(lat2) * cos(dLon)
+        return atan2(yMeasure, xMeasure).radiansToDegrees
+    }
+
+    /// Computes the slope between the elevation of another point (in degrees).
+    ///
+    /// - Parameter anotherPoint: The point to compute the slope between.
+    /// - Returns: The sloope between this point and the provided point (in degrees).
+    func slope(between anotherPoint: CLLocation) -> CLLocationDegrees {
+        let distance = self.distance(from: anotherPoint)
+        let altitudeDiff = altitude - anotherPoint.altitude
+        let slope = atan(altitudeDiff / distance)
+
+        return slope.radiansToDegrees
+    }
+
+
 }
 
 public extension CGPoint {
