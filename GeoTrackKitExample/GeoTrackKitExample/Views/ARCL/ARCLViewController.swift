@@ -44,6 +44,8 @@ class ARCLViewController: UIViewController {
             mapView.showPoints = true
         }
         NotificationCenter.default.addObserver(self, selector: #selector(selectedAnnotationPoint(_:)), name: Notification.Name.GeoTrackKit.selectedAnnotationPoint, object: nil)
+        let item = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveScene(_:)))
+        navigationItem.setRightBarButton(item, animated: false)
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -73,6 +75,48 @@ class ARCLViewController: UIViewController {
         } else if location.x >= view.frame.size.width - 40 && adjustNorthByTappingSidesOfScreen {
             print("right side of the screen")
             sceneView.moveSceneHeadingClockwise()
+        }
+    }
+
+    @IBAction
+    func saveScene(_ source: Any) {
+        guard let docsFolder = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else {
+            return assertionFailure("Failed to get docs folder")
+        }
+        prepareSceneNodesForSave()
+        let sceneUrl = URL(fileURLWithPath: "ARCL-Saved.scn", relativeTo: docsFolder)
+        sceneView.scene.write(to: sceneUrl, options: nil, delegate: nil) { (percentage, error, _) in
+            if let error = error {
+                print("ERROR: \(error.localizedDescription)")
+                assertionFailure("Failed to save scene")
+            }
+            print("save scene: \(percentage) complete")
+            if percentage == 1.0 {
+                assert(FileManager.default.fileExists(atPath: sceneUrl.path))
+                guard let attrs = try? FileManager.default.attributesOfItem(atPath: sceneUrl.path) else {
+                    return assertionFailure("poof")
+                }
+                assert(attrs[.size] as? Int ?? 0 > 1024)
+                DispatchQueue.main.async { [weak self] in
+                    guard let data = try? Data(contentsOf: sceneUrl) else {
+                        return
+                    }
+                    let activityVC = UIActivityViewController(activityItems: ["SCN File", data], applicationActivities: nil)
+                    self?.present(activityVC, animated: true, completion: nil)
+                }
+            }
+        }
+    }
+
+    func prepareSceneNodesForSave() {
+        guard let container = sceneView.scene.rootNode.childNodes.filter({ !$0.childNodes.isEmpty }).first else {
+            return // couldn't find the container
+        }
+        container.name = "Container"
+        let noNameNodes = container.childNodes.filter({ $0.name == nil })
+
+        for idx in 0..<noNameNodes.count {
+            noNameNodes[idx].name = "Polyline\(idx)"
         }
     }
 
@@ -177,25 +221,54 @@ extension ARCLViewController {
 
     /// Renders directions to a specific location.
     func renderDirections() {
-        let request = MKDirections.Request()
-        request.source = MKMapItem.forCurrentLocation()
-        request.destination = MKMapItem(placemark: MKPlacemark(coordinate: CLLocationCoordinate2D(latitude: 39.9390932, longitude: -105.0150254)))
-        request.requestsAlternateRoutes = false
+        guard let track = track else {
+            return assertionFailure("no track")
+        }
 
-        let directions = MKDirections(request: request)
+        var points = track.points.filter({ $0.horizontalAccuracy < 8 })
+        // mutated points
+        var mutatedPoints = [CLLocation]()
+        for idx in 0..<points.count {
+//            let elevation = points[0].altitude - 2 + CLLocationDistance(idx * 2)
+            let elevation = points[idx].altitude - 2
+            mutatedPoints.append(CLLocation(coordinate: points[idx].coordinate, altitude: elevation))
+        }
+        points = mutatedPoints
 
-        directions.calculate(completionHandler: {(response, error) in
-            if error != nil {
-                return print("Error getting directions")
-            }
-            guard let response = response else {
-                return
-            }
 
-            DispatchQueue.main.async { [weak self] in
-                self?.sceneView.addRoutes(routes: response.routes)
-            }
-        })
+        // raw points
+        sceneView.addRoute(points: points)
+//        let directions = DirectionNode.build(from: points)
+//        sceneView.addLocationNodesWithConfirmedLocation(locationNodes: directions)
+////        renderSpheres(for: points)
+//        var last: DirectionNode?
+//        directions.forEach {
+//            last?.look(at: $0)
+//            last = $0
+//        }
+//        guard let lastPoint = points.last else {
+//            return
+//        }
+//        let endpoint = EndpointLocationNode(location: lastPoint)
+//        sceneView.addLocationNodesWithConfirmedLocation(locationNodes: [endpoint])
+//        directions.last?.look(at: endpoint)
+
+    }
+
+    func renderSpheres(for points: [CLLocation]) {
+        for idx in 0..<points.count {
+            let point = points[idx]
+
+            let node = LocationNode(location: point)
+            let sphere = SCNSphere(radius: 0.2)
+            let material = SCNMaterial()
+            material.diffuse.contents = UIColor.red
+            sphere.materials = [material]
+            let sphereNode = SCNNode(geometry: sphere)
+            node.addChildNode(sphereNode)
+            node.name = "point \(idx)"
+            sceneView.addLocationNodeWithConfirmedLocation(locationNode: node)
+        }
     }
 
     func renderFloatingArrows() {
