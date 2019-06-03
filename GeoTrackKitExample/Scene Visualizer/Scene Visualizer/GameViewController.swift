@@ -27,13 +27,13 @@ class GameViewController: NSViewController {
         // create a new scene
         let scene = SCNScene(named: "art.scnassets/ARCL-Saved.scn")!
         
-        // create and add a camera to the scene
-        let cameraNode = SCNNode()
-        cameraNode.camera = SCNCamera()
-        scene.rootNode.addChildNode(cameraNode)
-        cameraNode.position = SCNVector3(x: 0, y: 0, z: 15)
+//        // create and add a camera to the scene
+//        let cameraNode = SCNNode()
+//        cameraNode.camera = SCNCamera()
+//        scene.rootNode.addChildNode(cameraNode)
+//        cameraNode.position = SCNVector3(x: 0, y: 0, z: 15)
 
-        // retrieve the conotainer node
+        // retrieve the container node
         guard let container = scene.rootNode.childNode(withName: "Container", recursively: true)
             ?? scene.rootNode.childNodes.filter({ !$0.childNodes.isEmpty }).first else {
                 return assertionFailure("Failed to find a list of nodes")
@@ -45,7 +45,7 @@ class GameViewController: NSViewController {
         guard let scnView = self.view as? SCNView else {
             return
         }
-        scnView.debugOptions = [.showBoundingBoxes, .showSkeletons]
+        scnView.debugOptions = [.showBoundingBoxes, .showSkeletons, .showCameras]
         scnView.autoenablesDefaultLighting = true
         
         // set the scene to the view
