@@ -1,5 +1,6 @@
-# GeoTrackKit
+![GeoTrackKit Logo](https://github.com/intere/GeoTrackKit/blob/develop/images/GeoTrackKitLogo@2x.png?raw=true)
 ### An iOS Library for Geo Tracking
+
 
 ## Features
 - Handles user authorization
