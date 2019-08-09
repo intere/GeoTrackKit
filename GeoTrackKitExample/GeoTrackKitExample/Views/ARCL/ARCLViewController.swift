@@ -16,6 +16,11 @@ import UIKit
 
 class ARCLViewController: UIViewController {
 
+    struct Config {
+        static let numberOfNodesToShow = 5
+        static let distanceToAdvanceToNextPoint: CLLocationDistance = 10
+    }
+
     @IBOutlet weak var sceneView: SceneLocationView!
     @IBOutlet weak var infoLabel: UILabel!
     @IBOutlet weak var mapView: GeoTrackMap!
@@ -29,7 +34,7 @@ class ARCLViewController: UIViewController {
     var nodes = [LocationNode]()
 
     /// The index of the current node:
-    var index = 0
+    var index: Int?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -133,6 +138,22 @@ extension ARCLViewController {
         }
     }
 
+    /// Gets you the index of the closest node in the array of nodes.
+    ///
+    /// - Parameter location: The location you want the closest node index to.
+    /// - Returns: The index in the nodes of the closest node.
+    func indexOfClosest(to location: CLLocation) -> Int? {
+        guard let closest = closestNodes(to: location).first else {
+            return nil
+        }
+
+        for index in 0..<nodes.count where nodes[index].location == closest.location {
+            return index
+        }
+
+        return nil
+    }
+
     /// Handles selecting the provided node (and deselecting all others).
     ///
     /// - Parameter node: The node to be selected.
@@ -169,9 +190,10 @@ extension ARCLViewController {
     }
 
     /// Adds the track points to the scene (waits for the scene to have a real world location)
+    /// and the real world location needs an accuracy < 15 meters.
     ///
     func addTrackPoints() {
-        guard sceneView.currentLocation() != nil else {
+        guard let location = sceneView.currentLocation(), location.horizontalAccuracy < 15 else {
             print("Location fix not established yet, trying again shortly")
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [weak self] in
                 self?.addTrackPoints()
@@ -191,6 +213,8 @@ extension ARCLViewController {
         }
         self.nodes = trackPointObjects
         makeArrowsPointToNextPoint()
+
+        index = indexOfClosest(to: location)
     }
 
     /// Iterates through all of the points and if it's an arrow; makes it
@@ -274,16 +298,20 @@ extension ARCLViewController {
 
         makeArrowsPointToNextPoint()
 
+        guard let index = index else {
+            return
+        }
+
         nodes.forEach { $0.isHidden = true }
 
-        let maxIndex = min(index + 5, nodes.count)
+        let maxIndex = min(index + Config.numberOfNodesToShow, nodes.count)
         nodes[index..<maxIndex].forEach { $0.isHidden = false }
 
         guard index < nodes.count else {
             return
         }
-        if nodes[index].location.distance(from: location) < 7 {
-            index += 1
+        if nodes[index].location.distance(from: location) < Config.distanceToAdvanceToNextPoint {
+            self.index = index + 1
         }
     }
 
