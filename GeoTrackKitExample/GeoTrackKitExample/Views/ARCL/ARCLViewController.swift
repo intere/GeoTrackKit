@@ -28,6 +28,9 @@ class ARCLViewController: UIViewController {
     var updateInfoLabelTimer: Timer?
     var nodes = [LocationNode]()
 
+    /// The index of the current node:
+    var index = 0
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -44,7 +47,7 @@ class ARCLViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         sceneView.run()
-        updateInfoLabelTimer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(updateInfoLabel), userInfo: nil, repeats: true)
+        updateInfoLabelTimer = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(updateInfoLabel), userInfo: nil, repeats: true)
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -119,6 +122,16 @@ extension ARCLViewController: SceneLocationViewDelegate {
 // MARK: - Implementation
 
 extension ARCLViewController {
+
+    /// Sorts the nodes by their distance from the provided location (ascending).
+    ///
+    /// - Parameter location: The location you want closest order to.
+    /// - Returns: An array of LocationNodes, sorted by their distance to the provided location.
+    func closestNodes(to location: CLLocation) -> [LocationNode] {
+        return nodes.sorted { first, second -> Bool in
+            return first.location.distance(from: location) < second.location.distance(from: location)
+        }
+    }
 
     /// Handles selecting the provided node (and deselecting all others).
     ///
@@ -260,6 +273,18 @@ extension ARCLViewController {
         infoLabel.text = text
 
         makeArrowsPointToNextPoint()
+
+        nodes.forEach { $0.isHidden = true }
+
+        let maxIndex = min(index + 5, nodes.count)
+        nodes[index..<maxIndex].forEach { $0.isHidden = false }
+
+        guard index < nodes.count else {
+            return
+        }
+        if nodes[index].location.distance(from: location) < 7 {
+            index += 1
+        }
     }
 
 }
