@@ -98,7 +98,7 @@ public extension UIGeoTrack {
             }
             visibleLegs.append(leg)
         } else {
-            guard let index = visibleLegs.index(of: leg) else {
+            guard let index = visibleLegs.firstIndex(of: leg) else {
                 return
             }
             visibleLegs.remove(at: index)

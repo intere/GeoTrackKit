@@ -393,8 +393,16 @@ extension HKWorkoutActivityType {
         case .handCycling:
             return "handCycling"
 
+        case .discSports:
+            return "discSports"
+
+        case .fitnessGaming:
+            return "fitnessGaming"
+
         case .other:
             return "other"
+        @unknown default:
+            return "Unknown workout type"
         }
     }
 }

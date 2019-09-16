@@ -116,6 +116,10 @@ extension GeoTrackManager: CLLocationManagerDelegate {
             GTError(message: "Restricted from access to location updates")
             track?.error(message: "Location access restricted")
             authorized = false
+        @unknown default:
+            GTDebug(message: "Unknown status: \(status)")
+            authorized = false
+            assertionFailure("Unknown status: \(status)")
         }
     }
 
@@ -275,6 +279,9 @@ fileprivate extension GeoTrackManager {
             case .whileInUse:
                 locationManager.requestWhenInUseAuthorization()
             }
+        @unknown default:
+            GTDebug(message: "Unknown authorization status: \(CLLocationManager.authorizationStatus())")
+            assertionFailure("Unknown authorization status: \(CLLocationManager.authorizationStatus())")
         }
     }
 
