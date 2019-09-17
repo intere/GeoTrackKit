@@ -4,7 +4,7 @@
 
 Pod::Spec.new do |s|
   s.name      = 'GeoTrackKit'
-  s.version   = '0.4.2'
+  s.version   = '1.0.0'
   s.summary   = 'Geo Tracking and statistics for iOS'
   s.description = <<-DESC
 A Geo Location Tracking and statistic calculation library for iOS.  It also provides rendering location tracks over a map for you.
@@ -32,7 +32,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   }
 
   s.platform = :ios, '9.0'
-  s.swift_version = '4.2'
+  s.swift_version = '5.0'
   s.default_subspecs = 'Core'
 
   # Core Tracking functionality + Apple Maps rendering
