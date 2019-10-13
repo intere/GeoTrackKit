@@ -18,7 +18,7 @@
   "platforms": {
     "ios": "9.0"
   },
-  "swift_version": "5.0",
+  "swift_versions": "5.0",
   "default_subspecs": "Core",
   "subspecs": [
     {
@@ -37,5 +37,6 @@
         ]
       }
     }
-  ]
+  ],
+  "swift_version": "5.0"
 }

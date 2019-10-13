@@ -502,7 +502,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-GeoTrackKitExample/Pods-GeoTrackKitExample-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-GeoTrackKitExample/Pods-GeoTrackKitExample-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/GeoTrackKit/GeoTrackKit.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -511,7 +511,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-GeoTrackKitExample/Pods-GeoTrackKitExample-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-GeoTrackKitExample/Pods-GeoTrackKitExample-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		21BFE0984A76732705781C0B /* [CP] Check Pods Manifest.lock */ = {
