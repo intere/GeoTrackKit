@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.4.1
+- [PR #13: TrackUtilities (e.g. Intersection)](https://github.com/intere/GeoTrackKit/pull/13)
+
+
 ## 0.3.0
 - Added Live Tracking in Example App
 - Refactored Example App into a tab bar based UI

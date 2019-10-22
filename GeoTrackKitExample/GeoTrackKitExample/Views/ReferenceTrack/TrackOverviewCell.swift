@@ -30,7 +30,21 @@ class TrackOverviewCell: UITableViewCell {
 
 extension TrackOverviewCell {
 
+    struct Constants {
+        static let numberFormatter: NumberFormatter = {
+            let formatter = NumberFormatter()
+            formatter.numberStyle = .decimal
+            formatter.alwaysShowsDecimalSeparator = false
+            formatter.groupingSeparator = ","
+            return formatter
+        }()
+    }
+
     func updateContents() {
+        backgroundColor = .black
+        chromeView.backgroundColor = .black
+        overviewLabel.textColor = .white
+
         guard let analyzer = analyzer else {
             return
         }
@@ -38,7 +52,14 @@ extension TrackOverviewCell {
         let numRuns = analyzer.legs.filter({ $0.direction == .downward }).count
         let vertical = abs(analyzer.stats?.verticalDescent ?? 0).metersToFeet
 
-        overviewLabel.text = "\(numRuns) runs\n\(Int(vertical))ft vertical descent"
+        let feet = Constants.numberFormatter.string(for: Int(vertical))
+
+        if let feet = feet {
+            overviewLabel.text = "\(numRuns) runs\n\(feet) ft vertical descent"
+        } else {
+            overviewLabel.text = "\(numRuns) runs\n\(Int(vertical)) ft vertical descent"
+        }
+
     }
 
 }
