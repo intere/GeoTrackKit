@@ -139,7 +139,7 @@ extension GeoTrackManager: CLLocationManagerDelegate {
 
         // Ensure that the first point is recent (not old points which we often get when tracking begins):
         if lastPoint == nil {
-            locations.forEach { (location) in
+            locations.forEach { location in
                 guard abs(location.timestamp.timeIntervalSinceNow) < GeoTrackManager.oldPointThreshold else {
                     return
                 }

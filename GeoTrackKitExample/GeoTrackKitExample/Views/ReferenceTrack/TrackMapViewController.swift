@@ -126,8 +126,8 @@ private extension TrackMapViewController {
         return nil
     }
 
-    /// Writes the track to a GPX file and gives you back the URL
-    var trackWrittenToGpxFile: URL? {
+    /// Writes the track to an Xcode GPX file and gives you back the URL
+    var trackWrittenXcodeToGpxFile: URL? {
         guard let model = model else {
             return nil
         }
@@ -159,6 +159,38 @@ private extension TrackMapViewController {
         return nil
     }
 
+    var trackWrittenToGpxFile: URL? {
+        guard let model = model else {
+            return nil
+        }
+
+        do {
+            let documentsFolder = try FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
+            let fileName = model.track.name.trackNameToFileSystemName
+            let fileUrl = documentsFolder.appendingPathComponent("\(fileName).gpx")
+
+            let gpxString = model.track.standardGpx
+            guard let data = gpxString.data(using: .utf8) else {
+                return nil
+            }
+
+            do {
+                try data.write(to: fileUrl, options: [])
+            } catch {
+                print(error)
+                assertionFailure(error.localizedDescription)
+                return nil
+            }
+            return fileUrl
+        } catch {
+            print("ERROR trying to serialize to JSON: \(error.localizedDescription)")
+            print("\(error)")
+            assertionFailure(error.localizedDescription)
+        }
+
+        return nil
+    }
+
     /// Shows a action sheet with a set of sharing options.
     func showShareOptions() {
         let dialog = UIAlertController(title: "Share", message: "How would you like to share?", preferredStyle: .actionSheet)
@@ -167,8 +199,12 @@ private extension TrackMapViewController {
             self?.shareJsonFile()
             dialog.dismiss(animated: true)
         })
+        dialog.addAction(UIAlertAction(title: "Xcode GPX", style: .default) { [weak self] _ in
+            self?.shareXcodeGPX()
+            dialog.dismiss(animated: true)
+        })
         dialog.addAction(UIAlertAction(title: "GPX", style: .default) { [weak self] _ in
-            self?.shareGPX()
+            self?.shareGpx()
             dialog.dismiss(animated: true)
         })
         dialog.addAction(UIAlertAction(title: "Cancel", style: .cancel))
@@ -176,8 +212,18 @@ private extension TrackMapViewController {
         present(dialog, animated: true)
     }
 
-    /// Shares the track as a GPX file
-    func shareGPX() {
+    /// Shares the track as an Xcode GPX file
+    func shareXcodeGPX() {
+        guard let trackWrittenToGpxFile = trackWrittenXcodeToGpxFile else {
+            return
+        }
+        let activityVC = UIActivityViewController(activityItems: [trackWrittenToGpxFile], applicationActivities: nil)
+        present(activityVC, animated: true, completion: nil)
+    }
+
+
+    /// Shares the track written to a standard GPX file
+    func shareGpx() {
         guard let trackWrittenToGpxFile = trackWrittenToGpxFile else {
             return
         }

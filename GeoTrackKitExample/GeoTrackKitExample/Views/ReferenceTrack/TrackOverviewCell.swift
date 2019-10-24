@@ -31,14 +31,18 @@ class TrackOverviewCell: UITableViewCell {
 extension TrackOverviewCell {
 
     func updateContents() {
-        guard let analyzer = analyzer else {
+        chromeView.backgroundColor = .black
+        overviewLabel.textColor = .white
+
+        guard let analyzer = analyzer, let stats = analyzer.stats else {
             return
         }
 
         let numRuns = analyzer.legs.filter({ $0.direction == .downward }).count
-        let vertical = abs(analyzer.stats?.verticalDescent ?? 0).metersToFeet
+        let vertical = abs(stats.verticalDescent.metersToFeet)
+        let distance = String(format: "%.2f mi distance", stats.totalDistance.metersToMiles)
 
-        overviewLabel.text = "\(numRuns) runs\n\(Int(vertical))ft vertical descent"
+        overviewLabel.text = "\(numRuns) runs\n\(Int(vertical))ft vertical descent\n\(distance)"
     }
 
 }
