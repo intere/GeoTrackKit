@@ -55,6 +55,13 @@ public extension GeoTrackMap {
             return
         }
         removeOverlays(overlays)
+        print("Removed overlays")
+
+        if let polyline = model?.expandedPolyline(size: 20) {
+            addOverlay(polyline)
+            print("Added expanded polyline overlay")
+        }
+
         guard let polylines = model?.polylines else {
             return
         }
@@ -101,7 +108,7 @@ extension GeoTrackMap: MKMapViewDelegate {
         case .upward:
             renderer.strokeColor = ascentColor
         default:
-            break
+            renderer.strokeColor = unknownColor
         }
 
         return renderer

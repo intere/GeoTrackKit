@@ -6,7 +6,7 @@
 //
 
 import CoreLocation
-import Foundation
+import MapKit
 
 public extension GeoTrack {
 
@@ -93,6 +93,33 @@ public extension GeoTrack {
         return mutablePath
     }
 
+    /// Creates a polygon from the track that expands the line by the `size` meters you provide.
+    /// - Parameter meters: The distance to expand outwards.
+    func toPolygonPointArray(size meters: Double) -> [CLLocation]? {
+        guard points.count > 0 else {
+            return nil
+        }
+
+        var result = [CLLocation]()
+        var bottomResult = [CLLocation]()
+
+        points.forEach { point in
+            let left = CLLocation(x: point.x - meters, y: point.y)
+            let top = CLLocation(x: point.x, y: point.y + meters)
+
+            result.append(contentsOf: [left, top])
+
+            let right = CLLocation(x: point.x + meters, y: point.y)
+            let bottom = CLLocation(x: point.x, y: point.y - meters)
+
+            bottomResult.append(contentsOf: [right, bottom])
+        }
+
+        result.append(contentsOf: bottomResult.reversed())
+
+        return result
+    }
+
 }
 
 // MARK: - Implementation
@@ -125,4 +152,22 @@ private extension GeoTrack {
         return CGRect(x1: minX, y1: minY, x2: maxX, y2: maxY)
     }
 
+}
+
+extension CLLocation {
+
+    // swiftlint:disable:next identifier_name
+    convenience init(x: CLLocationDegrees, y: CLLocationDegrees) {
+        self.init(latitude: y.latFromMercatorY, longitude: x.lonFromMercatorX)
+    }
+
+    // swiftlint:disable:next identifier_name
+    var x: CLLocationDegrees {
+        return coordinate.mercatorX
+    }
+
+    // swiftlint:disable:next identifier_name
+    var y: CLLocationDegrees {
+        return coordinate.mercatorY
+    }
 }
