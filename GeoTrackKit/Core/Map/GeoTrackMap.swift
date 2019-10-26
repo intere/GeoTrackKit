@@ -90,6 +90,12 @@ extension GeoTrackMap: MKMapViewDelegate {
     ///   - overlay: The overlay to create a renderer for
     /// - Returns: The result MKOverlay renderer
     public func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+        if let polygon = overlay as? MKPolygon {
+            let renderer = MKPolygonRenderer(polygon: polygon)
+            renderer.fillColor = unknownColor
+            return renderer
+        }
+
         guard let polyline = overlay as? MKPolyline else {
             return MKPolylineRenderer(overlay: overlay)
         }

@@ -66,12 +66,13 @@ public extension UIGeoTrack {
 
     /// Gets you an expanded polyline of the entire track.
     /// - Parameter meters: The distance outward from the line (in meters).
-    func expandedPolyline(size meters: CLLocationDistance) -> MKPolyline? {
+    func expandedPolyline(size meters: CLLocationDistance) -> MKPolygon? {
         guard let coordinates = track.toPolygonPointArray(size: meters)?.map({ $0.coordinate }) else {
             return nil
         }
 
-        return MKPolyline(coordinates: coordinates, count: coordinates.count)
+        return MKPolygon(coordinates: coordinates, count: coordinates.count)
+//        return MKPolyline(coordinates: coordinates, count: coordinates.count)
     }
 
     /// Toggles the visibility of all cells
