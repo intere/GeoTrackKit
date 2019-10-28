@@ -7,7 +7,7 @@
 
 import Foundation
 
-public extension Double {
+extension Double {
 
     /// Converts this (degrees) number into radians
     var radians: Double {

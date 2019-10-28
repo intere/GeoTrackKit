@@ -64,7 +64,7 @@ public extension CGPoint {
 
 }
 
-public extension CGFloat {
+extension CGFloat {
 
     var double: Double {
         return Double(self)
