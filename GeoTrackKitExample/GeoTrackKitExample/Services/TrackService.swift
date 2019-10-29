@@ -11,8 +11,16 @@ import GeoTrackKit
 
 /// Responsible for getting you the track files in the user's directory.
 class TrackService {
+    private let version = 1
+
     /// The shared instance
     static let shared = TrackService()
+
+    init() {
+        DispatchQueue.global(qos: .background).async {
+            self.performMigration()
+        }
+    }
 
     /// Gets you all of the track files
     var trackFiles: [URL]? {
@@ -178,6 +186,28 @@ extension TrackService {
         }
     }
 
+}
+
+// MARK: - Migration
+
+private extension TrackService {
+
+    private var migratedVersion: Int {
+        get {
+            return UserDefaults.standard.object(forKey: "TrackService.migratedVersion") as? Int ?? 0
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: "TrackService.migratedVersion")
+        }
+    }
+
+    func performMigration() {
+        let oldVersion = migratedVersion
+
+        if oldVersion < 1 {
+
+        }
+    }
 }
 
 // MARK: - Track extension
