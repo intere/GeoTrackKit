@@ -65,36 +65,6 @@ public extension GeoTrack {
 
 }
 
-// MARK: - Throwaway
-
-public extension GeoTrack {
-
-    // TODO: probably throw this away
-    /// Gets you a (mercator-based) path for this track.
-    var path: CGPath? {
-        guard points.count > 1 else {
-            return nil
-        }
-
-        let mutablePath = CGMutablePath()
-        // Doesn't seem to work
-
-        var last: CGPoint?
-        for point in points {
-            defer {
-                last = point.coordinate.latLonPoint
-            }
-            guard let last = last else {
-                continue
-            }
-            mutablePath.addLines(between: [last, point.coordinate.latLonPoint])
-        }
-
-        return mutablePath
-    }
-
-}
-
 // MARK: - Implementation
 
 private extension GeoTrack {

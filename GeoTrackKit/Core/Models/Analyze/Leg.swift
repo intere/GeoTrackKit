@@ -8,8 +8,10 @@
 
 import CoreLocation
 
+// MARK: - Stat
+
 /// This class keeps track of statistics for a Leg (ascent or descent) of a track.
-public class Stat {
+open class Stat {
     /// Minimum altitude in meters
     fileprivate(set) public var minimumAltitude: CLLocationDistance = 0
     /// Maximum altitude in meters
@@ -46,7 +48,7 @@ public class Stat {
     /// Combines this stat with another stat (it generally makes sense to do this with another leg that is in the same direction)
     ///
     /// - Parameter stat: The stat to combine with
-    func combine(with stat: Stat) {
+    open func combine(with stat: Stat) {
         distance += stat.distance
         maximumAltitude = max(maximumAltitude, stat.maximumAltitude)
         minimumAltitude = min(minimumAltitude, stat.minimumAltitude)
@@ -55,8 +57,10 @@ public class Stat {
     }
 }
 
+// MARK: - TrackStat
+
 /// This class keeps track of statistics for an entire Geo Track.  It summarizes the stats of all of the legs that comprise it and it keeps trak of the number of runs.
-public class TrackStat: Stat {
+open class TrackStat: Stat {
     /// The number of "ski runs" (aka the number of times descended)
     public let runs: Int
     /// The total vertical ascent for the entire track
@@ -79,7 +83,7 @@ public class TrackStat: Stat {
     ///   - ascentDistance: the total ascent distance for this track
     ///   - descentDistance: the total descent distance for this track
     ///   - totalDistance: the total distance for this track
-    init(runs: Int, ascent: CLLocationDistance, descent: CLLocationDistance, ascentDistance: CLLocationDistance, descentDistance: CLLocationDistance, totalDistance: CLLocationDistance) {
+    public init(runs: Int, ascent: CLLocationDistance, descent: CLLocationDistance, ascentDistance: CLLocationDistance, descentDistance: CLLocationDistance, totalDistance: CLLocationDistance) {
         self.runs = runs
         verticalAscent = ascent
         verticalDescent = descent
@@ -121,6 +125,8 @@ public class TrackStat: Stat {
     }
 }
 
+// MARK: - Direction
+
 /// The direction that we're going
 ///
 /// - unknown: Unknown direction (e.g. the first point
@@ -137,8 +143,10 @@ public enum Direction: String {
     case downward
 }
 
+// MARK: - Leg
+
 /// A relative minima or maxima
-public class Leg {
+open class Leg {
 
     /// The starting index of the leg
     public let index: Int
@@ -148,7 +156,7 @@ public class Leg {
     private var _direction: Direction = .unknown
 
     /// The direction of this leg (see Direction)
-    public var direction: Direction {
+    open var direction: Direction {
         set {
             _direction = newValue
         }
@@ -163,21 +171,21 @@ public class Leg {
     }
 
     /// The ending index of the leg
-    public var endIndex: Int
+    open var endIndex: Int
 
     /// The ending point of the leg
-    public var endPoint: CLLocation?
+    open var endPoint: CLLocation?
 
     /// The current stats for the leg
-    public var stat = Stat()
+    open var stat = Stat()
 
     /// The Altitude at the referred to point
-    public var altitude: CLLocationDistance {
+    open var altitude: CLLocationDistance {
         return point.altitude
     }
 
     /// The calculated change in altitude between the start and end point
-    public var altitudeChange: CLLocationDistance {
+    open var altitudeChange: CLLocationDistance {
         guard let endPoint = endPoint else {
             return 0
         }
