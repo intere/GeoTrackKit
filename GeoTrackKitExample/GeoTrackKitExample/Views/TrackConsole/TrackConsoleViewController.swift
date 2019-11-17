@@ -28,7 +28,7 @@ class TrackConsoleViewController: UIViewController {
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        NotificationCenter.default.addObserver(self, selector: #selector(locationDidUpdate(_:)), name: Notification.Name.GeoTrackKit.didUpdateLocations, object: nil)
+        Notification.GeoTrackManager.didUpdateLocations.addObserver(self, selector: #selector(locationDidUpdate(_:)))
     }
 
     @IBAction

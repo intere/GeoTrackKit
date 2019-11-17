@@ -17,54 +17,49 @@ import CoreLocation
 ///
 /// ```
 public class GeoTrackManager: NSObject {
-    public static let shared: GeoTrackService = GeoTrackManager()
 
-    // GeoTrackService stuff
-    internal var trackingState: GeoTrackState = .notTracking
-
-    /// Your app's name
-    internal var appName: String = "No Application Name"
+    /// The singleton instance (if you want to mock, you can set the shared var to another GeoTrackService implementation)
+    public static var shared: GeoTrackService = GeoTrackManager()
 
     // Other stuff
-    internal var locationManager: CLLocationManager?
-    /// The last Geo Point to be tracked
-    fileprivate(set) public var lastPoint: CLLocation?
-    /// Are we authorized for location tracking?
-    fileprivate(set) public var authorized: Bool = false
-
-    /// The Track
-    fileprivate(set) public var track: GeoTrack?
+    private var locationManager: CLLocationManager?
 
     /// When we startup, if we find points to be older than this threshold, we toss them away.
     /// Defaults to 5 seconds, but you can adjust this as you see fit.
-    static var oldPointThreshold: TimeInterval = 5
+    static var oldPointTimeThreshold: TimeInterval = 5
+
+    // MARK: - GeoTrackService Properties
+
+    public var applicationName: String = "No Application Name"
+
+    private(set) public var trackingState: GeoTrackState = .notTracking
+
+    public var shouldStorePoints = true
+
+    public var pointFilter: PointFilterOptions = .defaultFilterOptions
+
+    /// The last Geo Point to be tracked
+    private(set) public var lastPoint: CLLocation?
+
+    /// Are we authorized for location tracking?
+    private(set) public var authorized: Bool = false
+
+    /// The Track
+    private(set) public var track: GeoTrack?
 }
 
-// MARK: - API
+// MARK: - GeoTrackService Implementation
 
 extension GeoTrackManager: GeoTrackService {
 
-    /// The application name - do we really need this?
-    public var applicationName: String {
-        get {
-            return appName
-        }
-        set {
-            appName = newValue
-        }
-    }
-
-    /// Are we currently tracking?
     public var isTracking: Bool {
         return trackingState == .tracking
     }
 
-    /// Are we currently getting a location fix?
     public var isAwaitingFix: Bool {
         return trackingState == .awaitingFix
     }
 
-    /// Attempts to start tracking (if we're not already).
     public func startTracking(type: TrackingType) throws {
         GTInfo(message: "User requested Start Tracking")
         guard trackingState == .notTracking else {
@@ -76,12 +71,17 @@ extension GeoTrackManager: GeoTrackService {
         try beginLocationUpdates(type: type)
     }
 
-    /// Stops tracking
     public func stopTracking() {
         GTInfo(message: "User requested Stop Tracking")
 
         endLocationUpdates()
         trackingState = .notTracking
+    }
+
+    public func reset() {
+        lastPoint = nil
+        track = nil
+        locationManager = nil
     }
 }
 
@@ -116,6 +116,7 @@ extension GeoTrackManager: CLLocationManagerDelegate {
             GTError(message: "Restricted from access to location updates")
             track?.error(message: "Location access restricted")
             authorized = false
+
         @unknown default:
             GTDebug(message: "Unknown status: \(status)")
             authorized = false
@@ -134,13 +135,14 @@ extension GeoTrackManager: CLLocationManagerDelegate {
         if trackingState == .awaitingFix {
             trackingState = .tracking
         }
+        let locations = pointFilter.filter(points: locations, last: lastPoint)
 
         var recentLocations = [CLLocation]()
 
         // Ensure that the first point is recent (not old points which we often get when tracking begins):
         if lastPoint == nil {
             locations.forEach { (location) in
-                guard abs(location.timestamp.timeIntervalSinceNow) < GeoTrackManager.oldPointThreshold else {
+                guard abs(location.timestamp.timeIntervalSinceNow) < GeoTrackManager.oldPointTimeThreshold else {
                     return
                 }
                 recentLocations.append(location)
@@ -159,12 +161,14 @@ extension GeoTrackManager: CLLocationManagerDelegate {
         }
         lastPoint = location
 
-        guard let track = track else {
-            GTError(message: "No current track to store points within")
-            return
+        if shouldStorePoints {
+            guard let track = track else {
+                GTError(message: "No current track to store points within")
+                return
+            }
+            track.add(locations: recentLocations)
         }
-        track.add(locations: recentLocations)
-        NotificationCenter.default.post(name: Notification.Name.GeoTrackKit.didUpdateLocations, object: recentLocations)
+        Notification.GeoTrackManager.didUpdateLocations.notify(withObject: recentLocations)
     }
 
     /// Handles location tracking pauses
@@ -173,7 +177,7 @@ extension GeoTrackManager: CLLocationManagerDelegate {
     public func locationManagerDidPauseLocationUpdates(_ manager: CLLocationManager) {
         GTDebug(message: "Paused Location Updates")
         track?.pauseTracking(message: "locationManagerDidPauseLocationUpdates event")
-        NotificationCenter.default.post(name: Notification.Name.GeoTrackKit.didPauseLocationUpdates, object: nil)
+        Notification.GeoTrackManager.didPauseLocationUpdates.notify()
     }
 
     /// Handles location tracking resuming.
@@ -182,7 +186,7 @@ extension GeoTrackManager: CLLocationManagerDelegate {
     public func locationManagerDidResumeLocationUpdates(_ manager: CLLocationManager) {
         GTDebug(message: "Resumed Location Updates")
         track?.startTracking(message: "locationManagerDidResumeLocationUpdates event")
-        NotificationCenter.default.post(name: Notification.Name.GeoTrackKit.didResumeLocationUpdates, object: nil)
+        Notification.GeoTrackManager.didResumeLocationUpdates.notify()
     }
 
     /// Handles location tracking errors
@@ -193,7 +197,7 @@ extension GeoTrackManager: CLLocationManagerDelegate {
     public func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         GTError(message: "Failed to perform location tracking: \(error.localizedDescription), \(error)")
         track?.error(error: error)
-        NotificationCenter.default.post(name: Notification.Name.GeoTrackKit.didFailWithError, object: error)
+        Notification.GeoTrackManager.didFailWithError.notify(withObject: error)
     }
 
     /// Handles deferred update errors.
@@ -211,14 +215,14 @@ extension GeoTrackManager: CLLocationManagerDelegate {
         } else {
             track?.error(message: "locationManager:didFinishDeferredUpdatesWithError: nil error")
         }
-        NotificationCenter.default.post(name: Notification.Name.GeoTrackKit.didFinishDeferredUpdatesWithError, object: error)
+        Notification.GeoTrackManager.didFinishDeferredUpdatesWithError.notify()
     }
 
 }
 
-// MARK: - Helpers
+// MARK: - Implementation
 
-fileprivate extension GeoTrackManager {
+private extension GeoTrackManager {
 
     /// Initializes the location manager and sets the preferences
     func initializeLocationManager() {
@@ -296,25 +300,23 @@ fileprivate extension GeoTrackManager {
 
 }
 
-// MARK: - Notifications
+// MARK: - GeoTrackManager Notifications
 
-public extension Notification.Name {
+public extension Notification {
 
-    /// GeoTrackKit notification constants
-    struct GeoTrackKit {
-        /// Notofication that the location was updated
-        public static let didUpdateLocations = Notification.Name(rawValue: "com.geotrackkit.did.update.locations")
+    enum GeoTrackManager: String, Notifiable, CustomStringConvertible {
+        case didUpdateLocations
+        case didPauseLocationUpdates
+        case didResumeLocationUpdates
+        case didFailWithError
+        case didFinishDeferredUpdatesWithError
 
-        /// Notification that location updates were paused
-        public static let didPauseLocationUpdates = Notification.Name(rawValue: "com.geotrackkit.did.pause.location.updates")
+        public static var notificationBase: String {
+            return "com.geotrackkit.geotrackmanager"
+        }
 
-        /// Notification that location updates have been resumed
-        public static let didResumeLocationUpdates = Notification.Name(rawValue: "com.geotrackkit.did.resume.location.updates")
-
-        /// Notification that there was a failure tracking location updates
-        public static let didFailWithError = Notification.Name(rawValue: "com.geotrackkit.did.fail.with.error")
-
-        /// Notification that deferred updates have failed with an error
-        public static let didFinishDeferredUpdatesWithError = Notification.Name(rawValue: "com.geotrackkit.did.finish.deferred.updates.with.error")
+        public var description: String {
+            return rawValue
+        }
     }
 }
