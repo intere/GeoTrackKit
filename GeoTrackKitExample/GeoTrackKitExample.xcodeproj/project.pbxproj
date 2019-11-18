@@ -13,6 +13,8 @@
 		36302DB9210E17B400834A1D /* GeoTrackKitErrorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36302DB8210E17B400834A1D /* GeoTrackKitErrorTests.swift */; };
 		3661C3662381C80B009DE76C /* GeoTrackManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3661C3652381C80B009DE76C /* GeoTrackManagerTests.swift */; };
 		3661C3682381D335009DE76C /* PointFilterOptionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3661C3672381D335009DE76C /* PointFilterOptionsTests.swift */; };
+		3661C36B2382253E009DE76C /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 3661C3692382253D009DE76C /* README.md */; };
+		3661C36C2382253E009DE76C /* Changelog.md in Resources */ = {isa = PBXBuildFile; fileRef = 3661C36A2382253E009DE76C /* Changelog.md */; };
 		366B1C672209271E003C19F8 /* TrackList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 366B1C662209271E003C19F8 /* TrackList.storyboard */; };
 		366B1C69220927F4003C19F8 /* TrackListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 366B1C68220927F4003C19F8 /* TrackListTableViewController.swift */; };
 		366B652D21963A7D00BA5EB7 /* reference-track-2.json in Resources */ = {isa = PBXBuildFile; fileRef = 366B652C21963A7D00BA5EB7 /* reference-track-2.json */; };
@@ -69,6 +71,8 @@
 		36302DB8210E17B400834A1D /* GeoTrackKitErrorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeoTrackKitErrorTests.swift; sourceTree = "<group>"; };
 		3661C3652381C80B009DE76C /* GeoTrackManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeoTrackManagerTests.swift; sourceTree = "<group>"; };
 		3661C3672381D335009DE76C /* PointFilterOptionsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointFilterOptionsTests.swift; sourceTree = "<group>"; };
+		3661C3692382253D009DE76C /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		3661C36A2382253E009DE76C /* Changelog.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = Changelog.md; path = ../Changelog.md; sourceTree = "<group>"; };
 		366B1C662209271E003C19F8 /* TrackList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TrackList.storyboard; sourceTree = "<group>"; };
 		366B1C68220927F4003C19F8 /* TrackListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackListTableViewController.swift; sourceTree = "<group>"; };
 		366B652C21963A7D00BA5EB7 /* reference-track-2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "reference-track-2.json"; sourceTree = "<group>"; };
@@ -256,6 +260,8 @@
 		36C45E381DCE2D3500E87710 = {
 			isa = PBXGroup;
 			children = (
+				3661C36A2382253E009DE76C /* Changelog.md */,
+				3661C3692382253D009DE76C /* README.md */,
 				36C45E431DCE2D3500E87710 /* GeoTrackKitExample */,
 				36C45E581DCE2D3500E87710 /* GeoTrackKitExampleTests */,
 				36C45E421DCE2D3500E87710 /* Products */,
@@ -476,6 +482,7 @@
 			files = (
 				36A7C6DB2104CBF30073407A /* TrackConsole.storyboard in Resources */,
 				36C45E4F1DCE2D3500E87710 /* LaunchScreen.storyboard in Resources */,
+				3661C36B2382253E009DE76C /* README.md in Resources */,
 				36E3C43D1F4A0817005738DB /* reference-track-1.json in Resources */,
 				366B1C672209271E003C19F8 /* TrackList.storyboard in Resources */,
 				36A7C6E72104CD120073407A /* TrackView.storyboard in Resources */,
@@ -483,6 +490,7 @@
 				36D099B5210B64E200C8C841 /* TrackImport.storyboard in Resources */,
 				36A7C6E32104CC360073407A /* LiveTrackingView.storyboard in Resources */,
 				36C45E4A1DCE2D3500E87710 /* Main.storyboard in Resources */,
+				3661C36C2382253E009DE76C /* Changelog.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
