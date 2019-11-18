@@ -14,7 +14,7 @@ class GeoTrackAnalyzerTests: XCTestCase {
     var track: GeoTrack?
 
     override func setUp() {
-        let reader = TrackReader(filename: "reference-track-1")
+        let reader = TrackReader(bundleFilename: "reference-track-1")
         track = reader.track
     }
 

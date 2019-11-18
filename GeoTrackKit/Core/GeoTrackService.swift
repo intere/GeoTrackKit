@@ -30,6 +30,9 @@ public protocol GeoTrackService {
     /// Application name
     var applicationName: String { get set }
 
+    /// The LocationManager
+    var locationManager: LocationServicing? { get set }
+
     /// Is the service currently tracking?
     var isTracking: Bool { get }
 

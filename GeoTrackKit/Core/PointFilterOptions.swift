@@ -28,6 +28,9 @@ open class PointFilterOptions {
         return PointFilterOptions()
     }()
 
+    /// Default initializer
+    public init() { }
+
     /// The minimum amount of time that should elapse between any two points
     open var minimumElapsedTime: TimeInterval? = 3
 
@@ -53,6 +56,9 @@ open class PointFilterOptions {
         for point in points {
             defer {
                 if !shouldFilter(current: point) {
+                    if last == nil {
+                        filtered.append(point)
+                    }
                     last = point
                 }
             }
