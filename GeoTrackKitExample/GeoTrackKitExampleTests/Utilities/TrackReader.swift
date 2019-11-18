@@ -15,10 +15,10 @@ class TrackReader {
     let type: String
     let track: GeoTrack?
 
-    init(filename: String, type: String = "json") {
-        self.filename = filename
+    init(bundleFilename: String, type: String = "json") {
+        self.filename = bundleFilename
         self.type = type
-        self.track = TrackReader.loadFromBundle(filename: filename, type: type)
+        self.track = TrackReader.loadFromBundle(filename: bundleFilename, type: type)
     }
 
 }

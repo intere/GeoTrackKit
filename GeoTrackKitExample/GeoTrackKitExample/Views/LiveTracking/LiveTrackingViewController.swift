@@ -20,7 +20,7 @@ class LiveTrackingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        NotificationCenter.default.addObserver(self, selector: #selector(trackUpdated), name: Notification.Name.GeoTrackKit.didUpdateLocations, object: nil)
+        Notification.GeoTrackManager.didUpdateLocations.addObserver(self, selector: #selector(trackUpdated))
     }
 }
 

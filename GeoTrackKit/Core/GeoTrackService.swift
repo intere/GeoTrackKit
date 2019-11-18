@@ -22,11 +22,16 @@ public enum TrackingType {
 /// This is a callback to let you know that the authorization state has been reached
 public typealias GeoTrackAuthCallback = () -> Void
 
+// MARK: - GeoTrackService
+
 /// This is the protocol for the GeoTrackService.  It will handle starting and stopping tracking.
 public protocol GeoTrackService {
 
     /// Application name
     var applicationName: String { get set }
+
+    /// The LocationManager
+    var locationManager: LocationServicing? { get set }
 
     /// Is the service currently tracking?
     var isTracking: Bool { get }
@@ -40,6 +45,13 @@ public protocol GeoTrackService {
     /// The most recently tracked point
     var lastPoint: CLLocation? { get }
 
+    /// Should the service collect all of the points, or just ignore them and rebroadcast the events?
+    /// If this is set to false, then the track will always be nil.
+    var shouldStorePoints: Bool { get set }
+
+    /// How should the service filter location points that come through?
+    var pointFilter: PointFilterOptions { get set }
+
     /// If we already have the appropriate type of authorization, then begin tracking.  If not
     /// then request authorization and start tracking after we get it.
     ///
@@ -49,6 +61,9 @@ public protocol GeoTrackService {
 
     /// Stops tracking
     func stopTracking()
+
+    /// An implementer will nil out the track, nil out the lastPoint and reset everything to the initial state
+    func reset()
 
 }
 
