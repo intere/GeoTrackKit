@@ -8,6 +8,8 @@
 import CoreLocation
 import MapKit
 
+// MARK: - GeoTrack
+
 public extension GeoTrack {
 
     /// Gets you a mercator MBR
@@ -63,36 +65,6 @@ public extension GeoTrack {
         return false
     }
 
-}
-
-// MARK: - Throwaway
-
-public extension GeoTrack {
-
-    // TODO: probably throw this away
-    /// Gets you a (mercator-based) path for this track.
-    var path: CGPath? {
-        guard points.count > 1 else {
-            return nil
-        }
-
-        let mutablePath = CGMutablePath()
-        // Doesn't seem to work
-
-        var last: CGPoint?
-        for point in points {
-            defer {
-                last = point.coordinate.latLonPoint
-            }
-            guard let last = last else {
-                continue
-            }
-            mutablePath.addLines(between: [last, point.coordinate.latLonPoint])
-        }
-
-        return mutablePath
-    }
-
     /// Creates a polygon from the track that expands the line by the `size` meters you provide.
     /// - Parameter meters: The distance to expand outwards.
     func toPolygonPointArray(size meters: CLLocationDistance) -> [CLLocation]? {
@@ -107,130 +79,81 @@ public extension GeoTrack {
             let last = points[idx - 1]
             let point = points[idx]
 
-            helpPolygonArrayMethod1(meters: meters, last: last, point: point) { (direction, resultPoint, bottomResultPoint) in
-                if idx == 1 {
-                    computeEdgePoints(meters: meters, direction: direction, point: last) { (_, resultPoint, bottomResultPoint) in
-                        result.append(resultPoint)
-                        bottomResult.append(bottomResultPoint)
-                    }
+            let direction = last.direction(from: point)
+
+            let x1: Double, x2: Double
+            let y1: Double, y2: Double
+
+            switch direction.vertical {
+            case .north:
+                switch direction.horizontal {
+                case .east:
+                    // North East
+                    x1 = (last.x + point.x) / 2
+                    y1 = (last.y + point.y) / 2 + meters
+                    x2 = x1
+                    y2 = (last.y + point.y) / 2 - meters
+                case .west:
+                    // North West
+                    x1 = (last.x + point.x) / 2
+                    y1 = (last.y + point.y) / 2 - meters
+                    x2 = x1
+                    y2 = (last.y + point.y) / 2 + meters
+                case .none:
+                    // North
+                    x1 = last.x - meters
+                    y1 = (last.y + point.y) / 2
+                    x2 = last.x + meters
+                    y2 = y1
                 }
+            case .south:
+                switch direction.horizontal {
+                case .east:
+                    // South East
+                    x1 = (last.x + point.x) / 2
+                    y1 = (last.y + point.y) / 2 - meters
+                    x2 = x1
+                    y2 = (last.y + point.y) / 2 + meters
+                case .west:
+                    // South West
+                    x1 = (last.x + point.x) / 2
+                    y1 = (last.y + point.y) / 2 + meters
+                    x2 = x1
+                    y2 = (last.y + point.y) / 2 - meters
+                case .none:
+                    // South
+                    x1 = last.x - meters
+                    y1 = (last.y + point.y) / 2
+                    x2 = last.x + meters
+                    y2 = y1
+                }
+            case .none:
+                switch direction.horizontal {
+                case .east:
+                    // East
+                    x1 = (last.x + point.x) / 2
+                    y1 = last.y + meters
+                    x2 = x1
+                    y2 = last.y - meters
+                case .west:
+                    // West
+                    x1 = (last.x + point.x) / 2
+                    y1 = last.y + meters
+                    x2 = x1
+                    y2 = last.y - meters
 
-                result.append(resultPoint)
-                bottomResult.append(bottomResultPoint)
-
-                if idx + 1 == points.count {
-                    computeEdgePoints(meters: meters, direction: direction, point: point) { (_, resultPoint, bottomResultPoint) in
-                        result.append(resultPoint)
-                        bottomResult.append(bottomResultPoint)
-                    }
+                case .none:
+                    // Same point
+                    assertionFailure()
+                    return nil
                 }
             }
+            result.append(CLLocation(x: x1, y: y1))
+            bottomResult.append(CLLocation(x: x2, y: y2))
         }
 
         result.append(contentsOf: bottomResult.reversed())
         return result
-    }
-
-    enum Direction {
-        case north
-        case south
-        case east
-        case west
-        case northEast
-        case northWest
-        case southEast
-        case southWest
-    }
-
-    /// A block that handles a direction, forward location and reverse location for polygon creation.
-    typealias PolygonHelpBlock = (Direction, CLLocation, CLLocation) -> Void
-
-    private func computeEdgePoints(meters: CLLocationDistance, direction: Direction, point: CLLocation, completion: PolygonHelpBlock) {
-
-        switch direction {
-        case .north:
-            completion(.north, CLLocation(x: point.x - meters, y: point.y - meters),
-                       CLLocation(x: point.x + meters, y: point.y - meters))
-        case .south:
-            completion(.south, CLLocation(x: point.x + meters, y: point.y - meters),
-                       CLLocation(x: point.x - meters, y: point.y - meters))
-        case .east:
-            completion(.east, CLLocation(x: point.x - meters, y: point.y + meters),
-                       CLLocation(x: point.x - meters, y: point.y - meters))
-        case .west:
-            completion(.west, CLLocation(x: point.x + meters, y: point.y + meters),
-                       CLLocation(x: point.x + meters, y: point.y - meters))
-        default:
-            break
-        }
-    }
-
-    private func helpPolygonArrayMethod1(meters: CLLocationDistance, last: CLLocation, point: CLLocation, completion: PolygonHelpBlock) {
-
-        // swiftlint:disable:next identifier_name
-        let 𝛅x = point.x - last.x
-        let 𝛅y = point.y - last.y
-        // swiftlint:disable:previous identifier_name
-
-        if abs(𝛅x) < abs(𝛅y) {
-            // vertical 𝛅 is greater than horizontal 𝛅
-            if 𝛅y > 0 {
-                // moving north (up)
-                computeEdgePoints(meters: meters, direction: .north, point: last, completion: completion)
-//                completion(.north, CLLocation(x: last.x - meters, y: last.y - meters),
-//                           CLLocation(x: last.x + meters, y: last.y - meters))
-            } else {
-                // moving south (down)
-                computeEdgePoints(meters: meters, direction: .south, point: last, completion: completion)
-//                completion(.south, CLLocation(x: last.x + meters, y: last.y - meters),
-//                           CLLocation(x: last.x - meters, y: last.y - meters))
-            }
-        } else {
-            // horizontal 𝛅 is greater than vertical 𝛅
-            if 𝛅x > 0 {
-                // moving east (right)
-                computeEdgePoints(meters: meters, direction: .east, point: last, completion: completion)
-//                completion(.east, CLLocation(x: last.x - meters, y: last.y + meters),
-//                           CLLocation(x: last.x - meters, y: last.y - meters))
-            } else {
-                // moving west (left)
-                computeEdgePoints(meters: meters, direction: .west, point: last, completion: completion)
-//                completion(.west, CLLocation(x: last.x + meters, y: last.y + meters),
-//                           CLLocation(x: last.x + meters, y: last.y - meters))
-            }
-        }
-    }
-
-    private func helpPolygonArrayMethod2(meters: CLLocationDistance, last: CLLocation, point: CLLocation, completion: PolygonHelpBlock) {
-
-        // swiftlint:disable:next identifier_name
-        let 𝛅x = point.x - last.x
-        let 𝛅y = point.y - last.y
-        // swiftlint:disable:previous identifier_name
-
-        if 𝛅y > 0 {
-            // north
-            if 𝛅x > 0 {
-                // east
-                completion(.northEast, CLLocation(x: last.x - meters, y: last.y - meters),
-                           CLLocation(x: last.x - meters, y: last.y + meters))
-            } else {
-                // west
-                completion(.northWest, CLLocation(x: last.x + meters, y: last.y - meters),
-                           CLLocation(x: last.x + meters, y: last.y + meters))
-            }
-        } else {
-            // south
-            if 𝛅x > 0 {
-                // east
-                completion(.southEast, CLLocation(x: last.x - meters, y: last.y + meters),
-                           CLLocation(x: last.x - meters, y: last.y - meters))
-            } else {
-                // west
-                completion(.southWest, CLLocation(x: last.x + meters, y: last.y + meters),
-                           CLLocation(x: last.x + meters, y: last.y - meters))
-            }
-        }
     }
 
 }
@@ -267,12 +190,9 @@ private extension GeoTrack {
 
 }
 
-extension CLLocation {
+// MARK: - CLLocation extension
 
-    // swiftlint:disable:next identifier_name
-    convenience init(x: CLLocationDegrees, y: CLLocationDegrees) {
-        self.init(latitude: y.latFromMercatorY, longitude: x.lonFromMercatorX)
-    }
+extension CLLocation {
 
     // swiftlint:disable:next identifier_name
     var x: CLLocationDegrees {
@@ -282,6 +202,63 @@ extension CLLocation {
     // swiftlint:disable:next identifier_name
     var y: CLLocationDegrees {
         return coordinate.mercatorY
+    }
+
+    enum Horizontal {
+        case east
+        case west
+        case none
+
+        /// Tells you what direction the second point is from the first in the east/west direction.
+        /// - Parameters:
+        ///   - first: The first point.
+        ///   - second: The second point.
+        static func direction(from first: CLLocation, to second: CLLocation) -> Horizontal {
+            if second.x < first.x {
+                return .west
+            } else if second.x > first.x {
+                return .east
+            } else {
+                return .none
+            }
+        }
+    }
+
+    enum Vertical {
+        case north
+        case south
+        case none
+
+        /// Tells you what direction the second point is from the first in the north/west direction.
+        /// - Parameters:
+        ///   - first: The first point.
+        ///   - second: The second point.
+        static func direction(from first: CLLocation, to second: CLLocation) -> Vertical {
+            if second.y < first.y {
+                return .south
+            } else if second.y > first.y {
+                return .north
+            } else {
+                return .none
+            }
+        }
+    }
+
+    struct Direction {
+        let horizontal: Horizontal
+        let vertical: Vertical
+    }
+
+    // swiftlint:disable:next identifier_name
+    convenience init(x: CLLocationDegrees, y: CLLocationDegrees) {
+        self.init(latitude: y.latFromMercatorY, longitude: x.lonFromMercatorX)
+    }
+
+    /// Tells you what direction the provided point is from the provided point.
+    /// - Parameter point: The point you want to know the direction from.
+    func direction(from point: CLLocation) -> Direction {
+        return Direction(horizontal: .direction(from: self, to: point),
+                         vertical: .direction(from: self, to: point))
     }
 }
 
