@@ -57,17 +57,22 @@ public extension GeoTrackMap {
         removeOverlays(overlays)
         print("Removed overlays")
 
-        if let polyline = model?.expandedPolyline(size: 20) {
-            addOverlay(polyline)
-            print("Added expanded polyline overlay")
-        }
-
         guard let polylines = model?.polylines else {
             return
         }
 
         for polyline in polylines {
             addOverlay(polyline)
+        }
+
+        if let legs = model?.legs {
+            legs.forEach { leg in
+                guard let polyline = model?.expandedPolyline(forLeg: leg, size: 20) else {
+                    return
+                }
+                addOverlay(polyline)
+                print("Added expanded polyline overlay")
+            }
         }
 
         guard let zoomDelegate = zoomDelegate else {

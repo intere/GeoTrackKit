@@ -65,9 +65,14 @@ public extension GeoTrack {
         return false
     }
 
-    /// Creates a polygon from the track that expands the line by the `size` meters you provide.
-    /// - Parameter meters: The distance to expand outwards.
     func toPolygonPointArray(size meters: CLLocationDistance) -> [CLLocation]? {
+        return toPolygonPointArray(points: points, size: meters)
+    }
+
+    /// Creates a polygon from the track that expands the line by the `size` meters you provide.
+    /// - Parameter points: The points to convert to a polygon array
+    /// - Parameter meters: The distance to expand outwards.
+    func toPolygonPointArray(points: [CLLocation], size meters: CLLocationDistance) -> [CLLocation]? {
         guard points.count > 2 else {
             return nil
         }
