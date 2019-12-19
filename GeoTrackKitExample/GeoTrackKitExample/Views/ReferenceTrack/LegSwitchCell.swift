@@ -17,6 +17,11 @@ class LegSwitchCell: UITableViewCell {
     var indexPath: IndexPath?
     weak var model: UIGeoTrack?
 
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        setSelected(false, animated: false)
+    }
+
     @IBAction func didToggleSwitch(_ sender: UISwitch) {
         guard let indexPath = indexPath else {
             return assertionFailure("IndexPath not set on cell")
