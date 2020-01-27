@@ -31,7 +31,9 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
     LICENSE
   }
 
-  s.platform = :ios, '9.0'
+  # s.platform = :ios, '9.0'
+  s.ios.deployment_target = '9.0'
+  s.watchos.deployment_target = '6.0'
   s.swift_version = '5.0'
   s.default_subspecs = 'Core'
 
