@@ -13,4 +13,9 @@ target 'GeoTrackKitExample' do
     inherit! :search_paths
   end
 
+  target 'WatchExample Extension' do
+    platform :watchos, '6.0'
+    pod 'GeoTrackKit', :subspecs => ['WatchCore'], :path => '..'
+  end
+
 end

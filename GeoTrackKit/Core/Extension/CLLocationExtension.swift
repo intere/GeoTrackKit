@@ -6,6 +6,7 @@
 //
 //  A set of convenience extensions to provide a friendly string value and then serialization functions
 
+import CoreGraphics
 import CoreLocation
 
 public extension CLLocation {

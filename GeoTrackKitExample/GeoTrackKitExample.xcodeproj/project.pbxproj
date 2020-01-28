@@ -8,8 +8,21 @@
 
 /* Begin PBXBuildFile section */
 		0E1E09A3899897CDAE589A5B /* Pods_GeoTrackKitExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A51639AB7B6B4BAEF27C313 /* Pods_GeoTrackKitExample.framework */; };
+		0F76C34E0A204A26350746FF /* Pods_WatchExample_Extension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5180998FF2FDC1EDA280F7D /* Pods_WatchExample_Extension.framework */; };
 		1B2451A1B46FD1E813C13A25 /* Pods_GeoTrackKitExampleTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6E72B23B9554498B66030FE /* Pods_GeoTrackKitExampleTests.framework */; };
 		3604FC77217150AB00B46BAA /* GeoTrackStatisticsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3604FC76217150AB00B46BAA /* GeoTrackStatisticsTests.swift */; };
+		3624765B23DFB577005E095E /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3624765923DFB577005E095E /* Interface.storyboard */; };
+		3624765D23DFB578005E095E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3624765C23DFB578005E095E /* Assets.xcassets */; };
+		3624766423DFB578005E095E /* WatchExample Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 3624766323DFB578005E095E /* WatchExample Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		3624766923DFB578005E095E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3624766823DFB578005E095E /* ContentView.swift */; };
+		3624766B23DFB578005E095E /* HostingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3624766A23DFB578005E095E /* HostingController.swift */; };
+		3624766D23DFB578005E095E /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3624766C23DFB578005E095E /* ExtensionDelegate.swift */; };
+		3624766F23DFB578005E095E /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3624766E23DFB578005E095E /* NotificationController.swift */; };
+		3624767123DFB578005E095E /* NotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3624767023DFB578005E095E /* NotificationView.swift */; };
+		3624767323DFB578005E095E /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3624767223DFB578005E095E /* ComplicationController.swift */; };
+		3624767523DFB578005E095E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3624767423DFB578005E095E /* Assets.xcassets */; };
+		3624767823DFB578005E095E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3624767723DFB578005E095E /* Preview Assets.xcassets */; };
+		3624767D23DFB579005E095E /* WatchExample.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 3624765723DFB577005E095E /* WatchExample.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		36302DB9210E17B400834A1D /* GeoTrackKitErrorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36302DB8210E17B400834A1D /* GeoTrackKitErrorTests.swift */; };
 		3661C3662381C80B009DE76C /* GeoTrackManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3661C3652381C80B009DE76C /* GeoTrackManagerTests.swift */; };
 		3661C3682381D335009DE76C /* PointFilterOptionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3661C3672381D335009DE76C /* PointFilterOptionsTests.swift */; };
@@ -57,6 +70,20 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		3624766523DFB578005E095E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 36C45E391DCE2D3500E87710 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3624766223DFB578005E095E;
+			remoteInfo = "WatchExample Extension";
+		};
+		3624767B23DFB579005E095E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 36C45E391DCE2D3500E87710 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3624765623DFB577005E095E;
+			remoteInfo = WatchExample;
+		};
 		36C45E561DCE2D3500E87710 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 36C45E391DCE2D3500E87710 /* Project object */;
@@ -66,8 +93,49 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		3624767E23DFB579005E095E /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				3624767D23DFB579005E095E /* WatchExample.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3624768123DFB579005E095E /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				3624766423DFB578005E095E /* WatchExample Extension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		07FB2C2FB5AE1FAD000A665C /* Pods-WatchExample Extension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WatchExample Extension.release.xcconfig"; path = "Pods/Target Support Files/Pods-WatchExample Extension/Pods-WatchExample Extension.release.xcconfig"; sourceTree = "<group>"; };
 		3604FC76217150AB00B46BAA /* GeoTrackStatisticsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeoTrackStatisticsTests.swift; sourceTree = "<group>"; };
+		3624765723DFB577005E095E /* WatchExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WatchExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3624765A23DFB577005E095E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
+		3624765C23DFB578005E095E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		3624765E23DFB578005E095E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3624766323DFB578005E095E /* WatchExample Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "WatchExample Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3624766823DFB578005E095E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		3624766A23DFB578005E095E /* HostingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostingController.swift; sourceTree = "<group>"; };
+		3624766C23DFB578005E095E /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
+		3624766E23DFB578005E095E /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
+		3624767023DFB578005E095E /* NotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationView.swift; sourceTree = "<group>"; };
+		3624767223DFB578005E095E /* ComplicationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplicationController.swift; sourceTree = "<group>"; };
+		3624767423DFB578005E095E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		3624767723DFB578005E095E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		3624767923DFB578005E095E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3624767A23DFB578005E095E /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
 		36302DB8210E17B400834A1D /* GeoTrackKitErrorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeoTrackKitErrorTests.swift; sourceTree = "<group>"; };
 		3661C3652381C80B009DE76C /* GeoTrackManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeoTrackManagerTests.swift; sourceTree = "<group>"; };
 		3661C3672381D335009DE76C /* PointFilterOptionsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointFilterOptionsTests.swift; sourceTree = "<group>"; };
@@ -114,6 +182,8 @@
 		36EA9BF522061B90003C79E8 /* TrackServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackServiceTests.swift; sourceTree = "<group>"; };
 		36F5A73321E0308900A3DB21 /* CoreLocationExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreLocationExtension.swift; sourceTree = "<group>"; };
 		51B54550121FF2A0DC20134F /* Pods-GeoTrackKitExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GeoTrackKitExample.release.xcconfig"; path = "Pods/Target Support Files/Pods-GeoTrackKitExample/Pods-GeoTrackKitExample.release.xcconfig"; sourceTree = "<group>"; };
+		59E1FB9F2B0D12AB6879D3D5 /* Pods-WatchExample Extension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WatchExample Extension.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WatchExample Extension/Pods-WatchExample Extension.debug.xcconfig"; sourceTree = "<group>"; };
+		6074278510A96EFDD7BEB3AF /* Pods-GeoTrackKitExample-WatchExample Extension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GeoTrackKitExample-WatchExample Extension.release.xcconfig"; path = "Pods/Target Support Files/Pods-GeoTrackKitExample-WatchExample Extension/Pods-GeoTrackKitExample-WatchExample Extension.release.xcconfig"; sourceTree = "<group>"; };
 		8992FE79B7159E02B95D4ABA /* Pods-GeoTrackKitExampleTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GeoTrackKitExampleTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GeoTrackKitExampleTests/Pods-GeoTrackKitExampleTests.debug.xcconfig"; sourceTree = "<group>"; };
 		8A51639AB7B6B4BAEF27C313 /* Pods_GeoTrackKitExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GeoTrackKitExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		93090E1F1DF822D9004F56FB /* GeoTrackEventLogTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeoTrackEventLogTests.swift; sourceTree = "<group>"; };
@@ -122,9 +192,26 @@
 		99464F9CAE97A457D9B3EBE4 /* Pods-GeoTrackKitExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GeoTrackKitExample.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GeoTrackKitExample/Pods-GeoTrackKitExample.debug.xcconfig"; sourceTree = "<group>"; };
 		9A80CFF9C7B4FF4F0F60716F /* Pods-GeoTrackKitExampleTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GeoTrackKitExampleTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-GeoTrackKitExampleTests/Pods-GeoTrackKitExampleTests.release.xcconfig"; sourceTree = "<group>"; };
 		A6E72B23B9554498B66030FE /* Pods_GeoTrackKitExampleTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GeoTrackKitExampleTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C29788287E0B1A9D4B883F9E /* Pods-GeoTrackKitExample-WatchExample Extension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GeoTrackKitExample-WatchExample Extension.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GeoTrackKitExample-WatchExample Extension/Pods-GeoTrackKitExample-WatchExample Extension.debug.xcconfig"; sourceTree = "<group>"; };
+		F5180998FF2FDC1EDA280F7D /* Pods_WatchExample_Extension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WatchExample_Extension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		12EB7464DA15A0C51524C739 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3624766023DFB578005E095E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0F76C34E0A204A26350746FF /* Pods_WatchExample_Extension.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		36C45E3E1DCE2D3500E87710 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -151,8 +238,44 @@
 				36D099B0210B607300C8C841 /* HealthKit.framework */,
 				8A51639AB7B6B4BAEF27C313 /* Pods_GeoTrackKitExample.framework */,
 				A6E72B23B9554498B66030FE /* Pods_GeoTrackKitExampleTests.framework */,
+				F5180998FF2FDC1EDA280F7D /* Pods_WatchExample_Extension.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		3624765823DFB577005E095E /* WatchExample */ = {
+			isa = PBXGroup;
+			children = (
+				3624765923DFB577005E095E /* Interface.storyboard */,
+				3624765C23DFB578005E095E /* Assets.xcassets */,
+				3624765E23DFB578005E095E /* Info.plist */,
+			);
+			path = WatchExample;
+			sourceTree = "<group>";
+		};
+		3624766723DFB578005E095E /* WatchExample Extension */ = {
+			isa = PBXGroup;
+			children = (
+				3624766823DFB578005E095E /* ContentView.swift */,
+				3624766A23DFB578005E095E /* HostingController.swift */,
+				3624766C23DFB578005E095E /* ExtensionDelegate.swift */,
+				3624766E23DFB578005E095E /* NotificationController.swift */,
+				3624767023DFB578005E095E /* NotificationView.swift */,
+				3624767223DFB578005E095E /* ComplicationController.swift */,
+				3624767423DFB578005E095E /* Assets.xcassets */,
+				3624767923DFB578005E095E /* Info.plist */,
+				3624767A23DFB578005E095E /* PushNotificationPayload.apns */,
+				3624767623DFB578005E095E /* Preview Content */,
+			);
+			path = "WatchExample Extension";
+			sourceTree = "<group>";
+		};
+		3624767623DFB578005E095E /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				3624767723DFB578005E095E /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
 			sourceTree = "<group>";
 		};
 		36302DB2210E139100834A1D /* Core */ = {
@@ -264,6 +387,8 @@
 				3661C3692382253D009DE76C /* README.md */,
 				36C45E431DCE2D3500E87710 /* GeoTrackKitExample */,
 				36C45E581DCE2D3500E87710 /* GeoTrackKitExampleTests */,
+				3624765823DFB577005E095E /* WatchExample */,
+				3624766723DFB578005E095E /* WatchExample Extension */,
 				36C45E421DCE2D3500E87710 /* Products */,
 				3946A07E733955EE7C410B0B /* Pods */,
 				1293B838470181209049C3A4 /* Frameworks */,
@@ -275,6 +400,8 @@
 			children = (
 				36C45E411DCE2D3500E87710 /* GeoTrackKitExample.app */,
 				36C45E551DCE2D3500E87710 /* GeoTrackKitExampleTests.xctest */,
+				3624765723DFB577005E095E /* WatchExample.app */,
+				3624766323DFB578005E095E /* WatchExample Extension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -345,6 +472,10 @@
 				51B54550121FF2A0DC20134F /* Pods-GeoTrackKitExample.release.xcconfig */,
 				8992FE79B7159E02B95D4ABA /* Pods-GeoTrackKitExampleTests.debug.xcconfig */,
 				9A80CFF9C7B4FF4F0F60716F /* Pods-GeoTrackKitExampleTests.release.xcconfig */,
+				C29788287E0B1A9D4B883F9E /* Pods-GeoTrackKitExample-WatchExample Extension.debug.xcconfig */,
+				6074278510A96EFDD7BEB3AF /* Pods-GeoTrackKitExample-WatchExample Extension.release.xcconfig */,
+				59E1FB9F2B0D12AB6879D3D5 /* Pods-WatchExample Extension.debug.xcconfig */,
+				07FB2C2FB5AE1FAD000A665C /* Pods-WatchExample Extension.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -385,6 +516,43 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		3624765623DFB577005E095E /* WatchExample */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3624768523DFB579005E095E /* Build configuration list for PBXNativeTarget "WatchExample" */;
+			buildPhases = (
+				3624765523DFB577005E095E /* Resources */,
+				3624768123DFB579005E095E /* Embed App Extensions */,
+				12EB7464DA15A0C51524C739 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3624766623DFB578005E095E /* PBXTargetDependency */,
+			);
+			name = WatchExample;
+			productName = WatchExample;
+			productReference = 3624765723DFB577005E095E /* WatchExample.app */;
+			productType = "com.apple.product-type.application.watchapp2";
+		};
+		3624766223DFB578005E095E /* WatchExample Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3624768423DFB579005E095E /* Build configuration list for PBXNativeTarget "WatchExample Extension" */;
+			buildPhases = (
+				182569A1E20E4BFD3C3315AC /* [CP] Check Pods Manifest.lock */,
+				3624765F23DFB578005E095E /* Sources */,
+				3624766023DFB578005E095E /* Frameworks */,
+				3624766123DFB578005E095E /* Resources */,
+				663B5AB040FBD689E38270E6 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "WatchExample Extension";
+			productName = "WatchExample Extension";
+			productReference = 3624766323DFB578005E095E /* WatchExample Extension.appex */;
+			productType = "com.apple.product-type.watchkit2-extension";
+		};
 		36C45E401DCE2D3500E87710 /* GeoTrackKitExample */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 36C45E5E1DCE2D3500E87710 /* Build configuration list for PBXNativeTarget "GeoTrackKitExample" */;
@@ -395,10 +563,12 @@
 				36C45E3E1DCE2D3500E87710 /* Frameworks */,
 				36C45E3F1DCE2D3500E87710 /* Resources */,
 				15F80713F620802C6C8F2402 /* [CP] Embed Pods Frameworks */,
+				3624767E23DFB579005E095E /* Embed Watch Content */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				3624767C23DFB579005E095E /* PBXTargetDependency */,
 			);
 			name = GeoTrackKitExample;
 			productName = GeoTrackKitExample;
@@ -430,10 +600,20 @@
 		36C45E391DCE2D3500E87710 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0810;
+				LastSwiftUpdateCheck = 1120;
 				LastUpgradeCheck = 1100;
 				ORGANIZATIONNAME = "Eric Internicola";
 				TargetAttributes = {
+					3624765623DFB577005E095E = {
+						CreatedOnToolsVersion = 11.2.1;
+						DevelopmentTeam = 268S5GJFWZ;
+						ProvisioningStyle = Automatic;
+					};
+					3624766223DFB578005E095E = {
+						CreatedOnToolsVersion = 11.2.1;
+						DevelopmentTeam = 268S5GJFWZ;
+						ProvisioningStyle = Automatic;
+					};
 					36C45E401DCE2D3500E87710 = {
 						CreatedOnToolsVersion = 8.1;
 						DevelopmentTeam = 268S5GJFWZ;
@@ -471,11 +651,31 @@
 			targets = (
 				36C45E401DCE2D3500E87710 /* GeoTrackKitExample */,
 				36C45E541DCE2D3500E87710 /* GeoTrackKitExampleTests */,
+				3624765623DFB577005E095E /* WatchExample */,
+				3624766223DFB578005E095E /* WatchExample Extension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		3624765523DFB577005E095E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3624765D23DFB578005E095E /* Assets.xcassets in Resources */,
+				3624765B23DFB577005E095E /* Interface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3624766123DFB578005E095E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3624767823DFB578005E095E /* Preview Assets.xcassets in Resources */,
+				3624767523DFB578005E095E /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		36C45E3F1DCE2D3500E87710 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -516,7 +716,7 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-GeoTrackKitExample/Pods-GeoTrackKitExample-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/GeoTrackKit/GeoTrackKit.framework",
+				"${BUILT_PRODUCTS_DIR}/GeoTrackKit-Core-HealthKit/GeoTrackKit.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
@@ -525,6 +725,28 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-GeoTrackKitExample/Pods-GeoTrackKitExample-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		182569A1E20E4BFD3C3315AC /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-WatchExample Extension-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		21BFE0984A76732705781C0B /* [CP] Check Pods Manifest.lock */ = {
@@ -577,9 +799,40 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		663B5AB040FBD689E38270E6 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-WatchExample Extension/Pods-WatchExample Extension-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GeoTrackKit-WatchCore/GeoTrackKit.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GeoTrackKit.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-WatchExample Extension/Pods-WatchExample Extension-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		3624765F23DFB578005E095E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3624766B23DFB578005E095E /* HostingController.swift in Sources */,
+				3624766923DFB578005E095E /* ContentView.swift in Sources */,
+				3624766F23DFB578005E095E /* NotificationController.swift in Sources */,
+				3624766D23DFB578005E095E /* ExtensionDelegate.swift in Sources */,
+				3624767123DFB578005E095E /* NotificationView.swift in Sources */,
+				3624767323DFB578005E095E /* ComplicationController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		36C45E3D1DCE2D3500E87710 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -625,6 +878,16 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		3624766623DFB578005E095E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3624766223DFB578005E095E /* WatchExample Extension */;
+			targetProxy = 3624766523DFB578005E095E /* PBXContainerItemProxy */;
+		};
+		3624767C23DFB579005E095E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3624765623DFB577005E095E /* WatchExample */;
+			targetProxy = 3624767B23DFB579005E095E /* PBXContainerItemProxy */;
+		};
 		36C45E571DCE2D3500E87710 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 36C45E401DCE2D3500E87710 /* GeoTrackKitExample */;
@@ -633,6 +896,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		3624765923DFB577005E095E /* Interface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3624765A23DFB577005E095E /* Base */,
+			);
+			name = Interface.storyboard;
+			sourceTree = "<group>";
+		};
 		36C45E481DCE2D3500E87710 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -652,6 +923,114 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		3624767F23DFB579005E095E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 268S5GJFWZ;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				IBSC_MODULE = WatchExample_Extension;
+				INFOPLIST_FILE = WatchExample/Info.plist;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.icolasoft.GeoTrackKitExample.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 6.1;
+			};
+			name = Debug;
+		};
+		3624768023DFB579005E095E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 268S5GJFWZ;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				IBSC_MODULE = WatchExample_Extension;
+				INFOPLIST_FILE = WatchExample/Info.plist;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.icolasoft.GeoTrackKitExample.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 6.1;
+			};
+			name = Release;
+		};
+		3624768223DFB579005E095E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 59E1FB9F2B0D12AB6879D3D5 /* Pods-WatchExample Extension.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"WatchExample Extension/Preview Content\"";
+				DEVELOPMENT_TEAM = 268S5GJFWZ;
+				ENABLE_PREVIEWS = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = "WatchExample Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.icolasoft.GeoTrackKitExample.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 6.1;
+			};
+			name = Debug;
+		};
+		3624768323DFB579005E095E /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 07FB2C2FB5AE1FAD000A665C /* Pods-WatchExample Extension.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"WatchExample Extension/Preview Content\"";
+				DEVELOPMENT_TEAM = 268S5GJFWZ;
+				ENABLE_PREVIEWS = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = "WatchExample Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.icolasoft.GeoTrackKitExample.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 6.1;
+			};
+			name = Release;
+		};
 		36C45E5C1DCE2D3500E87710 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -842,6 +1221,24 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		3624768423DFB579005E095E /* Build configuration list for PBXNativeTarget "WatchExample Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3624768223DFB579005E095E /* Debug */,
+				3624768323DFB579005E095E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3624768523DFB579005E095E /* Build configuration list for PBXNativeTarget "WatchExample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3624767F23DFB579005E095E /* Debug */,
+				3624768023DFB579005E095E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		36C45E3C1DCE2D3500E87710 /* Build configuration list for PBXProject "GeoTrackKitExample" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

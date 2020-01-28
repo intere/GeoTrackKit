@@ -5,6 +5,7 @@
 //  Created by Eric Internicola on 11/9/18.
 //
 
+import CoreGraphics
 import CoreLocation
 import Foundation
 

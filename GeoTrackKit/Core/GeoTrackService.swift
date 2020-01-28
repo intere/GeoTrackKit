@@ -67,6 +67,8 @@ public protocol GeoTrackService {
 
 }
 
+#if !os(watchOS)
+
 // MARK: - Shared Behavior
 
 public extension GeoTrackService {
@@ -85,6 +87,8 @@ public extension GeoTrackService {
     }
 
 }
+
+#endif
 
 /// This error is raised when you don't have proper authorization
 public class NotAuthorizedError: Error {

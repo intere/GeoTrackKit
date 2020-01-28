@@ -1,5 +1,5 @@
 framework module GeoTrackKit {
-  umbrella header "GeoTrackKit-umbrella.h"
+  umbrella header "GeoTrackKit-Core-HealthKit-umbrella.h"
 
   export *
   module * { export * }

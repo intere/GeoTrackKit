@@ -124,6 +124,8 @@ extension GeoTrackManager: CLLocationManagerDelegate {
         locationManager(locationServicing: manager, didUpdateLocations: locations)
     }
 
+    #if !os(watchOS)
+
     /// Handles location tracking pauses
     ///
     /// - Parameter manager: the source of the event.
@@ -138,15 +140,6 @@ extension GeoTrackManager: CLLocationManagerDelegate {
         locationManagerDidResumeLocationUpdates(locationServicing: manager)
     }
 
-    /// Handles location tracking errors
-    ///
-    /// - Parameters:
-    ///   - manager: the source of the event.
-    ///   - error: the error that occurred.
-    public func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        locationManager(locationServicing: manager, didFailWithError: error)
-    }
-
     /// Handles deferred update errors.
     ///
     /// - Parameters:
@@ -154,6 +147,16 @@ extension GeoTrackManager: CLLocationManagerDelegate {
     ///   - error: the error that occurred.
     public func locationManager(_ manager: CLLocationManager, didFinishDeferredUpdatesWithError error: Error?) {
         locationManager(locationServicing: manager, didFinishDeferredUpdatesWithError: error)
+    }
+    #endif
+
+    /// Handles location tracking errors
+    ///
+    /// - Parameters:
+    ///   - manager: the source of the event.
+    ///   - error: the error that occurred.
+    public func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        locationManager(locationServicing: manager, didFailWithError: error)
     }
 
 }
@@ -307,8 +310,10 @@ private extension GeoTrackManager {
         locationManager.activityType = .fitness
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
 
+        #if !os(watchOS)
         // Until we come up with a heuristic to unpause it
         locationManager.pausesLocationUpdatesAutomatically = false
+        #endif
 
         // only give us updates when we have 10 meters of change (otherwise we get way too much data)
         locationManager.distanceFilter = 10
