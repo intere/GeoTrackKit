@@ -161,10 +161,12 @@ strip_invalid_archs() {
 
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
-  install_framework "${BUILT_PRODUCTS_DIR}/GeoTrackKit-Core-HealthKit/GeoTrackKit.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/GeoTrackKit-Core-HealthKit-SQLite/GeoTrackKit.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/SQLite.swift-iOS/SQLite.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
-  install_framework "${BUILT_PRODUCTS_DIR}/GeoTrackKit-Core-HealthKit/GeoTrackKit.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/GeoTrackKit-Core-HealthKit-SQLite/GeoTrackKit.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/SQLite.swift-iOS/SQLite.framework"
 fi
 if [ "${COCOAPODS_PARALLEL_CODE_SIGN}" == "true" ]; then
   wait

@@ -7,7 +7,7 @@ target 'GeoTrackKitExample' do
   use_frameworks!
 
   # Pods for GeoTrackKitExample
-  pod 'GeoTrackKit', :subspecs => ['HealthKit'], :path => '..'
+  pod 'GeoTrackKit', :subspecs => ['HealthKit', 'SQLite'], :path => '..'
 
   target 'GeoTrackKitExampleTests' do
     inherit! :search_paths
@@ -15,7 +15,7 @@ target 'GeoTrackKitExample' do
 
   target 'WatchExample Extension' do
     platform :watchos, '6.0'
-    pod 'GeoTrackKit', :subspecs => ['WatchCore'], :path => '..'
+    pod 'GeoTrackKit', :subspecs => ['WatchCore', 'SQLite'], :path => '..'
   end
 
 end

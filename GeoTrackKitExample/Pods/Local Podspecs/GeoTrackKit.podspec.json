@@ -41,6 +41,19 @@
       }
     },
     {
+      "name": "SQLite",
+      "platforms": {
+        "ios": "11.0",
+        "watchos": "6.0"
+      },
+      "source_files": "GeoTrackKit/SQLite/**/*.{swift,h,m}",
+      "dependencies": {
+        "SQLite.swift": [
+
+        ]
+      }
+    },
+    {
       "name": "WatchCore",
       "platforms": {
         "watchos": "6.0"

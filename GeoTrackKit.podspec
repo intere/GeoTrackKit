@@ -31,7 +31,6 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
     LICENSE
   }
 
-  # s.platform = :ios, '9.0'
   s.ios.deployment_target = '9.0'
   s.swift_version = '5.0'
   s.default_subspecs = 'Core'
@@ -47,6 +46,13 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
     ss.ios.deployment_target = '11.0'
     ss.source_files = 'GeoTrackKit/HealthKit/**/*.{swift,h,m}'
     ss.dependency 'GeoTrackKit/Core'
+  end
+
+  s.subspec 'SQLite' do |ss|
+    ss.ios.deployment_target = '11.0'
+    ss.watchos.deployment_target = '6.0'
+    ss.source_files = 'GeoTrackKit/SQLite/**/*.{swift,h,m}'
+    ss.dependency 'SQLite.swift'
   end
 
   # Watch

@@ -2,19 +2,30 @@ PODS:
   - GeoTrackKit/Core (1.1.0)
   - GeoTrackKit/HealthKit (1.1.0):
     - GeoTrackKit/Core
+  - GeoTrackKit/SQLite (1.1.0):
+    - SQLite.swift
   - GeoTrackKit/WatchCore (1.1.0)
+  - SQLite.swift (0.12.2):
+    - SQLite.swift/standard (= 0.12.2)
+  - SQLite.swift/standard (0.12.2)
 
 DEPENDENCIES:
   - GeoTrackKit/HealthKit (from `..`)
+  - GeoTrackKit/SQLite (from `..`)
   - GeoTrackKit/WatchCore (from `..`)
+
+SPEC REPOS:
+  trunk:
+    - SQLite.swift
 
 EXTERNAL SOURCES:
   GeoTrackKit:
     :path: ".."
 
 SPEC CHECKSUMS:
-  GeoTrackKit: 0c203f9cb03b97154f7db8a086a033285e69552d
+  GeoTrackKit: 9b6d4b56c5d063865a1e60260cfbaafc7379a498
+  SQLite.swift: d2b4642190917051ce6bd1d49aab565fe794eea3
 
-PODFILE CHECKSUM: 63abfdea51601a31ab90c79e4e08a0c92fea979d
+PODFILE CHECKSUM: b58e8a04aa723a2a97d62e1bbb031841d6965dfd
 
 COCOAPODS: 1.8.4
