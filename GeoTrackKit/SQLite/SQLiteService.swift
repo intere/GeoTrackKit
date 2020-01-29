@@ -64,7 +64,7 @@ struct PointsTable {
             builder.column(speed)
             builder.column(timestamp)
         }
-        try connection.run(execute)
+        try connection.run(create)
     }
 
     /// Inserts the provided location into the database.
