@@ -17,7 +17,6 @@ public class SQLiteService {
     private var pointsTable = PointsTable()
     private var connection: Connection?
 
-
     /// Configures the database, including the connection
     public func configureDatabase() throws {
         guard let databasePath = databasePath else {
@@ -35,6 +34,33 @@ public class SQLiteService {
         if !exists {
             try pointsTable.addSchema(to: connection)
         }
+    }
+
+    /// Inserts a location point into the table.
+    /// - Parameter location: The location to insert into the table.
+    public func insert(location: CLLocation) throws {
+        guard let connection = connection else {
+            throw SQLiteServiceError.databaseNotConfigured
+        }
+        try pointsTable.insert(location: location, into: connection)
+    }
+
+    /// Clears all of the points from the table.
+    public func clearPoints() throws {
+        guard let connection = connection else {
+            throw SQLiteServiceError.databaseNotConfigured
+        }
+        let delete = pointsTable.table.delete()
+        try connection.run(delete)
+    }
+
+    /// Fetches all of the points from the database.
+    public func getPoints() throws -> [CLLocation] {
+        guard let connection = connection else {
+            throw SQLiteServiceError.databaseNotConfigured
+        }
+
+        return try pointsTable.fetchPoints(from: connection)
     }
 }
 
@@ -84,6 +110,27 @@ struct PointsTable {
         )
         try connection.run(insert)
     }
+
+    /// Fetches the points from the database.
+    /// - Parameter connection: The connection to the database.
+    func fetchPoints(from connection: Connection) throws -> [CLLocation] {
+        let select = table.order(timestamp.asc).select(table[*])
+        let rows = try connection.prepare(select)
+
+        return rows.map { row in
+            let date = Date(timeIntervalSince1970: row[timestamp].timeIntervalSince1970)
+            return CLLocation(coordinate:
+                CLLocationCoordinate2D(
+                    latitude: row[lat].datatypeValue,
+                    longitude: row[lon].datatypeValue),
+                              altitude: row[alt].datatypeValue,
+                              horizontalAccuracy: row[hAcc].datatypeValue,
+                              verticalAccuracy: row[vAcc].datatypeValue,
+                              course: row[course].datatypeValue,
+                              speed: row[speed].datatypeValue,
+                              timestamp: date)
+        }
+    }
 }
 
 // MARK: - Implementation
@@ -109,5 +156,5 @@ extension SQLiteService {
 
 enum SQLiteServiceError: Error {
     case databasePathNotFound
+    case databaseNotConfigured
 }
-

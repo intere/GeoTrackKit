@@ -40,7 +40,7 @@ class GeoTrackManagerTests: XCTestCase {
         }
         GeoTrackManager.shared.pointFilter = .filterAllPoints
 
-        guard let points = TrackReader(bundleFilename: "reference-track-1").track?.points, points.count > 0 else {
+        guard let points = referenceTrack1?.points, points.count > 0 else {
             return XCTFail("no points")
         }
         do {
@@ -63,7 +63,7 @@ class GeoTrackManagerTests: XCTestCase {
         GeoTrackManager.shared.pointFilter = .defaultFilterOptions
         GeoTrackManager.oldPointTimeThreshold = nil
 
-        guard let points = TrackReader(bundleFilename: "reference-track-1").track?.points, points.count > 0 else {
+        guard let points = referenceTrack1?.points, points.count > 0 else {
             return XCTFail("no points")
         }
 

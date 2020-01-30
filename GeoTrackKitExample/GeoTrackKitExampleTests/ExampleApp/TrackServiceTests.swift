@@ -21,7 +21,8 @@ class TrackServiceTests: XCTestCase {
     }
 
     struct TestConstants {
-        static let exampleTrack = TrackReader(bundleFilename: "reference-track-1").track
+//        static let exampleTrack = TrackReader(bundleFilename: "reference-track-1").track
+        static let exampleTrack = referenceTrack1
         static let trackNameWithDate: String = {
             guard let date = TestConstants.exampleTrack?.startTime else {
                 return "2017-01-18_13-18-10.track"
@@ -42,8 +43,8 @@ class TrackServiceTests: XCTestCase {
 extension TrackServiceTests {
 
     func testMergeTracks() {
-        guard let firstTrack = TrackReader(bundleFilename: "merge1").track,
-            let secondTrack = TrackReader(bundleFilename: "merge2").track else {
+        guard let firstTrack = mergeTrack1,
+            let secondTrack = mergeTrack2 else {
                 return XCTFail("Failed to load test tracks")
         }
 

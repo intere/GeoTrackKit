@@ -23,6 +23,8 @@
 		3624767523DFB578005E095E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3624767423DFB578005E095E /* Assets.xcassets */; };
 		3624767823DFB578005E095E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3624767723DFB578005E095E /* Preview Assets.xcassets */; };
 		3624767D23DFB579005E095E /* WatchExample.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 3624765723DFB577005E095E /* WatchExample.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		3624768823E30A9D005E095E /* SQLiteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3624768723E30A9D005E095E /* SQLiteTests.swift */; };
+		3624768B23E30E88005E095E /* XCTestCaseExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3624768A23E30E88005E095E /* XCTestCaseExtensions.swift */; };
 		36302DB9210E17B400834A1D /* GeoTrackKitErrorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36302DB8210E17B400834A1D /* GeoTrackKitErrorTests.swift */; };
 		3661C3662381C80B009DE76C /* GeoTrackManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3661C3652381C80B009DE76C /* GeoTrackManagerTests.swift */; };
 		3661C3682381D335009DE76C /* PointFilterOptionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3661C3672381D335009DE76C /* PointFilterOptionsTests.swift */; };
@@ -136,6 +138,8 @@
 		3624767723DFB578005E095E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		3624767923DFB578005E095E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3624767A23DFB578005E095E /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
+		3624768723E30A9D005E095E /* SQLiteTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQLiteTests.swift; sourceTree = "<group>"; };
+		3624768A23E30E88005E095E /* XCTestCaseExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCTestCaseExtensions.swift; sourceTree = "<group>"; };
 		36302DB8210E17B400834A1D /* GeoTrackKitErrorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeoTrackKitErrorTests.swift; sourceTree = "<group>"; };
 		3661C3652381C80B009DE76C /* GeoTrackManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeoTrackManagerTests.swift; sourceTree = "<group>"; };
 		3661C3672381D335009DE76C /* PointFilterOptionsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointFilterOptionsTests.swift; sourceTree = "<group>"; };
@@ -276,6 +280,22 @@
 				3624767723DFB578005E095E /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		3624768623E30A91005E095E /* SQLite */ = {
+			isa = PBXGroup;
+			children = (
+				3624768723E30A9D005E095E /* SQLiteTests.swift */,
+			);
+			path = SQLite;
+			sourceTree = "<group>";
+		};
+		3624768923E30E7D005E095E /* TestExtensions */ = {
+			isa = PBXGroup;
+			children = (
+				3624768A23E30E88005E095E /* XCTestCaseExtensions.swift */,
+			);
+			path = TestExtensions;
 			sourceTree = "<group>";
 		};
 		36302DB2210E139100834A1D /* Core */ = {
@@ -425,6 +445,8 @@
 		36C45E581DCE2D3500E87710 /* GeoTrackKitExampleTests */ = {
 			isa = PBXGroup;
 			children = (
+				3624768923E30E7D005E095E /* TestExtensions */,
+				3624768623E30A91005E095E /* SQLite */,
 				36EA9BF422061B60003C79E8 /* ExampleApp */,
 				93EEFC031E6DAD0300090CE7 /* GeoTrackKit */,
 				368A87AF1E6332D8003D115A /* Utilities */,
@@ -863,6 +885,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3624768B23E30E88005E095E /* XCTestCaseExtensions.swift in Sources */,
 				366CE43C1DFCAC360090BD42 /* GeoTrackSerializationTests.swift in Sources */,
 				36302DB9210E17B400834A1D /* GeoTrackKitErrorTests.swift in Sources */,
 				36E1E3461DEB3D0D00CFC7BC /* GeoTrackLocationEventTests.swift in Sources */,
@@ -874,6 +897,7 @@
 				366B653021963AEE00BA5EB7 /* GeoTrackTests.swift in Sources */,
 				368A87B71E636FCE003D115A /* GeoTrackAnalyzerTests.swift in Sources */,
 				93EEFC071E6DAD1900090CE7 /* UIGeoTrackTest.swift in Sources */,
+				3624768823E30A9D005E095E /* SQLiteTests.swift in Sources */,
 				3661C3682381D335009DE76C /* PointFilterOptionsTests.swift in Sources */,
 				36EA9BF622061B90003C79E8 /* TrackServiceTests.swift in Sources */,
 			);

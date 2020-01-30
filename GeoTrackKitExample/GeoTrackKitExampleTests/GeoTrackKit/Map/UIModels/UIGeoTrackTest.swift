@@ -20,7 +20,7 @@ class UIGeoTrackTest: XCTestCase {
     }
 
     func testModel() {
-        guard let track = TrackReader(bundleFilename: "reference-track-1").track else {
+        guard let track = referenceTrack1 else {
             return XCTFail("Failed to load test track")
         }
         let model = UIGeoTrack(with: track)

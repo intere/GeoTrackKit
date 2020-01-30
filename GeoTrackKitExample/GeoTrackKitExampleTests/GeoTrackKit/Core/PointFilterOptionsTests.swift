@@ -12,7 +12,7 @@ import XCTest
 
 class PointFilterOptionsTests: XCTestCase {
 
-    let points = TrackReader(bundleFilename: "reference-track-1").track?.points
+    let points = referenceTrack1?.points
 
 }
 
