@@ -54,13 +54,13 @@ public class GeoTrackManager: NSObject {
                 guard !isTracking else {
                     return assertionFailure("This cannot be changed while tracking")
                 }
-                trackPersistence = NoTrackPersisting()
+                trackPersistence = NoTrackPersisting.shared
             }
         }
     }
 
     /// The method of persistence, defaults to "in memory"
-    public var trackPersistence: TrackPersisting = InMemoryTrackPersisting()
+    public var trackPersistence: TrackPersisting = InMemoryTrackPersisting.shared
 
     public var pointFilter: PointFilterOptions = .defaultFilterOptions
 

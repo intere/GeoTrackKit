@@ -45,6 +45,9 @@ public protocol GeoTrackService {
     /// The most recently tracked point
     var lastPoint: CLLocation? { get }
 
+    /// The Track persistence manager
+    var trackPersistence: TrackPersisting { get set }
+
     /// Should the service collect all of the points, or just ignore them and rebroadcast the events?
     /// If this is set to false, then the track will always be nil.
     var shouldStorePoints: Bool { get set }

@@ -62,6 +62,13 @@ public class SQLiteService {
 
         return try pointsTable.fetchPoints(from: connection)
     }
+
+    public func getMostRecentPoint() throws -> CLLocation? {
+        guard let connection = connection else {
+            throw SQLiteServiceError.databaseNotConfigured
+        }
+        return try pointsTable.fetchMostRecent(from: connection)
+    }
 }
 
 // MARK: - PointsTable
@@ -130,6 +137,25 @@ struct PointsTable {
                               speed: row[speed].datatypeValue,
                               timestamp: date)
         }
+    }
+
+    func fetchMostRecent(from connection: Connection) throws -> CLLocation? {
+        let select = table.order(timestamp.desc).select(table[*]).limit(1)
+        let rows = try connection.prepare(select)
+
+        return rows.map { row in
+            let date = Date(timeIntervalSince1970: row[timestamp].timeIntervalSince1970)
+            return CLLocation(coordinate:
+                CLLocationCoordinate2D(
+                    latitude: row[lat].datatypeValue,
+                    longitude: row[lon].datatypeValue),
+                              altitude: row[alt].datatypeValue,
+                              horizontalAccuracy: row[hAcc].datatypeValue,
+                              verticalAccuracy: row[vAcc].datatypeValue,
+                              course: row[course].datatypeValue,
+                              speed: row[speed].datatypeValue,
+                              timestamp: date)
+        }.first
     }
 }
 

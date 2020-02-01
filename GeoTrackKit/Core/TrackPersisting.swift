@@ -35,6 +35,7 @@ public protocol TrackPersisting {
 /// Does not persist any track data, only keeps track of the most recent track point.  Only use this if
 /// You plan on listening for `Notification.GeoTrackManager.didUpdateLocations` to collect the points yourself
 public class NoTrackPersisting: TrackPersisting {
+    public static let shared = NoTrackPersisting()
 
     public var track: GeoTrack? { return nil }
 
@@ -56,6 +57,8 @@ public class NoTrackPersisting: TrackPersisting {
 
 /// Keeps a Track in memory with all of the points.  This can get large if you have enough points
 public class InMemoryTrackPersisting: TrackPersisting {
+
+    public static let shared = InMemoryTrackPersisting()
 
     private(set) public var track: GeoTrack?
 
