@@ -19,6 +19,7 @@ public protocol LocationServicing {
     func stopUpdatingLocation()
 }
 
+
 // MARK: - CLLocationManager: LocationServicing
 
 extension CLLocationManager: LocationServicing { }
@@ -46,18 +47,35 @@ public class GeoTrackManager: NSObject {
 
     internal(set) public var trackingState: GeoTrackState = .notTracking
 
-    public var shouldStorePoints = true
+    @available(*, deprecated, message: "Set the trackPersistence instead")
+    public var shouldStorePoints = true {
+        didSet {
+            if !shouldStorePoints {
+                guard !isTracking else {
+                    return assertionFailure("This cannot be changed while tracking")
+                }
+                trackPersistence = NoTrackPersisting()
+            }
+        }
+    }
+
+    /// The method of persistence, defaults to "in memory"
+    public var trackPersistence: TrackPersisting = InMemoryTrackPersisting()
 
     public var pointFilter: PointFilterOptions = .defaultFilterOptions
 
     /// The last Geo Point to be tracked
-    internal(set) public var lastPoint: CLLocation?
+    public var lastPoint: CLLocation? {
+        return trackPersistence.lastPoint
+    }
 
     /// Are we authorized for location tracking?
     internal(set) public var authorized: Bool = false
 
     /// The Track
-    internal(set) public var track: GeoTrack?
+    public var track: GeoTrack? {
+        return trackPersistence.track
+    }
 
     public var locationManager: LocationServicing?
 }
@@ -93,8 +111,7 @@ extension GeoTrackManager: GeoTrackService {
     }
 
     public func reset() {
-        lastPoint = nil
-        track = nil
+        trackPersistence.reset()
         locationManager = nil
         trackingState = .notTracking
     }
@@ -124,6 +141,15 @@ extension GeoTrackManager: CLLocationManagerDelegate {
         locationManager(locationServicing: manager, didUpdateLocations: locations)
     }
 
+    /// Handles location tracking errors
+    ///
+    /// - Parameters:
+    ///   - manager: the source of the event.
+    ///   - error: the error that occurred.
+    public func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        locationManager(locationServicing: manager, didFailWithError: error)
+    }
+
     #if !os(watchOS)
 
     /// Handles location tracking pauses
@@ -149,15 +175,6 @@ extension GeoTrackManager: CLLocationManagerDelegate {
         locationManager(locationServicing: manager, didFinishDeferredUpdatesWithError: error)
     }
     #endif
-
-    /// Handles location tracking errors
-    ///
-    /// - Parameters:
-    ///   - manager: the source of the event.
-    ///   - error: the error that occurred.
-    public func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        locationManager(locationServicing: manager, didFailWithError: error)
-    }
 
 }
 
@@ -232,19 +249,7 @@ extension GeoTrackManager {
         }
 
         GTDebug(message: "New Locations: \(recentLocations)")
-        guard let location = recentLocations.last else {
-            lastPoint = nil
-            return
-        }
-        lastPoint = location
-
-        if shouldStorePoints {
-            guard let track = track else {
-                GTError(message: "No current track to store points within")
-                return
-            }
-            track.add(locations: recentLocations)
-        }
+        trackPersistence.addPoints(recentLocations)
         Notification.GeoTrackManager.didUpdateLocations.notify(withObject: recentLocations)
     }
 
@@ -329,11 +334,7 @@ private extension GeoTrackManager {
             return
         }
 
-        if track == nil {
-            GTDebug(message: "Created new GeoTrack object")
-            track = GeoTrack()
-        }
-        track?.startTracking()
+        trackPersistence.startTracking()
 
         switch CLLocationManager.authorizationStatus() {
         case .authorizedAlways:

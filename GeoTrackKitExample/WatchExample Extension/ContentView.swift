@@ -9,8 +9,18 @@
 import SwiftUI
 
 struct ContentView: View {
+    var labelText = "GeoTrackKit"
+    var buttonText = "Start Tracking"
+
     var body: some View {
-        Text("Hello, World!")
+        VStack {
+            Text(labelText)
+            Button(action: {
+                #warning("TODO: implement me")
+            }, label: {
+                Text(buttonText)
+            })
+        }
     }
 }
 
