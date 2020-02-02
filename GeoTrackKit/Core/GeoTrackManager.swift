@@ -47,6 +47,8 @@ public class GeoTrackManager: NSObject {
 
     internal(set) public var trackingState: GeoTrackState = .notTracking
 
+    private var authStatusCallback: AuthorizationCallback?
+
     @available(*, deprecated, message: "Set the trackPersistence instead")
     public var shouldStorePoints = true {
         didSet {
@@ -78,12 +80,14 @@ public class GeoTrackManager: NSObject {
     }
 
     public var locationManager: LocationServicing?
+
 }
 
 // MARK: - GeoTrackService Implementation
 
 extension GeoTrackManager: GeoTrackService {
 
+    /// Are we tracking, currently?  This returns false if we're awaiting the fix
     public var isTracking: Bool {
         return trackingState == .tracking
     }
@@ -92,15 +96,15 @@ extension GeoTrackManager: GeoTrackService {
         return trackingState == .awaitingFix
     }
 
-    public func startTracking(type: TrackingType) throws {
+    public func startTracking(type: TrackingType, completion: @escaping AuthorizationCallback) {
         GTInfo(message: "User requested Start Tracking")
         guard trackingState == .notTracking else {
             GTWarn(message: "We're already tracking or awaiting a fix")
-            return
+            return completion(.failure(GeoTrackManagerError.alreadyTracking))
         }
 
         initializeLocationManager()
-        try beginLocationUpdates(type: type)
+        beginLocationUpdates(type: type, completion: completion)
     }
 
     public func stopTracking() {
@@ -214,6 +218,8 @@ extension GeoTrackManager {
             authorized = false
             assertionFailure("Unknown status: \(status)")
         }
+
+        authStatusCallback?(.success(status))
     }
 
     // LocationServicing
@@ -329,9 +335,9 @@ private extension GeoTrackManager {
     }
 
     /// Handles requesting authorization from location services
-    func beginLocationUpdates(type: TrackingType) throws {
+    func beginLocationUpdates(type: TrackingType, completion: @escaping AuthorizationCallback) {
         guard let locationManager = locationManager else {
-            return
+            return completion(.failure(GeoTrackManagerError.configurationError))
         }
 
         trackPersistence.startTracking()
@@ -352,7 +358,7 @@ private extension GeoTrackManager {
             }
 
         case .denied, .restricted:
-            throw NotAuthorizedError()
+            break
 
         case .notDetermined:
             switch type {
@@ -362,10 +368,13 @@ private extension GeoTrackManager {
             case .whileInUse:
                 locationManager.requestWhenInUseAuthorization()
             }
+
         @unknown default:
             GTDebug(message: "Unknown authorization status: \(CLLocationManager.authorizationStatus())")
             assertionFailure("Unknown authorization status: \(CLLocationManager.authorizationStatus())")
         }
+        authStatusCallback = completion
+        completion(.success(CLLocationManager.authorizationStatus()))
     }
 
     /// Handles stopping tracking
@@ -398,4 +407,12 @@ public extension Notification {
             return rawValue
         }
     }
+}
+
+// MARK: - GeoTrackManagerError
+
+public enum GeoTrackManagerError: Error {
+    case alreadyTracking
+    case configurationError
+    case unknownAuthStatus
 }

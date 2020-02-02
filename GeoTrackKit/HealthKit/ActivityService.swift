@@ -9,14 +9,6 @@ import CoreLocation
 import Foundation
 import HealthKit
 
-/// A callback that will tell you success or failure and optionally provide an Error
-public typealias AuthorizationCallback = (Bool, Error?) -> Void
-/// A callback that will give you back an optional array of HKWorkout objects or an optional Error
-public typealias WorkoutCallback = ([HKWorkout]?, Error?) -> Void
-/// A callback that will give you back an optional array of `HKSeriesSample` objects or an optional Error
-public typealias RouteSampleCallback = ([HKSeriesSample]?, Error?) -> Void
-/// A callback that will give you back an optional array of CLLocation points (track) or an optional Error
-public typealias TrackCallback = ([CLLocation]?, Error?) -> Void
 
 /// A service that will get you workout activities, with a specific focus on those workouts that have associated
 /// routes (think: associated Geospatial data, aka Tracks).
@@ -34,6 +26,17 @@ public typealias TrackCallback = ([CLLocation]?, Error?) -> Void
 /// 3. Filter down to workouts that have Routes: `ActivityService.shared.queryRoute(from: workout) { // ...`
 /// 4. Get the Track (Route) for a workout: `ActivityService.shared.queryTrack(from: workout) { // ...`
 public class ActivityService {
+
+    #warning("TODO: refactor these completion handlers to use Swift.Result")
+    /// A callback that will tell you success or failure and optionally provide an Error
+    public typealias AuthorizationCallback = (Bool, Error?) -> Void
+    /// A callback that will give you back an optional array of HKWorkout objects or an optional Error
+    public typealias WorkoutCallback = ([HKWorkout]?, Error?) -> Void
+    /// A callback that will give you back an optional array of `HKSeriesSample` objects or an optional Error
+    public typealias RouteSampleCallback = ([HKSeriesSample]?, Error?) -> Void
+    /// A callback that will give you back an optional array of CLLocation points (track) or an optional Error
+    public typealias TrackCallback = ([CLLocation]?, Error?) -> Void
+
 
     /// Shared (singleton) instance of the `ActivityService`
     public static let shared = ActivityService()

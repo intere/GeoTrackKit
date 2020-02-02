@@ -10,7 +10,7 @@ import Foundation
 import SQLite
 
 public class SQLiteService {
-    static let shared = SQLiteService()
+    public static let shared = SQLiteService()
 
     /// The name of the database - defaults to "track-points.sqlite3"
     public var databaseName = "track-points.sqlite3"

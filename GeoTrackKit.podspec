@@ -31,13 +31,13 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
     LICENSE
   }
 
-  s.ios.deployment_target = '9.0'
+  s.ios.deployment_target = '11.0'
   s.swift_version = '5.0'
   s.default_subspecs = 'Core'
 
   # Core Tracking functionality + Apple Maps rendering
   s.subspec 'Core' do |ss|
-    ss.ios.deployment_target = '9.0'
+    ss.ios.deployment_target = '11.0'
     ss.source_files = 'GeoTrackKit/Core/**/*.{swift,h,m}'
   end
 

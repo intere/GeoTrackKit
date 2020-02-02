@@ -27,6 +27,8 @@ public typealias GeoTrackAuthCallback = () -> Void
 /// This is the protocol for the GeoTrackService.  It will handle starting and stopping tracking.
 public protocol GeoTrackService {
 
+    typealias AuthorizationCallback = (Swift.Result<CLAuthorizationStatus, Error>) -> Void
+
     /// Application name
     var applicationName: String { get set }
 
@@ -59,8 +61,8 @@ public protocol GeoTrackService {
     /// then request authorization and start tracking after we get it.
     ///
     /// - Parameter type: The type of authorization we need for our tracking.
-    /// - Throws: A `NotAuthorizedError` if location service access is denied or restricted.
-    func startTracking(type: TrackingType) throws
+    /// - Parameter completion: The completion handler that hands you back the authorization status
+    func startTracking(type: TrackingType, completion: @escaping AuthorizationCallback)
 
     /// Stops tracking
     func stopTracking()

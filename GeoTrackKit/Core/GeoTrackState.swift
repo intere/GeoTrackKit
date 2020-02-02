@@ -24,4 +24,17 @@ public enum GeoTrackState: Int {
     case tracking
     /// Not currently tracking
     case notTracking
+
+    public var name: String {
+        switch self {
+        case .unknown:
+            return "unknown"
+        case .awaitingFix:
+            return "awaitingFix"
+        case .tracking:
+            return "tracking"
+        case .notTracking:
+            return "notTracking"
+        }
+    }
 }

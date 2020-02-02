@@ -26,6 +26,7 @@
 		3624768823E30A9D005E095E /* SQLiteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3624768723E30A9D005E095E /* SQLiteTests.swift */; };
 		3624768B23E30E88005E095E /* XCTestCaseExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3624768A23E30E88005E095E /* XCTestCaseExtensions.swift */; };
 		36302DB9210E17B400834A1D /* GeoTrackKitErrorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36302DB8210E17B400834A1D /* GeoTrackKitErrorTests.swift */; };
+		3650BB7223E717120008C97E /* Logging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3650BB7123E717120008C97E /* Logging.swift */; };
 		3661C3662381C80B009DE76C /* GeoTrackManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3661C3652381C80B009DE76C /* GeoTrackManagerTests.swift */; };
 		3661C3682381D335009DE76C /* PointFilterOptionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3661C3672381D335009DE76C /* PointFilterOptionsTests.swift */; };
 		3661C36B2382253E009DE76C /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 3661C3692382253D009DE76C /* README.md */; };
@@ -47,6 +48,7 @@
 		369D349B23E5A90E00CB9EBE /* BerthoudSolo.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 369D349A23E5A90D00CB9EBE /* BerthoudSolo.gpx */; };
 		369D349C23E5A90E00CB9EBE /* BerthoudSolo.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 369D349A23E5A90D00CB9EBE /* BerthoudSolo.gpx */; };
 		369D349D23E5A90E00CB9EBE /* BerthoudSolo.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 369D349A23E5A90D00CB9EBE /* BerthoudSolo.gpx */; };
+		369D34A823E70A1D00CB9EBE /* Logging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 369D34A723E70A1D00CB9EBE /* Logging.swift */; };
 		36A7C6C72100B0980073407A /* EventLogAppender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36A7C6C62100B0980073407A /* EventLogAppender.swift */; };
 		36A7C6D02103ECB40073407A /* ConsoleLogAppender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36A7C6CF2103ECB40073407A /* ConsoleLogAppender.swift */; };
 		36A7C6DB2104CBF30073407A /* TrackConsole.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 36A7C6DA2104CBF30073407A /* TrackConsole.storyboard */; };
@@ -144,6 +146,7 @@
 		3624768723E30A9D005E095E /* SQLiteTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQLiteTests.swift; sourceTree = "<group>"; };
 		3624768A23E30E88005E095E /* XCTestCaseExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCTestCaseExtensions.swift; sourceTree = "<group>"; };
 		36302DB8210E17B400834A1D /* GeoTrackKitErrorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeoTrackKitErrorTests.swift; sourceTree = "<group>"; };
+		3650BB7123E717120008C97E /* Logging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logging.swift; sourceTree = "<group>"; };
 		3661C3652381C80B009DE76C /* GeoTrackManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeoTrackManagerTests.swift; sourceTree = "<group>"; };
 		3661C3672381D335009DE76C /* PointFilterOptionsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointFilterOptionsTests.swift; sourceTree = "<group>"; };
 		3661C3692382253D009DE76C /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
@@ -163,6 +166,7 @@
 		368B12CB222DC46F00B22C72 /* merge1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = merge1.json; sourceTree = "<group>"; };
 		368B12CC222DC47000B22C72 /* merge2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = merge2.json; sourceTree = "<group>"; };
 		369D349A23E5A90D00CB9EBE /* BerthoudSolo.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = BerthoudSolo.gpx; sourceTree = "<group>"; };
+		369D34A723E70A1D00CB9EBE /* Logging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logging.swift; sourceTree = "<group>"; };
 		36A7C6C62100B0980073407A /* EventLogAppender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventLogAppender.swift; sourceTree = "<group>"; };
 		36A7C6CF2103ECB40073407A /* ConsoleLogAppender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsoleLogAppender.swift; sourceTree = "<group>"; };
 		36A7C6DA2104CBF30073407A /* TrackConsole.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TrackConsole.storyboard; sourceTree = "<group>"; };
@@ -274,6 +278,7 @@
 				3624767923DFB578005E095E /* Info.plist */,
 				3624767A23DFB578005E095E /* PushNotificationPayload.apns */,
 				3624767623DFB578005E095E /* Preview Content */,
+				369D34A723E70A1D00CB9EBE /* Logging.swift */,
 			);
 			path = "WatchExample Extension";
 			sourceTree = "<group>";
@@ -451,6 +456,7 @@
 				36C45E481DCE2D3500E87710 /* Main.storyboard */,
 				36A7C6C52100B0730073407A /* Services */,
 				36A7C6D52104C7480073407A /* Views */,
+				3650BB7123E717120008C97E /* Logging.swift */,
 			);
 			path = GeoTrackKitExample;
 			sourceTree = "<group>";
@@ -869,6 +875,7 @@
 				3624766B23DFB578005E095E /* HostingController.swift in Sources */,
 				3624766923DFB578005E095E /* ContentView.swift in Sources */,
 				3624766F23DFB578005E095E /* NotificationController.swift in Sources */,
+				369D34A823E70A1D00CB9EBE /* Logging.swift in Sources */,
 				3624766D23DFB578005E095E /* ExtensionDelegate.swift in Sources */,
 				3624767123DFB578005E095E /* NotificationView.swift in Sources */,
 				3624767323DFB578005E095E /* ComplicationController.swift in Sources */,
@@ -894,6 +901,7 @@
 				36838E93222A094A00F4F714 /* TrackOverviewCell.swift in Sources */,
 				36A7C6C72100B0980073407A /* EventLogAppender.swift in Sources */,
 				36A7C6D02103ECB40073407A /* ConsoleLogAppender.swift in Sources */,
+				3650BB7223E717120008C97E /* Logging.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -981,6 +989,7 @@
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				IBSC_MODULE = WatchExample_Extension;
 				INFOPLIST_FILE = WatchExample/Info.plist;
+				MARKETING_VERSION = 0.3.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.icolasoft.GeoTrackKitExample.watchkitapp;
@@ -1007,6 +1016,7 @@
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				IBSC_MODULE = WatchExample_Extension;
 				INFOPLIST_FILE = WatchExample/Info.plist;
+				MARKETING_VERSION = 0.3.0;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.icolasoft.GeoTrackKitExample.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1035,6 +1045,7 @@
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = "WatchExample Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				MARKETING_VERSION = 0.3.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.icolasoft.GeoTrackKitExample.watchkitapp.watchkitextension;
@@ -1064,6 +1075,7 @@
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = "WatchExample Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				MARKETING_VERSION = 0.3.0;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.icolasoft.GeoTrackKitExample.watchkitapp.watchkitextension;
 				PRODUCT_NAME = "${TARGET_NAME}";
