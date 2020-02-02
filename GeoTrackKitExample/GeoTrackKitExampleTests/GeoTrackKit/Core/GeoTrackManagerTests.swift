@@ -43,14 +43,16 @@ class GeoTrackManagerTests: XCTestCase {
         guard let points = referenceTrack1?.points, points.count > 0 else {
             return XCTFail("no points")
         }
-        do {
-            try manager.startTracking(type: .whileInUse)
-        } catch {
-            XCTFail("Failed with error: \(error.localizedDescription)")
+        manager.startTracking(type: .whileInUse) { result in
+            switch result {
+            case .failure(let error):
+                XCTFail("Failed with error: \(error.localizedDescription)")
+            case .success:
+                break
+            }
         }
-        manager.locationManager(locationServicing: mockManager, didChangeAuthorization: .authorizedWhenInUse)
-        manager.locationManager(locationServicing: mockManager, didUpdateLocations: points)
-
+        manager.locationManager(locationServicing: self.mockManager, didChangeAuthorization: .authorizedWhenInUse)
+        manager.locationManager(locationServicing: self.mockManager, didUpdateLocations: points)
         // There will be no track if there are no points
         XCTAssertNotNil(manager.track)
         XCTAssertEqual(0, manager.track?.points.count)
@@ -67,13 +69,17 @@ class GeoTrackManagerTests: XCTestCase {
             return XCTFail("no points")
         }
 
-        do {
-            try manager.startTracking(type: .whileInUse)
-        } catch {
-            XCTFail("Failed with error: \(error.localizedDescription)")
+        manager.startTracking(type: .whileInUse) { result in
+            switch result {
+            case .failure(let error):
+                XCTFail("Failed with error: \(error.localizedDescription)")
+            case .success:
+                break
+            }
         }
-        manager.locationManager(locationServicing: mockManager, didChangeAuthorization: .authorizedWhenInUse)
-        manager.locationManager(locationServicing: mockManager, didUpdateLocations: points)
+
+        manager.locationManager(locationServicing: self.mockManager, didChangeAuthorization: .authorizedWhenInUse)
+        manager.locationManager(locationServicing: self.mockManager, didUpdateLocations: points)
 
         XCTAssertNotEqual(0, manager.track?.points.count ?? 0)
         XCTAssertTrue((manager.track?.points.count ?? points.count) < points.count)

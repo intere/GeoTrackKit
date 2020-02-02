@@ -22,7 +22,7 @@ class ConsoleLogAppender: GeoTrackLogAppender {
     var logLevel = GeoTrackEvent.Level.debug
 
     func logged(event: GeoTrackEvent) {
-        print(event.string)
+        DLog(event.string)
     }
 
 }
