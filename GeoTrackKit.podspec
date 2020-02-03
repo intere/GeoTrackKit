@@ -50,10 +50,11 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
   s.subspec 'SQLite' do |ss|
     ss.ios.deployment_target = '11.0'
-    ss.watchos.deployment_target = '6.0'
     ss.source_files = 'GeoTrackKit/SQLite/**/*.{swift,h,m}'
     ss.dependency 'SQLite.swift'
+    ss.dependency 'GeoTrackKit/Core'
   end
+
 
   # Watch
   s.subspec 'WatchCore' do |ss|
@@ -63,6 +64,13 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
       "GeoTrackKit/Core/**/GeoTrackMap.swift",
       "GeoTrackKit/Core/**/UIGeoTrack.swift"
     ]
+  end
+
+  s.subspec 'SQLiteWatch' do |ss|
+    ss.watchos.deployment_target = '6.0'
+    ss.source_files = 'GeoTrackKit/SQLite/**/*.{swift,h,m}'
+    ss.dependency 'SQLite.swift'
+    ss.dependency 'GeoTrackKit/WatchCore'
   end
 
 end
