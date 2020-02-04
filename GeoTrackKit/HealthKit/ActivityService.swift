@@ -27,15 +27,14 @@ import HealthKit
 /// 4. Get the Track (Route) for a workout: `ActivityService.shared.queryTrack(from: workout) { // ...`
 public class ActivityService {
 
-    #warning("TODO: refactor these completion handlers to use Swift.Result")
     /// A callback that will tell you success or failure and optionally provide an Error
-    public typealias AuthorizationCallback = (Bool, Error?) -> Void
+    public typealias AuthorizationCallback = (Swift.Result<Bool, Error>) -> Void
     /// A callback that will give you back an optional array of HKWorkout objects or an optional Error
-    public typealias WorkoutCallback = ([HKWorkout]?, Error?) -> Void
+    public typealias WorkoutCallback = (Swift.Result<[HKWorkout], Error>) -> Void
     /// A callback that will give you back an optional array of `HKSeriesSample` objects or an optional Error
-    public typealias RouteSampleCallback = ([HKSeriesSample]?, Error?) -> Void
+    public typealias RouteSampleCallback = (Swift.Result<[HKSeriesSample], Error>) -> Void
     /// A callback that will give you back an optional array of CLLocation points (track) or an optional Error
-    public typealias TrackCallback = ([CLLocation]?, Error?) -> Void
+    public typealias TrackCallback = (Swift.Result<[CLLocation], Error>) -> Void
 
 
     /// Shared (singleton) instance of the `ActivityService`
@@ -63,11 +62,11 @@ extension ActivityService {
     public func authorize(_ callback: @escaping AuthorizationCallback) {
         guard isHealthDataAvailable else {
             GTError(message: GeoTrackKitError.healthDataNotAvailable.humanReadableDescription)
-            return callback(false, GeoTrackKitError.healthDataNotAvailable)
+            return callback(.failure(GeoTrackKitError.healthDataNotAvailable))
         }
         guard #available(iOS 11.0, *) else {
             GTError(message: GeoTrackKitError.iOS11Required.humanReadableDescription)
-            return callback(false, GeoTrackKitError.iOS11Required)
+            return callback(.failure(GeoTrackKitError.iOS11Required))
         }
 
         let allTypes = Set([
@@ -78,16 +77,16 @@ extension ActivityService {
 
         store.requestAuthorization(toShare: nil, read: allTypes) { (success, error) in
             if let error = error {
-                callback(success, error)
+                callback(.failure(error))
                 return GTError(message: "Could not get health store authorization: \(error.localizedDescription)")
             }
             if !success {
                 GTError(message: GeoTrackKitError.authNoErrorButUnsuccessful.humanReadableDescription)
-                return callback(success, GeoTrackKitError.authNoErrorButUnsuccessful)
+                return callback(.failure(GeoTrackKitError.authNoErrorButUnsuccessful))
             }
 
             GTInfo(message: "Successful authorization")
-            callback(success, error)
+            callback(.success(success))
         }
     }
 
@@ -108,14 +107,19 @@ extension ActivityService {
 
         let query = HKSampleQuery(sampleType: HKObjectType.workoutType(), predicate: workoutPredicate, limit: 0, sortDescriptors: [sortDescriptor]) { (query, samples, error) in
 
-            // Cast the samples to the HKWorkout type
-            guard let samples = samples as? [HKWorkout], error == nil else {
+            if let error = error {
                 self.store.stop(query)
-                GTError(message: error?.localizedDescription ?? "couldn't get the samples")
-                return callback(nil, error)
+                GTError(message: error.localizedDescription)
+                return callback(.failure(error))
+            }
+
+            // Cast the samples to the HKWorkout type
+            guard let samples = samples as? [HKWorkout] else {
+                self.store.stop(query)
+                return callback(.failure(GeoTrackKitError.notWorkoutType))
             }
             GTInfo(message: "We got \(samples.count) workouts back")
-            callback(samples, nil)
+            callback(.success(samples))
         }
 
         store.execute(query)
@@ -129,7 +133,7 @@ extension ActivityService {
     public func queryRoute(from workout: HKWorkout, callback: @escaping RouteSampleCallback) {
         guard #available(iOS 11.0, *) else {
             GTError(message: GeoTrackKitError.iOS11Required.humanReadableDescription)
-            return callback(nil, GeoTrackKitError.iOS11Required)
+            return callback(.failure(GeoTrackKitError.iOS11Required))
         }
 
         let runningObjectQuery = HKQuery.predicateForObjects(from: workout)
@@ -138,14 +142,14 @@ extension ActivityService {
 
             if let error = error {
                 self.store.stop(query)
-                return callback(nil, error)
+                return callback(.failure(error))
             }
             guard let routes = samples as? [HKWorkoutRoute] else {
                 GTError(message: GeoTrackKitError.workoutWithoutRoutes.humanReadableDescription)
-                return callback(nil, GeoTrackKitError.workoutWithoutRoutes)
+                return callback(.failure(GeoTrackKitError.workoutWithoutRoutes))
             }
 
-            callback(routes, nil)
+            callback(.success(routes))
         }
 
         store.execute(routeQuery)
@@ -159,41 +163,39 @@ extension ActivityService {
     public func queryTrack(from workout: HKWorkout, callback: @escaping TrackCallback) {
         guard #available(iOS 11.0, *) else {
             GTError(message: GeoTrackKitError.iOS11Required.humanReadableDescription)
-            return callback(nil, GeoTrackKitError.iOS11Required)
+            return callback(.failure(GeoTrackKitError.iOS11Required))
         }
 
-        queryRoute(from: workout) { (routes, error) in
-            if let error = error {
+        queryRoute(from: workout) { result in
+            switch result {
+            case .failure(let error):
                 GTError(message: "Failed to load route: \(error.localizedDescription)")
-                return callback(nil, error)
-            }
-            guard let routes = routes as? [HKWorkoutRoute] else {
-                GTError(message: GeoTrackKitError.workoutWithoutRoutes.humanReadableDescription)
-                return callback(nil, GeoTrackKitError.workoutWithoutRoutes)
-            }
+                callback(.failure(error))
+            case .success(let routes):
+                guard let routes = routes as? [HKWorkoutRoute] else {
+                    GTError(message: GeoTrackKitError.workoutWithoutRoutes.humanReadableDescription)
+                    return callback(.failure(GeoTrackKitError.workoutWithoutRoutes))
+                }
 
-            // keep track of the number of routes that have completed
-            var completedCount = 0
-            // keep a reference in case we need to call back with an error
-            var errorResponse: Error?
-            // keep an array of points around for calling back with
-            var points = [CLLocation]()
+                // keep track of the number of routes that have completed
+                var completedCount = 0
+                // keep an array of points around for calling back with
+                var points = [CLLocation]()
 
-            for route in routes {
-                self.queryPoints(route: route) { (locations, error) in
-                    if let error = error {
-                        errorResponse = error
-                        return
-                    }
-                    guard let locations = locations else {
-                        return
-                    }
-                    points.append(contentsOf: locations)
-                    completedCount += 1
+                for route in routes {
+                    self.queryPoints(route: route) { result in
+                        switch result {
+                        case .failure(let error):
+                            callback(.failure(error))
+                        case .success(let locations):
+                            points.append(contentsOf: locations)
+                            completedCount += 1
 
-                    // Don't call back until we've got all of the responses back
-                    if completedCount == routes.count {
-                        callback(points, errorResponse)
+                            // Don't call back until we've got all of the responses back
+                            if completedCount == routes.count {
+                                callback(.success(points))
+                            }
+                        }
                     }
                 }
             }
@@ -218,7 +220,7 @@ extension ActivityService {
             if let error = error {
                 self.store.stop(query)
                 GTError(message: "Failed to get points for route: \(error.localizedDescription)")
-                return callback(nil, error)
+                return callback(.failure(error))
             }
 
             guard let locations = locations else {
@@ -233,7 +235,7 @@ extension ActivityService {
             }
 
             GTDebug(message: "Completed importing points")
-            callback(points, nil)
+            callback(.success(points))
         }
 
         store.execute(query)

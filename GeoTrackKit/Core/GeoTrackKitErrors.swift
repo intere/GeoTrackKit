@@ -12,6 +12,7 @@ enum GeoTrackKitError: LocalizedError {
     case authNoErrorButUnsuccessful
     case workoutWithoutRoutes
     case sampleMissingPoints
+    case notWorkoutType
 
     /// A description of the error
     public var errorDescription: String? {
@@ -26,6 +27,8 @@ enum GeoTrackKitError: LocalizedError {
             return "Workout did not have any associated routes"
         case .sampleMissingPoints:
             return "Route called back without any points"
+        case .notWorkoutType:
+            return "The samples were not the workout type"
         }
     }
 
