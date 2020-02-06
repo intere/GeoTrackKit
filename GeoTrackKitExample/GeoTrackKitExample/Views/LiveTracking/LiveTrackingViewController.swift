@@ -19,6 +19,7 @@ class LiveTrackingViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        liveMapView.showsUserLocation = true
 
         Notification.GeoTrackManager.didUpdateLocations.addObserver(self, selector: #selector(trackUpdated))
     }

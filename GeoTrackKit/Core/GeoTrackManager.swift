@@ -283,6 +283,9 @@ extension GeoTrackManager {
     ///   - manager: the source of the event.
     ///   - error: the error that occurred.
     public func locationManager(locationServicing manager: LocationServicing, didFailWithError error: Error) {
+        if (error as NSError).code == CLError.locationUnknown.rawValue {
+            return
+        }
         GTError(message: "Failed to perform location tracking: \(error.localizedDescription), \(error)")
         track?.error(error: error)
         Notification.GeoTrackManager.didFailWithError.notify(withObject: error)
@@ -321,15 +324,15 @@ private extension GeoTrackManager {
         locationManager.activityType = .fitness
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
 
-        #if !os(watchOS)
-        // Until we come up with a heuristic to unpause it
-        locationManager.pausesLocationUpdatesAutomatically = false
-        #endif
-
         // only give us updates when we have 10 meters of change (otherwise we get way too much data)
         locationManager.distanceFilter = 10
         locationManager.allowsBackgroundLocationUpdates = true
         locationManager.delegate = self
+
+        #if !os(watchOS)
+        // Until we come up with a heuristic to unpause it
+        locationManager.pausesLocationUpdatesAutomatically = false
+        #endif
 
         self.locationManager = locationManager
     }

@@ -9,13 +9,21 @@
 import GeoTrackKit
 import SwiftUI
 
+
 struct ContentView: View {
     @State var labelText = "GeoTrackKit"
     @State var buttonText = "Start Tracking"
+    let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
 
     var body: some View {
         VStack {
             Text(labelText)
+                .onReceive(timer) { _ in
+                    guard let track = GeoTrackManager.shared.track else {
+                        return
+                    }
+                    self.labelText = "\(track.points.count) points"
+            }
             Button(action: {
                 self.handleTracking()
             }, label: {

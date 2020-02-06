@@ -68,7 +68,7 @@
          </BuildableReference>
       </RemoteRunnable>
       <LocationScenarioReference
-         identifier = "../Resources/BerthoudSolo.gpx"
+         identifier = "../Resources/BerthoudPass.gpx"
          referenceType = "0">
       </LocationScenarioReference>
    </LaunchAction>

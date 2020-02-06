@@ -25,6 +25,7 @@
 		3624767D23DFB579005E095E /* WatchExample.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 3624765723DFB577005E095E /* WatchExample.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		3624768823E30A9D005E095E /* SQLiteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3624768723E30A9D005E095E /* SQLiteTests.swift */; };
 		3624768B23E30E88005E095E /* XCTestCaseExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3624768A23E30E88005E095E /* XCTestCaseExtensions.swift */; };
+		3628D23123EC3E2F004FEE46 /* BerthoudPass.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 3628D23023EC3E2E004FEE46 /* BerthoudPass.gpx */; };
 		36302DB9210E17B400834A1D /* GeoTrackKitErrorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36302DB8210E17B400834A1D /* GeoTrackKitErrorTests.swift */; };
 		3650BB7223E717120008C97E /* Logging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3650BB7123E717120008C97E /* Logging.swift */; };
 		3661C3662381C80B009DE76C /* GeoTrackManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3661C3652381C80B009DE76C /* GeoTrackManagerTests.swift */; };
@@ -45,9 +46,6 @@
 		368B12CA222DB1E200B22C72 /* SelectTrackDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 368B12C9222DB1E200B22C72 /* SelectTrackDialog.swift */; };
 		368B12CD222DC47200B22C72 /* merge1.json in Resources */ = {isa = PBXBuildFile; fileRef = 368B12CB222DC46F00B22C72 /* merge1.json */; };
 		368B12CE222DC47200B22C72 /* merge2.json in Resources */ = {isa = PBXBuildFile; fileRef = 368B12CC222DC47000B22C72 /* merge2.json */; };
-		369D349B23E5A90E00CB9EBE /* BerthoudSolo.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 369D349A23E5A90D00CB9EBE /* BerthoudSolo.gpx */; };
-		369D349C23E5A90E00CB9EBE /* BerthoudSolo.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 369D349A23E5A90D00CB9EBE /* BerthoudSolo.gpx */; };
-		369D349D23E5A90E00CB9EBE /* BerthoudSolo.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 369D349A23E5A90D00CB9EBE /* BerthoudSolo.gpx */; };
 		369D34A823E70A1D00CB9EBE /* Logging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 369D34A723E70A1D00CB9EBE /* Logging.swift */; };
 		36A7C6C72100B0980073407A /* EventLogAppender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36A7C6C62100B0980073407A /* EventLogAppender.swift */; };
 		36A7C6D02103ECB40073407A /* ConsoleLogAppender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36A7C6CF2103ECB40073407A /* ConsoleLogAppender.swift */; };
@@ -145,6 +143,7 @@
 		3624767A23DFB578005E095E /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
 		3624768723E30A9D005E095E /* SQLiteTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQLiteTests.swift; sourceTree = "<group>"; };
 		3624768A23E30E88005E095E /* XCTestCaseExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCTestCaseExtensions.swift; sourceTree = "<group>"; };
+		3628D23023EC3E2E004FEE46 /* BerthoudPass.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = BerthoudPass.gpx; sourceTree = "<group>"; };
 		36302DB8210E17B400834A1D /* GeoTrackKitErrorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeoTrackKitErrorTests.swift; sourceTree = "<group>"; };
 		3650BB7123E717120008C97E /* Logging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logging.swift; sourceTree = "<group>"; };
 		3661C3652381C80B009DE76C /* GeoTrackManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeoTrackManagerTests.swift; sourceTree = "<group>"; };
@@ -165,7 +164,6 @@
 		368B12C9222DB1E200B22C72 /* SelectTrackDialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectTrackDialog.swift; sourceTree = "<group>"; };
 		368B12CB222DC46F00B22C72 /* merge1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = merge1.json; sourceTree = "<group>"; };
 		368B12CC222DC47000B22C72 /* merge2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = merge2.json; sourceTree = "<group>"; };
-		369D349A23E5A90D00CB9EBE /* BerthoudSolo.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = BerthoudSolo.gpx; sourceTree = "<group>"; };
 		369D34A723E70A1D00CB9EBE /* Logging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logging.swift; sourceTree = "<group>"; };
 		36A7C6C62100B0980073407A /* EventLogAppender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventLogAppender.swift; sourceTree = "<group>"; };
 		36A7C6CF2103ECB40073407A /* ConsoleLogAppender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsoleLogAppender.swift; sourceTree = "<group>"; };
@@ -360,7 +358,7 @@
 		369D349923E5A90D00CB9EBE /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				369D349A23E5A90D00CB9EBE /* BerthoudSolo.gpx */,
+				3628D23023EC3E2E004FEE46 /* BerthoudPass.gpx */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -704,7 +702,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				3624765D23DFB578005E095E /* Assets.xcassets in Resources */,
-				369D349C23E5A90E00CB9EBE /* BerthoudSolo.gpx in Resources */,
 				3624765B23DFB577005E095E /* Interface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -714,7 +711,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				3624767823DFB578005E095E /* Preview Assets.xcassets in Resources */,
-				369D349D23E5A90E00CB9EBE /* BerthoudSolo.gpx in Resources */,
 				3624767523DFB578005E095E /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -723,6 +719,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3628D23123EC3E2F004FEE46 /* BerthoudPass.gpx in Resources */,
 				36A7C6DB2104CBF30073407A /* TrackConsole.storyboard in Resources */,
 				36C45E4F1DCE2D3500E87710 /* LaunchScreen.storyboard in Resources */,
 				3661C36B2382253E009DE76C /* README.md in Resources */,
@@ -730,7 +727,6 @@
 				366B1C672209271E003C19F8 /* TrackList.storyboard in Resources */,
 				36A7C6E72104CD120073407A /* TrackView.storyboard in Resources */,
 				36C45E4C1DCE2D3500E87710 /* Assets.xcassets in Resources */,
-				369D349B23E5A90E00CB9EBE /* BerthoudSolo.gpx in Resources */,
 				36D099B5210B64E200C8C841 /* TrackImport.storyboard in Resources */,
 				36A7C6E32104CC360073407A /* LiveTrackingView.storyboard in Resources */,
 				36C45E4A1DCE2D3500E87710 /* Main.storyboard in Resources */,

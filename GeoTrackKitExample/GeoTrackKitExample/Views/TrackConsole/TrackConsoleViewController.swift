@@ -71,7 +71,7 @@ fileprivate extension TrackConsoleViewController {
                     case .denied, .restricted:
                         self.showUnauthorizedDialog()
                     case .notDetermined:
-                        assertionFailure("This should not happen")
+                        break
                     @unknown default:
                         assertionFailure("The library needs to be updated")
                     }
