@@ -53,9 +53,14 @@ class GeoTrackManagerTests: XCTestCase {
         }
         manager.locationManager(locationServicing: self.mockManager, didChangeAuthorization: .authorizedWhenInUse)
         manager.locationManager(locationServicing: self.mockManager, didUpdateLocations: points)
-        // There will be no track if there are no points
-        XCTAssertNotNil(manager.track)
-        XCTAssertEqual(0, manager.track?.points.count)
+
+        if manager.trackPersistence is SQLiteTrackPersisting {
+            XCTAssertNil(manager.track)
+        } else {
+            // There will be no track if there are no points
+            XCTAssertNotNil(manager.track)
+            XCTAssertEqual(0, manager.track?.points.count)
+        }
     }
 
     func testFilteringDefaults() {
