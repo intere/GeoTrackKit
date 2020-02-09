@@ -27,6 +27,8 @@ public typealias GeoTrackAuthCallback = () -> Void
 /// This is the protocol for the GeoTrackService.  It will handle starting and stopping tracking.
 public protocol GeoTrackService {
 
+    typealias AuthorizationCallback = (Swift.Result<CLAuthorizationStatus, Error>) -> Void
+
     /// Application name
     var applicationName: String { get set }
 
@@ -45,6 +47,9 @@ public protocol GeoTrackService {
     /// The most recently tracked point
     var lastPoint: CLLocation? { get }
 
+    /// The Track persistence manager
+    var trackPersistence: TrackPersisting { get set }
+
     /// Should the service collect all of the points, or just ignore them and rebroadcast the events?
     /// If this is set to false, then the track will always be nil.
     var shouldStorePoints: Bool { get set }
@@ -56,8 +61,8 @@ public protocol GeoTrackService {
     /// then request authorization and start tracking after we get it.
     ///
     /// - Parameter type: The type of authorization we need for our tracking.
-    /// - Throws: A `NotAuthorizedError` if location service access is denied or restricted.
-    func startTracking(type: TrackingType) throws
+    /// - Parameter completion: The completion handler that hands you back the authorization status
+    func startTracking(type: TrackingType, completion: @escaping AuthorizationCallback)
 
     /// Stops tracking
     func stopTracking()
@@ -66,6 +71,8 @@ public protocol GeoTrackService {
     func reset()
 
 }
+
+#if !os(watchOS)
 
 // MARK: - Shared Behavior
 
@@ -85,6 +92,8 @@ public extension GeoTrackService {
     }
 
 }
+
+#endif
 
 /// This error is raised when you don't have proper authorization
 public class NotAuthorizedError: Error {

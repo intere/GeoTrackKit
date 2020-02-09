@@ -19,6 +19,7 @@ public protocol LocationServicing {
     func stopUpdatingLocation()
 }
 
+
 // MARK: - CLLocationManager: LocationServicing
 
 extension CLLocationManager: LocationServicing { }
@@ -46,26 +47,47 @@ public class GeoTrackManager: NSObject {
 
     internal(set) public var trackingState: GeoTrackState = .notTracking
 
-    public var shouldStorePoints = true
+    private var authStatusCallback: AuthorizationCallback?
+
+    @available(*, deprecated, message: "Set the trackPersistence instead")
+    public var shouldStorePoints = true {
+        didSet {
+            if !shouldStorePoints {
+                guard !isTracking else {
+                    return assertionFailure("This cannot be changed while tracking")
+                }
+                trackPersistence = NoTrackPersisting.shared
+            }
+        }
+    }
+
+    /// The method of persistence, defaults to "in memory"
+    public var trackPersistence: TrackPersisting = InMemoryTrackPersisting.shared
 
     public var pointFilter: PointFilterOptions = .defaultFilterOptions
 
     /// The last Geo Point to be tracked
-    internal(set) public var lastPoint: CLLocation?
+    public var lastPoint: CLLocation? {
+        return trackPersistence.lastPoint
+    }
 
     /// Are we authorized for location tracking?
     internal(set) public var authorized: Bool = false
 
     /// The Track
-    internal(set) public var track: GeoTrack?
+    public var track: GeoTrack? {
+        return trackPersistence.track
+    }
 
     public var locationManager: LocationServicing?
+
 }
 
 // MARK: - GeoTrackService Implementation
 
 extension GeoTrackManager: GeoTrackService {
 
+    /// Are we tracking, currently?  This returns false if we're awaiting the fix
     public var isTracking: Bool {
         return trackingState == .tracking
     }
@@ -74,15 +96,15 @@ extension GeoTrackManager: GeoTrackService {
         return trackingState == .awaitingFix
     }
 
-    public func startTracking(type: TrackingType) throws {
+    public func startTracking(type: TrackingType, completion: @escaping AuthorizationCallback) {
         GTInfo(message: "User requested Start Tracking")
         guard trackingState == .notTracking else {
             GTWarn(message: "We're already tracking or awaiting a fix")
-            return
+            return completion(.failure(GeoTrackManagerError.alreadyTracking))
         }
 
         initializeLocationManager()
-        try beginLocationUpdates(type: type)
+        beginLocationUpdates(type: type, completion: completion)
     }
 
     public func stopTracking() {
@@ -93,8 +115,7 @@ extension GeoTrackManager: GeoTrackService {
     }
 
     public func reset() {
-        lastPoint = nil
-        track = nil
+        trackPersistence.reset()
         locationManager = nil
         trackingState = .notTracking
     }
@@ -124,6 +145,17 @@ extension GeoTrackManager: CLLocationManagerDelegate {
         locationManager(locationServicing: manager, didUpdateLocations: locations)
     }
 
+    /// Handles location tracking errors
+    ///
+    /// - Parameters:
+    ///   - manager: the source of the event.
+    ///   - error: the error that occurred.
+    public func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        locationManager(locationServicing: manager, didFailWithError: error)
+    }
+
+    #if !os(watchOS)
+
     /// Handles location tracking pauses
     ///
     /// - Parameter manager: the source of the event.
@@ -138,15 +170,6 @@ extension GeoTrackManager: CLLocationManagerDelegate {
         locationManagerDidResumeLocationUpdates(locationServicing: manager)
     }
 
-    /// Handles location tracking errors
-    ///
-    /// - Parameters:
-    ///   - manager: the source of the event.
-    ///   - error: the error that occurred.
-    public func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        locationManager(locationServicing: manager, didFailWithError: error)
-    }
-
     /// Handles deferred update errors.
     ///
     /// - Parameters:
@@ -155,6 +178,7 @@ extension GeoTrackManager: CLLocationManagerDelegate {
     public func locationManager(_ manager: CLLocationManager, didFinishDeferredUpdatesWithError error: Error?) {
         locationManager(locationServicing: manager, didFinishDeferredUpdatesWithError: error)
     }
+    #endif
 
 }
 
@@ -194,6 +218,8 @@ extension GeoTrackManager {
             authorized = false
             assertionFailure("Unknown status: \(status)")
         }
+
+        authStatusCallback?(.success(status))
     }
 
     // LocationServicing
@@ -229,19 +255,7 @@ extension GeoTrackManager {
         }
 
         GTDebug(message: "New Locations: \(recentLocations)")
-        guard let location = recentLocations.last else {
-            lastPoint = nil
-            return
-        }
-        lastPoint = location
-
-        if shouldStorePoints {
-            guard let track = track else {
-                GTError(message: "No current track to store points within")
-                return
-            }
-            track.add(locations: recentLocations)
-        }
+        trackPersistence.addPoints(recentLocations)
         Notification.GeoTrackManager.didUpdateLocations.notify(withObject: recentLocations)
     }
 
@@ -269,6 +283,9 @@ extension GeoTrackManager {
     ///   - manager: the source of the event.
     ///   - error: the error that occurred.
     public func locationManager(locationServicing manager: LocationServicing, didFailWithError error: Error) {
+        if (error as NSError).code == CLError.locationUnknown.rawValue {
+            return
+        }
         GTError(message: "Failed to perform location tracking: \(error.localizedDescription), \(error)")
         track?.error(error: error)
         Notification.GeoTrackManager.didFailWithError.notify(withObject: error)
@@ -307,28 +324,26 @@ private extension GeoTrackManager {
         locationManager.activityType = .fitness
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
 
-        // Until we come up with a heuristic to unpause it
-        locationManager.pausesLocationUpdatesAutomatically = false
-
         // only give us updates when we have 10 meters of change (otherwise we get way too much data)
         locationManager.distanceFilter = 10
         locationManager.allowsBackgroundLocationUpdates = true
         locationManager.delegate = self
 
+        #if !os(watchOS)
+        // Until we come up with a heuristic to unpause it
+        locationManager.pausesLocationUpdatesAutomatically = false
+        #endif
+
         self.locationManager = locationManager
     }
 
     /// Handles requesting authorization from location services
-    func beginLocationUpdates(type: TrackingType) throws {
+    func beginLocationUpdates(type: TrackingType, completion: @escaping AuthorizationCallback) {
         guard let locationManager = locationManager else {
-            return
+            return completion(.failure(GeoTrackManagerError.configurationError))
         }
 
-        if track == nil {
-            GTDebug(message: "Created new GeoTrack object")
-            track = GeoTrack()
-        }
-        track?.startTracking()
+        trackPersistence.startTracking()
 
         switch CLLocationManager.authorizationStatus() {
         case .authorizedAlways:
@@ -346,7 +361,7 @@ private extension GeoTrackManager {
             }
 
         case .denied, .restricted:
-            throw NotAuthorizedError()
+            break
 
         case .notDetermined:
             switch type {
@@ -356,10 +371,13 @@ private extension GeoTrackManager {
             case .whileInUse:
                 locationManager.requestWhenInUseAuthorization()
             }
+
         @unknown default:
             GTDebug(message: "Unknown authorization status: \(CLLocationManager.authorizationStatus())")
             assertionFailure("Unknown authorization status: \(CLLocationManager.authorizationStatus())")
         }
+        authStatusCallback = completion
+        completion(.success(CLLocationManager.authorizationStatus()))
     }
 
     /// Handles stopping tracking
@@ -392,4 +410,12 @@ public extension Notification {
             return rawValue
         }
     }
+}
+
+// MARK: - GeoTrackManagerError
+
+public enum GeoTrackManagerError: Error {
+    case alreadyTracking
+    case configurationError
+    case unknownAuthStatus
 }

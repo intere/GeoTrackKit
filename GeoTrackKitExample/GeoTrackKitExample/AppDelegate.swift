@@ -21,6 +21,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         GeoTrackEventLog.shared.add(appender: ConsoleLogAppender.shared)
         #endif
 
+        do {
+            try SQLiteService.shared.configureDatabase()
+            GeoTrackManager.shared.trackPersistence = SQLiteTrackPersisting.shared
+        } catch {
+            ELog("failed to configure db: \(error.localizedDescription)")
+        }
+
         return true
     }
 

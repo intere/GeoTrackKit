@@ -81,12 +81,10 @@ class GeoTrackSerializationTests: XCTestCase {
 // MARK: - Deserialization Tests
 
 extension GeoTrackSerializationTests {
-    func testDeserializeTrackFile() {
-        let reader = TrackReader(bundleFilename: "reference-track-1")
-        XCTAssertNotNil(reader)
-        XCTAssertNotNil(reader.track)
 
-        guard let points = reader.track?.points else {
+    func testDeserializeTrackFile() {
+
+        guard let points = referenceTrack1?.points else {
             return XCTFail("No points")
         }
 
@@ -105,8 +103,7 @@ extension GeoTrackSerializationTests {
     }
 
     func testValidateDeserializedTrack() {
-        let reader = TrackReader(bundleFilename: "reference-track-1")
-        guard let track = reader.track else {
+        guard let track = referenceTrack1 else {
             return XCTFail("No track")
         }
         let analyzer = GeoTrackAnalyzer(track: track)

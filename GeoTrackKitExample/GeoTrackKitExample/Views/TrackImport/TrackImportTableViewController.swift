@@ -44,15 +44,16 @@ class TrackImportTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        loadTrack(from: indexPath) { track in
-            guard let track = track else {
-                return assertionFailure("There was an error with the track")
-            }
-
-            DispatchQueue.main.async { [weak self] in
-                let mapView = TrackMapViewController.loadFromStoryboard()
-                mapView.model = UIGeoTrack(with: track)
-                self?.navigationController?.pushViewController(mapView, animated: true)
+        loadTrack(from: indexPath) { result in
+            switch result {
+            case .failure(let error):
+                ELog("failed to load the track: \(error.localizedDescription)")
+            case .success(let track):
+                DispatchQueue.main.async { [weak self] in
+                    let mapView = TrackMapViewController.loadFromStoryboard()
+                    mapView.model = UIGeoTrack(with: track)
+                    self?.navigationController?.pushViewController(mapView, animated: true)
+                }
             }
         }
     }
@@ -61,11 +62,13 @@ class TrackImportTableViewController: UITableViewController {
 
         return [
             UITableViewRowAction(style: .normal, title: "Import") { _, indexPath in
-                self.loadTrack(from: indexPath) { track in
-                    guard let track = track else {
-                        return assertionFailure("There was an error with the track")
+                self.loadTrack(from: indexPath) { result in
+                    switch result {
+                    case .failure(let error):
+                        ELog("failed to load the track: \(error.localizedDescription)")
+                    case .success(let track):
+                        assert(TrackService.shared.save(track: track))
                     }
-                    assert(TrackService.shared.save(track: track))
                 }
             }
         ]
@@ -77,7 +80,11 @@ class TrackImportTableViewController: UITableViewController {
 
 extension TrackImportTableViewController {
 
-    typealias TrackCallback = (GeoTrack?) -> Void
+    typealias TrackCallback = (Swift.Result<GeoTrack, Error>) -> Void
+
+    enum TrackImportTableError: Error {
+        case invalidIndexPath
+    }
 
     /// Loads a track for the activity at the provided indexPath.
     ///
@@ -86,54 +93,59 @@ extension TrackImportTableViewController {
     ///   - completion: The callback that hands you back the track or nil if there was an issue.
     func loadTrack(from indexPath: IndexPath, completion: @escaping TrackCallback) {
         guard indexPath.row < workouts.count else {
-            completion(nil)
-            return
+            return completion(.failure(TrackImportTableError.invalidIndexPath))
         }
 
         let workout = workouts[indexPath.row]
 
-        ActivityService.shared.queryTrack(from: workout) { (locations, error) in
-            if let error = error {
-                completion(nil)
-                return print("Error getting points: \(error.localizedDescription)")
+        ActivityService.shared.queryTrack(from: workout) { result in
+            switch result {
+            case .failure(let error):
+                completion(.failure(error))
+                ELog("Error getting points: \(error.localizedDescription)")
+            case .success(let locations):
+                let track = GeoTrack(points: locations, name: workout.tableDescription, description: workout.description)
+                completion(.success(track))
             }
-            guard let locations = locations else {
-                completion(nil)
-                return print("Locations came back empty")
-            }
-
-            let track = GeoTrack(points: locations, name: workout.tableDescription, description: workout.description)
-            completion(track)
         }
     }
 
     /// Loads the tracks from the workouts for you.
     func loadTracksFromWorkouts() {
         workouts.removeAll()
-        ActivityService.shared.authorize { (success, _) in
-            guard success else {
-                print("We won't be querying activities, no authorization")
-                return
-            }
-            ActivityService.shared.queryWorkouts { (results, error) in
-                if let error = error {
-                    return print("We got an error: \(error.localizedDescription)")
+        ActivityService.shared.authorize { result in
+            switch result {
+            case .failure(let error):
+                ELog("We won't be querying activities, no authorization: \(error.localizedDescription)")
+            case .success(let success):
+                guard success else {
+                    ELog("We won't be querying activities, no authorization.")
+                    return
                 }
-                guard let results = results else {
-                    return print("We didn't get an error, but we didn't get results either")
-                }
+                ActivityService.shared.queryWorkouts { result in
+                    switch result {
+                    case .failure(let error):
+                        ELog("We got an error: \(error.localizedDescription)")
+                    case .success(let results):
+                        results.forEach { workout in
+                            // If the workout has a route, we'll add it to the table
+                            ActivityService.shared.queryRoute(from: workout) { [weak self] result in
 
-                results.forEach { workout in
-                    // If the workout has a route, we'll add it to the table
-                    ActivityService.shared.queryRoute(from: workout) { [weak self] (routes, _) in
-                        guard let strongSelf = self, let routes = routes, routes.count > 0 else {
-                            return
-                        }
-                        strongSelf.workouts.append(workout)
-                        strongSelf.workouts = strongSelf.workouts.sorted(by: { $0.startDate > $1.startDate })
+                                switch result {
+                                case .failure(let error):
+                                    ELog("failed querying route: \(error.localizedDescription)")
+                                case .success(let routes):
+                                    guard let self = self, routes.count > 0 else {
+                                        return
+                                    }
+                                    self.workouts.append(workout)
+                                    self.workouts = self.workouts.sorted(by: { $0.startDate > $1.startDate })
 
-                        DispatchQueue.main.async { [weak self] in
-                            self?.tableView.reloadData()
+                                    DispatchQueue.main.async { [weak self] in
+                                        self?.tableView.reloadData()
+                                    }
+                                }
+                            }
                         }
                     }
                 }

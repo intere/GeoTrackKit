@@ -11,9 +11,9 @@ import XCTest
 
 class GeoTrackTests: XCTestCase {
 
-    var firstTrack = TrackReader(bundleFilename: "reference-track-1").track   //  1,349 points (winter park)
-    var secondTrack = TrackReader(bundleFilename: "reference-track-2").track  //  6,443 points (berthoud pass)
-    var thirdTrack = TrackReader(bundleFilename: "reference-track-3").track   // 11,702 points (berthoud pass)
+    var firstTrack = referenceTrack1
+    var secondTrack = referenceTrack2
+    var thirdTrack = referenceTrack3
 
 }
 

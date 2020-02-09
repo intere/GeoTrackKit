@@ -59,13 +59,22 @@ fileprivate extension TrackConsoleViewController {
                 assert(TrackService.shared.save(track: track))
             }
         } else {
-            do {
-                try GeoTrackManager.shared.startTracking(type: .whileInUse)
-            } catch {
-                if error is NotAuthorizedError {
-                    showUnauthorizedDialog()
-                } else {
-                    print("ERROR: \(error.localizedDescription)")
+            GeoTrackManager.shared.startTracking(type: .whileInUse) { result in
+                switch result {
+                case .failure(let error):
+                    ELog("failed to start tracking: \(error.localizedDescription)")
+                case .success(let authStatus):
+                    switch authStatus {
+                    case .authorizedAlways, .authorizedWhenInUse:
+                        // We're authorized to track
+                        break
+                    case .denied, .restricted:
+                        self.showUnauthorizedDialog()
+                    case .notDetermined:
+                        break
+                    @unknown default:
+                        assertionFailure("The library needs to be updated")
+                    }
                 }
             }
         }

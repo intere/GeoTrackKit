@@ -13,9 +13,9 @@ import CoreLocation
 public class GeoTrack {
 
     /// The internal list of points
-    fileprivate var iPoints = [CLLocation]()
+    var iPoints = [CLLocation]()
     /// The Track Events that have occured that are related to this track
-    fileprivate(set) public var events = [GeoTrackLocationEvent]()
+    public internal(set) var events = [GeoTrackLocationEvent]()
     /// The track name (defaults to an empty string)
     public var name = ""
     /// A description for the track

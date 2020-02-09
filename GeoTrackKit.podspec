@@ -4,7 +4,7 @@
 
 Pod::Spec.new do |s|
   s.name      = 'GeoTrackKit'
-  s.version   = '1.0.0'
+  s.version   = '1.1.0'
   s.summary   = 'Geo Tracking and statistics for iOS'
   s.description = <<-DESC
 A Geo Location Tracking and statistic calculation library for iOS.  It also provides rendering location tracks over a map for you.
@@ -31,12 +31,13 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
     LICENSE
   }
 
-  s.platform = :ios, '9.0'
+  s.ios.deployment_target = '11.0'
   s.swift_version = '5.0'
   s.default_subspecs = 'Core'
 
   # Core Tracking functionality + Apple Maps rendering
   s.subspec 'Core' do |ss|
+    ss.ios.deployment_target = '11.0'
     ss.source_files = 'GeoTrackKit/Core/**/*.{swift,h,m}'
   end
 
@@ -45,6 +46,31 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
     ss.ios.deployment_target = '11.0'
     ss.source_files = 'GeoTrackKit/HealthKit/**/*.{swift,h,m}'
     ss.dependency 'GeoTrackKit/Core'
+  end
+
+  s.subspec 'SQLite' do |ss|
+    ss.ios.deployment_target = '11.0'
+    ss.source_files = 'GeoTrackKit/SQLite/**/*.{swift,h,m}'
+    ss.dependency 'SQLite.swift'
+    ss.dependency 'GeoTrackKit/Core'
+  end
+
+
+  # Watch
+  s.subspec 'WatchCore' do |ss|
+    ss.watchos.deployment_target = '6.0'
+    ss.source_files = 'GeoTrackKit/Core/**/*.{swift,h,m}'
+    ss.watchos.exclude_files = [
+      "GeoTrackKit/Core/**/GeoTrackMap.swift",
+      "GeoTrackKit/Core/**/UIGeoTrack.swift"
+    ]
+  end
+
+  s.subspec 'SQLiteWatch' do |ss|
+    ss.watchos.deployment_target = '6.0'
+    ss.source_files = 'GeoTrackKit/SQLite/**/*.{swift,h,m}'
+    ss.dependency 'SQLite.swift'
+    ss.dependency 'GeoTrackKit/WatchCore'
   end
 
 end
