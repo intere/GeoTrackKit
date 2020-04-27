@@ -108,7 +108,7 @@ private extension TrackMapViewController {
             }
             let documentsFolder = try FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
             let fileName = model.track.name.trackNameToFileSystemName
-            let fileUrl = documentsFolder.appendingPathComponent("\(fileName).json")
+            let fileUrl = documentsFolder.appendingPathComponent("\(fileName).gtj")
             do {
                 try jsonString.write(to: fileUrl, atomically: false, encoding: .utf8)
             } catch {
@@ -164,7 +164,7 @@ private extension TrackMapViewController {
         let dialog = UIAlertController(title: "Share", message: "How would you like to share?", preferredStyle: .actionSheet)
 
         dialog.addAction(UIAlertAction(title: "JSON", style: .default) { [weak self] _ in
-            self?.shareJsonFile()
+            self?.shareGeoTrackJsonFile()
             dialog.dismiss(animated: true)
         })
         dialog.addAction(UIAlertAction(title: "GPX", style: .default) { [weak self] _ in
@@ -185,8 +185,8 @@ private extension TrackMapViewController {
         present(activityVC, animated: true, completion: nil)
     }
 
-    /// Shares the track as a JSON file
-    func shareJsonFile() {
+    /// Shares the track as a GeoTrack-JSON file
+    func shareGeoTrackJsonFile() {
         guard let trackWrittenToJsonFile = trackWrittenToJsonFile else {
             return
         }

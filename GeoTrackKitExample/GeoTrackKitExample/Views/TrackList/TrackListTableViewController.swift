@@ -57,6 +57,11 @@ class TrackListTableViewController: UITableViewController {
         guard let track = load(trackUrl: tracks[indexPath.row]) else {
             return
         }
+        if track.track.name.isEmpty {
+            track.track.name = tracks[indexPath.row].filenameNoExtension ?? ""
+        }
+
+
         // swiftlint:disable:next force_cast
         let mapVC = UIStoryboard(name: "TrackView", bundle: nil).instantiateViewController(withIdentifier: "TrackMapViewController") as! TrackMapViewController
         mapVC.useDemoTrack = false
