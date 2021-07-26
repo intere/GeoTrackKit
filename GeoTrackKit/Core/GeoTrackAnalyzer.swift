@@ -55,7 +55,6 @@ public extension GeoTrackAnalyzer {
             return self
         }
 
-        var direction = Direction.unknown
         var lastPoint: CLLocation?
         var legs = [Leg]()
         var leg = Leg(index: 0, point: points[0])

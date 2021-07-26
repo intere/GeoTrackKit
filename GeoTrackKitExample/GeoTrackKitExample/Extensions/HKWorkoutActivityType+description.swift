@@ -239,7 +239,14 @@ extension HKWorkoutActivityType {
 
         case .fitnessGaming:
             return "fitnessGaming"
-
+        case .cardioDance:
+            return "Cardio Dance"
+        case .socialDance:
+            return "Social Dance"
+        case .pickleball:
+            return "Pickleball"
+        case .cooldown:
+            return "Cooldown"
         case .other:
             return "other"
         @unknown default:
