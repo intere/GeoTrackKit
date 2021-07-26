@@ -47,10 +47,13 @@ public class GeoTrack {
     ///   - points: The points to initialize this GeoTrack with.
     ///   - name: The name for the track (defaults to empty string)
     ///   - description: A description for the track (defaults to empty string).
-    public init(points: [CLLocation], name: String = "", description: String = "") {
+    ///   - events: The GeoTrackLocationEvents to start with.
+    public init(points: [CLLocation], name: String = "", description: String = "",
+                events: [GeoTrackLocationEvent] = []) {
         self.iPoints = points
         self.name = name
         self.description = description
+        self.events = events
     }
 }
 
@@ -279,11 +282,9 @@ fileprivate extension GeoTrack {
             iPoints.append(location)
         }
 
-        guard json[PropertyKeys.events] as? [[String: Any]] != nil else {
-            return
-        }
+        guard let eventArray = json[PropertyKeys.events] as? [[String: Any]], !eventArray.isEmpty else { return }
 
-        // TODO(EGI): re-construct the events
+        events = eventArray.compactMap { GeoTrackLocationEvent.from(map: $0) }
     }
 
     func buildEventLog(showPoints: Bool) -> [String] {

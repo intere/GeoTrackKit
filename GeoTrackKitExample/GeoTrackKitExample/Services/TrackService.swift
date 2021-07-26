@@ -109,7 +109,8 @@ class TrackService {
         var points = firstTrack.points
         points.append(contentsOf: secondTrack.points)
 
-        return GeoTrack(points: points, name: firstTrack.name, description: firstTrack.description)
+        let events = (firstTrack.events + secondTrack.events).sorted(by: { $0.timestamp < $1.timestamp })
+        return GeoTrack(points: points, name: firstTrack.name, description: firstTrack.description, events: events)
     }
 }
 
@@ -158,14 +159,13 @@ extension TrackService {
 
             var urlDictionary = [URL: Date]()
 
-            for url in allFiles {
+            allFiles.forEach { url in
                 guard let dict = try? url.resourceValues(forKeys: Set(properties)),
-                    let creationDate = dict.creationDate else {
-                        continue
+                      let creationDate = dict.creationDate else {
+                    urlDictionary[url] = Date(timeIntervalSince1970: 0)
+                    return
                 }
-                guard url.absoluteString.lowercased().hasSuffix(fileExtension.lowercased()) else {
-                    continue
-                }
+                guard url.absoluteString.lowercased().hasSuffix(fileExtension.lowercased()) else { return }
                 urlDictionary[url] = creationDate
             }
 

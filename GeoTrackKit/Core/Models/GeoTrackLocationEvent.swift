@@ -220,3 +220,16 @@ public extension GeoTrackLocationEvent {
         return dict
     }
 }
+
+// MARK: - Equatable
+
+extension GeoTrackLocationEvent: Equatable {
+
+    public static func == (lhs: GeoTrackLocationEvent, rhs: GeoTrackLocationEvent) -> Bool {
+        guard lhs.index == rhs.index, lhs.type == rhs.type,
+              lhs.message == rhs.message, lhs.timestamp == rhs.timestamp else { return false }
+
+        return true
+    }
+
+}

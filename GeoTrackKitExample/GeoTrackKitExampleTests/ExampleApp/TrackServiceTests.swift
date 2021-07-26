@@ -53,6 +53,11 @@ extension TrackServiceTests {
 
         XCTAssertTrue(mergedTrack.points.count > 0)
         XCTAssertEqual(firstTrack.points.count + secondTrack.points.count, mergedTrack.points.count)
+        XCTAssertTrue(firstTrack.events.isEmpty)
+        XCTAssertFalse(secondTrack.events.isEmpty)
+        XCTAssertFalse(mergedTrack.events.isEmpty)
+        XCTAssertEqual(secondTrack.events.first, mergedTrack.events.first)
+        XCTAssertEqual(secondTrack.events.last, mergedTrack.events.last)
     }
 
 }
