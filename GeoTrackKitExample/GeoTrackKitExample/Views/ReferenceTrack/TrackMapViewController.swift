@@ -38,7 +38,8 @@ class TrackMapViewController: UIViewController {
             assert(model != nil, "There is no track")
         }
 
-        NotificationCenter.default.addObserver(self, selector: #selector(legVisiblityChanged(_:)), name: Notification.Name.GeoMapping.legVisibilityChanged, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(legVisiblityChanged(_:)),
+                                               name: Notification.Name.GeoMapping.legVisibilityChanged, object: nil)
 
         modelUpdated()
     }
@@ -47,8 +48,9 @@ class TrackMapViewController: UIViewController {
     ///
     /// - Returns: A new TrackMapViewController.
     class func loadFromStoryboard(useDemoTrack: Bool = false) -> TrackMapViewController {
-        // swiftlint:disable:next force_cast
-        let trackVC = UIStoryboard(name: "TrackView", bundle: nil).instantiateViewController(withIdentifier: "TrackMapViewController") as! TrackMapViewController
+        let trackVC = UIStoryboard(name: "TrackView", bundle: nil)
+            .instantiateViewController(withIdentifier: "TrackMapViewController") as! TrackMapViewController
+        // swiftlint:disable:previous force_cast
         trackVC.useDemoTrack = useDemoTrack
         return trackVC
     }
@@ -106,7 +108,8 @@ private extension TrackMapViewController {
             guard let jsonString = String(data: data, encoding: .utf8) else {
                 return nil
             }
-            let documentsFolder = try FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
+            let documentsFolder = try FileManager.default.url(for: .documentDirectory, in: .userDomainMask,
+                                                              appropriateFor: nil, create: true)
             let fileName = model.track.name.trackNameToFileSystemName
             let fileUrl = documentsFolder.appendingPathComponent("\(fileName).json")
             do {
@@ -133,7 +136,8 @@ private extension TrackMapViewController {
         }
 
         do {
-            let documentsFolder = try FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
+            let documentsFolder = try FileManager.default.url(for: .documentDirectory, in: .userDomainMask,
+                                                              appropriateFor: nil, create: true)
             let fileName = model.track.name.trackNameToFileSystemName
             let fileUrl = documentsFolder.appendingPathComponent("\(fileName).gpx")
 
@@ -161,7 +165,8 @@ private extension TrackMapViewController {
 
     /// Shows a action sheet with a set of sharing options.
     func showShareOptions() {
-        let dialog = UIAlertController(title: "Share", message: "How would you like to share?", preferredStyle: .actionSheet)
+        let dialog = UIAlertController(title: "Share", message: "How would you like to share?",
+                                       preferredStyle: .actionSheet)
 
         dialog.addAction(UIAlertAction(title: "JSON", style: .default) { [weak self] _ in
             self?.shareJsonFile()
@@ -227,7 +232,8 @@ private extension TrackMapViewController {
             assertionFailure("Couldn't read the data from the file: \(url)")
             return nil
         }
-        guard let jsonData = try? JSONSerialization.jsonObject(with: data, options: []), let jsonMap = jsonData as? [String: Any] else {
+        guard let jsonData = try? JSONSerialization.jsonObject(with: data, options: []),
+              let jsonMap = jsonData as? [String: Any] else {
             assertionFailure("Invalid data format in file \(path)")
             return nil
         }

@@ -33,7 +33,8 @@ class SelectTrackDialog: TrackListTableViewController {
 
         }
         navigationItem.title = "Merge With:"
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Cancel", style: .done, target: self, action: #selector(cancel(_:)))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Cancel", style: .done,
+                                                            target: self, action: #selector(cancel(_:)))
     }
 
     /// Gets you an instance of the SelectTrackDialog from the storyboard.
@@ -41,7 +42,8 @@ class SelectTrackDialog: TrackListTableViewController {
     /// - Parameter selectedTrack: The track that's selected
     /// - Returns: A new `SelectTrackDialog`
     class func loadFromStoryboard(selectedTrack: URL) -> SelectTrackDialog {
-        let trackDialogVC = UIStoryboard(name: "TrackList", bundle: nil).instantiateViewController(withIdentifier: "SelectTrackDialog") as! SelectTrackDialog
+        let trackDialogVC = UIStoryboard(name: "TrackList", bundle: nil)
+            .instantiateViewController(withIdentifier: "SelectTrackDialog") as! SelectTrackDialog
         // swiftlint:disable:previous force_cast
         trackDialogVC.selectedTrack = selectedTrack
         return trackDialogVC

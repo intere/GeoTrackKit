@@ -153,7 +153,8 @@ extension TrackService {
         do {
             let properties: [URLResourceKey] = [.localizedNameKey, .creationDateKey,
                                                 .contentModificationDateKey, .localizedTypeDescriptionKey]
-            let allFiles = try FileManager.default.contentsOfDirectory(at: documentsFolder, includingPropertiesForKeys: properties, options: [.skipsHiddenFiles])
+            let allFiles = try FileManager.default.contentsOfDirectory(
+                at: documentsFolder, includingPropertiesForKeys: properties, options: [.skipsHiddenFiles])
 
             var urlDictionary = [URL: Date]()
 

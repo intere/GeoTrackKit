@@ -3,13 +3,12 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		0E1E09A3899897CDAE589A5B /* Pods_GeoTrackKitExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A51639AB7B6B4BAEF27C313 /* Pods_GeoTrackKitExample.framework */; };
 		1B2451A1B46FD1E813C13A25 /* Pods_GeoTrackKitExampleTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6E72B23B9554498B66030FE /* Pods_GeoTrackKitExampleTests.framework */; };
-		3604FC77217150AB00B46BAA /* GeoTrackStatisticsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3604FC76217150AB00B46BAA /* GeoTrackStatisticsTests.swift */; };
 		36302DB9210E17B400834A1D /* GeoTrackKitErrorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36302DB8210E17B400834A1D /* GeoTrackKitErrorTests.swift */; };
 		3661C3662381C80B009DE76C /* GeoTrackManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3661C3652381C80B009DE76C /* GeoTrackManagerTests.swift */; };
 		3661C3682381D335009DE76C /* PointFilterOptionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3661C3672381D335009DE76C /* PointFilterOptionsTests.swift */; };
@@ -51,6 +50,7 @@
 		36EA9BF322060337003C79E8 /* TrackService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36EA9BF222060337003C79E8 /* TrackService.swift */; };
 		36EA9BF622061B90003C79E8 /* TrackServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36EA9BF522061B90003C79E8 /* TrackServiceTests.swift */; };
 		36F5A73421E0308900A3DB21 /* CoreLocationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36F5A73321E0308900A3DB21 /* CoreLocationExtension.swift */; };
+		36F61C1526AE5E900067E8D3 /* HKWorkoutActivityType+description.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36F61C1426AE5E900067E8D3 /* HKWorkoutActivityType+description.swift */; };
 		93090E201DF822D9004F56FB /* GeoTrackEventLogTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93090E1F1DF822D9004F56FB /* GeoTrackEventLogTests.swift */; };
 		93090E231DF82520004F56FB /* MockAppender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93090E221DF82520004F56FB /* MockAppender.swift */; };
 		93EEFC071E6DAD1900090CE7 /* UIGeoTrackTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93EEFC061E6DAD1900090CE7 /* UIGeoTrackTest.swift */; };
@@ -67,7 +67,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		3604FC76217150AB00B46BAA /* GeoTrackStatisticsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeoTrackStatisticsTests.swift; sourceTree = "<group>"; };
 		36302DB8210E17B400834A1D /* GeoTrackKitErrorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeoTrackKitErrorTests.swift; sourceTree = "<group>"; };
 		3661C3652381C80B009DE76C /* GeoTrackManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeoTrackManagerTests.swift; sourceTree = "<group>"; };
 		3661C3672381D335009DE76C /* PointFilterOptionsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointFilterOptionsTests.swift; sourceTree = "<group>"; };
@@ -113,6 +112,7 @@
 		36EA9BF222060337003C79E8 /* TrackService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackService.swift; sourceTree = "<group>"; };
 		36EA9BF522061B90003C79E8 /* TrackServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackServiceTests.swift; sourceTree = "<group>"; };
 		36F5A73321E0308900A3DB21 /* CoreLocationExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreLocationExtension.swift; sourceTree = "<group>"; };
+		36F61C1426AE5E900067E8D3 /* HKWorkoutActivityType+description.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HKWorkoutActivityType+description.swift"; sourceTree = "<group>"; };
 		51B54550121FF2A0DC20134F /* Pods-GeoTrackKitExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GeoTrackKitExample.release.xcconfig"; path = "Pods/Target Support Files/Pods-GeoTrackKitExample/Pods-GeoTrackKitExample.release.xcconfig"; sourceTree = "<group>"; };
 		8992FE79B7159E02B95D4ABA /* Pods-GeoTrackKitExampleTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GeoTrackKitExampleTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GeoTrackKitExampleTests/Pods-GeoTrackKitExampleTests.debug.xcconfig"; sourceTree = "<group>"; };
 		8A51639AB7B6B4BAEF27C313 /* Pods_GeoTrackKitExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GeoTrackKitExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -160,7 +160,6 @@
 			children = (
 				366B652E21963ADA00BA5EB7 /* Models */,
 				36302DB8210E17B400834A1D /* GeoTrackKitErrorTests.swift */,
-				3604FC76217150AB00B46BAA /* GeoTrackStatisticsTests.swift */,
 				3661C3652381C80B009DE76C /* GeoTrackManagerTests.swift */,
 				3661C3672381D335009DE76C /* PointFilterOptionsTests.swift */,
 			);
@@ -334,6 +333,7 @@
 			children = (
 				36F5A73321E0308900A3DB21 /* CoreLocationExtension.swift */,
 				368B12C7222D847A00B22C72 /* StringExtensions.swift */,
+				36F61C1426AE5E900067E8D3 /* HKWorkoutActivityType+description.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -547,6 +547,7 @@
 		};
 		3649061B1E6C62EB00B6A0C4 /* Swiftlint */ = {
 			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
 			files = (
 			);
@@ -557,7 +558,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "runSwiftLint() {\n    if which swiftlint >/dev/null; then\n    swiftlint\n    else\n    echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\n    fi\n}\n\nrunSwiftLint";
+			shellScript = "runSwiftLint() {\n    if which swiftlint >/dev/null; then\n        swiftlint\n    else\n        echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\n    fi\n}\n\nrunSwiftLint\n";
 		};
 		47EBB03A9F87038E40144C94 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -598,6 +599,7 @@
 				368B12C8222D847A00B22C72 /* StringExtensions.swift in Sources */,
 				36838E93222A094A00F4F714 /* TrackOverviewCell.swift in Sources */,
 				36A7C6C72100B0980073407A /* EventLogAppender.swift in Sources */,
+				36F61C1526AE5E900067E8D3 /* HKWorkoutActivityType+description.swift in Sources */,
 				36A7C6D02103ECB40073407A /* ConsoleLogAppender.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -612,7 +614,6 @@
 				368A87B11E63332E003D115A /* TrackReader.swift in Sources */,
 				93090E231DF82520004F56FB /* MockAppender.swift in Sources */,
 				93090E201DF822D9004F56FB /* GeoTrackEventLogTests.swift in Sources */,
-				3604FC77217150AB00B46BAA /* GeoTrackStatisticsTests.swift in Sources */,
 				3661C3662381C80B009DE76C /* GeoTrackManagerTests.swift in Sources */,
 				366B653021963AEE00BA5EB7 /* GeoTrackTests.swift in Sources */,
 				368A87B71E636FCE003D115A /* GeoTrackAnalyzerTests.swift in Sources */,
@@ -760,7 +761,8 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -778,7 +780,10 @@
 				DEVELOPMENT_TEAM = 268S5GJFWZ;
 				INFOPLIST_FILE = GeoTrackKitExample/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.icolasoft.GeoTrackKitExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -798,7 +803,10 @@
 				DEVELOPMENT_TEAM = 268S5GJFWZ;
 				INFOPLIST_FILE = GeoTrackKitExample/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.icolasoft.GeoTrackKitExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -814,7 +822,11 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = GeoTrackKitExampleTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.icolasoft.GeoTrackKitExampleTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
@@ -830,7 +842,11 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = GeoTrackKitExampleTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.icolasoft.GeoTrackKitExampleTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;

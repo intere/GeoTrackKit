@@ -39,7 +39,8 @@ extension PointFilterOptionsTests {
             return XCTFail("No minimum horizontal accuracy set")
         }
 
-        guard let points = points, let first = points.first, let last = points.last?.clone(horizontalAccuracy: minimumHorizontalAccuracy + 0.1) else {
+        guard let points = points, let first = points.first,
+              let last = points.last?.clone(horizontalAccuracy: minimumHorizontalAccuracy + 0.1) else {
             return XCTFail("No points")
         }
 
@@ -55,7 +56,8 @@ extension PointFilterOptionsTests {
             return XCTFail("No minimum vertical accuracy set")
         }
 
-        guard let points = points, let first = points.first, let last = points.last?.clone(verticalAccuracy: minimumVerticalAccuracy + 0.1) else {
+        guard let points = points, let first = points.first,
+              let last = points.last?.clone(verticalAccuracy: minimumVerticalAccuracy + 0.1) else {
             return XCTFail("No points")
         }
 
@@ -91,7 +93,8 @@ extension PointFilterOptionsTests {
             return XCTFail("No minimum vertical accuracy set")
         }
 
-        guard let points = points, let first = points.first, let last = points.last?.clone(timestamp: first.timestamp.addingTimeInterval(minimumElapsedTime/2)) else {
+        guard let points = points, let first = points.first,
+              let last = points.last?.clone(timestamp: first.timestamp.addingTimeInterval(minimumElapsedTime/2)) else {
             return XCTFail("No points")
         }
 
@@ -117,7 +120,9 @@ extension PointFilterOptionsTests {
 
 extension CLLocation {
 
-    func clone(coordinate: CLLocationCoordinate2D? = nil, altitude: CLLocationDistance? = nil, horizontalAccuracy: CLLocationAccuracy? = nil, verticalAccuracy: CLLocationAccuracy? = nil, course: CLLocationDegrees? = nil, speed: CLLocationSpeed? = nil, timestamp: Date? = nil) -> CLLocation {
+    func clone(coordinate: CLLocationCoordinate2D? = nil, altitude: CLLocationDistance? = nil,
+               horizontalAccuracy: CLLocationAccuracy? = nil, verticalAccuracy: CLLocationAccuracy? = nil,
+               course: CLLocationDegrees? = nil, speed: CLLocationSpeed? = nil, timestamp: Date? = nil) -> CLLocation {
 
         let coordinate = coordinate ?? self.coordinate
         let altitude = altitude ?? self.altitude
@@ -127,6 +132,8 @@ extension CLLocation {
         let speed = speed ?? self.speed
         let timestamp = timestamp ?? self.timestamp
 
-        return CLLocation(coordinate: coordinate, altitude: altitude, horizontalAccuracy: horizontalAccuracy, verticalAccuracy: verticalAccuracy, course: course, speed: speed, timestamp: timestamp)
+        return CLLocation(coordinate: coordinate, altitude: altitude,
+                          horizontalAccuracy: horizontalAccuracy, verticalAccuracy: verticalAccuracy,
+                          course: course, speed: speed, timestamp: timestamp)
     }
 }

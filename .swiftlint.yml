@@ -1,13 +1,8 @@
 included:
   - GeoTrackKit
 
-function_body_length:
-    - 80
-
-file_length:
-  warning: 500
-
-vertical_whitespace:
-  max_empty_lines: 2
+line_length: 120
+function_body_length: 80
+file_length: 800
 
 reporter: "xcode"
