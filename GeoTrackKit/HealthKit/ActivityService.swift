@@ -52,7 +52,6 @@ public class ActivityService {
 
 extension ActivityService {
 
-
     /// Request authorization for health kit data.
     ///
     /// - Parameter callback: the callback that will hand back a boolean (indicating success or failure)
@@ -97,13 +96,16 @@ extension ActivityService {
     /// Queries HealthKit to get all of your workouts
     ///
     /// - Parameters:
-    ///   - minimumDistance: The minimum distance (in meters) that a workout must be to show up in your query results (defults to 100)
+    ///   - minimumDistance: The minimum distance (in meters) that a workout must be to show up in your query
+    ///   results (defults to 100)
     ///   - callback: The block to handle the result (whether it's success or failure)
     public func queryWorkouts(minimumDistance: Double = 100, _ callback: @escaping WorkoutCallback) {
-        let workoutPredicate = HKQuery.predicateForWorkouts(with: .greaterThan, totalDistance: HKQuantity(unit: HKUnit.meter(), doubleValue: minimumDistance))
+        let workoutPredicate = HKQuery.predicateForWorkouts(
+            with: .greaterThan, totalDistance: HKQuantity(unit: HKUnit.meter(), doubleValue: minimumDistance))
         let sortDescriptor = NSSortDescriptor(key: HKSampleSortIdentifierStartDate, ascending: false)
 
-        let query = HKSampleQuery(sampleType: HKObjectType.workoutType(), predicate: workoutPredicate, limit: 0, sortDescriptors: [sortDescriptor]) { (query, samples, error) in
+        let query = HKSampleQuery(sampleType: HKObjectType.workoutType(), predicate: workoutPredicate,
+                                  limit: 0, sortDescriptors: [sortDescriptor]) { (query, samples, error) in
 
             // Cast the samples to the HKWorkout type
             guard let samples = samples as? [HKWorkout], error == nil else {
@@ -131,7 +133,9 @@ extension ActivityService {
 
         let runningObjectQuery = HKQuery.predicateForObjects(from: workout)
 
-        let routeQuery = HKAnchoredObjectQuery(type: HKSeriesType.workoutRoute(), predicate: runningObjectQuery, anchor: nil, limit: HKObjectQueryNoLimit) { (query, samples, _, _, error) in
+        let routeQuery = HKAnchoredObjectQuery(
+            type: HKSeriesType.workoutRoute(), predicate: runningObjectQuery, anchor: nil,
+            limit: HKObjectQueryNoLimit) { (query, samples, _, _, error) in
 
             if let error = error {
                 self.store.stop(query)

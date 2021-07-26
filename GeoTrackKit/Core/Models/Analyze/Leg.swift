@@ -45,7 +45,8 @@ open class Stat {
         maximumSpeed = max(maximumSpeed, point.speed)
     }
 
-    /// Combines this stat with another stat (it generally makes sense to do this with another leg that is in the same direction)
+    /// Combines this stat with another stat (it generally makes sense to do this with another
+    /// leg that is in the same direction)
     ///
     /// - Parameter stat: The stat to combine with
     open func combine(with stat: Stat) {
@@ -59,7 +60,8 @@ open class Stat {
 
 // MARK: - TrackStat
 
-/// This class keeps track of statistics for an entire Geo Track.  It summarizes the stats of all of the legs that comprise it and it keeps trak of the number of runs.
+/// This class keeps track of statistics for an entire Geo Track.  It summarizes the stats of all of the legs that
+/// comprise it and it keeps trak of the number of runs.
 open class TrackStat: Stat {
     /// The number of "ski runs" (aka the number of times descended)
     public let runs: Int
@@ -74,7 +76,9 @@ open class TrackStat: Stat {
     /// The total distance covered for this track
     public let totalDistance: CLLocationDistance
 
-    /// Initialize this TrackStat with the required properties.  Generally you want to create this stat using the `summarize(from legs: [Leg])` factory creation function to create one of these objects.  That function will compute all of the required fields and delegate to this initializer.
+    /// Initialize this TrackStat with the required properties.  Generally you want to create this stat using
+    /// the `summarize(from legs: [Leg])` factory creation function to create one of these objects.
+    /// That function will compute all of the required fields and delegate to this initializer.
     ///
     /// - Parameters:
     ///   - runs: the number of runs for the track
@@ -83,7 +87,9 @@ open class TrackStat: Stat {
     ///   - ascentDistance: the total ascent distance for this track
     ///   - descentDistance: the total descent distance for this track
     ///   - totalDistance: the total distance for this track
-    public init(runs: Int, ascent: CLLocationDistance, descent: CLLocationDistance, ascentDistance: CLLocationDistance, descentDistance: CLLocationDistance, totalDistance: CLLocationDistance) {
+    public init(runs: Int, ascent: CLLocationDistance, descent: CLLocationDistance,
+                ascentDistance: CLLocationDistance, descentDistance: CLLocationDistance,
+                totalDistance: CLLocationDistance) {
         self.runs = runs
         verticalAscent = ascent
         verticalDescent = descent
@@ -92,7 +98,8 @@ open class TrackStat: Stat {
         self.totalDistance = totalDistance
     }
 
-    /// Using the provided array of Legs, this function will compute the track summary stats and provide you with a a summary TrackStat for the entire track.
+    /// Using the provided array of Legs, this function will compute the track summary stats and provide you
+    /// with a a summary TrackStat for the entire track.
     ///
     /// - Parameter legs: The legs to summarize
     /// - Returns: A TrackStat that contains the results of the overall stats for the track.
@@ -119,7 +126,8 @@ open class TrackStat: Stat {
             tDistance += stat.distance
         }
 
-        let stat = TrackStat(runs: runs, ascent: vAscent, descent: vDescent, ascentDistance: aDistance, descentDistance: dDistance, totalDistance: tDistance)
+        let stat = TrackStat(runs: runs, ascent: vAscent, descent: vDescent,
+                             ascentDistance: aDistance, descentDistance: dDistance, totalDistance: tDistance)
         stat.combine(with: baseOverallStat)
         return stat
     }
@@ -157,9 +165,6 @@ open class Leg {
 
     /// The direction of this leg (see Direction)
     open var direction: Direction {
-        set {
-            _direction = newValue
-        }
         get {
             if Int(altitudeChange) == 0 {
                 return .unknown
@@ -167,6 +172,9 @@ open class Leg {
                 return .upward
             }
             return .downward
+        }
+        set {
+            _direction = newValue
         }
     }
 
@@ -200,7 +208,8 @@ open class Leg {
     ///   - direction: The direction we're headed: ascent vs. descent (see Direction)
     ///   - endIndex: The index of the last point in the Track Points
     ///   - endPoint: The end point
-    public init(index: Int, point: CLLocation, direction: Direction = .unknown, endIndex: Int = -1, endPoint: CLLocation? = nil) {
+    public init(index: Int, point: CLLocation, direction: Direction = .unknown,
+                endIndex: Int = -1, endPoint: CLLocation? = nil) {
         self.index = index
         self.point = point
         _direction = direction
@@ -208,7 +217,8 @@ open class Leg {
         self.endPoint = endPoint
     }
 
-    /// Tells you if the trending direction has changed compared to the current direction.  This function does have side effects (if the current direction is "unknown", it will change to whatever the provided direction is).
+    /// Tells you if the trending direction has changed compared to the current direction.  This function does have
+    /// side effects (if the current direction is "unknown", it will change to whatever the provided direction is).
     ///
     /// - Parameter point: The point to inspect
     /// - Returns: true if the trend has changed from up to down or down to up.
@@ -268,7 +278,8 @@ extension Leg: Equatable {
     ///   - rhs: The second leg to compare
     /// - Returns: True if the two legs seem to be the same, false if not.
     public static func == (lhs: Leg, rhs: Leg) -> Bool {
-        guard lhs.index == rhs.index, Int(lhs.altitude) == Int(rhs.altitude), lhs.direction == rhs.direction, lhs.endIndex == rhs.endIndex else {
+        guard lhs.index == rhs.index, Int(lhs.altitude) == Int(rhs.altitude),
+              lhs.direction == rhs.direction, lhs.endIndex == rhs.endIndex else {
             return false
         }
         return true

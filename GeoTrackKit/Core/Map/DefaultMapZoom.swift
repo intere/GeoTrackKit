@@ -9,7 +9,9 @@
 import CoreLocation
 import MapKit
 
-/// This is an implementation of the default map zooming.  It basically just states that you should always zoom to fit the points (whenever a redraw on the map is requested) and it calculates a zoom region that has a very tiny amount of padding around the points
+/// This is an implementation of the default map zooming.  It basically just states that you should always
+/// zoom to fit the points (whenever a redraw on the map is requested) and it calculates a zoom region
+/// that has a very tiny amount of padding around the points
 open class DefaultMapZoom: ZoomDefining {
 
     /// Yes, let's zoom in

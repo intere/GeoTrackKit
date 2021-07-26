@@ -125,10 +125,15 @@ fileprivate extension Stat {
 
 fileprivate extension GeoTrackAnalyzer {
 
-    /// Collapses the legs down when there are multiple segments in the same direction (the first pass of track analyzation generally will create multiple legs that are in the same direction).  Yes, it's an imperfect algorithm due to imperfect data.  This function will collapse the legs down by combining adjacent legs that are in the same direction.
+    /// Collapses the legs down when there are multiple segments in the same direction (the first pass of track
+    /// analyzing generally will create multiple legs that are in the same direction).  Yes, it's an imperfect algorithm
+    /// due to imperfect data.  This function will collapse the legs down by combining adjacent legs that are in
+    /// the same direction.
     ///
-    /// - Parameter relativePoints: The relative minima and maxima that have been detected, but need to be collapsed when there are multiple adjacent legs that are moving in the same direction.
-    /// - Returns: a new set of legs that represents a reduced set of legs, such that there are no longer adjacent legs moving in the same direction.
+    /// - Parameter relativePoints: The relative minima and maxima that have been detected, but
+    /// need to be collapsed when there are multiple adjacent legs that are moving in the same direction.
+    /// - Returns: a new set of legs that represents a reduced set of legs, such that there are no longer
+    /// adjacent legs moving in the same direction.
     func collapse(relatives relativePoints: [Leg]) -> [Leg] {
         var collapsed = [Leg]()
 
@@ -140,13 +145,15 @@ fileprivate extension GeoTrackAnalyzer {
         var last = relativePoints[0]
         for index in 1..<relativePoints.count {
             guard last.isSameDirection(as: relativePoints[index]) else {
-                // if the legs are not moving in the same direction, then just add the current leg to the collapsed list and move onto the next one
+                // if the legs are not moving in the same direction, then just add the current leg to the collapsed
+                // list and move onto the next one
                 collapsed.append(last)
                 last = relativePoints[index]
                 continue
             }
 
-            // if the 2 legs are moving in the same direction, then combine them and set the last to be the combination of the last and the current and then move on to the next.
+            // if the 2 legs are moving in the same direction, then combine them and set the last to be the combination
+            // of the last and the current and then move on to the next.
             last = last.combine(with: relativePoints[index], direction: last.direction)
         }
 
@@ -168,7 +175,8 @@ fileprivate extension GeoTrackAnalyzer {
 
 extension Leg {
 
-    /// This function is responsible for combining the current leg with another leg (into a new Leg), setting the direction and returning that result.
+    /// This function is responsible for combining the current leg with another leg (into a new Leg), setting the
+    /// direction and returning that result.
     ///
     /// - Parameters:
     ///   - anotherLeg: the leg to combine with
@@ -177,10 +185,11 @@ extension Leg {
     func combine(with anotherLeg: Leg, direction: Direction) -> Leg {
         let leg: Leg
         if index < anotherLeg.index {
-            leg = Leg(index: index, point: point, direction: direction, endIndex: anotherLeg.endIndex, endPoint: anotherLeg.endPoint)
-
+            leg = Leg(index: index, point: point, direction: direction, endIndex: anotherLeg.endIndex,
+                      endPoint: anotherLeg.endPoint)
         } else {
-            leg = Leg(index: anotherLeg.index, point: anotherLeg.point, direction: direction, endIndex: endIndex, endPoint: endPoint)
+            leg = Leg(index: anotherLeg.index, point: anotherLeg.point, direction: direction, endIndex: endIndex,
+                      endPoint: endPoint)
         }
         leg.stat = stat
         stat.combine(with: anotherLeg.stat)
@@ -194,7 +203,8 @@ extension CLLocation {
     /// Tells you if this point is above, below or at the same altitude as another point
     ///
     /// - Parameter point: The point to compare this point with
-    /// - Returns: `unknown` if the altitude is the same (very, very unlikely), `down` if the provided point is below this point and `up` if the provided point is above this point.
+    /// - Returns: `unknown` if the altitude is the same (very, very unlikely), `down` if the provided point is below
+    /// this point and `up` if the provided point is above this point.
     func compare(to point: CLLocation) -> Direction {
         if altitude == point.altitude {
             return .unknown

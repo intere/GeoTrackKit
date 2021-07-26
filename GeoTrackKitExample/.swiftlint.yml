@@ -1,6 +1,7 @@
 included:
-  - GeoTrackKit
-  - GeoTrackKitExample
+  - ../GeoTrackKit
+  - ./
+  - ../GeoTrackKitExampleTests
 
 line_length: 120
 function_body_length: 80

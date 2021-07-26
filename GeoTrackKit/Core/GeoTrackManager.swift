@@ -23,7 +23,6 @@ public protocol LocationServicing {
 
 extension CLLocationManager: LocationServicing { }
 
-
 // MARK: - GeoTrackManager
 
 /// This class is responsible for managing (and brokering) everything related to tracking for you.
@@ -33,7 +32,8 @@ extension CLLocationManager: LocationServicing { }
 /// ```
 public class GeoTrackManager: NSObject {
 
-    /// The singleton instance (if you want to mock, you can set the shared var to another GeoTrackService implementation)
+    /// The singleton instance (if you want to mock, you can set the shared var to
+    /// another GeoTrackService implementation)
     public static var shared: GeoTrackService = GeoTrackManager()
 
     /// When we startup, if we find points to be older than this threshold, we toss them away.
@@ -166,7 +166,8 @@ extension GeoTrackManager {
     /// - Parameters:
     ///   - manager: The source of the notification.
     ///   - status: The status change.
-    public func locationManager(locationServicing manager: LocationServicing, didChangeAuthorization status: CLAuthorizationStatus) {
+    public func locationManager(locationServicing manager: LocationServicing,
+                                didChangeAuthorization status: CLAuthorizationStatus) {
         switch status {
         case .authorizedAlways, .authorizedWhenInUse:
             GTDebug(message: "Authorization has been updated, starting location updates")
@@ -205,7 +206,8 @@ extension GeoTrackManager {
     /// - Parameters:
     ///   - manager: The source of the event.
     ///   - locations: The location updates that happened.
-    public func locationManager(locationServicing manager: LocationServicing, didUpdateLocations locations: [CLLocation]) {
+    public func locationManager(locationServicing manager: LocationServicing,
+                                didUpdateLocations locations: [CLLocation]) {
         if trackingState == .awaitingFix {
             trackingState = .tracking
         }
@@ -279,7 +281,8 @@ extension GeoTrackManager {
     /// - Parameters:
     ///   - manager: the source of the event.
     ///   - error: the error that occurred.
-    public func locationManager(locationServicing manager: LocationServicing, didFinishDeferredUpdatesWithError error: Error?) {
+    public func locationManager(locationServicing manager: LocationServicing,
+                                didFinishDeferredUpdatesWithError error: Error?) {
         if let error = error {
             GTError(message: "Failed Deffered Updates: \(error.localizedDescription)")
         }
@@ -320,6 +323,7 @@ private extension GeoTrackManager {
 
     /// Handles requesting authorization from location services
     func beginLocationUpdates(type: TrackingType) throws {
+        // swiftlint:disable:previous cyclomatic_complexity
         guard let locationManager = locationManager else {
             return
         }

@@ -9,10 +9,14 @@
 import MapKit
 import CoreLocation
 
-/// This class provides you an easy way to visualize your track on a map.  You can configure the unknown, ascent and descent colors.  They have sensible defaults.  Using the UIGeoTrack model, you can set which legs of your track are visible and we'll render them accordingly.  Keep in mind, performance of this control may degrade if your tracks have too many points.
+/// This class provides you an easy way to visualize your track on a map.  You can configure the unknown, ascent and
+/// descent colors.  They have sensible defaults.  Using the UIGeoTrack model, you can set which legs of your track
+/// are visible and we'll render them accordingly.  Keep in mind, performance of this control may degrade if your tracks
+/// have too many points.
 public class GeoTrackMap: MKMapView {
 
-    /// The color to use when rendering a leg of unknown direction (could be flat, or we just don't have enough altitude change to tell if it's an ascent or descent)
+    /// The color to use when rendering a leg of unknown direction (could be flat, or we just don't have enough
+    /// altitude change to tell if it's an ascent or descent)
     public var unknownColor: UIColor = .yellow
 
     /// The color to use when rendering an ascent

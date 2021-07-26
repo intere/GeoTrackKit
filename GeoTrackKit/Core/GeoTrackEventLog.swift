@@ -23,7 +23,6 @@ public protocol GeoTrackLogAppender {
     func logged(event someEvent: GeoTrackEvent)
 }
 
-
 /// The Event Log for GeoTrackKit
 public class GeoTrackEventLog {
     /// Singleton instance

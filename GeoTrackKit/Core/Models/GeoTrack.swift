@@ -8,7 +8,6 @@
 
 import CoreLocation
 
-
 /// Data structure to keep track of points for a track
 public class GeoTrack {
 
@@ -34,7 +33,8 @@ public class GeoTrack {
         self.description = description ?? ""
     }
 
-    /// Initializer that will deserialize the provided json into CLLocation objects.  This is essentially the deserializer
+    /// Initializer that will deserialize the provided json into CLLocation objects.
+    /// This is essentially the deserializer
     ///
     /// - Parameter json: The JSON to create a GeoTrack from
     public init(json: [String: Any]) {
@@ -99,9 +99,11 @@ public extension GeoTrack {
 
 """
         for point in points {
+            // swiftlint:disable line_length
             result += """
             <wpt lat="\(point.coordinate.latitude)" lon="\(point.coordinate.longitude)"><ele>\(point.altitude)</ele><time>\(point.timestamp.iso8601Date)</time></wpt>\n
             """
+            // swiftlint:enable line_length
         }
 
         result += "\n</gpx>"
