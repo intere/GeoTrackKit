@@ -1,6 +1,7 @@
 # Changelog
 
 ## 1.0.0
+- [Swiftlint / Config updates](https://github.com/intere/GeoTrackKit/pull/35)
 - [Point filtering and API enhancements.](https://github.com/intere/GeoTrackKit/pull/28)
     - Added `PointFilterOptions` as a property of the `GeoTrackManager` and two static pre-configured values: `nilFilterOptions`, which won't filter at all and `defaultFilterOptions`, which has the default filter options.
     - `GeoTrackManager.shared.reset()`
