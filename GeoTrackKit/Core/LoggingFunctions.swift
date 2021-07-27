@@ -11,14 +11,16 @@ import Foundation
 
 // MARK: - Module functions
 
-/// Writes "trace" messages to the log. (very high output potential, and we should probably not have this data in a release build)
+/// Writes "trace" messages to the log. (very high output potential, and we should probably not have
+/// this data in a release build)
 ///
 /// - Parameter message: The message to be written to the Trace facility
 func GTTrace(message: String) {
     GeoTrackEventLog.shared.add(event: GeoTrackEvent.trace(message: message))
 }
 
-/// Writes "debug" messages to the log. (high output potential, and we should probably not have this data in a release build)
+/// Writes "debug" messages to the log. (high output potential, and we should probably
+/// not have this data in a release build)
 ///
 /// - Parameter message: The message to be written to the Debug facility.
 func GTDebug(message: String) {

@@ -73,9 +73,12 @@ fileprivate extension TrackConsoleViewController {
         updateLabels()
     }
 
-    /// Shows a dialog to the user that states we don't have location tracking access and lets them open up the settings.
+    /// Shows a dialog to the user that states we don't have location tracking access and
+    /// lets them open up the settings.
     func showUnauthorizedDialog() {
-        let dialog = UIAlertController(title: "Error", message: "Access to location services is not available.  If you wish to track, you'll need to open the settings to address this.", preferredStyle: .alert)
+        let message = "Access to location services is not available." +
+            "  If you wish to track, you'll need to open the settings to address this."
+        let dialog = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
 
         dialog.addAction(UIAlertAction(title: "Open Settings", style: .default) { _ in
             dialog.dismiss(animated: true)

@@ -8,7 +8,8 @@
 
 import CoreLocation
 
-/// This class is responsible for keeping track of different types of track events.  For example when the user starts tracking, stops tracking, pauses tracking, and your own custom event types.
+/// This class is responsible for keeping track of different types of track events.  For example when the user starts
+/// tracking, stops tracking, pauses tracking, and your own custom event types.
 public class GeoTrackLocationEvent {
 
     public enum EventType: Int {
@@ -127,7 +128,8 @@ public extension GeoTrackLocationEvent {
     ///   - date: The timestamp you want to set for the error (nil = current date and time).
     /// - Returns: The GeoTrackLocationEvent
     static func error(error: Error, at index: Int? = nil, timestamp date: Date? = nil) -> GeoTrackLocationEvent {
-        let event = GeoTrackLocationEvent(type: .error, timestamp: date, message: error.localizedDescription, index: index)
+        let event = GeoTrackLocationEvent(type: .error, timestamp: date, message: error.localizedDescription,
+                                          index: index)
         return event
     }
 
@@ -139,7 +141,8 @@ public extension GeoTrackLocationEvent {
     ///   - date: The timestamp you want to set for the error (nil = current date and time).
     /// - Returns: The GeoTrackLocationEvent
     static func error(error: NSError, at index: Int? = nil, timestamp date: Date? = nil) -> GeoTrackLocationEvent {
-        let event = GeoTrackLocationEvent(type: .error, timestamp: date, message: error.localizedDescription, index: index)
+        let event = GeoTrackLocationEvent(type: .error, timestamp: date, message: error.localizedDescription,
+                                          index: index)
         return event
     }
 
@@ -155,7 +158,8 @@ public extension GeoTrackLocationEvent {
         return event
     }
 
-    /// Creates you a custom GeoTrackLocationEvent.  You should make sure to provide either an index, a date, or both for context.
+    /// Creates you a custom GeoTrackLocationEvent.  You should make sure to provide either an index, a date, or both
+    /// for context.
     ///
     /// - Parameters:
     ///   - message: The message to include with this track.
@@ -198,7 +202,6 @@ public extension GeoTrackLocationEvent {
         return event
     }
 
-
     /// Serializes this GeoTrackLocationEvent into a map for serialization purposes.
     ///
     /// - Returns: A map of [String: Any]
@@ -216,4 +219,17 @@ public extension GeoTrackLocationEvent {
 
         return dict
     }
+}
+
+// MARK: - Equatable
+
+extension GeoTrackLocationEvent: Equatable {
+
+    public static func == (lhs: GeoTrackLocationEvent, rhs: GeoTrackLocationEvent) -> Bool {
+        guard lhs.index == rhs.index, lhs.type == rhs.type,
+              lhs.message == rhs.message, lhs.timestamp == rhs.timestamp else { return false }
+
+        return true
+    }
+
 }

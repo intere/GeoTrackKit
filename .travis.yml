@@ -1,7 +1,8 @@
 language: objective-c
-osx_image: xcode11.2
+osx_image: xcode12.5
 
 script:
+  - rvm ruby-2.6.6 do rvm gemset create GeoTrackKit
   - bundle exec fastlane test
 
 notifications:

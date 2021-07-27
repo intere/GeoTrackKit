@@ -10,7 +10,8 @@ import CoreLocation
 import Foundation
 import MapKit
 
-/// A UI Model for a track.  It keeps track of a Track (`GeoTrack`), a Track Analyzer (`GeoTrackAnalyzer`) and a collection of Legs (ascents, descents) that are currently visible
+/// A UI Model for a track.  It keeps track of a Track (`GeoTrack`), a Track Analyzer (`GeoTrackAnalyzer`) and a
+/// collection of Legs (ascents, descents) that are currently visible
 public class UIGeoTrack {
     /// The Track
     public var track: GeoTrack {

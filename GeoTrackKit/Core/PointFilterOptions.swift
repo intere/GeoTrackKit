@@ -43,7 +43,6 @@ open class PointFilterOptions {
     /// The minimum vertical accuracy that a point should have to not be filtered (in meters)
     open var minimumVerticalAccuracy: CLLocationAccuracy? = 10
 
-
     /// Performs the filtering of the points, based in the criteria
     /// - Parameters:
     ///   - points: The collection of points to be filtered.
@@ -84,12 +83,14 @@ private extension PointFilterOptions {
         }
 
         // Filter by elapsed time between points
-        if let minimumElapsedTime = minimumElapsedTime, abs(last.timestamp.timeIntervalSince(current.timestamp)) <= minimumElapsedTime {
+        if let minimumElapsedTime = minimumElapsedTime,
+           abs(last.timestamp.timeIntervalSince(current.timestamp)) <= minimumElapsedTime {
             return true
         }
 
         // Filter by distance between points
-        if let minimumDistanceBetweenPoints = minimumDistanceBetweenPoints, last.distance(from: current) <= minimumDistanceBetweenPoints {
+        if let minimumDistanceBetweenPoints = minimumDistanceBetweenPoints,
+           last.distance(from: current) <= minimumDistanceBetweenPoints {
             return true
         }
 
@@ -100,12 +101,14 @@ private extension PointFilterOptions {
     /// - Parameter current: the current point to check.
     func shouldFilter(current: CLLocation) -> Bool {
         // Filter by horizontal accuracy
-        if let minimumHorizontalAccuracy = minimumHorizontalAccuracy, current.horizontalAccuracy > minimumHorizontalAccuracy {
+        if let minimumHorizontalAccuracy = minimumHorizontalAccuracy,
+           current.horizontalAccuracy > minimumHorizontalAccuracy {
             return true
         }
 
         // Filter by vertical accuracy
-        if let minimumVerticalAccuracy = minimumVerticalAccuracy, current.verticalAccuracy > minimumVerticalAccuracy {
+        if let minimumVerticalAccuracy = minimumVerticalAccuracy,
+           current.verticalAccuracy > minimumVerticalAccuracy {
             return true
         }
 

@@ -8,7 +8,6 @@
 
 import GeoTrackKit
 
-
 class TrackReader {
 
     let filename: String
@@ -37,7 +36,8 @@ fileprivate extension TrackReader {
             assertionFailure("Couldn't read the data from the file: \(url)")
             return nil
         }
-        guard let jsonData = try? JSONSerialization.jsonObject(with: data, options: []), let jsonMap = jsonData as? [String: Any] else {
+        guard let jsonData = try? JSONSerialization.jsonObject(with: data, options: []),
+              let jsonMap = jsonData as? [String: Any] else {
             assertionFailure("Invalid data format in file \(path)")
             return nil
         }

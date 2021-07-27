@@ -10,7 +10,7 @@ import CoreLocation
 import MapKit
 
 /// A protocol that tells us the implementer can define the size of the zoom area.
-public protocol ZoomDefining: class {
+public protocol ZoomDefining: AnyObject {
 
     /// Should the map re-zoom?
     var shouldZoom: Bool { get }

@@ -130,11 +130,15 @@ public extension CLLocation {
 
         let course = map["course"] as? CLLocationDirection ?? 0
 
-        let location = CLLocation(coordinate: CLLocationCoordinate2D(latitude: lat, longitude: lon), altitude: altitude, horizontalAccuracy: horizontalAccuracy, verticalAccuracy: verticalAccuracy, course: course, speed: speed, timestamp: Date.from(msse: msse))
+        let location = CLLocation(coordinate: CLLocationCoordinate2D(latitude: lat, longitude: lon),
+                                  altitude: altitude,
+                                  horizontalAccuracy: horizontalAccuracy, verticalAccuracy: verticalAccuracy,
+                                  course: course, speed: speed, timestamp: Date.from(msse: msse))
         return location
     }
 
-    /// Converts this CLLocation object to a Map (for serialization).  Please note: we use MSSE (Milliseconds Since the Epoch) format for the date.
+    /// Converts this CLLocation object to a Map (for serialization).  Please note: we use MSSE (Milliseconds Since
+    /// the Epoch) format for the date.
     var map: [String: Any] {
         return [
             "lat": coordinate.latitude,

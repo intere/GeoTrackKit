@@ -57,8 +57,9 @@ class TrackListTableViewController: UITableViewController {
         guard let track = load(trackUrl: tracks[indexPath.row]) else {
             return
         }
-        // swiftlint:disable:next force_cast
-        let mapVC = UIStoryboard(name: "TrackView", bundle: nil).instantiateViewController(withIdentifier: "TrackMapViewController") as! TrackMapViewController
+        let mapVC = UIStoryboard(name: "TrackView", bundle: nil)
+            .instantiateViewController(withIdentifier: "TrackMapViewController") as! TrackMapViewController
+        // swiftlint:disable:previous force_cast
         mapVC.useDemoTrack = false
         mapVC.model = track
 
@@ -69,7 +70,8 @@ class TrackListTableViewController: UITableViewController {
         return true
     }
 
-    override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+    override func tableView(_ tableView: UITableView,
+                            editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         return [
             UITableViewRowAction(style: .normal, title: "Rename") { _, indexPath in
                 self.showRename(for: indexPath)
@@ -111,7 +113,8 @@ extension TrackListTableViewController {
         }
         let track = tracks[indexPath.row]
 
-        let inputController = UIAlertController(title: "Rename", message: "Enter the new name for the track file", preferredStyle: .alert)
+        let inputController = UIAlertController(title: "Rename", message: "Enter the new name for the track file",
+                                                preferredStyle: .alert)
 
         inputController.addTextField { textField in
             textField.text = track.filenameNoExtension
@@ -147,7 +150,8 @@ extension TrackListTableViewController {
         guard let data = try? Data(contentsOf: trackUrl) else {
             return nil
         }
-        guard let jsonObject = try? JSONSerialization.jsonObject(with: data, options: .allowFragments), let json = jsonObject as? [String: Any] else {
+        guard let jsonObject = try? JSONSerialization.jsonObject(with: data, options: .allowFragments),
+              let json = jsonObject as? [String: Any] else {
             return nil
         }
         guard let track = GeoTrack.fromMap(map: json) else {
