@@ -12,29 +12,32 @@
     - This capability is in a subspec: `HealthKit`
 - Example App to demonstrate capabilities
 
-
 ## Project Status
 This project is currently a work in progress.
 
-[![Build Status](https://travis-ci.org/intere/GeoTrackKit.svg?branch=develop)](https://travis-ci.org/intere/GeoTrackKit)
+[![Build Status](https://travis-ci.com/intere/GeoTrackKit.svg?branch=develop)](https://travis-ci.com/intere/GeoTrackKit)
 [![Documentation](https://cdn.rawgit.com/intere/GeoTrackKit/master/docs/badge.svg)](https://intere.github.io/GeoTrackKit/docs/index.html)
-[![Platform](https://img.shields.io/badge/Platforms-iOS-lightgray.svg?style=flat)](http://cocoadocs.org/docsets/GeoTrackKit)
-[![CocoaPods](https://img.shields.io/cocoapods/v/GeoTrackKit.svg)](https://cocoapods.org/pods/GeoTrackKit)  
- [![CocoaPods](https://img.shields.io/cocoapods/dt/GeoTrackKit.svg)](https://cocoapods.org/pods/GeoTrackKit) [![CocoaPods](https://img.shields.io/cocoapods/dm/GeoTrackKit.svg)](https://cocoapods.org/pods/GeoTrackKit)
+[![Platform](https://img.shields.io/cocoapods/p/GeoTrackKit.svg)](http://cocoadocs.org/docsets/GeoTrackKit)
+[![CocoaPods](https://img.shields.io/cocoapods/v/GeoTrackKit.svg)](https://cocoapods.org/pods/GeoTrackKit)
+[![CocoaPods](https://cocoapod-badges.herokuapp.com/l/GeoTrackKit/badge.svg)](https://cocoapods.org/pods/GeoTrackKit)
+
+
+
 
 ### Initial Roadmap
-- [ ] Carthage Support
-- [x] CocoaPods Support
-- [x] Continuous Integration (Buddy Build)
-- [x] Function Documentation
-- [x] Jazzy Docs
-- [ ] Performance Tests
-- [x] SwiftLint Integration
-- [ ] 90% Code Coverage
-- [x] Pull tracks from HealthKit (Workouts)
+- [x] Pull tracks from HealthKit (workouts)
+- [x] CocoaPods support
+- [x] Continuous integration (Travis CI)
+- [x] Function documentation
+- [x] Jazzy docs
+- [x] SwiftLint integration
+- [ ] Carthage support
+- [ ] Swift Package Manager support
+- [ ] Performance tests
+- [ ] 90% Code coverage
+- [ ] Danger support
 
 ### Example App
-
 TODO:
 - [x] Save tracks to disk
 - [x] Provide a track list
@@ -46,14 +49,14 @@ TODO:
 
 ### CocoaPods
 
+Release from Cocoapods:
+```ruby
+pod 'GeoTrackKit'
+```
+
 Directly from Github:
 ```ruby
 pod 'GeoTrackKit', :git => 'git@github.com:intere/GeoTrackKit.git', :branch => 'develop'
-```
-
-Directly from Cocoapods:
-```ruby
-pod 'GeoTrackKit'
 ```
 
 ## Example Usage
