@@ -65,6 +65,34 @@ public extension UIGeoTrack {
         return polys
     }
 
+    /// Gets you the points for the provided leg.
+    /// - Parameter leg: The leg that you want the points for.
+    func points(for leg: Leg) -> [CLLocation]? {
+        guard leg.index >= 0, leg.index < track.points.count, leg.endIndex < track.points.count else {
+            return nil
+        }
+
+        return Array(track.points[leg.index...leg.endIndex])
+    }
+
+    func expandedPolyline(forLeg leg: Leg, size meters: CLLocationDistance) -> MKPolygon? {
+        guard let points = points(for: leg), let coordinates = track.toPolygonPointArray(points: points, size: meters) else {
+            return nil
+        }
+
+        return MKPolygon(coordinates: coordinates.map({ $0.coordinate }), count: coordinates.count)
+    }
+
+    /// Gets you an expanded polyline of the entire track.
+    /// - Parameter meters: The distance outward from the line (in meters).
+    func expandedPolyline(size meters: CLLocationDistance) -> MKPolygon? {
+        guard let coordinates = track.toPolygonPointArray(size: meters) else {
+            return nil
+        }
+
+        return MKPolygon(coordinates: coordinates.map({ $0.coordinate }), count: coordinates.count)
+    }
+
     /// Toggles the visibility of all cells
     ///
     /// - Parameter visible: Whether they should all be visible or not.
