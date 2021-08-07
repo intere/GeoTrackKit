@@ -12,18 +12,18 @@ import XCTest
 class GeoTrackManagerTests: XCTestCase {
 
     let mockManager = MockLocationManager()
-    var manager: GeoTrackManager?
-    var oldPointTimeThreshold: TimeInterval = GeoTrackManager.oldPointTimeThreshold
+    var subject: GeoTrackManager?
+    var oldPointTimeThreshold: TimeInterval? = GeoTrackManager.oldPointTimeThreshold
 
     override func setUp() {
         super.setUp()
         GeoTrackManager.shared.reset()
         GeoTrackManager.shared.locationManager = mockManager
-        manager = GeoTrackManager.shared as? GeoTrackManager
+        subject = GeoTrackManager.shared as? GeoTrackManager
         GeoTrackManager.shared.shouldStorePoints = true
         oldPointTimeThreshold = GeoTrackManager.oldPointTimeThreshold
 
-        XCTAssertNotNil(manager)
+        XCTAssertNotNil(subject)
     }
 
     override func tearDown() {
@@ -35,7 +35,7 @@ class GeoTrackManagerTests: XCTestCase {
     }
 
     func testFliteringAllPoints() {
-        guard let manager = manager else {
+        guard let manager = subject else {
             return XCTFail("cannot locate the manager")
         }
         GeoTrackManager.shared.pointFilter = .filterAllPoints
@@ -57,11 +57,11 @@ class GeoTrackManagerTests: XCTestCase {
     }
 
     func testFilteringDefaults() {
-        guard let manager = manager else {
+        guard let manager = subject else {
             return XCTFail("cannot locate the manager")
         }
         GeoTrackManager.shared.pointFilter = .defaultFilterOptions
-        GeoTrackManager.oldPointTimeThreshold = 0
+        GeoTrackManager.oldPointTimeThreshold = nil
 
         guard let points = TrackReader(bundleFilename: "reference-track-1").track?.points, points.count > 0 else {
             return XCTFail("no points")
@@ -75,6 +75,7 @@ class GeoTrackManagerTests: XCTestCase {
         manager.locationManager(locationServicing: mockManager, didChangeAuthorization: .authorizedWhenInUse)
         manager.locationManager(locationServicing: mockManager, didUpdateLocations: points)
 
+        XCTAssertNotNil(manager.track)
         XCTAssertNotEqual(0, manager.track?.points.count ?? 0)
         XCTAssertTrue((manager.track?.points.count ?? points.count) < points.count)
     }

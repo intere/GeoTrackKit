@@ -38,7 +38,7 @@ public class GeoTrackManager: NSObject {
 
     /// When we startup, if we find points to be older than this threshold, we toss them away.
     /// Defaults to 5 seconds, but you can adjust this as you see fit.
-    public static var oldPointTimeThreshold: TimeInterval = 5
+    public static var oldPointTimeThreshold: TimeInterval? = 5
 
     // MARK: - GeoTrackService Properties
 
@@ -218,8 +218,10 @@ extension GeoTrackManager {
         // Ensure that the first point is recent (not old points which we often get when tracking begins):
         if lastPoint == nil {
             locations.forEach { location in
-                guard abs(location.timestamp.timeIntervalSinceNow) < GeoTrackManager.oldPointTimeThreshold else {
-                    return
+                if let oldPointTimeThreshold = GeoTrackManager.oldPointTimeThreshold {
+                    guard abs(location.timestamp.timeIntervalSinceNow) < oldPointTimeThreshold else {
+                        return GTDebug(message: "skipping point: \(location)")
+                    }
                 }
                 recentLocations.append(location)
             }
