@@ -10,6 +10,7 @@
 		0E1E09A3899897CDAE589A5B /* Pods_GeoTrackKitExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A51639AB7B6B4BAEF27C313 /* Pods_GeoTrackKitExample.framework */; };
 		1B2451A1B46FD1E813C13A25 /* Pods_GeoTrackKitExampleTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6E72B23B9554498B66030FE /* Pods_GeoTrackKitExampleTests.framework */; };
 		36302DB9210E17B400834A1D /* GeoTrackKitErrorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36302DB8210E17B400834A1D /* GeoTrackKitErrorTests.swift */; };
+		363296A32363CF2500D43680 /* LatLonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 363296A22363CF2500D43680 /* LatLonTests.swift */; };
 		3661C3662381C80B009DE76C /* GeoTrackManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3661C3652381C80B009DE76C /* GeoTrackManagerTests.swift */; };
 		3661C3682381D335009DE76C /* PointFilterOptionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3661C3672381D335009DE76C /* PointFilterOptionsTests.swift */; };
 		3661C36B2382253E009DE76C /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 3661C3692382253D009DE76C /* README.md */; };
@@ -68,6 +69,7 @@
 
 /* Begin PBXFileReference section */
 		36302DB8210E17B400834A1D /* GeoTrackKitErrorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeoTrackKitErrorTests.swift; sourceTree = "<group>"; };
+		363296A22363CF2500D43680 /* LatLonTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LatLonTests.swift; sourceTree = "<group>"; };
 		3661C3652381C80B009DE76C /* GeoTrackManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeoTrackManagerTests.swift; sourceTree = "<group>"; };
 		3661C3672381D335009DE76C /* PointFilterOptionsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointFilterOptionsTests.swift; sourceTree = "<group>"; };
 		3661C3692382253D009DE76C /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
@@ -200,6 +202,7 @@
 			isa = PBXGroup;
 			children = (
 				368A87B01E63332E003D115A /* TrackReader.swift */,
+				363296A22363CF2500D43680 /* LatLonTests.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -609,6 +612,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				366CE43C1DFCAC360090BD42 /* GeoTrackSerializationTests.swift in Sources */,
+				363296A32363CF2500D43680 /* LatLonTests.swift in Sources */,
 				36302DB9210E17B400834A1D /* GeoTrackKitErrorTests.swift in Sources */,
 				36E1E3461DEB3D0D00CFC7BC /* GeoTrackLocationEventTests.swift in Sources */,
 				368A87B11E63332E003D115A /* TrackReader.swift in Sources */,

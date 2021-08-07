@@ -216,10 +216,12 @@ extension GeoTrackManager {
         var recentLocations = [CLLocation]()
 
         // Ensure that the first point is recent (not old points which we often get when tracking begins):
-        if let oldPointTimeThreshold = GeoTrackManager.oldPointTimeThreshold, lastPoint == nil {
-            locations.forEach { (location) in
-                guard abs(location.timestamp.timeIntervalSinceNow) < oldPointTimeThreshold else {
-                    return
+        if lastPoint == nil {
+            locations.forEach { location in
+                if let oldPointTimeThreshold = GeoTrackManager.oldPointTimeThreshold {
+                    guard abs(location.timestamp.timeIntervalSinceNow) < oldPointTimeThreshold else {
+                        return GTDebug(message: "skipping point: \(location)")
+                    }
                 }
                 recentLocations.append(location)
             }

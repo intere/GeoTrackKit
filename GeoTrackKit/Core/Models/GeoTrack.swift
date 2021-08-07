@@ -114,6 +114,32 @@ public extension GeoTrack {
         return result
     }
 
+    // swiftlint:disable line_length
+    var standardGpx: String {
+                var result = """
+<?xml version="1.0" encoding="utf-8"?>
+<gpx version="1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.topografix.com/GPX/1/0" xsi:schemaLocation="http://www.topografix.com/GPX/1/0 http://www.topografix.com/GPX/1/0/gpx.xsd">
+  <trk>
+    <trkseg>
+
+"""
+                for point in points {
+                    result += """
+      <trkpt lat="\(point.coordinate.latitude)" lon="\(point.coordinate.longitude)"><ele>\(point.altitude)</ele><time>\(point.timestamp.iso8601Date)</time></trkpt>
+
+"""
+                }
+        // swiftlint:enable line_length
+
+                result += """
+    </trkseg>
+  </trk>
+</gpx>
+"""
+
+                return result
+    }
+
 }
 
 // MARK: - API(Events)

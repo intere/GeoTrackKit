@@ -6,7 +6,9 @@
 //
 
 import CoreLocation
-import Foundation
+import MapKit
+
+// MARK: - GeoTrack
 
 public extension GeoTrack {
 
@@ -63,6 +65,105 @@ public extension GeoTrack {
         return false
     }
 
+    func toPolygonPointArray(size meters: CLLocationDistance) -> [CLLocation]? {
+        return toPolygonPointArray(points: points, size: meters)
+    }
+
+    /// Creates a polygon from the track that expands the line by the `size` meters you provide.
+    /// - Parameter points: The points to convert to a polygon array
+    /// - Parameter meters: The distance to expand outwards.
+    func toPolygonPointArray(points: [CLLocation], size meters: CLLocationDistance) -> [CLLocation]? {
+        // swiftlint:disable:previous cyclomatic_complexity
+        guard points.count > 2 else {
+            return nil
+        }
+
+        var result = [CLLocation]()
+        var bottomResult = [CLLocation]()
+
+        for idx in 1..<points.count {
+            let last = points[idx - 1]
+            let point = points[idx]
+
+            let direction = last.direction(from: point)
+
+            // swiftlint:disable identifier_name
+            let x1: Double, x2: Double
+            let y1: Double, y2: Double
+            // swiftlint:enable identifier_name
+
+            switch direction.vertical {
+            case .north:
+                switch direction.horizontal {
+                case .east:
+                    // North East
+                    x1 = (last.x + point.x) / 2
+                    y1 = (last.y + point.y) / 2 + meters
+                    x2 = x1
+                    y2 = (last.y + point.y) / 2 - meters
+                case .west:
+                    // North West
+                    x1 = (last.x + point.x) / 2
+                    y1 = (last.y + point.y) / 2 - meters
+                    x2 = x1
+                    y2 = (last.y + point.y) / 2 + meters
+                case .none:
+                    // North
+                    x1 = last.x - meters
+                    y1 = (last.y + point.y) / 2
+                    x2 = last.x + meters
+                    y2 = y1
+                }
+            case .south:
+                switch direction.horizontal {
+                case .east:
+                    // South East
+                    x1 = (last.x + point.x) / 2
+                    y1 = (last.y + point.y) / 2 - meters
+                    x2 = x1
+                    y2 = (last.y + point.y) / 2 + meters
+                case .west:
+                    // South West
+                    x1 = (last.x + point.x) / 2
+                    y1 = (last.y + point.y) / 2 + meters
+                    x2 = x1
+                    y2 = (last.y + point.y) / 2 - meters
+                case .none:
+                    // South
+                    x1 = last.x - meters
+                    y1 = (last.y + point.y) / 2
+                    x2 = last.x + meters
+                    y2 = y1
+                }
+            case .none:
+                switch direction.horizontal {
+                case .east:
+                    // East
+                    x1 = (last.x + point.x) / 2
+                    y1 = last.y + meters
+                    x2 = x1
+                    y2 = last.y - meters
+                case .west:
+                    // West
+                    x1 = (last.x + point.x) / 2
+                    y1 = last.y + meters
+                    x2 = x1
+                    y2 = last.y - meters
+
+                case .none:
+                    // Same point
+                    assertionFailure()
+                    return nil
+                }
+            }
+            result.append(CLLocation(x: x1, y: y1))
+            bottomResult.append(CLLocation(x: x2, y: y2))
+        }
+
+        result.append(contentsOf: bottomResult.reversed())
+        return result
+    }
+
 }
 
 // MARK: - Implementation
@@ -95,4 +196,89 @@ private extension GeoTrack {
         return CGRect(x1: minX, y1: minY, x2: maxX, y2: maxY)
     }
 
+}
+
+// MARK: - CLLocation extension
+
+extension CLLocation {
+
+    // swiftlint:disable:next identifier_name
+    var x: CLLocationDegrees {
+        return coordinate.mercatorX
+    }
+
+    // swiftlint:disable:next identifier_name
+    var y: CLLocationDegrees {
+        return coordinate.mercatorY
+    }
+
+    enum Horizontal {
+        case east
+        case west
+        case none
+
+        /// Tells you what direction the second point is from the first in the east/west direction.
+        /// - Parameters:
+        ///   - first: The first point.
+        ///   - second: The second point.
+        static func direction(from first: CLLocation, to second: CLLocation) -> Horizontal {
+            if second.x < first.x {
+                return .west
+            } else if second.x > first.x {
+                return .east
+            } else {
+                return .none
+            }
+        }
+    }
+
+    enum Vertical {
+        case north
+        case south
+        case none
+
+        /// Tells you what direction the second point is from the first in the north/west direction.
+        /// - Parameters:
+        ///   - first: The first point.
+        ///   - second: The second point.
+        static func direction(from first: CLLocation, to second: CLLocation) -> Vertical {
+            if second.y < first.y {
+                return .south
+            } else if second.y > first.y {
+                return .north
+            } else {
+                return .none
+            }
+        }
+    }
+
+    struct Direction {
+        let horizontal: Horizontal
+        let vertical: Vertical
+    }
+
+    // swiftlint:disable:next identifier_name
+    convenience init(x: CLLocationDegrees, y: CLLocationDegrees) {
+        self.init(latitude: y.latFromMercatorY, longitude: x.lonFromMercatorX)
+    }
+
+    /// Tells you what direction the provided point is from the provided point.
+    /// - Parameter point: The point you want to know the direction from.
+    func direction(from point: CLLocation) -> Direction {
+        return Direction(horizontal: .direction(from: self, to: point),
+                         vertical: .direction(from: self, to: point))
+    }
+}
+
+// MARK: - MKPolygon Extension
+
+extension MKPolygon {
+
+    func contains(point: CLLocation) -> Bool {
+        let polygonRenderer = MKPolygonRenderer(polygon: self)
+        let currentMapPoint = MKMapPoint(point.coordinate)
+        let polygonViewPoint = polygonRenderer.point(for: currentMapPoint)
+
+        return polygonRenderer.path.contains(polygonViewPoint)
+    }
 }

@@ -59,6 +59,18 @@ public extension GeoTrackMap {
             return
         }
         removeOverlays(overlays)
+        print("Removed overlays")
+
+        if let legs = model?.legs {
+            legs.forEach { leg in
+                guard let polyline = model?.expandedPolyline(forLeg: leg, size: 100) else {
+                    return
+                }
+                addOverlay(polyline)
+                print("Added expanded polyline overlay")
+            }
+        }
+
         guard let polylines = model?.polylines else {
             return
         }
@@ -87,6 +99,12 @@ extension GeoTrackMap: MKMapViewDelegate {
     ///   - overlay: The overlay to create a renderer for
     /// - Returns: The result MKOverlay renderer
     public func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+        if let polygon = overlay as? MKPolygon {
+            let renderer = MKPolygonRenderer(polygon: polygon)
+            renderer.fillColor = unknownColor
+            return renderer
+        }
+
         guard let polyline = overlay as? MKPolyline else {
             return MKPolylineRenderer(overlay: overlay)
         }
@@ -105,7 +123,7 @@ extension GeoTrackMap: MKMapViewDelegate {
         case .upward:
             renderer.strokeColor = ascentColor
         default:
-            break
+            renderer.strokeColor = unknownColor
         }
 
         return renderer

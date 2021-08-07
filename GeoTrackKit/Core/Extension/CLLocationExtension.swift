@@ -17,6 +17,54 @@ public extension CLLocation {
 
 }
 
+public extension CLLocationDegrees {
+
+    /// Gets you the longitude (in degrees) from this `Mercator X` value.
+    var lonFromMercatorX: CLLocationDegrees {
+        let degrees = (self / Constants.earthRadius).radiansToDegrees
+        guard degrees <= 180 else {
+            return 180
+        }
+        guard degrees >= -180 else {
+            return -180
+        }
+        return degrees
+    }
+
+    /// Gets you the latitude (in degrees) from this `Mercator Y` value.
+    var latFromMercatorY: CLLocationDegrees {
+        let degrees = ((2.0 * atan(exp(self/Constants.earthRadius))) - .pi/2).radiansToDegrees
+        guard degrees <= 90 else {
+            return 90
+        }
+        guard degrees >= -90 else {
+            return -90
+        }
+        return degrees
+    }
+
+    /// Gets you the Mercator Y from these latitudinal degrees
+    var yFromLatitude: CLLocationDegrees {
+        guard self > -90 else {
+            return -89.99999999.yFromLatitude
+        }
+        guard self < 90 else {
+            return 89.99999999.yFromLatitude
+        }
+        return log(tan(.pi/4 + radians / 2)) * Constants.earthRadius
+    }
+
+    /// Gets you the Mercator X from this longitudinal degrees
+    var xFromLongitude: CLLocationDegrees {
+        return radians * Constants.earthRadius
+    }
+
+    private struct Constants {
+        static let earthRadius = 6378137.0
+    }
+
+}
+
 // MARK: - x / y
 
 public extension CLLocationCoordinate2D {

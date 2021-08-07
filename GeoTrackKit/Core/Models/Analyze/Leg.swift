@@ -239,7 +239,7 @@ open class Leg {
     /// - Parameter point: The point to compare with this relative point.
     /// - Returns: the direction
     func compare(to anotherPoint: CLLocation) -> Direction {
-            return point.compare(to: anotherPoint)
+        return point.compare(to: anotherPoint)
     }
 
     /// Tells you if this leg is moving in the same direction as another leg
