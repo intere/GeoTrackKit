@@ -13,7 +13,7 @@ class GeoTrackManagerTests: XCTestCase {
 
     let mockManager = MockLocationManager()
     var manager: GeoTrackManager?
-    var oldPointTimeThreshold: TimeInterval? = GeoTrackManager.oldPointTimeThreshold
+    var oldPointTimeThreshold: TimeInterval = GeoTrackManager.oldPointTimeThreshold
 
     override func setUp() {
         super.setUp()
@@ -61,7 +61,7 @@ class GeoTrackManagerTests: XCTestCase {
             return XCTFail("cannot locate the manager")
         }
         GeoTrackManager.shared.pointFilter = .defaultFilterOptions
-        GeoTrackManager.oldPointTimeThreshold = nil
+        GeoTrackManager.oldPointTimeThreshold = 0
 
         guard let points = TrackReader(bundleFilename: "reference-track-1").track?.points, points.count > 0 else {
             return XCTFail("no points")

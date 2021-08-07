@@ -30,4 +30,9 @@ extension CLLocationDistance {
         return self * 3.28084
     }
 
+    /// Converts meters to miles.
+    var metersToMiles: Double {
+        return self * 0.000621371
+    }
+
 }
