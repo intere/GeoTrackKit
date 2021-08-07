@@ -114,6 +114,7 @@ public extension GeoTrack {
         return result
     }
 
+    // swiftlint:disable line_length
     var standardGpx: String {
                 var result = """
 <?xml version="1.0" encoding="utf-8"?>
@@ -128,6 +129,7 @@ public extension GeoTrack {
 
 """
                 }
+        // swiftlint:enable line_length
 
                 result += """
     </trkseg>

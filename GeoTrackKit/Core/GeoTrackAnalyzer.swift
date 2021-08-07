@@ -203,7 +203,8 @@ extension CLLocation {
     /// Tells you if this point is above, below or at the same altitude as another point
     ///
     /// - Parameter point: The point to compare this point with
-    /// - Returns: `unknown` if the altitude is the same (very, very unlikely), `down` if the provided point is below this point and `up` if the provided point is above this point.
+    /// - Returns: `unknown` if the altitude is the same (very, very unlikely), `down`
+    /// if the provided point is below this point and `up` if the provided point is above this point.
     func compare(to point: CLLocation) -> GeoTrackKit.Direction {
         if altitude == point.altitude {
             return .unknown

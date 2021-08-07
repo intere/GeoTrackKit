@@ -73,6 +73,7 @@ public extension GeoTrack {
     /// - Parameter points: The points to convert to a polygon array
     /// - Parameter meters: The distance to expand outwards.
     func toPolygonPointArray(points: [CLLocation], size meters: CLLocationDistance) -> [CLLocation]? {
+        // swiftlint:disable:previous cyclomatic_complexity
         guard points.count > 2 else {
             return nil
         }
@@ -86,8 +87,10 @@ public extension GeoTrack {
 
             let direction = last.direction(from: point)
 
+            // swiftlint:disable identifier_name
             let x1: Double, x2: Double
             let y1: Double, y2: Double
+            // swiftlint:enable identifier_name
 
             switch direction.vertical {
             case .north:

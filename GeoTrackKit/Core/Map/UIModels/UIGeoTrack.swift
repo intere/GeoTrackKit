@@ -76,9 +76,8 @@ public extension UIGeoTrack {
     }
 
     func expandedPolyline(forLeg leg: Leg, size meters: CLLocationDistance) -> MKPolygon? {
-        guard let points = points(for: leg), let coordinates = track.toPolygonPointArray(points: points, size: meters) else {
-            return nil
-        }
+        guard let points = points(for: leg),
+              let coordinates = track.toPolygonPointArray(points: points, size: meters) else { return nil }
 
         return MKPolygon(coordinates: coordinates.map({ $0.coordinate }), count: coordinates.count)
     }
@@ -86,9 +85,7 @@ public extension UIGeoTrack {
     /// Gets you an expanded polyline of the entire track.
     /// - Parameter meters: The distance outward from the line (in meters).
     func expandedPolyline(size meters: CLLocationDistance) -> MKPolygon? {
-        guard let coordinates = track.toPolygonPointArray(size: meters) else {
-            return nil
-        }
+        guard let coordinates = track.toPolygonPointArray(size: meters) else { return nil }
 
         return MKPolygon(coordinates: coordinates.map({ $0.coordinate }), count: coordinates.count)
     }

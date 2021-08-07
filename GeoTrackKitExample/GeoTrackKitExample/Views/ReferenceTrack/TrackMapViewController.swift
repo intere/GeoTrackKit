@@ -169,7 +169,8 @@ private extension TrackMapViewController {
         }
 
         do {
-            let documentsFolder = try FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
+            let documentsFolder = try FileManager.default.url(
+                for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
             let fileName = model.track.name.trackNameToFileSystemName
             let fileUrl = documentsFolder.appendingPathComponent("\(fileName).gpx")
 
@@ -225,7 +226,6 @@ private extension TrackMapViewController {
         let activityVC = UIActivityViewController(activityItems: [trackWrittenToGpxFile], applicationActivities: nil)
         present(activityVC, animated: true, completion: nil)
     }
-
 
     /// Shares the track written to a standard GPX file
     func shareGpx() {
