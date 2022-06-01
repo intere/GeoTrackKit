@@ -7,6 +7,7 @@
 
 import CoreLocation
 import Foundation
+import UIKit
 
 public extension GeoTrack {
 

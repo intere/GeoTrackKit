@@ -7,6 +7,7 @@
 //  A set of convenience extensions to provide a friendly string value and then serialization functions
 
 import CoreLocation
+import UIKit
 
 public extension CLLocation {
 

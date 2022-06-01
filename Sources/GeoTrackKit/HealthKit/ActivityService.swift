@@ -5,6 +5,7 @@
 //  Created by Eric Internicola on 7/27/18.
 //
 
+#if os(iOS)
 import CoreLocation
 import Foundation
 import HealthKit
@@ -240,3 +241,5 @@ extension ActivityService {
         store.execute(query)
     }
 }
+
+#endif
