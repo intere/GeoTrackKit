@@ -4,6 +4,8 @@
 //
 //  Created by Eric Internicola on 7/29/18.
 
+import Foundation
+
 /// A group of some errors that GeoTrackKit provides
 enum GeoTrackKitError: LocalizedError {
     case healthDataNotAvailable

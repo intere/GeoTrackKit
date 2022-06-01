@@ -8,6 +8,7 @@
 
 import MapKit
 import CoreLocation
+import UIKit
 
 /// This class provides you an easy way to visualize your track on a map.  You can configure the unknown, ascent and
 /// descent colors.  They have sensible defaults.  Using the UIGeoTrack model, you can set which legs of your track

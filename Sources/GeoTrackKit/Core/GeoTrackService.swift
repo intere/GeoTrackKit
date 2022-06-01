@@ -8,6 +8,7 @@
 
 import Foundation
 import CoreLocation
+import UIKit
 
 /// The type of authorization we want to request if we don't yet have permission:
 ///
