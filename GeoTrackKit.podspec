@@ -4,7 +4,7 @@
 
 Pod::Spec.new do |s|
   s.name      = 'GeoTrackKit'
-  s.version   = '1.0.0'
+  s.version   = '1.1.0'
   s.summary   = 'Geo Tracking and statistics for iOS'
   s.description = <<-DESC
 A Geo Location Tracking and statistic calculation library for iOS.  It also provides rendering location tracks over a map for you.
@@ -37,13 +37,13 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
   # Core Tracking functionality + Apple Maps rendering
   s.subspec 'Core' do |ss|
-    ss.source_files = 'GeoTrackKit/Core/**/*.{swift,h,m}'
+    ss.source_files = 'Sources/GeoTrackKit/Core/**/*.{swift,h,m}'
   end
 
   # HealthKit subspec, provides the ability to read tracks from Workouts
   s.subspec 'HealthKit' do |ss|
     ss.ios.deployment_target = '11.0'
-    ss.source_files = 'GeoTrackKit/HealthKit/**/*.{swift,h,m}'
+    ss.source_files = 'Sources/GeoTrackKit/HealthKit/**/*.{swift,h,m}'
     ss.dependency 'GeoTrackKit/Core'
   end
 

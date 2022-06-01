@@ -1,6 +1,6 @@
 PODS:
-  - GeoTrackKit/Core (1.0.0)
-  - GeoTrackKit/HealthKit (1.0.0):
+  - GeoTrackKit/Core (1.1.0)
+  - GeoTrackKit/HealthKit (1.1.0):
     - GeoTrackKit/Core
 
 DEPENDENCIES:
@@ -11,8 +11,8 @@ EXTERNAL SOURCES:
     :path: ".."
 
 SPEC CHECKSUMS:
-  GeoTrackKit: b15830c21328929ca5b500efba9765a10c694a3a
+  GeoTrackKit: 0c006607d5a89f252a06c1ae96b222b1d5a31002
 
 PODFILE CHECKSUM: 6b6b15c8571da71adf29321de0604cdf6ea5756a
 
-COCOAPODS: 1.8.3
+COCOAPODS: 1.11.3
